@@ -1,0 +1,29 @@
+# Secrets & Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Node / React
+node_modules/
+dist/
+build/
+.next/
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Run Artifacts
+answers_*.json
+scratch/
