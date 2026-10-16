@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""
+Entrypoint runner for the Granite 4.2 8B Logic Grid Solver.
+
+Usage:
+    ./run <items.json> --budget <1x|3x|10x> --out <answers.json>
+"""
+import os
+import sys
+import json
+import argparse
+from openai import OpenAI
+from dotenv import load_dotenv
+
+# Add project root to sys.path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from src.fsm_controller import FSMController
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Neuro-Symbolic Grid Solver for Shift Notes")
+    parser.add_argument("items_path", help="Path to items.json")
+    parser.add_argument("--budget", choices=["1x", "3x", "10x"], default="1x", help="Model call budget per item")
+    parser.add_argument("--out", required=True, help="Path to output answers.json")
+
+    args = parser.parse_args()
+
+    # Load environment
+    load_dotenv()
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    base_url = os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+    model = os.environ.get("MODEL", "ibm-granite/granite-4.2-8b")
+
+    if not api_key:
+        print("ERROR: OPENROUTER_API_KEY environment variable not set in .env", file=sys.stderr)
+        sys.exit(1)
+
+    client = OpenAI(api_key=api_key, base_url=base_url)
+    controller = FSMController(client, model)
+
+    with open(args.items_path, "r", encoding="utf-8") as f:
+        items = json.load(f)
+
+    print(f"Loaded {len(items)} items from {args.items_path}.")
+    print(f"Running model={model} with budget={args.budget}...")
+
+    answers = {}
+    for i, item in enumerate(items, 1):
+        item_id = item["id"]
+        raw_text = item["text"]
+        
+        # Process item with FSM controller
+        res = controller.run_item(item_id, raw_text, budget=args.budget)
+        answers[item_id] = res
+
+        print(f"[{i}/{len(items)}] {item_id} -> {res.get('case')}")
+
+    # Ensure output directory exists
+    out_dir = os.path.dirname(os.path.abspath(args.out))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+
+    with open(args.out, "w", encoding="utf-8") as f:
+        json.dump(answers, f, indent=2)
+
+    print(f"\nWrote {len(answers)} answers to {args.out}")
+
+
+if __name__ == "__main__":
+    main()
