@@ -159,18 +159,30 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
     """
     worlds = generate_all_worlds(staff, station_holders)
     
-    # Filter worlds against all constraints
-    valid = []
-    for w in worlds:
-        if all(c.check(w.blocks, w.stations, w.station_blocks) for c in constraints):
-            valid.append(w)
-            
+    # Track state space pruning trajectory
+    remaining = worlds
+    elimination_steps = []
+    for i, c in enumerate(constraints):
+        prev_cnt = len(remaining)
+        remaining = [w for w in remaining if c.check(w.blocks, w.stations, w.station_blocks)]
+        elimination_steps.append({
+            "step": i + 1,
+            "constraint": f"{c.kind}({', '.join(str(a) for a in c.args)})",
+            "source_line": c.source_line,
+            "worlds_before": prev_cnt,
+            "worlds_after": len(remaining),
+            "pruned": prev_cnt - len(remaining)
+        })
+
+    valid = remaining
+
     if len(valid) == 1:
         return {
             "case": "unique",
             "assignment": valid[0].format_assignment(),
             "world_count": 1,
-            "valid_worlds": valid
+            "valid_worlds": valid,
+            "elimination_steps": elimination_steps
         }
         
     elif 2 <= len(valid) <= 4:
@@ -178,7 +190,8 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
             "case": "ambiguous",
             "assignments": [w.format_assignment() for w in valid],
             "world_count": len(valid),
-            "valid_worlds": valid
+            "valid_worlds": valid,
+            "elimination_steps": elimination_steps
         }
         
     elif len(valid) == 0:
@@ -188,7 +201,8 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
             "case": "inconsistent",
             "conflicts": conflicts,
             "world_count": 0,
-            "valid_worlds": []
+            "valid_worlds": [],
+            "elimination_steps": elimination_steps
         }
         
     else:
@@ -197,7 +211,8 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
             "case": "ambiguous",
             "assignments": [w.format_assignment() for w in valid[:4]],
             "world_count": len(valid),
-            "valid_worlds": valid
+            "valid_worlds": valid,
+            "elimination_steps": elimination_steps
         }
 
 

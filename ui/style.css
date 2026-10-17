@@ -707,3 +707,195 @@ body {
 .text-green { color: var(--accent-green); }
 .text-red { color: var(--accent-red); }
 .text-amber { color: var(--accent-amber); }
+
+/* Budget Info Button in Nav */
+.info-guide-btn {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.info-guide-btn:hover {
+  background: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+  border-color: #60a5fa;
+}
+
+/* Modal Backdrop & Card */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  max-width: 820px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  overflow: hidden;
+  animation: modalPop 0.2s ease-out;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.modal-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-intro {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.budget-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.budget-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-info-card.tier-1x { border-top: 3px solid #3b82f6; }
+.budget-info-card.tier-3x { border-top: 3px solid #10b981; }
+.budget-info-card.tier-10x { border-top: 3px solid #8b5cf6; }
+
+.tier-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+}
+
+.tier-1x .tier-badge { color: #60a5fa; }
+.tier-3x .tier-badge { color: #34d399; }
+.tier-10x .tier-badge { color: #a78bfa; }
+
+.budget-info-card h4 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.budget-info-card ul {
+  padding-left: 18px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.budget-info-card strong {
+  color: var(--text-main);
+}
+
+/* Trace Action Buttons */
+.trace-btn-highlight {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.trace-btn-highlight:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-1px);
+}
+
+.graph-btn-outline {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.graph-btn-outline:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: #475569;
+}
+
+/* Elimination Table inside Trace */
+.elimination-table th, .elimination-table td {
+  padding: 5px 8px;
+}
+

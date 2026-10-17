@@ -74,7 +74,8 @@ class FSMController:
             "description": f"Evaluated all 720 possible permutations against the extracted constraints. Remaining consistent worlds: {initial_worlds}.",
             "details": {
                 "initial_world_count": initial_worlds,
-                "preliminary_case": result["case"]
+                "preliminary_case": result["case"],
+                "elimination_steps": result.get("elimination_steps", [])
             }
         })
 
