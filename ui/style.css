@@ -314,6 +314,31 @@ body {
   color: white;
 }
 
+.live-run-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: 1px solid #047857;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.live-run-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.live-run-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .tab-content {
   display: none;
   flex: 1;

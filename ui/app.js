@@ -328,3 +328,111 @@ function drawNode(svg, x, y, r, fill, label, type) {
 
   svg.appendChild(group);
 }
+
+async function runLiveInference() {
+  if (!activeItem) return;
+
+  const btn = document.getElementById('live-run-btn');
+  const spinner = document.getElementById('btn-spinner');
+  const btnText = document.getElementById('btn-text');
+
+  btn.disabled = true;
+  spinner.style.display = 'inline-block';
+  btnText.textContent = ' Running Granite 8B...';
+
+  try {
+    const res = await fetch('/api/solve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: activeItem.id, budget: '1x' })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Inference error: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    console.log('Live inference result:', data);
+
+    // Switch to solver tab and update display with live result
+    const solverTab = document.querySelector('.tab-btn[data-tab="solver-view"]');
+    if (solverTab) solverTab.click();
+
+    // Render result
+    const displayEl = document.getElementById('solution-display');
+    const validWorldsEl = document.getElementById('stat-valid-worlds');
+    const worldsStatusEl = document.getElementById('stat-worlds-status');
+
+    if (data.case === 'unique') {
+      validWorldsEl.textContent = '1';
+      validWorldsEl.className = 'stat-number text-green';
+      worldsStatusEl.textContent = 'Live Granite 8B: Unique Schedule Derived';
+      displayEl.innerHTML = `
+        <div class="schedule-card" style="border-color: #10b981;">
+          <h4 style="color: #34d399;">⚡ Live Inferred Shift Roster (Granite 4.2 8B)</h4>
+          <table class="schedule-table">
+            <thead><tr><th>Staff</th><th>Time Block</th><th>Workstation</th></tr></thead>
+            <tbody>
+              ${Object.entries(data.assignment || {}).map(([p, info]) => `
+                <tr>
+                  <td><strong>${p}</strong></td>
+                  <td><code>${info.block || '—'}</code></td>
+                  <td><span class="dot station-dot"></span> ${info.station || 'None'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else if (data.case === 'ambiguous') {
+      const assigns = data.assignments || [];
+      validWorldsEl.textContent = assigns.length.toString();
+      validWorldsEl.className = 'stat-number text-amber';
+      worldsStatusEl.textContent = `Live Granite 8B: ${assigns.length} Valid Assignments Found`;
+      displayEl.innerHTML = `
+        <div class="roster-grid">
+          ${assigns.map((assign, i) => `
+            <div class="schedule-card" style="border-color: #f59e0b;">
+              <h4 style="color: #fbbf24;">Candidate Schedule #${i + 1}</h4>
+              <table class="schedule-table">
+                <thead><tr><th>Staff</th><th>Block</th><th>Station</th></tr></thead>
+                <tbody>
+                  ${Object.entries(assign).map(([p, info]) => `
+                    <tr>
+                      <td><strong>${p}</strong></td>
+                      <td><code>${info.block || '—'}</code></td>
+                      <td>${info.station || '—'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      validWorldsEl.textContent = '0';
+      validWorldsEl.className = 'stat-number text-red';
+      worldsStatusEl.textContent = 'Live Granite 8B: Minimal Conflicting Core Detected';
+      displayEl.innerHTML = `
+        <div class="schedule-card" style="border-color: #ef4444;">
+          <h4 style="color: #f87171;">⚡ Live Minimal Unsatisfiable Core Citations</h4>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px;">
+            The solver identified the following minimal contradictory statements:
+          </p>
+          <ul style="padding-left: 20px; font-size: 0.85rem; color: #fca5a5;">
+            ${(data.conflicts || []).map(stmt => `<li style="margin-bottom: 6px;">"${stmt}"</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+  } catch (err) {
+    alert(`Live inference failed: ${err.message}. Make sure server.py is running.`);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    btnText.textContent = '⚡ Run Live Inference';
+  }
+}
+
