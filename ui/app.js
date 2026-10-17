@@ -115,8 +115,7 @@ function selectItem(item) {
 function renderNotes(item) {
   const feed = document.getElementById('lines-feed');
   feed.innerHTML = '';
-
-  const lines = item.text.split('\n')[1:].filter(l => l.trim());
+  const lines = item.text.split('\n').slice(1).filter(l => l.trim());
   const conflictSets = item.conflict_line_sets || [];
   const allConflicts = new Set(conflictSets.flat().map(s => s.trim().toLowerCase()));
 
