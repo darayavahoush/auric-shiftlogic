@@ -26,8 +26,8 @@ Available constraint kinds and argument formats:
 - BLOCK_NEQ: [person, block] -- e.g. ["Tomas", "11:00"] (includes "rules out the ... block entirely", "11:00 is the one block X is definitely not on", "the 11:00 block is not X's", "you will not find X on the 11:00 block", "lobbied for 11:00 without success", "turned down", "declined", "unavailable at 11:00")
 - STATION_EQ: [person, station] -- e.g. ["Tomas", "intake"]
 - STATION_NEQ: [person, station] -- e.g. ["Tomas", "intake"] (includes "covered by someone other than", "rule out", "not assigned to")
-- ORDER_LT: [p1, p2] -- p1 works earlier in the day than p2 (e.g. "p1 precedes p2", "p1 done before p2 starts", "p1 earlier than p2")
-- ORDER_GT: [p1, p2] -- p1 works later in the day than p2 (e.g. "p1 comes later than p2", "p1 after p2")
+- ORDER_LT: [p1, p2] -- p1 works earlier in the day than p2 (e.g. "p1 precedes p2", "p1 done before p2 starts", "p1 earlier than p2", "p1's block falls somewhere earlier than p2's", "p1 is earlier in the rota than p2")
+- ORDER_GT: [p1, p2] -- p1 works later in the day than p2 (e.g. "p1 comes later than p2", "p1 after p2", "p1's block falls somewhere later than p2's")
 - IMMEDIATE_AFTER: [p1, p2] -- p1 works directly after p2 (e.g. "p1 relieves p2 directly", "p1 on block directly after p2")
 - IMMEDIATE_BEFORE: [p1, p2] -- p1 works directly before p2 (e.g. "p1 then p2, back to back", "p1 hands straight over to p2")
 - BETWEEN: [p_mid, p1, p2] -- p_mid works strictly between p1 and p2 (e.g. "Whichever way round p1 and p2 are, p_mid is between them", "p_mid's block falls between p1's and p2's", "p_mid sits between p1 and p2", "p_mid is on after one of p1 and p2 and before the other", "Put p_mid between p1 and p2")
@@ -250,9 +250,17 @@ def decompile_constraints(
                 kind = "STATION_NEQ"
 
             # Normalize args
+            def ground_person(p_name: str, line: str) -> str:
+                if p_name in line:
+                    return p_name
+                mentioned = [s for s in item.header.staff if re.search(r'\b' + re.escape(s) + r'\b', line, re.IGNORECASE)]
+                if len(mentioned) == 1:
+                    return mentioned[0]
+                return p_name
+
             norm_args = []
             if kind in ("BLOCK_EQ", "BLOCK_NEQ"):
-                p = str(args[0]).strip()
+                p = ground_person(str(args[0]).strip(), source_line)
                 b = str(args[1]).strip()
                 if b in BLOCK_TO_IDX:
                     norm_args = (p, BLOCK_TO_IDX[b])
@@ -261,12 +269,12 @@ def decompile_constraints(
                 else:
                     continue
             elif kind in ("STATION_EQ", "STATION_NEQ"):
-                p = str(args[0]).strip()
+                p = ground_person(str(args[0]).strip(), source_line)
                 st = norm_station(args[1])
                 norm_args = (p, st)
             elif kind in ("ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE"):
-                p1 = str(args[0]).strip()
-                p2 = str(args[1]).strip()
+                p1 = ground_person(str(args[0]).strip(), source_line)
+                p2 = ground_person(str(args[1]).strip(), source_line)
                 if p1 == p2:
                     continue
                 if any(s in p1.lower() for s in ("intake", "calibration", "packing")):
@@ -275,9 +283,9 @@ def decompile_constraints(
                     p2 = norm_station(p2)
                 norm_args = (p1, p2)
             elif kind == "BETWEEN":
-                p_mid = str(args[0]).strip()
-                p1 = str(args[1]).strip()
-                p2 = str(args[2]).strip()
+                p_mid = ground_person(str(args[0]).strip(), source_line)
+                p1 = ground_person(str(args[1]).strip(), source_line)
+                p2 = ground_person(str(args[2]).strip(), source_line)
                 if len({p_mid, p1, p2}) < 3:
                     continue
                 norm_args = (p_mid, p1, p2)
@@ -292,6 +300,7 @@ def decompile_constraints(
                     st, p = norm_station(a1), a0
                 else:
                     continue
+                p = ground_person(p, source_line)
                 if any(w in s_low for w in ("earlier", "before", "precedes")):
                     kind = "ORDER_STATION_PERSON"
                     norm_args = (st, p)

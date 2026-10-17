@@ -135,14 +135,15 @@ Output a JSON array of corrected constraints for any real rules:
                                 }
                             })
 
-            # Loop 2: Under-constrained recovery on >4 worlds
-            if result.get("case") == "under_constrained" or result["world_count"] > 4:
+            # Loop 2: Under-constrained recovery on >1 worlds
+            if (result.get("case") == "under_constrained" or result["world_count"] >= 2) and calls_used < max_calls:
                 extracted_lines = {c.source_line for c in constraints}
                 unextracted = [t for idx, t in parsed.candidate_lines if t not in extracted_lines]
                 
-                if unextracted and calls_used < max_calls:
+                if unextracted:
+                    initial_worlds = result["world_count"]
                     repair_prompt = f"""Staff: {', '.join(parsed.header.staff)}.
-The initial pass missed some constraints, leaving too many possibilities ({result['world_count']} worlds).
+The initial pass missed some constraints, leaving candidate possibilities ({initial_worlds} worlds).
 Inspect these specific lines and extract ANY schedule or station constraints:
 """ + "\n".join(f"{i+1}. {l}" for i, l in enumerate(unextracted))
 
@@ -153,6 +154,13 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                     newly_added = []
                     if repair_json:
                         from src.decompiler import BLOCK_TO_IDX
+                        def norm_st(val):
+                            val_low = str(val).lower()
+                            for s in ("intake", "calibration", "packing"):
+                                if s in val_low:
+                                    return s
+                            return val_low
+
                         for entry in repair_json:
                             k = entry.get("kind")
                             a = entry.get("args")
@@ -163,7 +171,11 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                                     c = Constraint(k, (str(a[0]).strip(), BLOCK_TO_IDX[str(a[1])]), s_line)
                                     constraints.append(c)
                                     newly_added.append(f"{k}{c.args} from '{s_line}'")
-                                elif k in ("STATION_EQ", "STATION_NEQ", "ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE") and len(a) >= 2:
+                                elif k in ("STATION_EQ", "STATION_NEQ") and len(a) >= 2:
+                                    c = Constraint(k, (str(a[0]).strip(), norm_st(a[1])), s_line)
+                                    constraints.append(c)
+                                    newly_added.append(f"{k}{c.args} from '{s_line}'")
+                                elif k in ("ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE") and len(a) >= 2:
                                     c = Constraint(k, (str(a[0]).strip(), str(a[1]).strip()), s_line)
                                     constraints.append(c)
                                     newly_added.append(f"{k}{c.args} from '{s_line}'")
@@ -179,7 +191,7 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                             "step": len(trace) + 1,
                             "title": f"FSM Adaptive Repair Loop (Call #{calls_used})",
                             "calls": calls_used,
-                            "description": f"Detected under-constrained state ({initial_worlds} worlds). Targeted {len(unextracted)} unextracted lines. Recovered {len(newly_added)} missed constraints, reducing candidate worlds from {initial_worlds} to {result['world_count']}.",
+                            "description": f"Targeted {len(unextracted)} unextracted lines. Recovered {len(newly_added)} missed constraints, transitioning candidate worlds from {initial_worlds} to {result['world_count']}.",
                             "details": {
                                 "newly_recovered": newly_added,
                                 "revised_world_count": result["world_count"]
@@ -261,10 +273,21 @@ Inspect these specific lines and extract ANY schedule or station constraints:
             }
         }
 
+        valid_w = result.get("valid_worlds", [])
         if case == "unique":
-            out["assignment"] = result["assignment"]
+            if "assignment" in result:
+                out["assignment"] = result["assignment"]
+            elif valid_w:
+                out["assignment"] = valid_w[0].format_assignment()
+            else:
+                out["assignment"] = {}
         elif case == "ambiguous":
-            out["assignments"] = result["assignments"]
+            if "assignments" in result:
+                out["assignments"] = result["assignments"]
+            elif valid_w:
+                out["assignments"] = [w.format_assignment() for w in valid_w[:4]]
+            else:
+                out["assignments"] = []
         else:
             out["conflicts"] = result.get("conflicts", [])
 

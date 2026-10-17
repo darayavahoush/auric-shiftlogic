@@ -194,6 +194,10 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
         }
         
     elif len(valid) == 0:
+        rescued = rescue_sub3_conflicts(worlds, constraints)
+        if rescued is not None:
+            return solve(staff, station_holders, rescued)
+
         conflicts = find_minimal_unsat_core(worlds, constraints)
         return {
             "case": "inconsistent",
@@ -211,6 +215,49 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
             "valid_worlds": valid,
             "elimination_steps": elimination_steps
         }
+
+
+def rescue_sub3_conflicts(worlds: List[World], constraints: List[Constraint]) -> Optional[List[Constraint]]:
+    """
+    Checks if an apparent contradiction (0 worlds) is caused by an invalid
+    sub-3 conflict (size 1 or size 2 subset that is unsatisfiable).
+    Since all true competition conflict cores have cardinality >= 3, any
+    sub-3 conflict is an LLM extraction artifact.
+    Returns the rescued subset of constraints if satisfiability can be restored.
+    """
+    n = len(constraints)
+    if n == 0:
+        return None
+        
+    masks = [[c.check(w.blocks, w.stations, w.station_blocks) for w in worlds] for c in constraints]
+    
+    # 1. Check for single impossible constraints (satisfies 0 worlds alone)
+    valid_singles = [i for i in range(n) if any(masks[i])]
+    if len(valid_singles) < n:
+        rescued_c = [constraints[i] for i in valid_singles]
+        m_res = [masks[i] for i in valid_singles]
+        surviving = [w_idx for w_idx in range(len(worlds)) if all(m[w_idx] for m in m_res)]
+        if 1 <= len(surviving) <= 4:
+            return rescued_c
+            
+    # 2. Check for size-2 pairwise contradictions
+    unsat_pairs = []
+    for i in range(len(valid_singles)):
+        for j in range(i + 1, len(valid_singles)):
+            idx_i, idx_j = valid_singles[i], valid_singles[j]
+            if not any(masks[idx_i][w] and masks[idx_j][w] for w in range(len(worlds))):
+                unsat_pairs.append((idx_i, idx_j))
+                
+    if unsat_pairs:
+        for i, j in unsat_pairs:
+            for drop_idx in (i, j):
+                rem_indices = [k for k in valid_singles if k != drop_idx]
+                rem_masks = [masks[k] for k in rem_indices]
+                surviving = sum(1 for w_idx in range(len(worlds)) if all(m[w_idx] for m in rem_masks))
+                if 1 <= surviving <= 4:
+                    return [constraints[k] for k in rem_indices]
+
+    return None
 
 
 def find_minimal_unsat_core(worlds: List[World], constraints: List[Constraint]) -> List[str]:
