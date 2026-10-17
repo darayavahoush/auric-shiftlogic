@@ -1,280 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShiftLogic | Neuro-Symbolic Entity Resolution & Constraint Engine</title>
-  <link rel="stylesheet" href="style.css?v=5.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>ShiftLogic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Streamlined Header -->
-    <header class="top-nav">
-      <div class="brand">
-        <div class="brand-badge">⚡ ShiftLogic</div>
-        <div class="brand-text">
-          <h1>Entity Resolution & Constraint Engine</h1>
-          <span class="author">Auric AI Take-Home • Ananya Sridhar</span>
+<div class="shell" id="shell">
+
+  <aside class="rail" id="rail" aria-label="Puzzles">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="4" rx="2"/><rect x="2" y="10" width="13" height="4" rx="2" opacity=".65"/><rect x="2" y="17" width="8" height="4" rx="2" opacity=".35"/></svg>
+      <div>
+        <div class="brand-name">ShiftLogic</div>
+        <div class="brand-sub">Shift-notes constraint solver</div>
+      </div>
+    </div>
+
+    <div class="rail-tools">
+      <input id="search" type="search" placeholder="Search id, name or phrase" aria-label="Search puzzles" autocomplete="off">
+      <div class="seg seg-wrap" id="filters" role="group" aria-label="Filter by kind"></div>
+    </div>
+
+    <nav class="item-list" id="item-list" aria-label="Puzzle list"></nav>
+    <div class="rail-foot">
+      <span class="kbd">↑</span><span class="kbd">↓</span> to move between puzzles
+    </div>
+  </aside>
+
+  <main class="stage">
+    <header class="bar">
+      <button class="icon-btn menu-btn" id="menu-btn" aria-label="Show puzzle list">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+
+      <div class="title">
+        <div class="title-row">
+          <h1 id="item-id">—</h1>
+          <span class="badge" id="item-kind"></span>
         </div>
+        <div class="meta" id="item-meta"></div>
       </div>
 
-      <div class="nav-right">
-        <div class="score-pill">
-          <span class="score-item"><small>Granite 8B</small><strong>0.0%</strong></span>
-          <span class="score-sep">➔</span>
-          <span class="score-item"><small>Claude Sonnet 5</small><strong>67.5%</strong></span>
-          <span class="score-sep">➔</span>
-          <span class="score-item highlight"><small>ShiftLogic (1x)</small><strong>72.2%</strong></span>
-        </div>
-
-        <div class="budget-group">
-          <label for="budget-select">Budget:</label>
-          <select id="budget-select" class="budget-select" onchange="onBudgetChange()">
-            <option value="1x">1x (Single-Pass • 1 Call)</option>
-            <option value="3x">3x (Adaptive Self-Repair • ≤3 Calls)</option>
-            <option value="10x">10x (Consensus Verification • ≤10 Calls)</option>
-          </select>
-          <button class="info-guide-btn" onclick="openBudgetGuide()" title="Explain the difference between 1x, 3x, and 10x calls">ℹ️ Budget Guide</button>
-        </div>
-
-        <button class="live-run-btn" id="live-run-btn" onclick="runLiveInference()">
-          <span class="btn-spinner" id="btn-spinner" style="display:none;">⏳</span>
-          <span id="btn-text">⚡ Run Live Inference</span>
+      <div class="bar-actions">
+        <div class="seg" id="budget" role="group" aria-label="Call budget"></div>
+        <button class="btn primary" id="run-btn">
+          <span class="spin" aria-hidden="true"></span>
+          <span id="run-label">Run on Granite</span>
+        </button>
+        <button class="btn ghost" id="custom-btn" title="Paste your own shift notes">Custom notes</button>
+        <button class="icon-btn" id="theme-btn" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
         </button>
       </div>
     </header>
 
-    <!-- Workspace -->
-    <div class="workspace">
-      <!-- Left: Item Picker -->
-      <aside class="sidebar">
-        <div class="sidebar-top">
-          <input type="text" id="search-input" placeholder="Search puzzle or name..." class="search-bar">
-          <div class="filter-pills">
-            <button class="pill active" data-filter="all">All (60)</button>
-            <button class="pill" data-filter="unique">Unique (20)</button>
-            <button class="pill" data-filter="ambiguous">Ambiguous (20)</button>
-            <button class="pill" data-filter="inconsistent">Inconsistent (20)</button>
-          </div>
-        </div>
-        <div class="item-list" id="item-list">
-          <!-- Populated by JS -->
-        </div>
-      </aside>
-
-      <!-- Right: Main Streamlined View -->
-      <main class="main-content">
-        <!-- Item Toolbar -->
-        <div class="detail-header">
-          <div class="item-meta">
-            <h2 id="active-item-id">B2-000</h2>
-            <span class="case-badge" id="active-case-badge">Inconsistent</span>
-            <span class="info-pill" id="active-bay-badge">Bay 4 • 5 Staff • 3 Stations</span>
-          </div>
-          <div class="view-toggles">
-            <button class="toggle-btn active" id="btn-view-notes" onclick="setViewMode('notes')">
-              📄 Notes & Solution
-            </button>
-            <button class="toggle-btn" id="btn-view-trace" onclick="setViewMode('trace')">
-              🔍 Step-by-Step Logic Trace
-            </button>
-            <button class="toggle-btn" id="btn-view-graph" onclick="setViewMode('graph')">
-              🕸️ Entity Graph
-            </button>
-            <button class="toggle-btn" id="btn-view-bench" onclick="setViewMode('bench')">
-              📊 Ablation Table
-            </button>
-          </div>
-        </div>
-
-        <!-- Mode 1: Unified Notes & Solution (Default Side-by-Side) -->
-        <div class="view-panel active" id="view-notes-solution">
-          <div class="two-column-layout">
-            <!-- Left Sub-Col: Notes Reader -->
-            <div class="panel-box notes-box">
-              <div class="box-header">
-                <h3>Facility Shift Notes</h3>
-                <span class="legend-hint">
-                  <span class="hint-dot dot-constraint"></span> Constraint
-                  <span class="hint-dot dot-conflict"></span> Conflict
-                  <span class="hint-dot dot-noise"></span> Noise
-                </span>
-              </div>
-              <div class="notes-feed" id="lines-feed">
-                <!-- Lines populated by JS -->
-              </div>
-            </div>
-
-            <!-- Right Sub-Col: Solution & State Space -->
-            <div class="panel-box solution-box">
-              <div class="box-header">
-                <h3>720-World Symbolic Solution</h3>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="call-badge" id="calls-badge">Calls: 1/1</span>
-                  <span class="world-status" id="world-status-tag">0 Consistent Worlds</span>
-                </div>
-              </div>
-              <div class="solution-content" id="solution-display">
-                <!-- Schedule or conflict core rendered by JS -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mode 2: Step-by-Step Logic Trace & Explainability -->
-        <div class="view-panel" id="view-trace">
-          <div class="trace-card">
-            <div class="trace-header">
-              <h3>Neuro-Symbolic Reasoning Trace</h3>
-              <p class="trace-sub">Complete audit trail of what each pipeline step did, what Granite 8B thought, and how the symbolic solver derived the final verdict.</p>
-            </div>
-            <div class="trace-timeline" id="trace-timeline">
-              <!-- Populated by JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Mode 2: Knowledge Graph -->
-        <div class="view-panel" id="view-graph">
-          <div class="graph-card">
-            <div class="graph-legend">
-              <span class="legend-item"><span class="dot staff-dot"></span> Staff</span>
-              <span class="legend-item"><span class="dot block-dot"></span> Time Blocks</span>
-              <span class="legend-item"><span class="dot station-dot"></span> Workstations</span>
-              <span class="legend-item"><span class="line order-line"></span> Sequence</span>
-            </div>
-            <div class="canvas-wrap">
-              <svg id="kg-canvas" width="100%" height="520"></svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mode 3: Ablation Benchmarks -->
-        <div class="view-panel" id="view-bench">
-          <div class="bench-card">
-            <h3>Ablation Matrix Across Budgets</h3>
-            <p class="bench-sub">Evaluated under official parameters (Granite 4.2 8B, temp=1.0, top_p=0.95, non-thinking).</p>
-            <table class="ablation-table">
-              <thead>
-                <tr>
-                  <th>Configuration</th>
-                  <th>1x Budget</th>
-                  <th>3x Budget</th>
-                  <th>10x Budget</th>
-                  <th>Macro Exact Match</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="baseline-row">
-                  <td>Vanilla Granite 4.2 8B (One-shot, raw)</td>
-                  <td>0.0%</td>
-                  <td>0.0%</td>
-                  <td>0.0%</td>
-                  <td><strong>0.0%</strong></td>
-                </tr>
-                <tr>
-                  <td>Frontier Benchmark: Claude 3.5 Sonnet</td>
-                  <td>67.5%</td>
-                  <td>67.5%</td>
-                  <td>67.5%</td>
-                  <td><strong>67.5%</strong></td>
-                </tr>
-                <tr>
-                  <td>Granite + Naive Direct Prompting</td>
-                  <td>4.2%</td>
-                  <td>6.1%</td>
-                  <td>8.5%</td>
-                  <td><strong>6.3%</strong></td>
-                </tr>
-                <tr>
-                  <td>Granite + Symbolic Solver (No Pre-filter)</td>
-                  <td>51.3%</td>
-                  <td>58.4%</td>
-                  <td>63.2%</td>
-                  <td><strong>57.6%</strong></td>
-                </tr>
-                <tr>
-                  <td>ShiftLogic (Initial: Pre-filter + Decompiler + 720-World Solver)</td>
-                  <td>72.2%</td>
-                  <td>76.8%</td>
-                  <td>81.5%</td>
-                  <td><strong>76.8%</strong></td>
-                </tr>
-                <tr class="highlight-row">
-                  <td><strong>ShiftLogic + 4 Enhancements (Canonicalization + Negation + Disambiguation + Symmetry)</strong></td>
-                  <td><strong>78.4%</strong></td>
-                  <td><strong>83.6%</strong></td>
-                  <td><strong>88.2%</strong></td>
-                  <td><strong class="text-green">83.4%</strong></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </main>
+    <div class="tabs" role="tablist" aria-label="Views">
+      <button role="tab" id="tab-item" data-tab="item" aria-selected="true">Puzzle</button>
+      <button role="tab" id="tab-live" data-tab="live" aria-selected="false">Live run</button>
+      <button role="tab" id="tab-score" data-tab="score" aria-selected="false">Scorecard</button>
+      <span class="api-state" id="api-state"></span>
     </div>
-  </div>
 
-  <!-- Budget Guide Modal -->
-  <div id="budget-modal" class="modal-backdrop" style="display:none;" onclick="closeBudgetGuide(event)">
-    <div class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <h3>⚡ Call Allocation & Budget Comparison Guide</h3>
-        <button class="modal-close" onclick="closeBudgetGuide()">✕</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-intro">
-          The benchmark limits model calls to prevent wasteful brute-forcing. ShiftLogic implements an adaptive Finite State Machine (FSM) that extracts maximum value from every single API call:
-        </p>
+    <div class="panel" id="panel-item" role="tabpanel" aria-labelledby="tab-item"></div>
+    <div class="panel" id="panel-live" role="tabpanel" aria-labelledby="tab-live" hidden></div>
+    <div class="panel" id="panel-score" role="tabpanel" aria-labelledby="tab-score" hidden></div>
+  </main>
+</div>
 
-        <div class="budget-card-grid">
-          <div class="budget-info-card tier-1x">
-            <div class="tier-badge">1x Budget (Strict Baseline)</div>
-            <h4>Single-Pass Decompilation</h4>
-            <ul>
-              <li><strong>Calls Used:</strong> Exactly 1 LLM Call.</li>
-              <li><strong>Mechanism:</strong> Deterministic pre-filter purges ambient gossip. Granite 8B parses candidate lines in one shot. 720-world discrete solver executes in 0.4ms.</li>
-              <li><strong>Macro EM Score:</strong> 72.2% (exceeds Claude 3.5 Sonnet's 67.5%).</li>
-              <li><strong>Latency:</strong> ~1.2s per problem.</li>
-              <li><strong>Best for:</strong> High-throughput, cost-sensitive production inference.</li>
-            </ul>
-          </div>
-
-          <div class="budget-info-card tier-3x">
-            <div class="tier-badge">3x Budget (Adaptive FSM)</div>
-            <h4>Self-Healing State Controller</h4>
-            <ul>
-              <li><strong>Calls Used:</strong> 1 to 3 LLM Calls (Dynamic).</li>
-              <li><strong>Mechanism:</strong>
-                If Call 1 is under-constrained (&gt;4 worlds), FSM isolates unextracted candidate lines and triggers <strong>Call 2</strong> with targeted repair.
-                If 0 worlds, <strong>Call 3</strong> re-verifies the Minimal Unsatisfiable Core (MUS).
-              </li>
-              <li><strong>Macro EM Score:</strong> 76.8% (+4.6% boost).</li>
-              <li><strong>Best for:</strong> High accuracy while conserving calls when Pass 1 is clean.</li>
-            </ul>
-          </div>
-
-          <div class="budget-info-card tier-10x">
-            <div class="tier-badge">10x Budget (Consensus)</div>
-            <h4>Multi-Sample Verification</h4>
-            <ul>
-              <li><strong>Calls Used:</strong> Up to 10 LLM Calls.</li>
-              <li><strong>Mechanism:</strong>
-                Samples multiple independent extractions at temperature 1.0 to break syntactic entropy.
-                Fuses agreement constraints across runs and runs iterative contradiction audits.
-              </li>
-              <li><strong>Macro EM Score:</strong> 81.5% (+9.3% boost).</li>
-              <li><strong>Best for:</strong> Maximum frontier-level benchmark performance.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<dialog id="custom-dialog">
+  <form method="dialog" class="dlg">
+    <h3>Run on custom notes</h3>
+    <p class="sub">Paste a full set of shift notes, header line included. The current puzzle id is sent with the request so the call is attributed to it.</p>
+    <textarea id="custom-text" rows="14" spellcheck="false"></textarea>
+    <div class="dlg-actions">
+      <button class="btn ghost" value="cancel">Cancel</button>
+      <button class="btn primary" id="custom-go" value="go">Run</button>
     </div>
-  </div>
+  </form>
+</dialog>
 
-  <script src="app.js?v=5.0"></script>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="app.js?v=6"></script>
 </body>
 </html>

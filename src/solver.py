@@ -147,54 +147,14 @@ def generate_all_worlds(staff: List[str], station_holders: List[str]) -> List[Wo
     return worlds
 
 
-def apply_symmetry_closure(valid: List[World], staff: List[str], constraints: List[Constraint]) -> List[World]:
-    """Technique 4: Ensures valid ambiguous completions are closed under valid symmetries."""
-    if not (2 <= len(valid) < 4):
-        return valid
-
-    existing = {w.key() for w in valid}
-    extended = list(valid)
-
-    # Check staff block transpositions
-    for i in range(len(staff)):
-        for j in range(i + 1, len(staff)):
-            p1, p2 = staff[i], staff[j]
-            for w in list(extended):
-                if len(extended) >= 4:
-                    break
-                new_blocks = dict(w.blocks)
-                new_blocks[p1], new_blocks[p2] = new_blocks[p2], new_blocks[p1]
-                w_sym = World(new_blocks, w.stations)
-                if w_sym.key() not in existing:
-                    if all(c.check(w_sym.blocks, w_sym.stations, w_sym.station_blocks) for c in constraints):
-                        extended.append(w_sym)
-                        existing.add(w_sym.key())
-
-    return extended
-
-
-def disambiguate_unsat_core(worlds: List[World], constraints: List[Constraint]) -> Tuple[List[str], List[Constraint]]:
-    """
-    Technique 3: Counterfactual Core Noise Disambiguation.
-    Purges counterfactual/speculative noise lines from constraints if they cause an artificial contradiction.
-    """
-    from src.prefilter import NOISE_TRIGGERS
-    
-    clean_c = [c for c in constraints if not any(t in c.source_line.lower() for t in NOISE_TRIGGERS)]
-    if len(clean_c) < len(constraints):
-        clean_valid = [w for w in worlds if all(c.check(w.blocks, w.stations, w.station_blocks) for c in clean_c)]
-        if len(clean_valid) > 0:
-            # Contradiction was caused by noise! Rescued!
-            return [], clean_c
-
-    conflicts = find_minimal_unsat_core(worlds, clean_c if clean_c else constraints)
-    return conflicts, clean_c if clean_c else constraints
-
-
 def solve(staff: List[str], station_holders: List[str], constraints: List[Constraint]) -> Dict[str, Any]:
     """
     Evaluates constraints over all 720 worlds.
-    Incorporates Counterfactual Disambiguation and Symmetry Grouping.
+    Returns:
+      unique: exactly 1 world survives.
+      ambiguous: 2 to 4 worlds survive (all emitted).
+      inconsistent: 0 worlds survive (Minimal Unsatisfiable Core MUS computed).
+      under_constrained: >4 worlds survive (triggers FSM repair).
     """
     worlds = generate_all_worlds(staff, station_holders)
     
@@ -225,21 +185,16 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
         }
         
     elif 2 <= len(valid) <= 4:
-        closed_valid = apply_symmetry_closure(valid, staff, constraints)
         return {
             "case": "ambiguous",
-            "assignments": [w.format_assignment() for w in closed_valid],
-            "world_count": len(closed_valid),
-            "valid_worlds": closed_valid,
+            "assignments": [w.format_assignment() for w in valid],
+            "world_count": len(valid),
+            "valid_worlds": valid,
             "elimination_steps": elimination_steps
         }
         
     elif len(valid) == 0:
-        # Technique 3: Counterfactual Core Noise Disambiguation
-        conflicts, rescued_c = disambiguate_unsat_core(worlds, constraints)
-        if not conflicts and rescued_c:
-            return solve(staff, station_holders, rescued_c)
-
+        conflicts = find_minimal_unsat_core(worlds, constraints)
         return {
             "case": "inconsistent",
             "conflicts": conflicts,
@@ -250,10 +205,8 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
         
     else:
         # Under-constrained: more than 4 worlds (e.g. 5 to 720)
-        closed_valid = apply_symmetry_closure(valid[:4], staff, constraints)
         return {
-            "case": "ambiguous",
-            "assignments": [w.format_assignment() for w in closed_valid],
+            "case": "under_constrained",
             "world_count": len(valid),
             "valid_worlds": valid,
             "elimination_steps": elimination_steps

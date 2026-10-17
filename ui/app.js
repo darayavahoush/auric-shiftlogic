@@ -1,657 +1,461 @@
-// ShiftLogic Streamlined Controller
-let allItems = [];
-let activeItem = null;
-let currentFilter = 'all';
-let currentView = 'notes';
+(() => {
+'use strict';
 
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const res = await fetch('data.json?t=' + Date.now());
-    allItems = await res.json();
-    initApp();
-  } catch (err) {
-    console.error('Failed to load data.json:', err);
-  }
-});
+/* ------------------------------------------------------------------ *
+ *  ShiftLogic dashboard
+ *  - Puzzle tab: notes + the reference answer from the visible key.
+ *  - Live run tab: real output from POST /api/solve (nothing simulated).
+ *  - Scorecard tab: reads results.json produced by scripts/make_results.py.
+ * ------------------------------------------------------------------ */
 
-function initApp() {
-  setupFilters();
-  setupSearch();
-  renderItemList();
-  if (allItems.length > 0) {
-    selectItem(allItems[0]);
-  }
+const BLOCKS = ['07:00', '09:00', '11:00', '13:00', '15:00'];
+const KINDS = ['unique', 'ambiguous', 'inconsistent'];
+const KIND_NAME = { unique: 'Unique', ambiguous: 'Ambiguous', inconsistent: 'Inconsistent' };
+const BUDGETS = [['1x', 'up to 1 call'], ['3x', 'up to 3'], ['10x', 'up to 10']];
+// Reference points quoted in CANDIDATE_BRIEF.md (measured by the task authors, not by this repo).
+const BRIEF_REF = { granite: 0.0, frontier: 0.675 };
+
+const S = {
+  items: [], active: null, filter: 'all', query: '',
+  tab: 'item', core: 0, budget: '1x', busy: false,
+  api: { state: 'unknown', configured: false }, live: {}, results: null,
+};
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const csv = s => (s || '').split(',').map(x => x.trim()).filter(Boolean);
+const norm = s => String(s).toLowerCase().replace(/\s+/g, ' ').trim();
+const pct = v => (v * 100).toFixed(1) + '%';
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
+
+/* ---------------- parsing ---------------- */
+function parse(it) {
+  if (it._p) return it._p;
+  const rows = it.text.split('\n');
+  const head = rows[0] || '';
+  const staff = csv((head.match(/rota:\s*([^.]*)\./) || [])[1]);
+  const holders = csv((head.match(/on a station are ([^;.]*)/) || [])[1]);
+  const lines = rows.slice(1).map(s => s.trim()).filter(Boolean);
+  const bay = (head.match(/Bay\s+\w+/) || [''])[0];
+  return (it._p = { head, staff, holders, lines, bay });
 }
 
-function setViewMode(mode) {
-  currentView = mode;
-  document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+function coreSets(it) { return it.conflict_line_sets || []; }
 
-  const activeBtn = document.getElementById(`btn-view-${mode}`);
-  if (activeBtn) activeBtn.classList.add('active');
-
-  const panelId = mode === 'notes' ? 'view-notes-solution' : `view-${mode}`;
-  const activePanel = document.getElementById(panelId);
-  if (activePanel) activePanel.classList.add('active');
-
-  if (mode === 'graph') {
-    renderKnowledgeGraph(activeItem);
-  }
-}
-window.setViewMode = setViewMode;
-
-function setupFilters() {
-  const pills = document.querySelectorAll('.filter-pills .pill');
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentFilter = pill.dataset.filter;
-      renderItemList();
-    });
+function coreLineIdx(it, set) {
+  // A cited statement may omit a leading hedge, so match by containment either way.
+  const { lines } = parse(it);
+  const hit = new Set();
+  set.forEach(stmt => {
+    const t = norm(stmt);
+    lines.forEach((l, i) => { const n = norm(l); if (n === t || n.endsWith(t) || n.includes(t)) hit.add(i); });
   });
+  return hit;
 }
 
-function setupSearch() {
-  const search = document.getElementById('search-input');
-  search.addEventListener('input', () => {
-    renderItemList();
+function assignments(it) {
+  if (it.case === 'unique') return [it.assignment || (it.assignments || [])[0] || {}];
+  return it.assignments || [];
+}
+
+/* ---------------- small renderers ---------------- */
+const stPill = st => st ? `<span class="pill st-${esc(st)}">${esc(st)}</span>` : `<span class="pill none">no station</span>`;
+
+function boardHtml(a) {
+  const by = {};
+  Object.entries(a).forEach(([n, v]) => { by[v.block] = [n, v.station]; });
+  return `<ol class="board">${BLOCKS.map(b => {
+    const [n, st] = by[b] || [];
+    return `<li><time>${b}</time><span class="who">${n ? esc(n) : '—'}</span>${n ? stPill(st) : ''}</li>`;
+  }).join('')}</ol>`;
+}
+
+function matrixHtml(list) {
+  const cell = (a, b) => { const e = Object.entries(a).find(([, v]) => v.block === b); return e ? { n: e[0], st: e[1].station || '' } : { n: '', st: '' }; };
+  const body = BLOCKS.map(b => {
+    const cells = list.map(a => cell(a, b));
+    const vary = new Set(cells.map(c => c.n + '|' + c.st)).size > 1;
+    return `<tr class="${vary ? 'vary' : ''}"><th scope="row">${b}</th>${cells.map(c =>
+      `<td><span class="who">${esc(c.n || '—')}</span>${c.n ? stPill(c.st) : ''}</td>`).join('')}</tr>`;
+  }).join('');
+  const head = list.map((_, i) => `<th scope="col">Schedule ${i + 1}</th>`).join('');
+  return `<table class="matrix"><thead><tr><th></th>${head}</tr></thead><tbody>${body}</tbody></table>`;
+}
+
+function variesHtml(list) {
+  if (list.length < 2) return '';
+  const names = Object.keys(list[0]);
+  const out = [];
+  names.forEach(n => {
+    const blocks = new Set(list.map(a => a[n]?.block));
+    const sts = new Set(list.map(a => a[n]?.station || ''));
+    const what = [blocks.size > 1 && 'block', sts.size > 1 && 'station'].filter(Boolean);
+    if (what.length) out.push(`<b>${esc(n)}</b> (${what.join(' + ')})`);
   });
+  const fixed = names.length - out.length;
+  return `<div class="varies">Varies across schedules: ${out.join(', ') || 'nothing'}. ${fixed ? `${plural(fixed, 'person')} fixed in every schedule.` : ''}</div>`;
 }
 
-function renderItemList() {
-  const listEl = document.getElementById('item-list');
-  const searchVal = document.getElementById('search-input').value.toLowerCase();
-  listEl.innerHTML = '';
+/* ---------------- rail ---------------- */
+function counts() { const c = { all: S.items.length }; KINDS.forEach(k => c[k] = S.items.filter(i => i.case === k).length); return c; }
 
-  const filtered = allItems.filter(item => {
-    const matchesFilter = currentFilter === 'all' || item.case === currentFilter;
-    const matchesSearch = item.id.toLowerCase().includes(searchVal) || 
-                          item.text.toLowerCase().includes(searchVal);
-    return matchesFilter && matchesSearch;
-  });
-
-  filtered.forEach(item => {
-    const card = document.createElement('div');
-    card.className = `item-card ${activeItem && activeItem.id === item.id ? 'active' : ''}`;
-    card.onclick = () => selectItem(item);
-
-    const idSpan = document.createElement('span');
-    idSpan.className = 'item-id';
-    idSpan.textContent = item.id;
-
-    const badge = document.createElement('span');
-    badge.className = `item-badge badge-${item.case}`;
-    badge.textContent = item.case;
-
-    card.appendChild(idSpan);
-    card.appendChild(badge);
-    listEl.appendChild(card);
-  });
+function renderFilters() {
+  const c = counts();
+  $('#filters').innerHTML = ['all', ...KINDS].map(k =>
+    `<button data-f="${k}" aria-pressed="${S.filter === k}">${k === 'all' ? 'All' : KIND_NAME[k]}<small>${c[k]}</small></button>`).join('');
 }
 
-function selectItem(item) {
-  activeItem = item;
-  renderItemList();
-
-  // Header meta
-  document.getElementById('active-item-id').textContent = item.id;
-  const badge = document.getElementById('active-case-badge');
-  badge.textContent = item.case;
-  badge.className = `case-badge badge-${item.case}`;
-
-  // Render components
-  renderNotes(item);
-  renderSolution(item);
-  renderDefaultTrace(item);
-
-  if (currentView === 'graph') {
-    renderKnowledgeGraph(item);
-  }
+function visible() {
+  const q = S.query.trim().toLowerCase();
+  return S.items.filter(i => (S.filter === 'all' || i.case === S.filter) && (!q || i.id.toLowerCase().includes(q) || i.text.toLowerCase().includes(q)));
 }
 
-function renderDefaultTrace(item) {
-  const lines = item.text.split('\n').slice(1).filter(l => l.trim());
-  const conflictSets = item.conflict_line_sets || [];
-  const allConflicts = new Set(conflictSets.flat().map(s => s.trim().toLowerCase()));
-
-  const NOISE_WORDS = ['interview panel', 'fire-safety', 'supplier training', 'walkaround', 'emergency contact', 'equipment survey', 'printer', 'cupboard', 'jacket left', 'visitor log', 'recycling', 'catering is unchanged', 'car park', 'north gate', 'car-share', 'better fit'];
-
-  const noiseSample = lines.filter(l => NOISE_WORDS.some(w => l.toLowerCase().includes(w))).slice(0, 3);
-  const constraintSample = lines.filter(l => !NOISE_WORDS.some(w => l.toLowerCase().includes(w)));
-
-  const defaultTrace = [
-    {
-      step: 1,
-      title: "Tier-1 Entity & Distractor Pre-Filter",
-      calls: 0,
-      description: `Parsed facility shift header. Identified staff entities, workstations, and time blocks. Filtered ambient workplace gossip (${noiseSample.length} lines detected as noise).`,
-      details: { sample_noise: noiseSample }
-    },
-    {
-      step: 2,
-      title: "Granite 4.2 8B Semantic Decompilation",
-      calls: 1,
-      description: `Granite 8B decomposed ${constraintSample.length} active sentences into typed logical constraints (stations, relative ordering, adjacency, and betweenness).`,
-      details: { constraints_extracted: constraintSample.slice(0, 5).map(s => `Parsed: "${s}"`) }
-    },
-    {
-      step: 3,
-      title: "720-World Symbolic Solver Evaluation",
-      calls: 1,
-      description: `Exhaustively checked all 720 permutation states against the constraint matrix in 0.5ms.`,
-      details: {
-        elimination_steps: constraintSample.slice(0, 5).map((s, idx) => {
-          const rem = idx === 0 ? 360 : idx === 1 ? 120 : idx === 2 ? 36 : idx === 3 ? 6 : (item.case === 'unique' ? 1 : item.case === 'inconsistent' ? 0 : 2);
-          const prev = idx === 0 ? 720 : idx === 1 ? 360 : idx === 2 ? 120 : idx === 3 ? 36 : 6;
-          return {
-            step: idx + 1,
-            constraint: `CONSTRAINT_${idx + 1}`,
-            source_line: s,
-            worlds_before: prev,
-            worlds_after: rem,
-            pruned: prev - rem
-          };
-        })
-      }
-    },
-    {
-      step: 4,
-      title: `Final Verdict: ${item.case.toUpperCase()}`,
-      calls: 1,
-      description: item.case === 'unique' 
-        ? "Exactly 1 valid permutation satisfied all constraints without ambiguity."
-        : item.case === 'ambiguous'
-        ? `Constraints allow ${item.assignments ? item.assignments.length : 'multiple'} distinct consistent rosters.`
-        : `Constraints produced a contradiction cycle. Minimal Unsatisfiable Core contains ${conflictSets.length ? conflictSets[0].length : 3} conflicting statements.`,
-      details: item.case === 'inconsistent' && conflictSets.length ? {
-        newly_recovered: conflictSets[0]
-      } : {}
-    }
-  ];
-
-  renderTraceTimeline(defaultTrace);
+function hintFor(i) {
+  if (i.case === 'unique') return '1 schedule';
+  if (i.case === 'ambiguous') return plural((i.assignments || []).length, 'schedule');
+  return plural(coreSets(i).length, 'core set');
 }
 
-function renderNotes(item) {
-  const feed = document.getElementById('lines-feed');
-  feed.innerHTML = '';
-
-  const lines = item.text.split('\n').slice(1).filter(l => l.trim());
-  const conflictSets = item.conflict_line_sets || [];
-  const allConflicts = new Set(conflictSets.flat().map(s => s.trim().toLowerCase()));
-
-  const NOISE_WORDS = ['interview panel', 'fire-safety', 'supplier training', 'walkaround', 'emergency contact', 'equipment survey', 'printer', 'cupboard', 'jacket left', 'visitor log', 'recycling', 'catering is unchanged', 'car park', 'north gate', 'car-share', 'better fit'];
-
-  lines.forEach((line, idx) => {
-    const div = document.createElement('div');
-    const isConflict = allConflicts.has(line.trim().toLowerCase());
-    const isNoise = NOISE_WORDS.some(w => line.toLowerCase().includes(w));
-
-    let tagClass = 'tag-constraint';
-    let tagText = 'CONSTRAINT';
-    let lineClass = 'line-item constraint';
-
-    if (isConflict) {
-      tagClass = 'tag-conflict';
-      tagText = 'CONFLICT CORE';
-      lineClass = 'line-item conflict';
-    } else if (isNoise) {
-      tagClass = 'tag-noise';
-      tagText = 'NOISE / GOSSIP';
-      lineClass = 'line-item noise';
-    }
-
-    div.className = lineClass;
-    div.innerHTML = `
-      <span><strong>${idx + 1}.</strong> ${line}</span>
-      <span class="line-tag ${tagClass}">${tagText}</span>
-    `;
-    feed.appendChild(div);
-  });
+function renderRail() {
+  const list = visible();
+  const host = $('#item-list');
+  if (!list.length) { host.innerHTML = '<div class="empty">No puzzles match.</div>'; return; }
+  const groups = S.filter === 'all' ? KINDS : [S.filter];
+  host.innerHTML = groups.map(k => {
+    const rows = list.filter(i => i.case === k);
+    if (!rows.length) return '';
+    return `<div class="group-label">${KIND_NAME[k]}</div>` + rows.map(i =>
+      `<button class="item" data-id="${esc(i.id)}" aria-current="${S.active && S.active.id === i.id}">
+        <span class="dot ${i.case}"></span><span class="id">${esc(i.id)}</span>
+        <span class="hint">${esc(hintFor(i))}</span>${S.live[i.id] ? '<span class="ran" title="Has a live run"></span>' : ''}
+      </button>`).join('');
+  }).join('');
+  const cur = $('.item[aria-current="true"]', host);
+  if (cur) cur.scrollIntoView({ block: 'nearest' });
 }
 
-function renderSolution(item) {
-  const statusEl = document.getElementById('world-status-tag');
-  const displayEl = document.getElementById('solution-display');
-  displayEl.innerHTML = '';
+/* ---------------- header ---------------- */
+function renderHeader() {
+  const it = S.active; if (!it) return;
+  const p = parse(it);
+  $('#item-id').textContent = it.id;
+  const kb = $('#item-kind'); kb.className = `badge ${it.case}`; kb.textContent = KIND_NAME[it.case];
+  $('#item-meta').innerHTML = [p.bay, plural(p.staff.length, 'person') + ' on the rota', plural(p.holders.length, 'station holder'), `${BLOCKS.length} blocks`]
+    .filter(Boolean).map(t => `<span>${esc(t)}</span>`).join('<span>·</span>');
+}
 
-  if (item.case === 'unique') {
-    statusEl.textContent = '1 Consistent World';
-    statusEl.style.color = '#34d399';
+function renderBudget() {
+  $('#budget').innerHTML = BUDGETS.map(([b, s]) =>
+    `<button data-b="${b}" aria-pressed="${S.budget === b}" title="${esc(s)}">${b}</button>`).join('');
+}
 
-    const assign = item.assignment || (item.assignments && item.assignments[0]) || {};
-    displayEl.innerHTML = `
-      <div class="schedule-card">
-        <h4>Consistent Shift Roster (Exact)</h4>
-        <table class="schedule-table">
-          <thead><tr><th>Staff Member</th><th>Time Block</th><th>Station</th></tr></thead>
-          <tbody>
-            ${Object.entries(assign).map(([p, info]) => `
-              <tr>
-                <td><strong>${p}</strong></td>
-                <td><code>${info.block || '—'}</code></td>
-                <td>${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-    `;
-  } else if (item.case === 'ambiguous') {
-    const assigns = item.assignments || [];
-    statusEl.textContent = `${assigns.length} Consistent Worlds`;
-    statusEl.style.color = '#fbbf24';
+function renderApiState() {
+  const el = $('#api-state');
+  const m = { on: ['on', 'Model endpoint ready'], nokey: ['warn', 'Server running, no API key in .env'], off: ['warn', 'Static mode — start server.py to run live'], unknown: ['', 'Checking server…'] };
+  const [cls, txt] = m[S.api.state] || m.unknown;
+  el.className = 'api-state ' + cls;
+  el.innerHTML = `<span class="dot"></span>${esc(txt)}`;
+  const usable = S.api.state === 'on';
+  $('#run-btn').disabled = !usable || S.busy;
+  $('#custom-btn').disabled = !usable || S.busy;
+  $('#run-btn').title = usable ? '' : txt;
+}
 
-    displayEl.innerHTML = `
-      <div class="schedule-card">
-        <h4>${assigns.length} Valid Alternative Roster Assignments</h4>
-        <p style="font-size:0.75rem; color:#94a3b8; margin-bottom:10px;">The puzzle constraints leave multiple schedules valid:</p>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          ${assigns.map((assign, i) => `
-            <div style="background:#0f1422; border:1px solid #1e293b; padding:8px 10px; border-radius:5px;">
-              <strong style="font-size:0.75rem; color:#38bdf8;">Schedule #${i + 1}</strong>
-              <table class="schedule-table" style="margin-top:4px;">
-                <tbody>
-                  ${Object.entries(assign).map(([p, info]) => `
-                    <tr>
-                      <td style="width:35%;"><strong>${p}</strong></td>
-                      <td style="width:30%;"><code>${info.block || '—'}</code></td>
-                      <td style="width:35%;">${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
+/* ---------------- Puzzle tab ---------------- */
+function renderItem() {
+  const it = S.active; if (!it) return;
+  const p = parse(it);
+  const sets = coreSets(it);
+  const coreIdx = it.case === 'inconsistent' ? Math.min(S.core, sets.length - 1) : -1;
+  const hit = coreIdx >= 0 ? coreLineIdx(it, sets[coreIdx]) : new Set();
+
+  const rota = p.staff.map(n => `<span class="chip ${p.holders.includes(n) ? 'holder' : ''}">${esc(n)}</span>`).join('');
+  const lines = p.lines.map((l, i) =>
+    `<li data-i="${i}" class="${hit.has(i) ? 'core' : ''}"><span class="n">${i + 1}</span><span>${esc(l)}</span></li>`).join('');
+
+  let answer = '';
+  if (it.case === 'unique') {
+    answer = `<div class="card-h"><h3>Reference answer</h3><span class="sub">exactly one schedule fits</span></div>
+      <div class="card-b">${boardHtml(assignments(it)[0])}</div>`;
+  } else if (it.case === 'ambiguous') {
+    const list = assignments(it);
+    answer = `<div class="card-h"><h3>Reference answer</h3><span class="sub">${plural(list.length, 'schedule')} fit — all must be returned</span></div>
+      <div class="card-b">${matrixHtml(list)}${variesHtml(list)}</div>`;
   } else {
-    statusEl.textContent = '0 Consistent Worlds (Contradiction)';
-    statusEl.style.color = '#f87171';
-
-    const conflictSets = item.conflict_line_sets || [];
-    displayEl.innerHTML = `
-      <div class="schedule-card" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.04);">
-        <h4 style="color: #f87171;">Minimal Unsatisfiable Core (MUS)</h4>
-        <p style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 12px;">
-          The following statements cannot all hold simultaneously. Dropping any single statement leaves a satisfiable schedule:
-        </p>
-        ${conflictSets.map((set, i) => `
-          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); padding: 10px; border-radius: 5px; margin-bottom: 8px;">
-            <strong style="font-size: 0.72rem; color: #f87171;">Contradiction Set #${i + 1} (${set.length} statements):</strong>
-            <ul style="padding-left: 18px; font-size: 0.8rem; margin-top: 6px; color: #fca5a5;">
-              ${set.map(stmt => `<li style="margin-bottom: 4px;">"${stmt}"</li>`).join('')}
-            </ul>
-          </div>
-        `).join('')}
-      </div>
-    `;
+    answer = `<div class="card-h"><h3>Reference answer</h3><span class="sub">notes contradict themselves</span></div>
+      <div class="card-b">
+        ${sets.length > 1 ? `<div class="cores" id="cores">${sets.map((s, i) => `<button data-c="${i}" aria-pressed="${i === coreIdx}">Core ${String.fromCharCode(65 + i)} · ${s.length}</button>`).join('')}</div>` : ''}
+        <ul class="stmts">${sets[coreIdx].map(stmt => {
+          const first = [...coreLineIdx(it, [stmt])][0];
+          return `<li><button class="stmt" data-line="${first ?? ''}"><span class="ln">${first !== undefined ? 'L' + (first + 1) : ''}</span><span>${esc(stmt)}</span></button></li>`;
+        }).join('')}</ul>
+        <p class="note">These ${sets[coreIdx].length} statements cannot all hold together, and dropping any one of them leaves a schedule that works. ${sets.length > 1 ? 'Other minimal sets also exist; any one is a correct citation.' : ''}</p>
+      </div>`;
   }
 
-  // Append Action Buttons & Explainability Summary
-  const actionsDiv = document.createElement('div');
-  actionsDiv.style.marginTop = '14px';
-  actionsDiv.style.display = 'flex';
-  actionsDiv.style.gap = '10px';
-  actionsDiv.style.flexWrap = 'wrap';
-
-  actionsDiv.innerHTML = `
-    <button class="trace-btn-highlight" onclick="setViewMode('trace')">
-      🔍 View Step-by-Step Logic Trace & Model Rationale ➔
-    </button>
-    <button class="graph-btn-outline" onclick="setViewMode('graph')">
-      🕸️ View Entity Graph
-    </button>
-  `;
-  displayEl.appendChild(actionsDiv);
-
-  const breakdownDiv = document.createElement('div');
-  breakdownDiv.style.marginTop = '14px';
-  breakdownDiv.style.padding = '12px 14px';
-  breakdownDiv.style.background = '#0a0f1d';
-  breakdownDiv.style.border = '1px solid #1e293b';
-  breakdownDiv.style.borderRadius = '6px';
-  breakdownDiv.style.fontSize = '0.78rem';
-  breakdownDiv.style.color = '#94a3b8';
-
-  breakdownDiv.innerHTML = `
-    <strong style="color:#e2e8f0; font-size:0.82rem; display:block; margin-bottom:6px;">⚡ Neuro-Symbolic Pipeline Rationale:</strong>
-    <div style="display:flex; flex-direction:column; gap:5px; line-height:1.4;">
-      <div>• <strong>Phase 1 (Pre-filter):</strong> Grounded 5 staff and 3 station entities; pruned noise gossip.</div>
-      <div>• <strong>Phase 2 (Granite 8B):</strong> Translated candidate sentences into formal SMT predicates.</div>
-      <div>• <strong>Phase 3 (Discrete SMT):</strong> Sifted 720 permutation states in &lt;1ms $\\to$ concluded <strong>${item.case.toUpperCase()}</strong>.</div>
-    </div>
-  `;
-  displayEl.appendChild(breakdownDiv);
+  $('#panel-item').innerHTML = `<div class="split">
+    <section class="card"><div class="card-h"><h3>Shift notes</h3><span class="sub">${plural(p.lines.length, 'line')}</span></div>
+      <div class="card-b">
+        <div class="rota">${rota}</div>
+        ${it.case === 'inconsistent' ? '<div class="legend"><span><i></i>in the selected conflict set</span></div>' : ''}
+        <ol class="lines" id="lines">${lines}</ol>
+      </div></section>
+    <section class="card">${answer}</section>
+  </div>`;
 }
 
-async function runLiveInference() {
-  if (!activeItem) return;
+/* ---------------- Live tab ---------------- */
+const STAGES = [
+  ['Stage 1', 'Pre-filter', 'Reads the header, then drops lines that mention nobody and nothing on the rota.', false],
+  ['Stage 2', 'Granite decompiler', 'The model turns each remaining line into a typed constraint, one call at 1×.', true],
+  ['Stage 3', '720-world solver', 'Checks every block and station permutation. Counts survivors, or finds a minimal conflict.', false],
+  ['Stage 4', 'Repair (3× / 10×)', 'If more than 4 worlds survive, re-asks the model about lines it skipped.', true],
+];
 
-  const btn = document.getElementById('live-run-btn');
-  const spinner = document.getElementById('btn-spinner');
-  const btnText = document.getElementById('btn-text');
-  const budgetSelect = document.getElementById('budget-select');
-  const budget = budgetSelect ? budgetSelect.value : '1x';
+function parseConstraint(str) {
+  const m = /^(\w+)\((.*?)\)\s*←\s*'([\s\S]*)'$/.exec(str);
+  if (!m) return { kind: '', args: str, src: '' };
+  let args = m[2];
+  if (/^BLOCK_/.test(m[1])) args = args.replace(/,\s*(\d)$/, (_, d) => ', ' + (BLOCKS[+d] || d)); // server stores block indices
+  return { kind: m[1], args, src: m[3] };
+}
 
-  btn.disabled = true;
-  spinner.style.display = 'inline-block';
-  btnText.textContent = ` Running Granite 8B (${budget})...`;
+function sieveHtml(steps) {
+  const top = Math.log10(720);
+  return `<div class="sieve">${steps.map(s => {
+    const w = s.worlds_after;
+    const width = w <= 0 ? 100 : Math.max(3, (Math.log10(w) / top) * 100);
+    return `<div class="sv ${w === 0 ? 'zero' : w === 1 ? 'one' : ''}" title="${esc(s.source_line)}">
+      <span class="i">${s.step}</span><span class="p">${esc(s.constraint)}</span>
+      <span class="bar-t"><span style="width:${width}%"></span></span><span class="c">${w}</span></div>`;
+  }).join('')}</div><p class="sub" style="margin-top:6px">Bars are log-scaled, 720 worlds at full width. Red means the last constraint left none.</p>`;
+}
 
+function stepHtml(st) {
+  const d = st.details || {};
+  const deterministic = /pre-filter|solver|verdict/i.test(st.title) && !/repair|consensus/i.test(st.title);
+  let body = '';
+  if (d.constraints_extracted) {
+    body += `<div class="small-h">${plural(d.constraints_extracted.length, 'constraint')} extracted</div><ul class="cons">${d.constraints_extracted.map(parseConstraint).map(c =>
+      `<li class="con"><span class="kind">${esc(c.kind || '—')}</span><span><span class="args">${esc(c.args)}</span>${c.src ? `<span class="src">${esc(c.src)}</span>` : ''}</span></li>`).join('')}</ul>`;
+  }
+  if (d.sample_noise && d.sample_noise.length) body += `<div class="small-h">Examples dropped as chatter</div>${d.sample_noise.map(n => `<div class="quote">${esc(n)}</div>`).join('')}`;
+  if (d.newly_recovered && d.newly_recovered.length) body += `<div class="small-h">Recovered by repair</div><ul class="cons">${d.newly_recovered.map(r => `<li class="con"><span class="kind">+</span><span class="args">${esc(r)}</span></li>`).join('')}</ul>`;
+  if (d.added_consensus && d.added_consensus.length) body += `<div class="small-h">Added from second sample</div><ul class="cons">${d.added_consensus.map(r => `<li class="con"><span class="kind">+</span><span class="args">${esc(r)}</span></li>`).join('')}</ul>`;
+  if (d.elimination_steps && d.elimination_steps.length) body += `<div class="small-h">Worlds remaining after each constraint</div>${sieveHtml(d.elimination_steps)}`;
+  return `<li class="step ${deterministic ? '' : 'model'}"><span class="num">${esc(st.step)}</span>
+    <div class="card"><div class="card-b"><div class="step-h"><h4>${esc(st.title)}</h4>
+      <span class="tag ${deterministic ? '' : 'model'}">${deterministic ? 'deterministic' : 'model call'}</span></div>
+      <p>${esc(st.description)}</p>${body}</div></div></li>`;
+}
+
+function compare(it, data) {
+  if (!data) return null;
+  if (data.case !== it.case) return { cls: 'no', txt: `Declared ${data.case}; reference says ${it.case}` };
+  const canon = a => Object.keys(a).sort().map(n => {
+    const refStation = (assignments(it).flatMap(x => Object.entries(x)).find(([k, v]) => k === n && v.station) || [])[1];
+    return `${n}|${a[n].block}|${refStation ? (a[n].station || '') : ''}`;
+  }).join(';');
+  if (it.case === 'unique') return canon(data.assignment || {}) === canon(assignments(it)[0]) ? { cls: 'yes', txt: 'Matches the reference schedule' } : { cls: 'no', txt: 'Schedule differs from the reference' };
+  if (it.case === 'ambiguous') {
+    const a = new Set((data.assignments || []).map(canon)), b = new Set(assignments(it).map(canon));
+    const ok = a.size === b.size && [...a].every(x => b.has(x));
+    return ok ? { cls: 'yes', txt: `Matches all ${b.size} reference schedules` } : { cls: 'no', txt: `Returned ${a.size}; reference has ${b.size}` };
+  }
+  const got = new Set((data.conflicts || []).map(norm));
+  const exact = coreSets(it).some(s => s.length === got.size && s.every(x => got.has(norm(x))));
+  return exact ? { cls: 'yes', txt: 'Cites one of the reference conflict sets' }
+    : { cls: 'maybe', txt: 'Right kind; set is not one of the listed cores' };
+}
+
+function answerHtml(data, it, custom) {
+  if (data.case === 'unique') return boardHtml(data.assignment || {});
+  if (data.case === 'ambiguous') { const l = data.assignments || []; return matrixHtml(l) + variesHtml(l); }
+  const c = data.conflicts || [];
+  return c.length ? `<ul class="stmts">${c.map(x => {
+    const at = custom ? undefined : [...coreLineIdx(it, [x])][0];
+    return `<li><div class="stmt" style="cursor:default"><span class="ln">${at !== undefined ? 'L' + (at + 1) : ''}</span><span>${esc(x)}</span></div></li>`;
+  }).join('')}</ul>` : '<p class="sub">No statements were cited.</p>';
+}
+
+function renderLive() {
+  const it = S.active; if (!it) return;
+  const host = $('#panel-live');
+  const run = S.live[it.id];
+  if (!run) {
+    host.innerHTML = `<div class="stack"><section class="card"><div class="card-h"><h3>How a run works</h3></div>
+      <div class="pipeline">${STAGES.map(([k, t, d, m]) => `<div class="pipe ${m ? 'model' : ''}"><div class="k">${k}${m ? ' · model' : ''}</div><h4>${t}</h4><p>${d}</p></div>`).join('')}</div>
+      <p class="cta">Pick a budget in the top bar and press <b>Run on Granite</b>. Everything shown here comes back from the server for that run, including the extracted constraints and the world counts.</p></section></div>`;
+    return;
+  }
+  const { data, budget, ms, custom } = run;
+  const t = data.telemetry || {};
+  const cmp = custom ? null : compare(it, data);
+  host.innerHTML = `<div class="stack">
+    <section class="card"><div class="verdict"><div>
+      <h2>${esc(KIND_NAME[data.case] || data.case)}</h2>
+      <div class="facts"><span>Budget <b>${esc(budget)}</b></span><span>Model calls <b>${esc(t.calls_used ?? '—')}</b> of ${esc(t.max_calls ?? '—')}</span><span>Surviving worlds <b>${esc(t.world_count ?? '—')}</b> of 720</span><span>Round trip <b>${(ms / 1000).toFixed(1)}s</b></span>${custom ? '<span><b>custom notes</b></span>' : ''}</div></div>
+      ${cmp ? `<span class="cmp ${cmp.cls}">${esc(cmp.txt)}</span>` : ''}</div></section>
+    <section class="card"><div class="card-h"><h3>Answer returned</h3></div><div class="card-b">${answerHtml(data, it, custom)}</div></section>
+    <section><h3 style="font-size:14px;margin:4px 0 12px">What happened, step by step</h3>
+      <ol class="steps">${(t.trace || []).map(stepHtml).join('')}</ol></section>
+    <details class="raw"><summary>Raw response</summary><pre>${esc(JSON.stringify(data, null, 2))}</pre></details>
+  </div>`;
+}
+
+/* ---------------- Scorecard tab ---------------- */
+function renderScore() {
+  const host = $('#panel-score');
+  const r = S.results;
+  if (!r || !r.runs || !Object.keys(r.runs).length) {
+    host.innerHTML = `<div class="card empty-card"><h3>No measured results yet</h3>
+      <p class="sub" style="font-size:13px">This page only shows numbers produced by <code>score.py</code> on real runs, so it stays empty until you generate them.</p>
+      <pre>./run items.json --budget 1x  --out answers_1x.json
+./run items.json --budget 3x  --out answers_3x.json
+./run items.json --budget 10x --out answers_10x.json
+python3 scripts/make_results.py answers_1x.json answers_3x.json answers_10x.json</pre>
+      <p class="sub">Then reload. Granite and frontier reference points come from the task brief.</p></div>`;
+    return;
+  }
+  const order = ['1x', '3x', '10x'].filter(b => r.runs[b]);
+  const stat = (lab, v, ref, note) => `<div class="card stat ${ref ? 'ref' : ''}"><div class="lab">${esc(lab)}</div><div class="val">${pct(v)}</div><div class="meter"><span style="width:${Math.min(100, v * 100)}%"></span></div><div class="src">${esc(note)}</div></div>`;
+  const cards = [stat('Granite 4.2 8B, no harness', BRIEF_REF.granite, true, 'from the task brief'), stat('Frontier model, no harness', BRIEF_REF.frontier, true, 'from the task brief')]
+    .concat(order.map(b => stat(`ShiftLogic ${b}`, r.runs[b].macro_exact_match, false, `${r.runs[b].n_items} items · one run`)));
+  const kindRows = order.map(b => { const k = r.runs[b].per_case_rate || {}; return `<tr><td><b>${b}</b></td><td>${pct(k.unique || 0)}</td><td>${pct(k.ambiguous || 0)}</td><td>${pct(k.inconsistent || 0)}</td><td><b>${pct(r.runs[b].macro_exact_match)}</b></td><td>${pct(r.runs[b].ambiguous_partial || 0)}</td><td>${pct(r.runs[b].inconsistent_label_only || 0)}</td></tr>`; }).join('');
+  const conf = order.map(b => {
+    const c = r.runs[b].confusion || {};
+    const cols = [...KINDS, 'unparsed'];
+    const cells = KINDS.map(t => `<div class="r">${KIND_NAME[t]}</div>` + cols.map(d => { const v = (c[t] || {})[d] || 0; return `<div class="v ${d === t ? 'diag' : v ? 'off' : ''}">${v}</div>`; }).join('')).join('');
+    return `<div><div style="font-weight:600">${b}</div><div class="cm"><div class="h"></div>${cols.map(d => `<div class="h">${({ unique: 'Unique', ambiguous: 'Ambig.', inconsistent: 'Incons.', unparsed: 'Unparsed' })[d]}</div>`).join('')}${cells}</div></div>`;
+  }).join('');
+  host.innerHTML = `<div class="stack" style="max-width:1100px">
+    <div class="score-grid">${cards.join('')}</div>
+    <section class="card"><div class="card-h"><h3>Exact match by kind</h3><span class="sub">macro = mean of the three kinds</span></div><div class="card-b"><table class="tbl"><thead><tr><th>Budget</th><th>Unique</th><th>Ambiguous</th><th>Inconsistent</th><th>Macro</th><th>Ambig. partial</th><th>Label only</th></tr></thead><tbody>${kindRows}</tbody></table></div></section>
+    <section class="card"><div class="card-h"><h3>Declared kind vs true kind</h3><span class="sub">rows are the true kind</span></div><div class="card-b conf">${conf}</div></section>
+    ${r.generated ? `<p class="sub">Generated ${esc(r.generated)} from score.py.</p>` : ''}</div>`;
+}
+
+/* ---------------- state changes ---------------- */
+function setTab(t) {
+  S.tab = t;
+  $$('.tabs [role="tab"]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
+  ['item', 'live', 'score'].forEach(x => { $('#panel-' + x).hidden = x !== t; });
+  if (t === 'live') renderLive();
+  if (t === 'score') renderScore();
+}
+
+function select(id, keepTab) {
+  const it = S.items.find(i => i.id === id); if (!it) return;
+  S.active = it; S.core = 0;
+  renderHeader(); renderItem(); renderRail();
+  if (S.tab === 'live') renderLive();
+  if (!keepTab && S.tab === 'score') setTab('item');
+  $('#shell').classList.remove('rail-open');
+  $('#panel-' + S.tab).scrollTop = 0;
+}
+
+function toast(msg, kind) {
+  const el = document.createElement('div');
+  el.className = 'toast ' + (kind || ''); el.textContent = msg;
+  $('#toasts').appendChild(el); setTimeout(() => el.remove(), 6000);
+}
+
+function setBusy(b) {
+  S.busy = b;
+  $('#run-btn').classList.toggle('busy', b);
+  $('#run-label').textContent = b ? `Running ${S.budget}…` : 'Run on Granite';
+  renderApiState();
+}
+
+async function run(custom) {
+  const it = S.active; if (!it || S.busy) return;
+  setBusy(true);
+  const t0 = performance.now();
   try {
-    const res = await fetch('/api/solve', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: activeItem.id, budget: budget })
-    });
-
-    if (!res.ok) {
-      throw new Error(`Inference error: ${res.statusText}`);
-    }
-
+    const res = await fetch('/api/solve', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: it.id, budget: S.budget, custom_text: custom || null }) });
+    if (!res.ok) { let d = ''; try { d = (await res.json()).detail; } catch (_) {} throw new Error(d || `${res.status} ${res.statusText}`); }
     const data = await res.json();
-    console.log('Live inference result:', data);
-
-    const callsBadge = document.getElementById('calls-badge');
-    if (callsBadge && data.telemetry) {
-      callsBadge.textContent = `Calls: ${data.telemetry.calls_used} / ${data.telemetry.max_calls}`;
-    }
-
-    if (data.telemetry && data.telemetry.trace) {
-      renderTraceTimeline(data.telemetry.trace);
-    }
-
-    setViewMode('notes');
-    const displayEl = document.getElementById('solution-display');
-    const statusEl = document.getElementById('world-status-tag');
-
-    if (data.case === 'unique') {
-      statusEl.textContent = `Live Granite 8B: 1 Consistent World (${budget})`;
-      statusEl.style.color = '#34d399';
-      displayEl.innerHTML = `
-        <div class="schedule-card" style="border-color: #10b981;">
-          <h4 style="color: #34d399;">⚡ Live Inferred Schedule (Granite 4.2 8B • ${budget})</h4>
-          <table class="schedule-table">
-            <thead><tr><th>Staff</th><th>Block</th><th>Station</th></tr></thead>
-            <tbody>
-              ${Object.entries(data.assignment || {}).map(([p, info]) => `
-                <tr>
-                  <td><strong>${p}</strong></td>
-                  <td><code>${info.block || '—'}</code></td>
-                  <td>${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
-    } else if (data.case === 'ambiguous') {
-      const assigns = data.assignments || [];
-      statusEl.textContent = `Live Granite 8B: ${assigns.length} Consistent Worlds (${budget})`;
-      statusEl.style.color = '#fbbf24';
-      displayEl.innerHTML = `
-        <div class="schedule-card" style="border-color: #f59e0b;">
-          <h4 style="color: #fbbf24;">⚡ Live Inferred Candidates (Granite 4.2 8B • ${budget})</h4>
-          ${assigns.map((assign, i) => `
-            <div style="background:#0f1422; border:1px solid #1e293b; padding:8px; border-radius:5px; margin-bottom:8px;">
-              <strong style="font-size:0.75rem; color:#38bdf8;">Candidate #${i + 1}</strong>
-              <table class="schedule-table">
-                <tbody>
-                  ${Object.entries(assign).map(([p, info]) => `
-                    <tr><td><strong>${p}</strong></td><td><code>${info.block}</code></td><td>${info.station || '—'}</td></tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    } else {
-      statusEl.textContent = `Live Granite 8B: Inconsistent (${budget})`;
-      statusEl.style.color = '#f87171';
-        displayEl.innerHTML = `
-          <div class="schedule-card" style="border-color: #ef4444;">
-            <h4 style="color: #f87171;">⚡ Live Minimal Unsatisfiable Core Citations (${budget})</h4>
-            <ul style="padding-left: 18px; font-size: 0.82rem; color: #fca5a5;">
-              ${(data.conflicts || []).map(stmt => `<li style="margin-bottom: 4px;">"${stmt}"</li>`).join('')}
-            </ul>
-          </div>
-        `;
-      }
-
-      const actionsDiv = document.createElement('div');
-      actionsDiv.style.marginTop = '14px';
-      actionsDiv.style.display = 'flex';
-      actionsDiv.style.gap = '10px';
-      actionsDiv.style.flexWrap = 'wrap';
-
-      actionsDiv.innerHTML = `
-        <button class="trace-btn-highlight" onclick="setViewMode('trace')">
-          🔍 View Step-by-Step Logic Trace & Model Rationale ➔
-        </button>
-        <button class="graph-btn-outline" onclick="setViewMode('graph')">
-          🕸️ View Entity Graph
-        </button>
-      `;
-      displayEl.appendChild(actionsDiv);
-
-      const breakdownDiv = document.createElement('div');
-      breakdownDiv.style.marginTop = '14px';
-      breakdownDiv.style.padding = '12px 14px';
-      breakdownDiv.style.background = '#0a0f1d';
-      breakdownDiv.style.border = '1px solid #1e293b';
-      breakdownDiv.style.borderRadius = '6px';
-      breakdownDiv.style.fontSize = '0.78rem';
-      breakdownDiv.style.color = '#94a3b8';
-
-      breakdownDiv.innerHTML = `
-        <strong style="color:#e2e8f0; font-size:0.82rem; display:block; margin-bottom:6px;">⚡ Live Inference Telemetry:</strong>
-        <div style="display:flex; flex-direction:column; gap:5px; line-height:1.4;">
-          <div>• <strong>Budget & Calls:</strong> ${data.telemetry ? data.telemetry.calls_used : 1} of ${data.telemetry ? data.telemetry.max_calls : 1} calls used (${budget}).</div>
-          <div>• <strong>World Pruning:</strong> 720 possible permutations → <strong>${data.telemetry ? data.telemetry.world_count : 0} worlds</strong>.</div>
-          <div>• <strong>Audit Trail:</strong> Click the button above to view what Granite 8B thought at every step.</div>
-        </div>
-      `;
-      displayEl.appendChild(breakdownDiv);
-
-    } catch (err) {
-      alert(`Live inference failed: ${err.message}. Ensure backend is running.`);
-    } finally {
-      btn.disabled = false;
-      spinner.style.display = 'none';
-      btnText.textContent = '⚡ Run Live Inference';
-    }
-  }
-  window.runLiveInference = runLiveInference;
-
-  function renderTraceTimeline(trace) {
-    const container = document.getElementById('trace-timeline');
-    if (!container) return;
-    container.innerHTML = '';
-
-    trace.forEach((step, idx) => {
-      const div = document.createElement('div');
-      div.className = 'trace-step-item';
-
-      let detailsHtml = '';
-      if (step.details) {
-        if (step.details.constraints_extracted) {
-          detailsHtml += `
-            <div class="step-code-box">
-              <strong>Extracted Logical Constraints:</strong><br>
-              ${step.details.constraints_extracted.map(c => `• ${c}`).join('<br>')}
-            </div>
-          `;
-        }
-        if (step.details.sample_noise) {
-          detailsHtml += `
-            <div class="step-code-box" style="color:#94a3b8;">
-              <strong>Sample Filtered Ambient Gossip:</strong><br>
-              ${step.details.sample_noise.map(n => `• "${n}"`).join('<br>')}
-            </div>
-          `;
-        }
-        if (step.details.newly_recovered) {
-          detailsHtml += `
-            <div class="step-code-box" style="color:#34d399;">
-              <strong>FSM Self-Repair Recovered Constraints:</strong><br>
-              ${step.details.newly_recovered.map(r => `• ${r}`).join('<br>')}
-            </div>
-          `;
-        }
-        if (step.details.elimination_steps && step.details.elimination_steps.length > 0) {
-          detailsHtml += `
-            <div class="step-code-box" style="margin-top:8px;">
-              <div style="font-weight:600; color:#38bdf8; margin-bottom:6px;">720-World Constraint Sieve (State-Space Reduction):</div>
-              <table class="elimination-table" style="width:100%; border-collapse:collapse; font-size:0.75rem;">
-                <thead>
-                  <tr style="border-bottom:1px solid #1e293b; color:#94a3b8; text-align:left;">
-                    <th style="padding:4px 6px;">#</th>
-                    <th style="padding:4px 6px;">Logical Predicate</th>
-                    <th style="padding:4px 6px;">Source Line</th>
-                    <th style="padding:4px 6px; text-align:right;">Remaining</th>
-                    <th style="padding:4px 6px; text-align:right;">Pruned</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${step.details.elimination_steps.map(s => `
-                    <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
-                      <td style="padding:4px 6px; color:#64748b;">${s.step}</td>
-                      <td style="padding:4px 6px;"><code style="color:#a78bfa;">${s.constraint}</code></td>
-                      <td style="padding:4px 6px; color:#94a3b8; max-width:240px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${s.source_line}">"${s.source_line}"</td>
-                      <td style="padding:4px 6px; text-align:right; font-weight:600; color:${s.worlds_after === 0 ? '#ef4444' : s.worlds_after === 1 ? '#10b981' : '#38bdf8'};">${s.worlds_after} / 720</td>
-                      <td style="padding:4px 6px; text-align:right; color:#ef4444;">-${s.pruned}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          `;
-        }
-      }
-
-      div.innerHTML = `
-        <div class="step-marker">${step.step}</div>
-        <div class="step-content">
-          <div class="step-title-row">
-            <span class="step-title">${step.title}</span>
-            <span class="step-call-tag">${step.calls > 0 ? `API Call #${step.calls}` : 'Deterministic'}</span>
-          </div>
-          <p class="step-desc">${step.description}</p>
-          ${detailsHtml}
-        </div>
-      `;
-      container.appendChild(div);
-    });
-  }
-
-  function openBudgetGuide() {
-    const modal = document.getElementById('budget-modal');
-    if (modal) modal.style.display = 'flex';
-  }
-  window.openBudgetGuide = openBudgetGuide;
-
-  function closeBudgetGuide(event) {
-    const modal = document.getElementById('budget-modal');
-    if (modal) modal.style.display = 'none';
-  }
-  window.closeBudgetGuide = closeBudgetGuide;
-
-  function onBudgetChange() {
-    const select = document.getElementById('budget-select');
-    const val = select ? select.value : '1x';
-    const badge = document.getElementById('calls-badge');
-    if (badge) {
-      if (val === '1x') badge.textContent = 'Calls: 1 / 1 (Single-Pass)';
-      else if (val === '3x') badge.textContent = 'Calls: ≤ 3 (Adaptive FSM)';
-      else if (val === '10x') badge.textContent = 'Calls: ≤ 10 (Consensus)';
-    }
-  }
-  window.onBudgetChange = onBudgetChange;
-
-function renderKnowledgeGraph(item) {
-  const svg = document.getElementById('kg-canvas');
-  if (!svg || !item) return;
-
-  const headerLine = item.text.split('\n')[0];
-  let staff = [];
-  if (headerLine.includes('staff on the rota:')) {
-    staff = headerLine.split('staff on the rota:')[1].split('.')[0].split(',').map(s => s.trim());
-  }
-  const blocks = ['07:00', '09:00', '11:00', '13:00', '15:00'];
-  const stations = ['intake', 'calibration', 'packing'];
-
-  const width = svg.clientWidth || 800;
-  svg.innerHTML = '';
-
-  const staffX = width * 0.18;
-  const blockX = width * 0.52;
-  const stationX = width * 0.85;
-
-  const staffY = staff.map((_, i) => 70 + i * 85);
-  const blockY = blocks.map((_, i) => 70 + i * 85);
-  const stationY = stations.map((_, i) => 120 + i * 120);
-
-  if (item.case === 'unique' && (item.assignment || item.assignments)) {
-    const assign = item.assignment || item.assignments[0];
-    staff.forEach((p, pIdx) => {
-      const pInfo = assign[p];
-      if (pInfo && pInfo.block) {
-        const bIdx = blocks.indexOf(pInfo.block);
-        if (bIdx !== -1) {
-          drawLine(svg, staffX, staffY[pIdx], blockX, blockY[bIdx], '#3b82f6', 2);
-        }
-        if (pInfo.station) {
-          const sIdx = stations.indexOf(pInfo.station);
-          if (sIdx !== -1) {
-            drawLine(svg, blockX, blockY[bIdx], stationX, stationY[sIdx], '#10b981', 2);
-          }
-        }
-      }
-    });
-  }
-
-  staff.forEach((p, i) => drawNode(svg, staffX, staffY[i], 24, '#0284c7', p, 'staff'));
-  blocks.forEach((b, i) => drawNode(svg, blockX, blockY[i], 22, '#7c3aed', b, 'block'));
-  stations.forEach((st, i) => drawNode(svg, stationX, stationY[i], 26, '#059669', st, 'station'));
+    S.live[it.id] = { data, budget: S.budget, ms: performance.now() - t0, custom: !!custom };
+    setTab('live'); renderRail();
+  } catch (e) {
+    toast(`Run failed: ${e.message}`, 'error');
+  } finally { setBusy(false); }
 }
 
-function drawLine(svg, x1, y1, x2, y2, color, strokeWidth) {
-  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-  line.setAttribute('x1', x1);
-  line.setAttribute('y1', y1);
-  line.setAttribute('x2', x2);
-  line.setAttribute('y2', y2);
-  line.setAttribute('stroke', color);
-  line.setAttribute('stroke-width', strokeWidth);
-  line.setAttribute('stroke-dasharray', '4 4');
-  svg.appendChild(line);
+async function probeApi() {
+  try {
+    const r = await fetch('/api/health', { cache: 'no-store' });
+    const j = await r.json();
+    S.api = { state: j.api_configured ? 'on' : 'nokey' };
+  } catch (_) { S.api = { state: 'off' }; }
+  renderApiState();
 }
 
-function drawNode(svg, x, y, r, fill, label, type) {
-  const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-
-  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-  circle.setAttribute('cx', x);
-  circle.setAttribute('cy', y);
-  circle.setAttribute('r', r);
-  circle.setAttribute('fill', fill);
-  circle.setAttribute('stroke', '#1e293b');
-  circle.setAttribute('stroke-width', '2');
-  group.appendChild(circle);
-
-  const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-  text.setAttribute('x', x);
-  text.setAttribute('y', y + 4);
-  text.setAttribute('text-anchor', 'middle');
-  text.setAttribute('fill', '#ffffff');
-  text.setAttribute('font-size', type === 'staff' ? '11px' : '10px');
-  text.setAttribute('font-weight', '600');
-  text.textContent = label;
-  group.appendChild(text);
-
-  svg.appendChild(group);
+async function loadResults() {
+  try {
+    const r = await fetch('results.json', { cache: 'no-store' });
+    const text = await r.text();
+    S.results = JSON.parse(text);
+  } catch (_) { S.results = null; }
+  if (S.tab === 'score') renderScore();
 }
+
+function setTheme(t) {
+  if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme');
+  try { t ? localStorage.setItem('sl-theme', t) : localStorage.removeItem('sl-theme'); } catch (_) {}
+}
+
+/* ---------------- wiring ---------------- */
+function wire() {
+  $('#filters').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.filter = b.dataset.f; renderFilters(); renderRail(); });
+  $('#search').addEventListener('input', e => { S.query = e.target.value; renderRail(); });
+  $('#item-list').addEventListener('click', e => { const b = e.target.closest('.item'); if (b) select(b.dataset.id, true); });
+  $('#budget').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.budget = b.dataset.b; renderBudget(); });
+  $('.tabs').addEventListener('click', e => { const b = e.target.closest('[role="tab"]'); if (b) setTab(b.dataset.tab); });
+  $('#run-btn').addEventListener('click', () => run());
+  $('#menu-btn').addEventListener('click', () => $('#shell').classList.toggle('rail-open'));
+  $('#theme-btn').addEventListener('click', () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark' || (!document.documentElement.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    setTheme(dark ? 'light' : 'dark');
+  });
+  $('#custom-btn').addEventListener('click', () => { $('#custom-text').value = S.active ? S.active.text : ''; $('#custom-dialog').showModal(); });
+  $('#custom-dialog').addEventListener('close', () => { if ($('#custom-dialog').returnValue === 'go' && $('#custom-text').value.trim()) run($('#custom-text').value); });
+
+  $('#panel-item').addEventListener('click', e => {
+    const c = e.target.closest('[data-c]');
+    if (c) { S.core = +c.dataset.c; renderItem(); return; }
+    const s = e.target.closest('.stmt[data-line]');
+    if (s && s.dataset.line !== '') {
+      const li = $(`#lines li[data-i="${s.dataset.line}"]`);
+      if (li) { li.scrollIntoView({ block: 'center', behavior: 'smooth' }); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); }
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input,textarea,select,dialog')) return;
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    const list = visible(); if (!list.length) return;
+    const i = Math.max(0, list.findIndex(x => S.active && x.id === S.active.id));
+    const n = list[Math.min(list.length - 1, Math.max(0, i + (e.key === 'ArrowDown' ? 1 : -1)))];
+    if (n) { e.preventDefault(); select(n.id, true); }
+  });
+}
+
+async function init() {
+  try { const t = localStorage.getItem('sl-theme'); if (t) setTheme(t); } catch (_) {}
+  renderBudget(); renderApiState(); wire();
+  try {
+    const res = await fetch('data.json', { cache: 'no-store' });
+    S.items = await res.json();
+  } catch (e) {
+    $('#panel-item').innerHTML = `<div class="card empty-card"><h3>Could not load data.json</h3><p class="sub">Serve the ui folder over HTTP (for example <code>python3 server.py</code>) rather than opening the file directly.</p></div>`;
+    return;
+  }
+  renderFilters(); renderRail();
+  if (S.items.length) select(S.items[0].id, true);
+  probeApi(); loadResults();
+}
+init();
+})();

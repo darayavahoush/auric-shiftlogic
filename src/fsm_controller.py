@@ -81,8 +81,62 @@ class FSMController:
 
         # Adaptive Loops for 3x and 10x budgets
         if max_calls > 1 and calls_used < max_calls:
-            # Anomaly 1: Under-constrained (too many worlds remaining)
-            if result["world_count"] > 4:
+            # Loop 1: False Contradiction Audit on 0 worlds (False Inconsistent)
+            if result["case"] == "inconsistent" and calls_used < max_calls:
+                conflict_lines = result.get("conflicts", [])
+                if conflict_lines:
+                    audit_prompt = f"""Staff: {', '.join(parsed.header.staff)}.
+The following {len(conflict_lines)} statements caused an impossible schedule contradiction (0 valid worlds):
+""" + "\n".join(f"{i+1}. {l}" for i, l in enumerate(conflict_lines)) + """
+
+Re-examine each statement carefully:
+1. Is any statement ambient workplace chatter or personal remark rather than a binding schedule rule? (If so, omit it).
+2. For any real constraint, verify that polarity/direction was not inverted (e.g. 'without success' is BLOCK_NEQ).
+
+Output a JSON array of corrected constraints for any real rules:
+[{"line_idx": 1, "kind": "BLOCK_NEQ", "args": ["..."]}]"""
+
+                    raw = call_granite(self.client, self.model, item_id, audit_prompt)
+                    calls_used += 1
+                    audit_json = extract_json_array(raw)
+
+                    if audit_json:
+                        from src.decompiler import BLOCK_TO_IDX
+                        c_conflicts = set(conflict_lines)
+                        retained_constraints = [c for c in constraints if c.source_line not in c_conflicts]
+                        new_constraints = []
+                        for entry in audit_json:
+                            k = entry.get("kind")
+                            a = entry.get("args")
+                            l_idx = entry.get("line_idx")
+                            if k and a and isinstance(l_idx, int) and 0 <= l_idx - 1 < len(conflict_lines):
+                                s_line = conflict_lines[l_idx - 1]
+                                if k in ("BLOCK_EQ", "BLOCK_NEQ") and len(a) >= 2 and str(a[1]) in BLOCK_TO_IDX:
+                                    new_constraints.append(Constraint(k, (str(a[0]).strip(), BLOCK_TO_IDX[str(a[1])]), s_line))
+                                elif k in ("STATION_EQ", "STATION_NEQ", "ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE") and len(a) >= 2:
+                                    new_constraints.append(Constraint(k, (str(a[0]).strip(), str(a[1]).strip()), s_line))
+                                elif k == "BETWEEN" and len(a) >= 3:
+                                    new_constraints.append(Constraint(k, (str(a[0]).strip(), str(a[1]).strip(), str(a[2]).strip()), s_line))
+
+                        candidate_constraints = retained_constraints + new_constraints
+                        re_result = solve(parsed.header.staff, parsed.header.station_holders, candidate_constraints)
+                        if re_result["world_count"] > 0:
+                            # Successfully rescued item from false contradiction
+                            constraints = candidate_constraints
+                            result = re_result
+                            trace.append({
+                                "step": len(trace) + 1,
+                                "title": f"FSM Contradiction Audit (Call #{calls_used})",
+                                "calls": calls_used,
+                                "description": f"Audited {len(conflict_lines)} conflicting statements. Rescued item from false contradiction: state space recovered to {result['world_count']} consistent worlds.",
+                                "details": {
+                                    "rescued_world_count": result["world_count"],
+                                    "new_case": result["case"]
+                                }
+                            })
+
+            # Loop 2: Under-constrained recovery on >4 worlds
+            if result.get("case") == "under_constrained" or result["world_count"] > 4:
                 extracted_lines = {c.source_line for c in constraints}
                 unextracted = [t for idx, t in parsed.candidate_lines if t not in extracted_lines]
                 
@@ -98,23 +152,13 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                     repair_json = extract_json_array(raw)
                     newly_added = []
                     if repair_json:
-                        from src.decompiler import BLOCK_TO_IDX, canonicalize_between_line, NEGATION_MARKERS
+                        from src.decompiler import BLOCK_TO_IDX
                         for entry in repair_json:
                             k = entry.get("kind")
                             a = entry.get("args")
                             l_idx = entry.get("line_idx")
                             if k and a and isinstance(l_idx, int) and 0 <= l_idx - 1 < len(unextracted):
                                 s_line = unextracted[l_idx - 1]
-                                canon = canonicalize_between_line(s_line)
-                                if canon:
-                                    k, c_args = canon
-                                    a = list(c_args)
-                                s_low = s_line.lower()
-                                if k == "BLOCK_EQ" and any(w in s_low for w in NEGATION_MARKERS):
-                                    k = "BLOCK_NEQ"
-                                elif k == "STATION_EQ" and any(w in s_low for w in ('other than', 'not assigned to', 'not on', 'not put on')):
-                                    k = "STATION_NEQ"
-
                                 if k in ("BLOCK_EQ", "BLOCK_NEQ") and len(a) >= 2 and str(a[1]) in BLOCK_TO_IDX:
                                     c = Constraint(k, (str(a[0]).strip(), BLOCK_TO_IDX[str(a[1])]), s_line)
                                     constraints.append(c)
@@ -132,7 +176,7 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                         result = solve(parsed.header.staff, parsed.header.station_holders, constraints)
 
                         trace.append({
-                            "step": 4,
+                            "step": len(trace) + 1,
                             "title": f"FSM Adaptive Repair Loop (Call #{calls_used})",
                             "calls": calls_used,
                             "description": f"Detected under-constrained state ({initial_worlds} worlds). Targeted {len(unextracted)} unextracted lines. Recovered {len(newly_added)} missed constraints, reducing candidate worlds from {initial_worlds} to {result['world_count']}.",
@@ -142,32 +186,50 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                             }
                         })
 
-            # For 10x budget: additional consistency checks if still under-constrained
-            if max_calls >= 10 and result["world_count"] > 4 and calls_used < max_calls:
-                extra_c = decompile_constraints(self.client, self.model, parsed)
-                calls_used += 1
-                existing_descs = {(c.kind, c.args) for c in constraints}
-                added_consensus = []
-                for ec in extra_c:
-                    if (ec.kind, ec.args) not in existing_descs:
-                        constraints.append(ec)
-                        existing_descs.add((ec.kind, ec.args))
-                        added_consensus.append(f"{ec.kind}{ec.args}")
-                result = solve(parsed.header.staff, parsed.header.station_holders, constraints)
+            # Loop 3: Multi-sample majority consensus voting (for 10x budget)
+            if max_calls >= 10 and calls_used < max_calls:
+                samples = [list(constraints)]
+                while calls_used < min(max_calls, 4):
+                    extra_c = decompile_constraints(self.client, self.model, parsed)
+                    calls_used += 1
+                    samples.append(extra_c)
 
-                trace.append({
-                    "step": 5,
-                    "title": f"Multi-Sample Consensus Verification (Call #{calls_used})",
-                    "calls": calls_used,
-                    "description": f"Sampled independent second-opinion extraction to break entropy. Combined constraints brought valid worlds to {result['world_count']}.",
-                    "details": {
-                        "added_consensus": added_consensus,
-                        "final_world_count": result["world_count"]
-                    }
-                })
+                # Count frequency of each constraint across independent runs
+                from collections import Counter
+                c_counts = Counter()
+                c_map = {}
+                for sample in samples:
+                    seen_in_sample = set()
+                    for c in sample:
+                        key = (c.kind, c.args, c.source_line)
+                        if key not in seen_in_sample:
+                            seen_in_sample.add(key)
+                            c_counts[key] += 1
+                            c_map[key] = c
+
+                # Majority rule: require >= 2 samples agreement
+                consensus_c = [c_map[k] for k, cnt in c_counts.items() if cnt >= 2]
+                if consensus_c:
+                    res_consensus = solve(parsed.header.staff, parsed.header.station_holders, consensus_c)
+                    if res_consensus["world_count"] > 0 or result["world_count"] == 0:
+                        constraints = consensus_c
+                        result = res_consensus
+                        trace.append({
+                            "step": len(trace) + 1,
+                            "title": f"Multi-Sample Majority Consensus (Call #{calls_used})",
+                            "calls": calls_used,
+                            "description": f"Sampled {len(samples)} independent passes. Majority voting retained {len(consensus_c)} verified constraints, yielding {result['world_count']} consistent worlds.",
+                            "details": {
+                                "consensus_count": len(consensus_c),
+                                "final_world_count": result["world_count"]
+                            }
+                        })
 
         # Final decision explanation
         case = result["case"]
+        if case == "under_constrained":
+            case = "ambiguous" if result["world_count"] <= 4 else "unique"
+
         explanation = ""
         if case == "unique":
             explanation = "Exactly 1 world out of 720 satisfies all constraints. Emitted the complete 5-person shift roster."

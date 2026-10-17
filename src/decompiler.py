@@ -7,6 +7,8 @@ Includes few-shot exemplars, strict schema enforcement, and robust JSON extracti
 import os
 import re
 import json
+import time
+import random
 from typing import List, Optional, Tuple, Dict, Any
 from openai import OpenAI
 from src.types import ParsedItem, BLOCKS
@@ -33,37 +35,44 @@ Available constraint kinds and argument formats:
 - ORDER_PERSON_STATION: [person, station] -- person works later in the day than whoever has station (e.g. "person is on later than whoever has station")
 
 CRITICAL RULES:
-1. "X is on after one of Y and Z and before the other" MUST be parsed as BETWEEN: [X, Y, Z] (do NOT parse as ORDER_LT).
-2. Distinguish direction: "p1 precedes p2" or "p1 is done before p2 starts" is ORDER_LT [p1, p2].
-3. "p1 is on later than whoever has station" is ORDER_PERSON_STATION [p1, station].
-4. "The station is covered earlier than p1" is ORDER_STATION_PERSON [station, p1].
-5. Output ONLY a valid JSON list of objects with "line_idx", "kind", "args". No markdown text before or after.
+1. ONLY extract active, binding constraints for TODAY's schedule roster.
+2. DO NOT extract constraints from:
+   - Ambient workplace chatter (keys, maintenance, walkarounds, emergency contact sheets, training days, fire safety, coats, coffee).
+   - Counterfactual remarks or opinions ("would have been a better fit", "if only", "preferred", "wished").
+   - Past historical arrangements ("back in the old arrangement", "last month", "previously", "formerly").
+3. "X is on after one of Y and Z and before the other" MUST be parsed as BETWEEN: [X, Y, Z].
+4. "opens up at 09:00" or "draws the 11:00 block" is BLOCK_EQ [person, block].
+5. Distinguish direction: "p1 precedes p2" or "p1 is done before p2 starts" is ORDER_LT [p1, p2].
+6. "p1 is on later than whoever has station" is ORDER_PERSON_STATION [p1, station].
+7. "The station is covered earlier than p1" is ORDER_STATION_PERSON [station, p1].
+8. Output ONLY a valid JSON list of objects with "line_idx", "kind", "args". Omit lines that are chatter or non-binding.
 """
 
 FEW_SHOT_EXAMPLE_PROMPT = """Staff: Samuel, Tomas, Meera, Rohan, Ayesha.
 Lines:
 1. As far as I know, Tomas lobbied for 11:00 without success.
-4. Packing is covered by someone other than Ayesha.
-6. Ayesha is not assigned to calibration.
-10. Speaking from memory, Meera is on the block directly after Samuel.
-12. Put Meera between Tomas and Rohan, though not necessarily next to either.
-13. Meera has not been put on packing.
-14. Going off the roster, Meera has not been put on intake.
-17. Calibration is covered by someone other than Meera.
-19. Speaking from memory, you will not find Rohan on the 07:00 block.
-20. Going off the roster, Rohan is done before Ayesha starts."""
+2. Rohan has the spare key to the supply cupboard.
+3. Packing is covered by someone other than Ayesha.
+4. Back in the old arrangement, Meera took calibration.
+5. Speaking from memory, Meera is on the block directly after Samuel.
+6. Ayesha and Rohan attended the supplier training day.
+7. Put Meera between Tomas and Rohan, though not necessarily next to either.
+8. Speaking from memory, Meera would have been a better fit for the 13:00 block.
+9. Going off the roster, Meera has not been put on intake.
+10. Rohan completed the fire-safety refresher last quarter.
+11. Calibration is covered by someone other than Meera.
+12. Speaking from memory, you will not find Rohan on the 07:00 block.
+13. Going off the roster, Rohan is done before Ayesha starts."""
 
 FEW_SHOT_EXAMPLE_RESPONSE = """[
   {"line_idx": 1, "kind": "BLOCK_NEQ", "args": ["Tomas", "11:00"]},
-  {"line_idx": 4, "kind": "STATION_NEQ", "args": ["Ayesha", "packing"]},
-  {"line_idx": 6, "kind": "STATION_NEQ", "args": ["Ayesha", "calibration"]},
-  {"line_idx": 10, "kind": "IMMEDIATE_AFTER", "args": ["Meera", "Samuel"]},
-  {"line_idx": 12, "kind": "BETWEEN", "args": ["Meera", "Tomas", "Rohan"]},
-  {"line_idx": 13, "kind": "STATION_NEQ", "args": ["Meera", "packing"]},
-  {"line_idx": 14, "kind": "STATION_NEQ", "args": ["Meera", "intake"]},
-  {"line_idx": 17, "kind": "STATION_NEQ", "args": ["Meera", "calibration"]},
-  {"line_idx": 19, "kind": "BLOCK_NEQ", "args": ["Rohan", "07:00"]},
-  {"line_idx": 20, "kind": "ORDER_LT", "args": ["Rohan", "Ayesha"]}
+  {"line_idx": 3, "kind": "STATION_NEQ", "args": ["Ayesha", "packing"]},
+  {"line_idx": 5, "kind": "IMMEDIATE_AFTER", "args": ["Meera", "Samuel"]},
+  {"line_idx": 7, "kind": "BETWEEN", "args": ["Meera", "Tomas", "Rohan"]},
+  {"line_idx": 9, "kind": "STATION_NEQ", "args": ["Meera", "intake"]},
+  {"line_idx": 11, "kind": "STATION_NEQ", "args": ["Meera", "calibration"]},
+  {"line_idx": 12, "kind": "BLOCK_NEQ", "args": ["Rohan", "07:00"]},
+  {"line_idx": 13, "kind": "ORDER_LT", "args": ["Rohan", "Ayesha"]}
 ]"""
 
 
@@ -107,8 +116,8 @@ def extract_json_array(text: str) -> Optional[List[Dict[str, Any]]]:
     return None
 
 
-def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperature: float = 1.0) -> str:
-    """Invokes Granite 4.2 8B under the exact competition requirements."""
+def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperature: float = 1.0, max_retries: int = 5) -> str:
+    """Invokes Granite 4.2 8B under the exact competition requirements with exponential backoff."""
     messages = [
         {"role": "system", "content": FEW_SHOT_SYSTEM},
         {"role": "user", "content": FEW_SHOT_EXAMPLE_PROMPT},
@@ -116,15 +125,26 @@ def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperat
         {"role": "user", "content": prompt}
     ]
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        temperature=temperature,
-        top_p=0.95,
-        extra_headers={"X-Item-Id": item_id},
-        extra_body={"reasoning": {"enabled": False}}
-    )
-    return response.choices[0].message.content or ""
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=temperature,
+                top_p=0.95,
+                timeout=45.0,
+                extra_headers={"X-Item-Id": str(item_id)},
+                extra_body={"reasoning": {"enabled": False}}
+            )
+            return response.choices[0].message.content or ""
+        except Exception as e:
+            if attempt == max_retries - 1:
+                print(f"[Decompiler] Permanent API failure on item {item_id}: {e}")
+                raise e
+            backoff = (2 ** attempt) * 1.5 + random.uniform(0.1, 0.5)
+            print(f"[Decompiler] Transient API error on item {item_id} ({e}). Retrying in {backoff:.1f}s (attempt {attempt + 1}/{max_retries})...")
+            time.sleep(backoff)
+    return ""
 
 
 NEGATION_MARKERS = [
@@ -164,34 +184,12 @@ def canonicalize_between_line(line: str) -> Optional[Tuple[str, Tuple[str, ...]]
     if m7:
         return 'IMMEDIATE_BEFORE', (m7.group(1), m7.group(2))
 
-    return None
-
-
-def extract_deterministic_negation(line: str, staff: List[str]) -> Optional[Tuple[str, Tuple[Any, ...]]]:
-    """Recovers missed negative constraints (BLOCK_NEQ and STATION_NEQ) directly from candidate text."""
-    low = line.lower()
-    if not any(w in low for w in NEGATION_MARKERS):
-        return None
-
-    p_found = None
-    for p in staff:
-        if re.search(r'\b' + re.escape(p) + r'\b', line, re.IGNORECASE):
-            p_found = p
-            break
-    if not p_found:
-        return None
-
-    # Check block
-    for b in BLOCKS:
-        if b in line:
-            return 'BLOCK_NEQ', (p_found, BLOCK_TO_IDX[b])
-
-    # Check station
-    for st in ("intake", "calibration", "packing"):
-        if st in low:
-            return 'STATION_NEQ', (p_found, st)
+    m8 = re.search(r'(\w+)\s+(?:is on|works|falls|sits)?\s*after one of\s+(\w+)\s+and\s+(\w+)\s+and before the other', line, re.IGNORECASE)
+    if m8:
+        return 'BETWEEN', (m8.group(1), m8.group(2), m8.group(3))
 
     return None
+
 
 
 def decompile_constraints(
@@ -269,6 +267,8 @@ def decompile_constraints(
             elif kind in ("ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE"):
                 p1 = str(args[0]).strip()
                 p2 = str(args[1]).strip()
+                if p1 == p2:
+                    continue
                 if any(s in p1.lower() for s in ("intake", "calibration", "packing")):
                     p1 = norm_station(p1)
                 if any(s in p2.lower() for s in ("intake", "calibration", "packing")):
@@ -278,15 +278,26 @@ def decompile_constraints(
                 p_mid = str(args[0]).strip()
                 p1 = str(args[1]).strip()
                 p2 = str(args[2]).strip()
+                if len({p_mid, p1, p2}) < 3:
+                    continue
                 norm_args = (p_mid, p1, p2)
-            elif kind == "ORDER_STATION_PERSON":
-                st = norm_station(args[0])
-                p = str(args[1]).strip()
-                norm_args = (st, p)
-            elif kind == "ORDER_PERSON_STATION":
-                p = str(args[0]).strip()
-                st = norm_station(args[1])
-                norm_args = (p, st)
+            elif kind in ("ORDER_STATION_PERSON", "ORDER_PERSON_STATION"):
+                a0 = str(args[0]).strip()
+                a1 = str(args[1]).strip()
+                a0_st = any(s in a0.lower() for s in ("intake", "calibration", "packing"))
+                a1_st = any(s in a1.lower() for s in ("intake", "calibration", "packing"))
+                if a0_st and not a1_st:
+                    st, p = norm_station(a0), a1
+                elif a1_st and not a0_st:
+                    st, p = norm_station(a1), a0
+                else:
+                    continue
+                if any(w in s_low for w in ("earlier", "before", "precedes")):
+                    kind = "ORDER_STATION_PERSON"
+                    norm_args = (st, p)
+                else:
+                    kind = "ORDER_PERSON_STATION"
+                    norm_args = (p, st)
             else:
                 continue
 
@@ -294,23 +305,8 @@ def decompile_constraints(
             constraints.append(c)
             extracted_lines.add(source_line)
 
-    # Technique 2 (Post-pass): Deterministic Negation & Betweenness Sweep for missed lines
-    for idx, cand_line in item.candidate_lines:
-        if cand_line not in extracted_lines:
-            # Check for betweenness / immediate adjacency
-            canon = canonicalize_between_line(cand_line)
-            if canon:
-                c_kind, c_args = canon
-                constraints.append(Constraint(kind=c_kind, args=c_args, source_line=cand_line))
-                extracted_lines.add(cand_line)
-                continue
-
-            # Check for missed negation
-            neg = extract_deterministic_negation(cand_line, item.header.staff)
-            if neg:
-                n_kind, n_args = neg
-                constraints.append(Constraint(kind=n_kind, args=n_args, source_line=cand_line))
-                extracted_lines.add(cand_line)
+    # Extraction is strictly model-driven. Normalization guards above validate
+    # argument consistency on model-extracted constraints without brittle regex overrides.
 
     # Deduplicate constraints
     unique_constraints: List[Constraint] = []
