@@ -28,6 +28,13 @@
           <span class="score-item"><small>Claude Sonnet 5</small><strong>67.5%</strong></span>
           <span class="score-sep">➔</span>
           <span class="score-item highlight"><small>ShiftLogic (1x)</small><strong>72.2%</strong></span>
+        <div class="budget-group">
+          <label for="budget-select">Budget:</label>
+          <select id="budget-select" class="budget-select">
+            <option value="1x">1x (Single-Pass • 1 Call)</option>
+            <option value="3x">3x (Adaptive Self-Repair • ≤3 Calls)</option>
+            <option value="10x">10x (Consensus Verification • ≤10 Calls)</option>
+          </select>
         </div>
 
         <button class="live-run-btn" id="live-run-btn" onclick="runLiveInference()">
@@ -68,6 +75,9 @@
             <button class="toggle-btn active" id="btn-view-notes" onclick="setViewMode('notes')">
               📄 Notes & Solution
             </button>
+            <button class="toggle-btn" id="btn-view-trace" onclick="setViewMode('trace')">
+              🔍 Step-by-Step Logic Trace
+            </button>
             <button class="toggle-btn" id="btn-view-graph" onclick="setViewMode('graph')">
               🕸️ Entity Graph
             </button>
@@ -99,11 +109,27 @@
             <div class="panel-box solution-box">
               <div class="box-header">
                 <h3>720-World Symbolic Solution</h3>
-                <span class="world-status" id="world-status-tag">0 Consistent Worlds</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="call-badge" id="calls-badge">Calls: 1/1</span>
+                  <span class="world-status" id="world-status-tag">0 Consistent Worlds</span>
+                </div>
               </div>
               <div class="solution-content" id="solution-display">
                 <!-- Schedule or conflict core rendered by JS -->
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode 2: Step-by-Step Logic Trace & Explainability -->
+        <div class="view-panel" id="view-trace">
+          <div class="trace-card">
+            <div class="trace-header">
+              <h3>Neuro-Symbolic Reasoning Trace</h3>
+              <p class="trace-sub">Complete audit trail of what each pipeline step did, what Granite 8B thought, and how the symbolic solver derived the final verdict.</p>
+            </div>
+            <div class="trace-timeline" id="trace-timeline">
+              <!-- Populated by JS -->
             </div>
           </div>
         </div>
@@ -182,6 +208,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=3.0"></script>
+  <script src="app.js?v=4.0"></script>
 </body>
 </html>

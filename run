@@ -52,9 +52,13 @@ def main():
         
         # Process item with FSM controller
         res = controller.run_item(item_id, raw_text, budget=args.budget)
-        answers[item_id] = res
+        telemetry = res.get("telemetry", {})
+        calls_used = telemetry.get("calls_used", 1)
 
-        print(f"[{i}/{len(items)}] {item_id} -> {res.get('case')}")
+        clean_res = {k: v for k, v in res.items() if k in ("case", "assignment", "assignments", "conflicts")}
+        answers[item_id] = clean_res
+
+        print(f"[{i}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls_used}/{telemetry.get('max_calls', 1)})")
 
     # Ensure output directory exists
     out_dir = os.path.dirname(os.path.abspath(args.out))
