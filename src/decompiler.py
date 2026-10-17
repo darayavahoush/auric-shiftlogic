@@ -127,91 +127,198 @@ def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperat
     return response.choices[0].message.content or ""
 
 
+NEGATION_MARKERS = [
+    'without success', 'turned down', 'declined', 'not on', 'will not find',
+    'rules out', 'not assigned to', 'other than', 'definitely not', 'refused',
+    'unsuccessful', 'was not given', 'not put on', 'has not been put on'
+]
+
+
+def canonicalize_between_line(line: str) -> Optional[Tuple[str, Tuple[str, ...]]]:
+    """Deterministically identifies the middle entity and endpoints for any betweenness phrasing."""
+    m1 = re.search(r'whichever way round (\w+) and (\w+) are,\s*(\w+) is between them', line, re.IGNORECASE)
+    if m1:
+        return 'BETWEEN', (m1.group(3), m1.group(1), m1.group(2))
+
+    m2 = re.search(r'put (\w+) between (\w+) and (\w+)', line, re.IGNORECASE)
+    if m2:
+        return 'BETWEEN', (m2.group(1), m2.group(2), m2.group(3))
+
+    m3 = re.search(r'(\w+)(?:\'s block)? falls between (\w+)(?:\'s)? and (\w+)(?:\'s)?', line, re.IGNORECASE)
+    if m3:
+        return 'BETWEEN', (m3.group(1), m3.group(2), m3.group(3))
+
+    m4 = re.search(r'(\w+) sits between (\w+) and (\w+)', line, re.IGNORECASE)
+    if m4:
+        return 'BETWEEN', (m4.group(1), m4.group(2), m4.group(3))
+
+    m5 = re.search(r'(\w+) works at some point between (\w+) and (\w+)', line, re.IGNORECASE)
+    if m5:
+        return 'BETWEEN', (m5.group(1), m5.group(2), m5.group(3))
+
+    m6 = re.search(r'(\w+) relieves (\w+) directly, with no block in between', line, re.IGNORECASE)
+    if m6:
+        return 'IMMEDIATE_AFTER', (m6.group(1), m6.group(2))
+
+    m7 = re.search(r'there is no block between (\w+)(?:\'s)? and (\w+)(?:\'s)?, in that order', line, re.IGNORECASE)
+    if m7:
+        return 'IMMEDIATE_BEFORE', (m7.group(1), m7.group(2))
+
+    return None
+
+
+def extract_deterministic_negation(line: str, staff: List[str]) -> Optional[Tuple[str, Tuple[Any, ...]]]:
+    """Recovers missed negative constraints (BLOCK_NEQ and STATION_NEQ) directly from candidate text."""
+    low = line.lower()
+    if not any(w in low for w in NEGATION_MARKERS):
+        return None
+
+    p_found = None
+    for p in staff:
+        if re.search(r'\b' + re.escape(p) + r'\b', line, re.IGNORECASE):
+            p_found = p
+            break
+    if not p_found:
+        return None
+
+    # Check block
+    for b in BLOCKS:
+        if b in line:
+            return 'BLOCK_NEQ', (p_found, BLOCK_TO_IDX[b])
+
+    # Check station
+    for st in ("intake", "calibration", "packing"):
+        if st in low:
+            return 'STATION_NEQ', (p_found, st)
+
+    return None
+
+
 def decompile_constraints(
     client: OpenAI,
     model: str,
     item: ParsedItem,
     temperature: float = 1.0
 ) -> List[Constraint]:
-    """Calls Granite 8B and maps parsed JSON back to typed Constraint objects."""
+    """Calls Granite 8B and maps parsed JSON back to typed Constraint objects with canonicalization guards."""
     prompt = build_decompiler_prompt(item)
     raw_output = call_granite(client, model, item.item_id, prompt, temperature=temperature)
     parsed = extract_json_array(raw_output)
 
-    if not parsed:
-        return []
-
     # Map candidate line indices
     line_map = {idx: text for idx, text in item.candidate_lines}
-    # Also support 0-indexed or 1-indexed relative to candidate lines
     all_line_map = {i + 1: l for i, l in enumerate(item.all_lines)}
 
+    def norm_station(val: Any) -> str:
+        val_low = str(val).lower()
+        for s in ("intake", "calibration", "packing"):
+            if s in val_low:
+                return s
+        return val_low
+
     constraints: List[Constraint] = []
-    for entry in parsed:
-        if not isinstance(entry, dict):
-            continue
-        kind = entry.get("kind")
-        args = entry.get("args")
-        line_idx = entry.get("line_idx")
+    extracted_lines = set()
 
-        if not kind or not args:
-            continue
+    if parsed:
+        for entry in parsed:
+            if not isinstance(entry, dict):
+                continue
+            kind = entry.get("kind")
+            args = entry.get("args")
+            line_idx = entry.get("line_idx")
 
-        # Find source line text
-        source_line = line_map.get(line_idx)
-        if not source_line:
-            source_line = all_line_map.get(line_idx)
-        if not source_line and isinstance(line_idx, int) and 0 <= line_idx - 1 < len(item.candidate_lines):
-            source_line = item.candidate_lines[line_idx - 1][1]
-        if not source_line:
-            continue
+            if not kind or not args:
+                continue
 
-        def norm_station(val: Any) -> str:
-            val_low = str(val).lower()
-            for s in ("intake", "calibration", "packing"):
-                if s in val_low:
-                    return s
-            return val_low
+            source_line = line_map.get(line_idx)
+            if not source_line:
+                source_line = all_line_map.get(line_idx)
+            if not source_line and isinstance(line_idx, int) and 0 <= line_idx - 1 < len(item.candidate_lines):
+                source_line = item.candidate_lines[line_idx - 1][1]
+            if not source_line:
+                continue
 
-        # Normalize args
-        norm_args = []
-        if kind in ("BLOCK_EQ", "BLOCK_NEQ"):
-            # person, block
-            p = str(args[0]).strip()
-            b = str(args[1]).strip()
-            if b in BLOCK_TO_IDX:
-                norm_args = (p, BLOCK_TO_IDX[b])
+            # Technique 1: Bi-directional Betweenness Canonicalization Guard
+            canon = canonicalize_between_line(source_line)
+            if canon:
+                kind, canon_args = canon
+                args = list(canon_args)
+
+            # Technique 2: Negation Guard against positive misclassification
+            s_low = source_line.lower()
+            if kind == "BLOCK_EQ" and any(w in s_low for w in NEGATION_MARKERS):
+                kind = "BLOCK_NEQ"
+            elif kind == "STATION_EQ" and any(w in s_low for w in ('other than', 'not assigned to', 'not on', 'not put on', 'definitely not')):
+                kind = "STATION_NEQ"
+
+            # Normalize args
+            norm_args = []
+            if kind in ("BLOCK_EQ", "BLOCK_NEQ"):
+                p = str(args[0]).strip()
+                b = str(args[1]).strip()
+                if b in BLOCK_TO_IDX:
+                    norm_args = (p, BLOCK_TO_IDX[b])
+                elif isinstance(args[1], int) and 0 <= args[1] < 5:
+                    norm_args = (p, args[1])
+                else:
+                    continue
+            elif kind in ("STATION_EQ", "STATION_NEQ"):
+                p = str(args[0]).strip()
+                st = norm_station(args[1])
+                norm_args = (p, st)
+            elif kind in ("ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE"):
+                p1 = str(args[0]).strip()
+                p2 = str(args[1]).strip()
+                if any(s in p1.lower() for s in ("intake", "calibration", "packing")):
+                    p1 = norm_station(p1)
+                if any(s in p2.lower() for s in ("intake", "calibration", "packing")):
+                    p2 = norm_station(p2)
+                norm_args = (p1, p2)
+            elif kind == "BETWEEN":
+                p_mid = str(args[0]).strip()
+                p1 = str(args[1]).strip()
+                p2 = str(args[2]).strip()
+                norm_args = (p_mid, p1, p2)
+            elif kind == "ORDER_STATION_PERSON":
+                st = norm_station(args[0])
+                p = str(args[1]).strip()
+                norm_args = (st, p)
+            elif kind == "ORDER_PERSON_STATION":
+                p = str(args[0]).strip()
+                st = norm_station(args[1])
+                norm_args = (p, st)
             else:
                 continue
-        elif kind in ("STATION_EQ", "STATION_NEQ"):
-            p = str(args[0]).strip()
-            st = norm_station(args[1])
-            norm_args = (p, st)
-        elif kind in ("ORDER_LT", "ORDER_GT", "IMMEDIATE_AFTER", "IMMEDIATE_BEFORE"):
-            p1 = str(args[0]).strip()
-            p2 = str(args[1]).strip()
-            # If one is a station, normalize it
-            if any(s in p1.lower() for s in ("intake", "calibration", "packing")):
-                p1 = norm_station(p1)
-            if any(s in p2.lower() for s in ("intake", "calibration", "packing")):
-                p2 = norm_station(p2)
-            norm_args = (p1, p2)
-        elif kind == "BETWEEN":
-            p_mid = str(args[0]).strip()
-            p1 = str(args[1]).strip()
-            p2 = str(args[2]).strip()
-            norm_args = (p_mid, p1, p2)
-        elif kind == "ORDER_STATION_PERSON":
-            st = norm_station(args[0])
-            p = str(args[1]).strip()
-            norm_args = (st, p)
-        elif kind == "ORDER_PERSON_STATION":
-            p = str(args[0]).strip()
-            st = norm_station(args[1])
-            norm_args = (p, st)
-        else:
-            continue
 
-        constraints.append(Constraint(kind=kind, args=tuple(norm_args), source_line=source_line))
+            c = Constraint(kind=kind, args=tuple(norm_args), source_line=source_line)
+            constraints.append(c)
+            extracted_lines.add(source_line)
 
-    return constraints
+    # Technique 2 (Post-pass): Deterministic Negation & Betweenness Sweep for missed lines
+    for idx, cand_line in item.candidate_lines:
+        if cand_line not in extracted_lines:
+            # Check for betweenness / immediate adjacency
+            canon = canonicalize_between_line(cand_line)
+            if canon:
+                c_kind, c_args = canon
+                constraints.append(Constraint(kind=c_kind, args=c_args, source_line=cand_line))
+                extracted_lines.add(cand_line)
+                continue
+
+            # Check for missed negation
+            neg = extract_deterministic_negation(cand_line, item.header.staff)
+            if neg:
+                n_kind, n_args = neg
+                constraints.append(Constraint(kind=n_kind, args=n_args, source_line=cand_line))
+                extracted_lines.add(cand_line)
+
+    # Deduplicate constraints
+    unique_constraints: List[Constraint] = []
+    seen = set()
+    for c in constraints:
+        key = (c.kind, c.args, c.source_line)
+        if key not in seen:
+            seen.add(key)
+            unique_constraints.append(c)
+
+    return unique_constraints
