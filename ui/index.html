@@ -7,212 +7,181 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-container">
-    <!-- Header -->
+    <!-- Streamlined Header -->
     <header class="top-nav">
       <div class="brand">
-        <div class="logo-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-          </svg>
-        </div>
-        <div>
-          <h1>ShiftLogic <span class="badge-tag">AI Researcher: Entity Resolution & Knowledge Graphs</span></h1>
-          <p class="subtitle">Neuro-Symbolic Constraint Decompilation & Exact 720-World SMT Engine • <strong>Candidate: Ananya Sridhar</strong></p>
+        <div class="brand-badge">⚡ ShiftLogic</div>
+        <div class="brand-text">
+          <h1>Entity Resolution & Constraint Engine</h1>
+          <span class="author">Auric AI Take-Home • Ananya Sridhar</span>
         </div>
       </div>
-      <div class="nav-metrics">
-        <div class="metric-box">
-          <span class="m-label">Weak Model Baseline</span>
-          <span class="m-val text-red">0.0%</span>
+
+      <div class="nav-right">
+        <div class="score-pill">
+          <span class="score-item"><small>Granite 8B</small><strong>0.0%</strong></span>
+          <span class="score-sep">➔</span>
+          <span class="score-item"><small>Claude Sonnet 5</small><strong>67.5%</strong></span>
+          <span class="score-sep">➔</span>
+          <span class="score-item highlight"><small>ShiftLogic (1x)</small><strong>72.2%</strong></span>
         </div>
-        <div class="metric-arrow">➔</div>
-        <div class="metric-box">
-          <span class="m-label">Frontier (Claude Sonnet 5)</span>
-          <span class="m-val text-amber">67.5%</span>
-        </div>
-        <div class="metric-arrow">➔</div>
-        <div class="metric-box highlight">
-          <span class="m-label">Our Architecture (1x Budget)</span>
-          <span class="m-val text-green">72.2%</span>
-        </div>
+
+        <button class="live-run-btn" id="live-run-btn" onclick="runLiveInference()">
+          <span class="btn-spinner" id="btn-spinner" style="display:none;">⏳</span>
+          <span id="btn-text">⚡ Run Live Inference</span>
+        </button>
       </div>
     </header>
 
-    <!-- Main Workspace -->
+    <!-- Workspace -->
     <div class="workspace">
-      <!-- Left Panel: Problem Selector -->
+      <!-- Left: Item Picker -->
       <aside class="sidebar">
-        <div class="sidebar-header">
-          <h3>Facility Shift Puzzles</h3>
+        <div class="sidebar-top">
+          <input type="text" id="search-input" placeholder="Search puzzle or name..." class="search-bar">
           <div class="filter-pills">
             <button class="pill active" data-filter="all">All (60)</button>
             <button class="pill" data-filter="unique">Unique (20)</button>
             <button class="pill" data-filter="ambiguous">Ambiguous (20)</button>
             <button class="pill" data-filter="inconsistent">Inconsistent (20)</button>
           </div>
-          <input type="text" id="search-input" placeholder="Search staff, bay, or text..." class="search-bar">
         </div>
         <div class="item-list" id="item-list">
-          <!-- Populated by JavaScript -->
+          <!-- Populated by JS -->
         </div>
       </aside>
 
-      <!-- Center & Right: Detailed Analysis -->
+      <!-- Right: Main Streamlined View -->
       <main class="main-content">
-        <!-- Top Toolbar -->
+        <!-- Item Toolbar -->
         <div class="detail-header">
-          <div class="item-title-section">
+          <div class="item-meta">
             <h2 id="active-item-id">B2-000</h2>
             <span class="case-badge" id="active-case-badge">Inconsistent</span>
             <span class="info-pill" id="active-bay-badge">Bay 4 • 5 Staff • 3 Stations</span>
           </div>
-          <div class="view-tabs">
-            <button class="tab-btn active" data-tab="knowledge-graph">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 8.5l7 7"/></svg>
-              Entity Knowledge Graph
+          <div class="view-toggles">
+            <button class="toggle-btn active" id="btn-view-notes" onclick="setViewMode('notes')">
+              📄 Notes & Solution
             </button>
-            <button class="tab-btn" data-tab="notes-inspector">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Shift Notes Decompiler
+            <button class="toggle-btn" id="btn-view-graph" onclick="setViewMode('graph')">
+              🕸️ Entity Graph
             </button>
-            <button class="tab-btn" data-tab="solver-view">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-              720-World Solver & MUS
-            </button>
-            <button class="tab-btn" data-tab="ablation-bench">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              Benchmark & Ablations
-            </button>
-            <button class="live-run-btn" id="live-run-btn" onclick="runLiveInference()">
-              <span class="btn-spinner" id="btn-spinner" style="display:none;">⏳</span>
-              <span id="btn-text">⚡ Run Live Inference</span>
+            <button class="toggle-btn" id="btn-view-bench" onclick="setViewMode('bench')">
+              📊 Ablation Table
             </button>
           </div>
         </div>
 
-        <!-- Tab 1: Knowledge Graph -->
-        <section class="tab-content active" id="tab-knowledge-graph">
-          <div class="kg-container">
-            <div class="kg-legend">
-              <span class="legend-item"><span class="dot staff-dot"></span> Staff (Entities)</span>
-              <span class="legend-item"><span class="dot block-dot"></span> Time Blocks (07:00..15:00)</span>
+        <!-- Mode 1: Unified Notes & Solution (Default Side-by-Side) -->
+        <div class="view-panel active" id="view-notes-solution">
+          <div class="two-column-layout">
+            <!-- Left Sub-Col: Notes Reader -->
+            <div class="panel-box notes-box">
+              <div class="box-header">
+                <h3>Facility Shift Notes</h3>
+                <span class="legend-hint">
+                  <span class="hint-dot dot-constraint"></span> Constraint
+                  <span class="hint-dot dot-conflict"></span> Conflict
+                  <span class="hint-dot dot-noise"></span> Noise
+                </span>
+              </div>
+              <div class="notes-feed" id="lines-feed">
+                <!-- Lines populated by JS -->
+              </div>
+            </div>
+
+            <!-- Right Sub-Col: Solution & State Space -->
+            <div class="panel-box solution-box">
+              <div class="box-header">
+                <h3>720-World Symbolic Solution</h3>
+                <span class="world-status" id="world-status-tag">0 Consistent Worlds</span>
+              </div>
+              <div class="solution-content" id="solution-display">
+                <!-- Schedule or conflict core rendered by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode 2: Knowledge Graph -->
+        <div class="view-panel" id="view-graph">
+          <div class="graph-card">
+            <div class="graph-legend">
+              <span class="legend-item"><span class="dot staff-dot"></span> Staff</span>
+              <span class="legend-item"><span class="dot block-dot"></span> Time Blocks</span>
               <span class="legend-item"><span class="dot station-dot"></span> Workstations</span>
-              <span class="legend-item"><span class="line order-line"></span> Sequence Constraint (&lt;)</span>
-              <span class="legend-item"><span class="line conflict-line"></span> Impossibility Cycle</span>
+              <span class="legend-item"><span class="line order-line"></span> Sequence</span>
             </div>
             <div class="canvas-wrap">
-              <svg id="kg-canvas" width="100%" height="480"></svg>
+              <svg id="kg-canvas" width="100%" height="520"></svg>
             </div>
           </div>
-        </section>
+        </div>
 
-        <!-- Tab 2: Notes Inspector -->
-        <section class="tab-content" id="tab-notes-inspector">
-          <div class="notes-panel">
-            <div class="panel-intro">
-              <p>Granite 4.2 8B parses lines into structured logical relations while our Tier-1 Entity Filter purges distractors.</p>
-            </div>
-            <div class="lines-feed" id="lines-feed">
-              <!-- Populated by JS -->
-            </div>
-          </div>
-        </section>
-
-        <!-- Tab 3: 720-World Solver View -->
-        <section class="tab-content" id="tab-solver-view">
-          <div class="solver-dashboard">
-            <div class="solver-stats-cards">
-              <div class="stat-card">
-                <span class="stat-label">Total Permutations</span>
-                <span class="stat-number">720</span>
-                <span class="stat-desc">5! blocks × 3! stations</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-label">Valid Consistent Worlds</span>
-                <span class="stat-number" id="stat-valid-worlds">0</span>
-                <span class="stat-desc" id="stat-worlds-status">Contradiction Detected</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-label">Evaluation Latency</span>
-                <span class="stat-number text-green">&lt; 1 ms</span>
-                <span class="stat-desc">Pure Symbolic Matrix Filter</span>
-              </div>
-            </div>
-
-            <!-- Solution or Conflict Detail -->
-            <div class="solution-display" id="solution-display">
-              <!-- Rendered by JS -->
-            </div>
-          </div>
-        </section>
-
-        <!-- Tab 4: Ablation Benchmarks -->
-        <section class="tab-content" id="tab-ablation-bench">
-          <div class="bench-panel">
+        <!-- Mode 3: Ablation Benchmarks -->
+        <div class="view-panel" id="view-bench">
+          <div class="bench-card">
             <h3>Ablation Matrix Across Budgets</h3>
-            <p class="bench-desc">Macro Exact Match evaluated under the official competition settings with <code>ibm-granite/granite-4.2-8b</code> (temp=1.0, top_p=0.95, non-thinking).</p>
+            <p class="bench-sub">Evaluated under official parameters (Granite 4.2 8B, temp=1.0, top_p=0.95, non-thinking).</p>
             <table class="ablation-table">
               <thead>
                 <tr>
-                  <th>Architecture Configuration</th>
+                  <th>Configuration</th>
                   <th>1x Budget</th>
                   <th>3x Budget</th>
                   <th>10x Budget</th>
-                  <th>Delta vs Baseline</th>
+                  <th>Macro Exact Match</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="baseline-row">
-                  <td><strong>Vanilla Granite 4.2 8B (One-shot, no harness)</strong></td>
+                  <td>Vanilla Granite 4.2 8B (One-shot, raw)</td>
                   <td>0.0%</td>
                   <td>0.0%</td>
                   <td>0.0%</td>
-                  <td>—</td>
+                  <td><strong>0.0%</strong></td>
                 </tr>
                 <tr>
-                  <td>Frontier Benchmark: Claude 3.5 Sonnet (Direct)</td>
+                  <td>Frontier Benchmark: Claude 3.5 Sonnet</td>
                   <td>67.5%</td>
                   <td>67.5%</td>
                   <td>67.5%</td>
-                  <td>+67.5%</td>
+                  <td><strong>67.5%</strong></td>
                 </tr>
                 <tr>
                   <td>Granite + Naive Direct Prompting</td>
                   <td>4.2%</td>
                   <td>6.1%</td>
                   <td>8.5%</td>
-                  <td>+8.5%</td>
+                  <td><strong>6.3%</strong></td>
                 </tr>
                 <tr>
                   <td>Granite + Symbolic Solver (No Pre-filter)</td>
                   <td>51.3%</td>
                   <td>58.4%</td>
                   <td>63.2%</td>
-                  <td>+63.2%</td>
+                  <td><strong>57.6%</strong></td>
                 </tr>
                 <tr class="highlight-row">
-                  <td><strong>Our Neuro-Symbolic Decompiler + 720-World Solver + FSM Repair</strong></td>
+                  <td><strong>ShiftLogic (Pre-filter + Decompiler + 720-World Solver)</strong></td>
                   <td><strong>72.2%</strong></td>
                   <td><strong>76.8%</strong></td>
                   <td><strong>81.5%</strong></td>
-                  <td><span class="text-green"><strong>+81.5%</strong></span></td>
+                  <td><strong class="text-green">76.8%</strong></td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3.0"></script>
 </body>
 </html>

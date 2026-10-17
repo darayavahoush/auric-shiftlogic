@@ -1,11 +1,12 @@
-// ShiftLogic Web UI Controller
+// ShiftLogic Streamlined Controller
 let allItems = [];
 let activeItem = null;
 let currentFilter = 'all';
+let currentView = 'notes';
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const res = await fetch('data.json');
+    const res = await fetch('data.json?t=' + Date.now());
     allItems = await res.json();
     initApp();
   } catch (err) {
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function initApp() {
-  setupTabs();
   setupFilters();
   setupSearch();
   renderItemList();
@@ -23,24 +23,23 @@ function initApp() {
   }
 }
 
-function setupTabs() {
-  const tabs = document.querySelectorAll('.tab-btn');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      
-      tab.classList.add('active');
-      const targetId = `tab-${tab.dataset.tab}`;
-      const targetContent = document.getElementById(targetId);
-      if (targetContent) targetContent.classList.add('active');
-      
-      if (tab.dataset.tab === 'knowledge-graph') {
-        renderKnowledgeGraph(activeItem);
-      }
-    });
-  });
+function setViewMode(mode) {
+  currentView = mode;
+  document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+
+  const activeBtn = document.getElementById(`btn-view-${mode}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  const panelId = mode === 'notes' ? 'view-notes-solution' : `view-${mode}`;
+  const activePanel = document.getElementById(panelId);
+  if (activePanel) activePanel.classList.add('active');
+
+  if (mode === 'graph') {
+    renderKnowledgeGraph(activeItem);
+  }
 }
+window.setViewMode = setViewMode;
 
 function setupFilters() {
   const pills = document.querySelectorAll('.filter-pills .pill');
@@ -96,25 +95,25 @@ function selectItem(item) {
   activeItem = item;
   renderItemList();
 
-  // Update header
+  // Header meta
   document.getElementById('active-item-id').textContent = item.id;
   const badge = document.getElementById('active-case-badge');
   badge.textContent = item.case;
   badge.className = `case-badge badge-${item.case}`;
 
-  // Update Notes
+  // Render components
   renderNotes(item);
+  renderSolution(item);
 
-  // Update Solver Stats
-  renderSolverView(item);
-
-  // Update Graph
-  renderKnowledgeGraph(item);
+  if (currentView === 'graph') {
+    renderKnowledgeGraph(item);
+  }
 }
 
 function renderNotes(item) {
   const feed = document.getElementById('lines-feed');
   feed.innerHTML = '';
+
   const lines = item.text.split('\n').slice(1).filter(l => l.trim());
   const conflictSets = item.conflict_line_sets || [];
   const allConflicts = new Set(conflictSets.flat().map(s => s.trim().toLowerCase()));
@@ -149,29 +148,27 @@ function renderNotes(item) {
   });
 }
 
-function renderSolverView(item) {
-  const validWorldsEl = document.getElementById('stat-valid-worlds');
-  const worldsStatusEl = document.getElementById('stat-worlds-status');
+function renderSolution(item) {
+  const statusEl = document.getElementById('world-status-tag');
   const displayEl = document.getElementById('solution-display');
   displayEl.innerHTML = '';
 
   if (item.case === 'unique') {
-    validWorldsEl.textContent = '1';
-    validWorldsEl.className = 'stat-number text-green';
-    worldsStatusEl.textContent = 'Unique Schedule Derived';
+    statusEl.textContent = '1 Consistent World';
+    statusEl.style.color = '#34d399';
 
     const assign = item.assignment || (item.assignments && item.assignments[0]) || {};
     displayEl.innerHTML = `
       <div class="schedule-card">
-        <h4>Consistent Shift Roster</h4>
+        <h4>Consistent Shift Roster (Exact)</h4>
         <table class="schedule-table">
-          <thead><tr><th>Staff</th><th>Time Block</th><th>Workstation</th></tr></thead>
+          <thead><tr><th>Staff Member</th><th>Time Block</th><th>Station</th></tr></thead>
           <tbody>
             ${Object.entries(assign).map(([p, info]) => `
               <tr>
                 <td><strong>${p}</strong></td>
                 <td><code>${info.block || '—'}</code></td>
-                <td><span class="dot station-dot"></span> ${info.station || 'None'}</td>
+                <td>${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -180,47 +177,48 @@ function renderSolverView(item) {
     `;
   } else if (item.case === 'ambiguous') {
     const assigns = item.assignments || [];
-    validWorldsEl.textContent = assigns.length.toString();
-    validWorldsEl.className = 'stat-number text-amber';
-    worldsStatusEl.textContent = `${assigns.length} Valid Assignments Found`;
+    statusEl.textContent = `${assigns.length} Consistent Worlds`;
+    statusEl.style.color = '#fbbf24';
 
     displayEl.innerHTML = `
-      <div class="roster-grid">
-        ${assigns.map((assign, i) => `
-          <div class="schedule-card">
-            <h4>Candidate Schedule #${i + 1}</h4>
-            <table class="schedule-table">
-              <thead><tr><th>Staff</th><th>Block</th><th>Station</th></tr></thead>
-              <tbody>
-                ${Object.entries(assign).map(([p, info]) => `
-                  <tr>
-                    <td><strong>${p}</strong></td>
-                    <td><code>${info.block || '—'}</code></td>
-                    <td>${info.station || '—'}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-        `).join('')}
+      <div class="schedule-card">
+        <h4>${assigns.length} Valid Alternative Roster Assignments</h4>
+        <p style="font-size:0.75rem; color:#94a3b8; margin-bottom:10px;">The puzzle constraints leave multiple schedules valid:</p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          ${assigns.map((assign, i) => `
+            <div style="background:#0f1422; border:1px solid #1e293b; padding:8px 10px; border-radius:5px;">
+              <strong style="font-size:0.75rem; color:#38bdf8;">Schedule #${i + 1}</strong>
+              <table class="schedule-table" style="margin-top:4px;">
+                <tbody>
+                  ${Object.entries(assign).map(([p, info]) => `
+                    <tr>
+                      <td style="width:35%;"><strong>${p}</strong></td>
+                      <td style="width:30%;"><code>${info.block || '—'}</code></td>
+                      <td style="width:35%;">${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
   } else {
-    validWorldsEl.textContent = '0';
-    validWorldsEl.className = 'stat-number text-red';
-    worldsStatusEl.textContent = 'Minimal Conflicting Core Detected';
+    statusEl.textContent = '0 Consistent Worlds (Contradiction)';
+    statusEl.style.color = '#f87171';
 
     const conflictSets = item.conflict_line_sets || [];
     displayEl.innerHTML = `
-      <div class="schedule-card" style="border-color: #ef4444;">
-        <h4 style="color: #f87171;">Minimal Unsatisfiable Core (MUS) Citations</h4>
-        <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px;">
-          The following statements cannot all hold simultaneously. Dropping any single statement leaves a valid schedule.
+      <div class="schedule-card" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.04);">
+        <h4 style="color: #f87171;">Minimal Unsatisfiable Core (MUS)</h4>
+        <p style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 12px;">
+          The following statements cannot all hold simultaneously. Dropping any single statement leaves a satisfiable schedule:
         </p>
         ${conflictSets.map((set, i) => `
-          <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 10px; border-radius: 6px; margin-bottom: 8px;">
-            <strong style="font-size: 0.75rem; color: #f87171;">Contradiction Set #${i + 1} (${set.length} statements):</strong>
-            <ul style="padding-left: 20px; font-size: 0.82rem; margin-top: 6px;">
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); padding: 10px; border-radius: 5px; margin-bottom: 8px;">
+            <strong style="font-size: 0.72rem; color: #f87171;">Contradiction Set #${i + 1} (${set.length} statements):</strong>
+            <ul style="padding-left: 18px; font-size: 0.8rem; margin-top: 6px; color: #fca5a5;">
               ${set.map(stmt => `<li style="margin-bottom: 4px;">"${stmt}"</li>`).join('')}
             </ul>
           </div>
@@ -229,6 +227,99 @@ function renderSolverView(item) {
     `;
   }
 }
+
+async function runLiveInference() {
+  if (!activeItem) return;
+
+  const btn = document.getElementById('live-run-btn');
+  const spinner = document.getElementById('btn-spinner');
+  const btnText = document.getElementById('btn-text');
+
+  btn.disabled = true;
+  spinner.style.display = 'inline-block';
+  btnText.textContent = ' Running Granite 8B...';
+
+  try {
+    const res = await fetch('/api/solve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item_id: activeItem.id, budget: '1x' })
+    });
+
+    if (!res.ok) {
+      throw new Error(`Inference error: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    console.log('Live inference result:', data);
+
+    setViewMode('notes');
+    const displayEl = document.getElementById('solution-display');
+    const statusEl = document.getElementById('world-status-tag');
+
+    if (data.case === 'unique') {
+      statusEl.textContent = 'Live Granite 8B: 1 Consistent World';
+      statusEl.style.color = '#34d399';
+      displayEl.innerHTML = `
+        <div class="schedule-card" style="border-color: #10b981;">
+          <h4 style="color: #34d399;">⚡ Live Inferred Schedule (Granite 4.2 8B)</h4>
+          <table class="schedule-table">
+            <thead><tr><th>Staff</th><th>Block</th><th>Station</th></tr></thead>
+            <tbody>
+              ${Object.entries(data.assignment || {}).map(([p, info]) => `
+                <tr>
+                  <td><strong>${p}</strong></td>
+                  <td><code>${info.block || '—'}</code></td>
+                  <td>${info.station ? '🛡️ ' + info.station : '<span style="color:#64748b">None</span>'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else if (data.case === 'ambiguous') {
+      const assigns = data.assignments || [];
+      statusEl.textContent = `Live Granite 8B: ${assigns.length} Consistent Worlds`;
+      statusEl.style.color = '#fbbf24';
+      displayEl.innerHTML = `
+        <div class="schedule-card" style="border-color: #f59e0b;">
+          <h4 style="color: #fbbf24;">⚡ Live Inferred Candidates (Granite 4.2 8B)</h4>
+          ${assigns.map((assign, i) => `
+            <div style="background:#0f1422; border:1px solid #1e293b; padding:8px; border-radius:5px; margin-bottom:8px;">
+              <strong style="font-size:0.75rem; color:#38bdf8;">Candidate #${i + 1}</strong>
+              <table class="schedule-table">
+                <tbody>
+                  ${Object.entries(assign).map(([p, info]) => `
+                    <tr><td><strong>${p}</strong></td><td><code>${info.block}</code></td><td>${info.station || '—'}</td></tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      statusEl.textContent = 'Live Granite 8B: Inconsistent';
+      statusEl.style.color = '#f87171';
+      displayEl.innerHTML = `
+        <div class="schedule-card" style="border-color: #ef4444;">
+          <h4 style="color: #f87171;">⚡ Live Minimal Unsatisfiable Core Citations</h4>
+          <ul style="padding-left: 18px; font-size: 0.82rem; color: #fca5a5;">
+            ${(data.conflicts || []).map(stmt => `<li style="margin-bottom: 4px;">"${stmt}"</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+  } catch (err) {
+    alert(`Live inference failed: ${err.message}. Ensure backend is running.`);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    btnText.textContent = '⚡ Run Live Inference';
+  }
+}
+window.runLiveInference = runLiveInference;
 
 function renderKnowledgeGraph(item) {
   const svg = document.getElementById('kg-canvas');
@@ -243,19 +334,16 @@ function renderKnowledgeGraph(item) {
   const stations = ['intake', 'calibration', 'packing'];
 
   const width = svg.clientWidth || 800;
-  const height = 480;
   svg.innerHTML = '';
 
-  // Positions
-  const staffX = width * 0.2;
-  const blockX = width * 0.55;
+  const staffX = width * 0.18;
+  const blockX = width * 0.52;
   const stationX = width * 0.85;
 
-  const staffY = staff.map((_, i) => 80 + i * 75);
-  const blockY = blocks.map((_, i) => 80 + i * 75);
-  const stationY = stations.map((_, i) => 120 + i * 110);
+  const staffY = staff.map((_, i) => 70 + i * 85);
+  const blockY = blocks.map((_, i) => 70 + i * 85);
+  const stationY = stations.map((_, i) => 120 + i * 120);
 
-  // Draw Edges first (if assignment exists)
   if (item.case === 'unique' && (item.assignment || item.assignments)) {
     const assign = item.assignment || item.assignments[0];
     staff.forEach((p, pIdx) => {
@@ -275,20 +363,9 @@ function renderKnowledgeGraph(item) {
     });
   }
 
-  // Draw Staff Nodes
-  staff.forEach((p, i) => {
-    drawNode(svg, staffX, staffY[i], 24, '#0284c7', p, 'staff');
-  });
-
-  // Draw Block Nodes
-  blocks.forEach((b, i) => {
-    drawNode(svg, blockX, blockY[i], 22, '#7c3aed', b, 'block');
-  });
-
-  // Draw Station Nodes
-  stations.forEach((st, i) => {
-    drawNode(svg, stationX, stationY[i], 26, '#059669', st, 'station');
-  });
+  staff.forEach((p, i) => drawNode(svg, staffX, staffY[i], 24, '#0284c7', p, 'staff'));
+  blocks.forEach((b, i) => drawNode(svg, blockX, blockY[i], 22, '#7c3aed', b, 'block'));
+  stations.forEach((st, i) => drawNode(svg, stationX, stationY[i], 26, '#059669', st, 'station'));
 }
 
 function drawLine(svg, x1, y1, x2, y2, color, strokeWidth) {
@@ -327,111 +404,3 @@ function drawNode(svg, x, y, r, fill, label, type) {
 
   svg.appendChild(group);
 }
-
-async function runLiveInference() {
-  if (!activeItem) return;
-
-  const btn = document.getElementById('live-run-btn');
-  const spinner = document.getElementById('btn-spinner');
-  const btnText = document.getElementById('btn-text');
-
-  btn.disabled = true;
-  spinner.style.display = 'inline-block';
-  btnText.textContent = ' Running Granite 8B...';
-
-  try {
-    const res = await fetch('/api/solve', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item_id: activeItem.id, budget: '1x' })
-    });
-
-    if (!res.ok) {
-      throw new Error(`Inference error: ${res.statusText}`);
-    }
-
-    const data = await res.json();
-    console.log('Live inference result:', data);
-
-    // Switch to solver tab and update display with live result
-    const solverTab = document.querySelector('.tab-btn[data-tab="solver-view"]');
-    if (solverTab) solverTab.click();
-
-    // Render result
-    const displayEl = document.getElementById('solution-display');
-    const validWorldsEl = document.getElementById('stat-valid-worlds');
-    const worldsStatusEl = document.getElementById('stat-worlds-status');
-
-    if (data.case === 'unique') {
-      validWorldsEl.textContent = '1';
-      validWorldsEl.className = 'stat-number text-green';
-      worldsStatusEl.textContent = 'Live Granite 8B: Unique Schedule Derived';
-      displayEl.innerHTML = `
-        <div class="schedule-card" style="border-color: #10b981;">
-          <h4 style="color: #34d399;">⚡ Live Inferred Shift Roster (Granite 4.2 8B)</h4>
-          <table class="schedule-table">
-            <thead><tr><th>Staff</th><th>Time Block</th><th>Workstation</th></tr></thead>
-            <tbody>
-              ${Object.entries(data.assignment || {}).map(([p, info]) => `
-                <tr>
-                  <td><strong>${p}</strong></td>
-                  <td><code>${info.block || '—'}</code></td>
-                  <td><span class="dot station-dot"></span> ${info.station || 'None'}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
-    } else if (data.case === 'ambiguous') {
-      const assigns = data.assignments || [];
-      validWorldsEl.textContent = assigns.length.toString();
-      validWorldsEl.className = 'stat-number text-amber';
-      worldsStatusEl.textContent = `Live Granite 8B: ${assigns.length} Valid Assignments Found`;
-      displayEl.innerHTML = `
-        <div class="roster-grid">
-          ${assigns.map((assign, i) => `
-            <div class="schedule-card" style="border-color: #f59e0b;">
-              <h4 style="color: #fbbf24;">Candidate Schedule #${i + 1}</h4>
-              <table class="schedule-table">
-                <thead><tr><th>Staff</th><th>Block</th><th>Station</th></tr></thead>
-                <tbody>
-                  ${Object.entries(assign).map(([p, info]) => `
-                    <tr>
-                      <td><strong>${p}</strong></td>
-                      <td><code>${info.block || '—'}</code></td>
-                      <td>${info.station || '—'}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    } else {
-      validWorldsEl.textContent = '0';
-      validWorldsEl.className = 'stat-number text-red';
-      worldsStatusEl.textContent = 'Live Granite 8B: Minimal Conflicting Core Detected';
-      displayEl.innerHTML = `
-        <div class="schedule-card" style="border-color: #ef4444;">
-          <h4 style="color: #f87171;">⚡ Live Minimal Unsatisfiable Core Citations</h4>
-          <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px;">
-            The solver identified the following minimal contradictory statements:
-          </p>
-          <ul style="padding-left: 20px; font-size: 0.85rem; color: #fca5a5;">
-            ${(data.conflicts || []).map(stmt => `<li style="margin-bottom: 6px;">"${stmt}"</li>`).join('')}
-          </ul>
-        </div>
-      `;
-    }
-
-  } catch (err) {
-    alert(`Live inference failed: ${err.message}. Make sure server.py is running.`);
-  } finally {
-    btn.disabled = false;
-    spinner.style.display = 'none';
-    btnText.textContent = '⚡ Run Live Inference';
-  }
-}
-
