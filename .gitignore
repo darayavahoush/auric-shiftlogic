@@ -25,5 +25,7 @@ build/
 .idea/
 
 # Run Artifacts
-answers_*.json
+/answers_*.json
+!results/
+!results/*.json
 scratch/
