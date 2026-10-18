@@ -116,8 +116,8 @@ def extract_json_array(text: str) -> Optional[List[Dict[str, Any]]]:
     return None
 
 
-def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperature: float = 1.0, max_retries: int = 5) -> str:
-    """Invokes Granite 4.2 8B under the exact competition requirements with exponential backoff."""
+def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperature: float = 1.0, timeout: float = 60.0) -> str:
+    """Invokes Granite 4.2 8B under the exact competition requirements (1 request per call)."""
     messages = [
         {"role": "system", "content": FEW_SHOT_SYSTEM},
         {"role": "user", "content": FEW_SHOT_EXAMPLE_PROMPT},
@@ -125,26 +125,16 @@ def call_granite(client: OpenAI, model: str, item_id: str, prompt: str, temperat
         {"role": "user", "content": prompt}
     ]
 
-    for attempt in range(max_retries):
-        try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                top_p=0.95,
-                timeout=45.0,
-                extra_headers={"X-Item-Id": str(item_id)},
-                extra_body={"reasoning": {"enabled": False}}
-            )
-            return response.choices[0].message.content or ""
-        except Exception as e:
-            if attempt == max_retries - 1:
-                print(f"[Decompiler] Permanent API failure on item {item_id}: {e}")
-                raise e
-            backoff = (2 ** attempt) * 1.5 + random.uniform(0.1, 0.5)
-            print(f"[Decompiler] Transient API error on item {item_id} ({e}). Retrying in {backoff:.1f}s (attempt {attempt + 1}/{max_retries})...")
-            time.sleep(backoff)
-    return ""
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature,
+        top_p=0.95,
+        timeout=timeout,
+        extra_headers={"X-Item-Id": str(item_id)},
+        extra_body={"reasoning": {"enabled": False}}
+    )
+    return response.choices[0].message.content or ""
 
 
 NEGATION_MARKERS = [
@@ -193,14 +183,23 @@ def canonicalize_between_line(line: str) -> Optional[Tuple[str, Tuple[str, ...]]
 
 
 def decompile_constraints(
-    client: OpenAI,
+    client: Optional[OpenAI],
     model: str,
     item: ParsedItem,
-    temperature: float = 1.0
+    temperature: float = 1.0,
+    use_regex_guards: bool = True,
+    raw_output: Optional[str] = None
 ) -> List[Constraint]:
-    """Calls Granite 8B and maps parsed JSON back to typed Constraint objects with canonicalization guards."""
-    prompt = build_decompiler_prompt(item)
-    raw_output = call_granite(client, model, item.item_id, prompt, temperature=temperature)
+    """
+    Calls Granite 8B and maps parsed JSON back to typed Constraint objects.
+    Can optionally toggle syntactic regex guards for ablation studies.
+    """
+    if raw_output is None:
+        if client is None:
+            return []
+        prompt = build_decompiler_prompt(item)
+        raw_output = call_granite(client, model, item.item_id, prompt, temperature=temperature)
+
     parsed = extract_json_array(raw_output)
 
     # Map candidate line indices
@@ -236,21 +235,25 @@ def decompile_constraints(
             if not source_line:
                 continue
 
-            # Technique 1: Bi-directional Betweenness Canonicalization Guard
-            canon = canonicalize_between_line(source_line)
-            if canon:
-                kind, canon_args = canon
-                args = list(canon_args)
-
-            # Technique 2: Negation Guard against positive misclassification
             s_low = source_line.lower()
-            if kind == "BLOCK_EQ" and any(w in s_low for w in NEGATION_MARKERS):
-                kind = "BLOCK_NEQ"
-            elif kind == "STATION_EQ" and any(w in s_low for w in ('other than', 'not assigned to', 'not on', 'not put on', 'definitely not')):
-                kind = "STATION_NEQ"
 
-            # Normalize args
+            # Optional Technique 1: Bi-directional Betweenness Canonicalization Guard
+            if use_regex_guards:
+                canon = canonicalize_between_line(source_line)
+                if canon:
+                    kind, canon_args = canon
+                    args = list(canon_args)
+
+                # Optional Technique 2: Negation Guard against positive misclassification
+                if kind == "BLOCK_EQ" and any(w in s_low for w in NEGATION_MARKERS):
+                    kind = "BLOCK_NEQ"
+                elif kind == "STATION_EQ" and any(w in s_low for w in ('other than', 'not assigned to', 'not on', 'not put on', 'definitely not')):
+                    kind = "STATION_NEQ"
+
+            # Entity Grounding
             def ground_person(p_name: str, line: str) -> str:
+                if not use_regex_guards:
+                    return p_name
                 if p_name in line:
                     return p_name
                 mentioned = [s for s in item.header.staff if re.search(r'\b' + re.escape(s) + r'\b', line, re.IGNORECASE)]

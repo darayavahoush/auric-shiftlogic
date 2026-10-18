@@ -36,6 +36,8 @@ def main():
     parser.add_argument("--key", default=os.path.join(ROOT, "visible_key.json"), help="Path to visible_key.json")
     parser.add_argument("--out", default=None, help="Output path for answers JSON")
     parser.add_argument("--limit", type=int, default=None, help="Optional limit for fast diagnostic runs")
+    parser.add_argument("--workers", type=int, default=4, help="Number of concurrent worker threads")
+    parser.add_argument("--no-guards", action="store_true", help="Disable deterministic syntactic guards for ablation")
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -46,7 +48,6 @@ def main():
         sys.exit("Error: OPENROUTER_API_KEY is not configured in .env. Please add it to run the harness.")
 
     client = OpenAI(api_key=api_key, base_url=base_url)
-    controller = FSMController(client, model)
 
     items = json.load(open(args.items, "r", encoding="utf-8"))
     if args.limit:
@@ -56,48 +57,67 @@ def main():
 
     print("=" * 65)
     print(f"ShiftLogic Eval Harness | Budget: {args.budget} | Model: {model}")
-    print(f"Total Items: {len(items)} | Destination: {out_file}")
+    print(f"Total Items: {len(items)} | Workers: {args.workers} | Destination: {out_file}")
+    print(f"Guards: {'Enabled' if not args.no_guards else 'Disabled (Ablation)'}")
     print("=" * 65)
 
     answers: Dict[str, Any] = {}
+    calls_map: Dict[str, int] = {}
     t0 = time.time()
-    calls_total = 0
 
-    for idx, item in enumerate(items, 1):
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    import threading
+
+    lock = threading.Lock()
+
+    def process_single(item):
         item_id = item["id"]
         raw_text = item["text"]
-
+        controller = FSMController(client, model, use_regex_guards=not args.no_guards)
         t_item_0 = time.time()
-        res = controller.run_item(item_id, raw_text, budget=args.budget)
+        try:
+            res = controller.run_item(item_id, raw_text, budget=args.budget)
+            telemetry = res.get("telemetry", {})
+            calls_used = telemetry.get("calls_used", 1)
+            entry = {"case": res["case"]}
+            if res["case"] == "unique":
+                entry["assignment"] = res.get("assignment", {})
+            elif res["case"] == "ambiguous":
+                entry["assignments"] = res.get("assignments", [])
+            else:
+                entry["conflicts"] = res.get("conflicts", [])
+            worlds = telemetry.get("world_count", 0)
+        except Exception as e:
+            print(f"[{item_id}] UNEXPECTED ERROR: {e}", file=sys.stderr)
+            entry = {"case": "ambiguous", "assignments": []}
+            calls_used = 1
+            worlds = 720
+            res = {"case": "ambiguous"}
+
         dt = time.time() - t_item_0
+        return item_id, entry, calls_used, worlds, dt, res["case"]
 
-        telemetry = res.get("telemetry", {})
-        calls_used = telemetry.get("calls_used", 1)
-        calls_total += calls_used
-        worlds = telemetry.get("world_count", 0)
+    completed = 0
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        futures = {executor.submit(process_single, item): item["id"] for item in items}
+        for future in as_completed(futures):
+            item_id, entry, calls_used, worlds, dt, case_str = future.result()
+            with lock:
+                answers[item_id] = entry
+                calls_map[item_id] = calls_used
+                completed += 1
+                # Incremental save
+                with open(out_file, "w", encoding="utf-8") as f:
+                    json.dump(answers, f, indent=2)
 
-        # Build submission entry conforming to score.py schema
-        entry = {"case": res["case"]}
-        if res["case"] == "unique":
-            entry["assignment"] = res.get("assignment", {})
-        elif res["case"] == "ambiguous":
-            entry["assignments"] = res.get("assignments", [])
-        else:
-            entry["conflicts"] = res.get("conflicts", [])
-
-        answers[item_id] = entry
-
-        # Incremental save
-        with open(out_file, "w", encoding="utf-8") as f:
-            json.dump(answers, f, indent=2)
-
-        print(f"[{idx:02d}/{len(items):02d}] {item_id}: {res['case'].upper():<12} "
-              f"| Worlds: {worlds:<4} | Calls: {calls_used} | Latency: {dt:.1f}s")
+                print(f"[{completed:02d}/{len(items):02d}] {item_id}: {case_str.upper():<12} "
+                      f"| Worlds: {worlds:<4} | Calls: {calls_used} | Latency: {dt:.1f}s")
 
     total_time = time.time() - t0
+    total_calls = sum(calls_map.values())
     print("=" * 65)
     print(f"Finished {len(items)} items in {total_time:.1f}s (Avg: {total_time/len(items):.2f}s/item)")
-    print(f"Total API Calls: {calls_total} (Avg: {calls_total/len(items):.2f} calls/item)")
+    print(f"Total API Calls: {total_calls} (Avg: {total_calls/len(items):.2f} calls/item)")
     print("=" * 65)
 
     # Score if visible key exists

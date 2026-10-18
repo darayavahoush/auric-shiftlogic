@@ -4,27 +4,54 @@ Finite State Machine (FSM) Agent Controller for Adaptive Budgets (1x, 3x, 10x).
 Orchestrates:
 1. Deterministic Entity Pre-Filtering
 2. Granite 4.2 8B Semantic Decompilation
-3. 720-World Symbolic Solver & MUS Engine
+3. 720-World Exhaustive Permutation Solver & MUS Engine
 4. Self-Healing & Verification Loops for 3x and 10x budgets.
-5. Rich Explainability & Telemetry Trace.
+5. Strict Call Budget Accounting & Rich Telemetry Trace.
 """
+import sys
+import re
 from typing import Dict, Any, List, Optional
 from openai import OpenAI
 from src.types import ParsedItem
 from src.prefilter import prefilter_item
-from src.decompiler import decompile_constraints, call_granite, extract_json_array
+from src.decompiler import (
+    decompile_constraints,
+    call_granite,
+    extract_json_array,
+    build_decompiler_prompt,
+    BLOCK_TO_IDX
+)
 from src.solver import solve, Constraint
 
 
 class FSMController:
-    def __init__(self, client: OpenAI, model: str):
+    def __init__(self, client: OpenAI, model: str, use_regex_guards: bool = True):
         self.client = client
         self.model = model
+        self.use_regex_guards = use_regex_guards
+        self.calls_used = 0
+        self.max_calls = 1
+
+    def _call_granite_safe(self, item_id: str, prompt: str, temperature: float = 1.0) -> Optional[str]:
+        """
+        Enforces strict call budget tracking. Every attempt to contact the model
+        is counted against calls_used. If calls_used >= max_calls, no request is sent.
+        Catches API exceptions gracefully to avoid aborting batch evaluation.
+        """
+        if self.calls_used >= self.max_calls:
+            return None
+        self.calls_used += 1
+        try:
+            return call_granite(self.client, self.model, item_id, prompt, temperature=temperature)
+        except Exception as e:
+            print(f"[FSM Warning] Call {self.calls_used}/{self.max_calls} on {item_id} encountered API error: {e}", file=sys.stderr)
+            return None
 
     def run_item(self, item_id: str, raw_text: str, budget: str = "1x") -> Dict[str, Any]:
         """Runs the solver pipeline for a single item within the specified call budget."""
         budget_str = budget.lower().strip()
-        max_calls = 1 if budget_str == "1x" else (3 if budget_str == "3x" else 10)
+        self.max_calls = 1 if budget_str == "1x" else (3 if budget_str == "3x" else 10)
+        self.calls_used = 0
 
         trace = []
 
@@ -44,34 +71,98 @@ class FSMController:
             }
         })
 
-        # Call 1: Primary Decompilation
-        constraints = decompile_constraints(self.client, self.model, parsed)
-        calls_used = 1
+        constraints: List[Constraint] = []
 
-        extracted_summary = [
-            f"{c.kind}({', '.join(str(x) for x in c.args)}) ← '{c.source_line}'"
-            for c in constraints
-        ]
+        # Multi-sample consensus if 10x budget
+        if self.max_calls >= 10:
+            # Step 2: Draw K=5 stochastic samples at temp=1.0 for robust majority consensus
+            samples: List[List[Constraint]] = []
+            target_samples = min(5, self.max_calls)
+            for s_idx in range(target_samples):
+                prompt = build_decompiler_prompt(parsed)
+                raw = self._call_granite_safe(item_id, prompt, temperature=1.0)
+                if raw:
+                    c_sample = decompile_constraints(
+                        self.client,
+                        self.model,
+                        parsed,
+                        temperature=1.0,
+                        use_regex_guards=self.use_regex_guards,
+                        raw_output=raw
+                    )
+                    samples.append(c_sample)
 
-        trace.append({
-            "step": 2,
-            "title": "Granite 4.2 8B Semantic Decompilation + Neuro-Symbolic Guards",
-            "calls": 1,
-            "description": f"Granite 8B decomposed candidate sentences at temp=1.0. Applied Betweenness Canonicalization, Dual-Pass Negation Guards, and Station Normalization, yielding {len(constraints)} verified formal constraints.",
-            "details": {
-                "constraints_extracted": extracted_summary
-            }
-        })
+            if samples:
+                from collections import Counter
+                c_counts = Counter()
+                c_map = {}
+                for sample in samples:
+                    seen = set()
+                    for c in sample:
+                        key = (c.kind, c.args, c.source_line)
+                        if key not in seen:
+                            seen.add(key)
+                            c_counts[key] += 1
+                            c_map[key] = c
 
-        # Symbolic Solver Pass #1
+                # Majority rule: retain constraints that appeared in >= 2 samples
+                consensus_c = [c_map[k] for k, count in c_counts.items() if count >= 2]
+                constraints = consensus_c if consensus_c else (samples[0] if samples else [])
+            else:
+                constraints = []
+
+            trace.append({
+                "step": 2,
+                "title": f"Multi-Sample Majority Consensus ({len(samples)} passes, Calls: {self.calls_used})",
+                "calls": self.calls_used,
+                "description": f"Drawn {len(samples)} stochastic extractions at temp=1.0. Majority voting retained {len(constraints)} consensus constraints.",
+                "details": {
+                    "samples_drawn": len(samples),
+                    "consensus_constraints": len(constraints)
+                }
+            })
+
+        else:
+            # 1x or 3x: Single primary decompilation call
+            prompt = build_decompiler_prompt(parsed)
+            raw = self._call_granite_safe(item_id, prompt, temperature=1.0)
+            if raw:
+                constraints = decompile_constraints(
+                    self.client,
+                    self.model,
+                    parsed,
+                    temperature=1.0,
+                    use_regex_guards=self.use_regex_guards,
+                    raw_output=raw
+                )
+            else:
+                constraints = []
+
+            extracted_summary = [
+                f"{c.kind}({', '.join(str(x) for x in c.args)}) \u2190 '{c.source_line}'"
+                for c in constraints
+            ]
+
+            guard_desc = "With Syntactic & Negation Guards" if self.use_regex_guards else "Pure Model Output"
+            trace.append({
+                "step": 2,
+                "title": f"Granite 4.2 8B Semantic Decompilation ({guard_desc})",
+                "calls": self.calls_used,
+                "description": f"Granite 8B decomposed candidate sentences at temp=1.0, yielding {len(constraints)} formal constraints.",
+                "details": {
+                    "constraints_extracted": extracted_summary
+                }
+            })
+
+        # Solver Pass #1
         result = solve(parsed.header.staff, parsed.header.station_holders, constraints)
         initial_worlds = result["world_count"]
 
         trace.append({
             "step": 3,
-            "title": "720-World Discrete SMT Solver & Symmetry Closure",
-            "calls": 1,
-            "description": f"Sifted 720 candidate worlds. Applied counterfactual noise disambiguation and permutation symmetry closure. Consistent worlds: {initial_worlds}.",
+            "title": "720-World Exhaustive Permutation Solver",
+            "calls": self.calls_used,
+            "description": f"Evaluated 720 candidate assignments across the permutation state space against {len(constraints)} constraints. Surviving valid worlds: {initial_worlds}.",
             "details": {
                 "initial_world_count": initial_worlds,
                 "preliminary_case": result["case"],
@@ -80,9 +171,9 @@ class FSMController:
         })
 
         # Adaptive Loops for 3x and 10x budgets
-        if max_calls > 1 and calls_used < max_calls:
-            # Loop 1: False Contradiction Audit on 0 worlds (False Inconsistent)
-            if result["case"] == "inconsistent" and calls_used < max_calls:
+        if self.max_calls > 1 and self.calls_used < self.max_calls:
+            # Loop 1: False Contradiction Audit on 0 worlds
+            if result["case"] == "inconsistent" and self.calls_used < self.max_calls:
                 conflict_lines = result.get("conflicts", [])
                 if conflict_lines:
                     audit_prompt = f"""Staff: {', '.join(parsed.header.staff)}.
@@ -96,12 +187,10 @@ Re-examine each statement carefully:
 Output a JSON array of corrected constraints for any real rules:
 [{"line_idx": 1, "kind": "BLOCK_NEQ", "args": ["..."]}]"""
 
-                    raw = call_granite(self.client, self.model, item_id, audit_prompt)
-                    calls_used += 1
-                    audit_json = extract_json_array(raw)
+                    raw = self._call_granite_safe(item_id, audit_prompt)
+                    audit_json = extract_json_array(raw) if raw else None
 
                     if audit_json:
-                        from src.decompiler import BLOCK_TO_IDX
                         c_conflicts = set(conflict_lines)
                         retained_constraints = [c for c in constraints if c.source_line not in c_conflicts]
                         new_constraints = []
@@ -121,13 +210,12 @@ Output a JSON array of corrected constraints for any real rules:
                         candidate_constraints = retained_constraints + new_constraints
                         re_result = solve(parsed.header.staff, parsed.header.station_holders, candidate_constraints)
                         if re_result["world_count"] > 0:
-                            # Successfully rescued item from false contradiction
                             constraints = candidate_constraints
                             result = re_result
                             trace.append({
                                 "step": len(trace) + 1,
-                                "title": f"FSM Contradiction Audit (Call #{calls_used})",
-                                "calls": calls_used,
+                                "title": f"FSM Contradiction Audit (Call #{self.calls_used})",
+                                "calls": self.calls_used,
                                 "description": f"Audited {len(conflict_lines)} conflicting statements. Rescued item from false contradiction: state space recovered to {result['world_count']} consistent worlds.",
                                 "details": {
                                     "rescued_world_count": result["world_count"],
@@ -136,24 +224,22 @@ Output a JSON array of corrected constraints for any real rules:
                             })
 
             # Loop 2: Under-constrained recovery on >1 worlds
-            if (result.get("case") == "under_constrained" or result["world_count"] >= 2) and calls_used < max_calls:
+            if (result.get("case") == "under_constrained" or result["world_count"] >= 2) and self.calls_used < self.max_calls:
                 extracted_lines = {c.source_line for c in constraints}
                 unextracted = [t for idx, t in parsed.candidate_lines if t not in extracted_lines]
-                
+
                 if unextracted:
-                    initial_worlds = result["world_count"]
+                    initial_w = result["world_count"]
                     repair_prompt = f"""Staff: {', '.join(parsed.header.staff)}.
-The initial pass missed some constraints, leaving candidate possibilities ({initial_worlds} worlds).
+The initial pass missed some constraints, leaving candidate possibilities ({initial_w} worlds).
 Inspect these specific lines and extract ANY schedule or station constraints:
 """ + "\n".join(f"{i+1}. {l}" for i, l in enumerate(unextracted))
 
-                    raw = call_granite(self.client, self.model, item_id, repair_prompt)
-                    calls_used += 1
-                    
-                    repair_json = extract_json_array(raw)
+                    raw = self._call_granite_safe(item_id, repair_prompt)
+                    repair_json = extract_json_array(raw) if raw else None
+
                     newly_added = []
                     if repair_json:
-                        from src.decompiler import BLOCK_TO_IDX
                         def norm_st(val):
                             val_low = str(val).lower()
                             for s in ("intake", "calibration", "packing"):
@@ -184,69 +270,37 @@ Inspect these specific lines and extract ANY schedule or station constraints:
                                     constraints.append(c)
                                     newly_added.append(f"{k}{c.args} from '{s_line}'")
 
-                        # Re-solve with rescued constraints
-                        result = solve(parsed.header.staff, parsed.header.station_holders, constraints)
+                        if newly_added:
+                            re_res = solve(parsed.header.staff, parsed.header.station_holders, constraints)
+                            if re_res["world_count"] > 0:
+                                result = re_res
+                                trace.append({
+                                    "step": len(trace) + 1,
+                                    "title": f"FSM Adaptive Repair Loop (Call #{self.calls_used})",
+                                    "calls": self.calls_used,
+                                    "description": f"Targeted {len(unextracted)} unextracted lines. Recovered {len(newly_added)} missed constraints, transitioning candidate worlds from {initial_w} to {result['world_count']}.",
+                                    "details": {
+                                        "newly_recovered": newly_added,
+                                        "revised_world_count": result["world_count"]
+                                    }
+                                })
 
-                        trace.append({
-                            "step": len(trace) + 1,
-                            "title": f"FSM Adaptive Repair Loop (Call #{calls_used})",
-                            "calls": calls_used,
-                            "description": f"Targeted {len(unextracted)} unextracted lines. Recovered {len(newly_added)} missed constraints, transitioning candidate worlds from {initial_worlds} to {result['world_count']}.",
-                            "details": {
-                                "newly_recovered": newly_added,
-                                "revised_world_count": result["world_count"]
-                            }
-                        })
+        # Final decision classification
+        raw_case = result["case"]
+        valid_w = result.get("valid_worlds", [])
 
-            # Loop 3: Multi-sample majority consensus voting (for 10x budget)
-            if max_calls >= 10 and calls_used < max_calls:
-                samples = [list(constraints)]
-                while calls_used < min(max_calls, 4):
-                    extra_c = decompile_constraints(self.client, self.model, parsed)
-                    calls_used += 1
-                    samples.append(extra_c)
-
-                # Count frequency of each constraint across independent runs
-                from collections import Counter
-                c_counts = Counter()
-                c_map = {}
-                for sample in samples:
-                    seen_in_sample = set()
-                    for c in sample:
-                        key = (c.kind, c.args, c.source_line)
-                        if key not in seen_in_sample:
-                            seen_in_sample.add(key)
-                            c_counts[key] += 1
-                            c_map[key] = c
-
-                # Majority rule: require >= 2 samples agreement
-                consensus_c = [c_map[k] for k, cnt in c_counts.items() if cnt >= 2]
-                if consensus_c:
-                    res_consensus = solve(parsed.header.staff, parsed.header.station_holders, consensus_c)
-                    if res_consensus["world_count"] > 0 or result["world_count"] == 0:
-                        constraints = consensus_c
-                        result = res_consensus
-                        trace.append({
-                            "step": len(trace) + 1,
-                            "title": f"Multi-Sample Majority Consensus (Call #{calls_used})",
-                            "calls": calls_used,
-                            "description": f"Sampled {len(samples)} independent passes. Majority voting retained {len(consensus_c)} verified constraints, yielding {result['world_count']} consistent worlds.",
-                            "details": {
-                                "consensus_count": len(consensus_c),
-                                "final_world_count": result["world_count"]
-                            }
-                        })
-
-        # Final decision explanation
-        case = result["case"]
-        if case == "under_constrained":
-            case = "ambiguous" if result["world_count"] <= 4 else "unique"
+        # If under-constrained (>4 worlds survive), the system honestly declares 'ambiguous'
+        # rather than fabricating an arbitrary unique schedule.
+        if raw_case == "under_constrained":
+            case = "ambiguous"
+        else:
+            case = raw_case
 
         explanation = ""
         if case == "unique":
             explanation = "Exactly 1 world out of 720 satisfies all constraints. Emitted the complete 5-person shift roster."
         elif case == "ambiguous":
-            explanation = f"Found {result['world_count']} consistent worlds out of 720. Emitted all candidate schedules."
+            explanation = f"Found {result['world_count']} consistent worlds out of 720. Emitted candidate schedules."
         else:
             conflicts = result.get("conflicts", [])
             explanation = f"Found 0 consistent worlds. Extracted the Minimal Unsatisfiable Core (MUS) consisting of {len(conflicts)} mutually contradictory statements."
@@ -254,7 +308,7 @@ Inspect these specific lines and extract ANY schedule or station constraints:
         trace.append({
             "step": len(trace) + 1,
             "title": f"Final Verdict: {case.upper()}",
-            "calls": calls_used,
+            "calls": self.calls_used,
             "description": explanation,
             "details": {
                 "case": case,
@@ -266,14 +320,13 @@ Inspect these specific lines and extract ANY schedule or station constraints:
             "case": case,
             "telemetry": {
                 "budget_requested": budget,
-                "calls_used": calls_used,
-                "max_calls": max_calls,
+                "calls_used": self.calls_used,
+                "max_calls": self.max_calls,
                 "world_count": result["world_count"],
                 "trace": trace
             }
         }
 
-        valid_w = result.get("valid_worlds", [])
         if case == "unique":
             if "assignment" in result:
                 out["assignment"] = result["assignment"]

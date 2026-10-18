@@ -10,12 +10,13 @@
 This repository presents **ShiftLogic**, a neuro-symbolic architecture that closes the performance gap on logic grid shift scheduling benchmarks between a fixed, weak open-weight model (`ibm-granite/granite-4.2-8b`) and frontier systems (Claude Sonnet 5).
 
 * **Granite 4.2 8B Baseline (One-shot, raw prompt):** **0.0%** Macro Exact Match.
+* **Model-Free Baseline (Dead model / constant guess):** **0.0%** Macro Exact Match.
 * **Frontier Reference (Claude Sonnet 5):** **67.5%** Macro Exact Match.
-* **ShiftLogic (Ours with FSM & SMT Solver):** Outperforms the frontier reference under strict call budgets.
+* **ShiftLogic (Ours with FSM & Permutation Solver):** **53.3%** at 1x, **48.3%** at 3x, and **56.7%** at 10x (with **85.0%** cell accuracy).
 
 ShiftLogic transforms the challenge from an intractable end-to-end LLM reasoning problem into a **two-tier neuro-symbolic pipeline**:
 1. **Semantic Decompiler (Model-Based)**: Employs Granite 4.2 8B as a localized entity-attribute-relation parser, mapping hedged natural language statements to a compact Intermediate Representation (IR).
-2. **The 720-World Symbolic Engine (Exact SMT/CSP)**: Evaluates candidate schedules across the exhaustive finite permutation space ($5! \text{ blocks} \times 3! \text{ stations} = 720 \text{ candidate worlds}$) in under 1 millisecond, guaranteeing mathematical soundness, complete cardinality enumeration for `ambiguous` items, and exact **Minimal Unsatisfiable Cores (MUS)** for `inconsistent` items.
+2. **The 720-World Symbolic Engine (Exact Permutation Solver)**: Evaluates candidate schedules across the exhaustive finite permutation space ($5! \text{ blocks} \times 3! \text{ stations} = 720 \text{ candidate worlds}$) in under 1 millisecond, guaranteeing mathematical soundness, complete cardinality enumeration for `ambiguous` items, and exact **Minimal Unsatisfiable Cores (MUS)** for `inconsistent` items.
 
 ---
 
@@ -53,7 +54,7 @@ Before constructing our architecture, we characterized `ibm-granite/granite-4.2-
                                          │
                                          ▼ (Constraints + Citations)
                   ┌──────────────────────────────────────────────┐
-                  │    Tier 3: 720-World Symbolic Solver (SMT)   │
+                  │  Tier 3: 720-World Permutation Solver        │
                   │   - Evaluates permutation state space (720)  │
                   │   - Boolean satisfaction matrix (<1 ms)      │
                   │   - Computes Minimal Unsatisfiable Core (MUS)│
@@ -77,56 +78,69 @@ Before constructing our architecture, we characterized `ibm-granite/granite-4.2-
   * If valid worlds $\in [2, 4]$: Emits all consistent schedules for `ambiguous`.
   * If valid worlds == 0: Performs an exhaustive subset search starting at cardinality $r=3$ to find the exact Minimal Unsatisfiable Core (MUS).
 * **Tier 4 (Adaptive FSM Controller for 3x / 10x)**:
-  * At **1x**: Single-pass extraction $\to$ symbolic evaluation.
+  * At **1x**: Single-pass extraction $\to$ permutation solver evaluation.
   * At **3x**:
-    - **Loop 1 (False Contradiction Audit)**: If 0 worlds occur, Granite re-evaluates statements in the Minimal Unsatisfiable Core to prune ambient chatter and fix inverted polarity.
-    - **Loop 2 (Under-Constrained Recovery)**: If `world_count > 4`, targets candidate lines that yielded zero constraints.
-  * At **10x**: **Loop 3 (Multi-Sample Consensus)**: Takes independent stochastic samples and enforces majority voting ($\ge 2$ agreements per constraint) rather than a destructive union.
+    - **Loop 1 (False Contradiction Audit)**: If 0 worlds occur, Granite audits statements in the Minimal Unsatisfiable Core (MUS).
+    - **Loop 2 (Under-Constrained Recovery)**: If `world_count > 4` or under-constrained, targets unextracted candidate lines to recover missed constraints.
+  * At **10x**: **Multi-Sample Consensus + Targeted Repair**: Draws 5 stochastic passes, computes frequency-weighted majority consensus ($\ge 2$ agreeing passes), and executes repair loops on top of the consensus set so repaired constraints are never discarded.
 
-### 3.1 Four High-Precision Neuro-Symbolic Enhancements
-To push beyond standard extraction accuracy, ShiftLogic incorporates four targeted mathematical and linguistic guards:
+### 3.1 Five High-Precision Neuro-Symbolic Guards
 1. **Bi-Directional Betweenness Canonicalization**:
-   Natural language statements express betweenness through diverse syntactic structures (e.g., *"Whichever way round A and B are, C is between them"* or *"C is on after one of A and B and before the other"*). ShiftLogic deterministically parses the syntactic head to guarantee that `args[0]` is strictly the intermediate entity across phrasing patterns, preventing inverted relation constraints.
-2. **Station & Ordering Argument Normalization**:
-   Granite occasionally inverts arguments when a station appears early in the sentence (e.g., *"The calibration station is covered earlier than Tomas"*). ShiftLogic dynamically identifies which argument is a station and which is a person, mapping to `ORDER_STATION_PERSON` or `ORDER_PERSON_STATION` based on sentence polarity, while dropping self-referential relations (`p1 < p1`).
-3. **Counterfactual Core Noise Disambiguation (FSM Loop 1)**:
-   In cases where conversational remarks mimic constraints and trigger an artificial contradiction ($0$ worlds), ShiftLogic isolates the Minimal Unsatisfiable Core (MUS) and re-evaluates those specific sentences, rescuing items from false contradiction into satisfiable states.
-4. **Stochastic Majority Consensus Voting (FSM Loop 3)**:
-   At 10x budget, unioning multiple samples accumulates false positive constraints and increases false contradictions. ShiftLogic applies frequency-weighted majority consensus across independent passes at `temperature=1.0`, keeping only constraints validated by multiple passes.
-5. **Relational Entity Grounding & MaxSAT Sub-3 Core Rescue**:
-   - **Entity Grounding**: Resolves entity hallucination where the model attributes a constraint to a different staff member; anchors names strictly to the entities present in that specific line's relational subgraph.
-   - **MaxSAT Minimal Core Sieve**: In this problem domain, every genuine conflict core satisfies $|core| \ge 3$. ShiftLogic detects and isolates spurious size-1 or size-2 extraction contradictions, rescuing the state space into its true unique or ambiguous schedule.
+   Handles betweenness variations (*"Whichever way round A and B are, C is between them"*) by ensuring `args[0]` is strictly the intermediate entity.
+2. **Station & Ordering Normalization**:
+   Dynamically aligns argument polarity when stations appear early in relational clauses (e.g., *"The calibration station is covered earlier than Tomas"*), while dropping self-referential relations (`p1 < p1`).
+3. **Dual-Pass Negation Scoping**:
+   Corrects positive misclassifications on subtle negative phrasings (*"without success"*, *"turned down"*, *"declined"*, *"other than"*).
+4. **Relational Subgraph Entity Grounding**:
+   Resolves local name-hallucinations by anchoring extracted entities strictly to the staff mentioned in that candidate sentence's relational subgraph.
+5. **Sub-3 Minimal Conflict Sieve**:
+   *Assumption*: On the visible benchmark, every genuine contradiction has $|core| \ge 3$. ShiftLogic isolates and relaxes spurious 1- or 2-sentence extraction contradictions. (Note: On unseen distributions with valid 2-sentence contradictions, this heuristic is an acknowledged inductive bias).
 
 ---
 
 ## 4. Constraint Extraction: Model-Based vs. Symbolic & Robustness Analysis
 
-### Model-Based Extraction
-Our constraint extraction is strictly **model-based**, assisted by a lightweight deterministic entity filter. Granite 4.2 8B performs the semantic interpretation of the sentence, determining whether a relation is order-based, station-based, negative, or betweenness.
+### Model-Based Extraction vs. Deterministic Guards
+Our constraint extraction is fundamentally **model-based**: Granite 4.2 8B parses natural language sentences into typed relational constraints (`BLOCK_EQ`, `STATION_EQ`, `ORDER_LT`, `BETWEEN`, etc.).
 
-### Robustness to Unseen Human Phrasing vs. Synthetic Templates
-* **Why regex/symbolic parsers fail**: If shift notes were written by different human authors with varied dialects, idioms, and informal structures (*"Carla showed up after Dev left"*, *"Priya is stuck fixing calibration"*), regex-based extraction completely breaks.
-* **Why ShiftLogic generalizes**: Granite 8B's pre-trained language representations naturally generalize across semantic equivalents (*"precedes"*, *"earlier than"*, *"done before"*, *"prior to"*, *"hands over to"*). Our prompt teaches Granite the target **logical grammar** rather than specific sentence templates, ensuring robust performance on the unseen held-out test suite.
+To evaluate how much the system relies on linguistic guards vs. pure model comprehension, we conducted a full ablation on all 60 items with guards disabled (`--no-guards`):
+* **Pure Model Extraction alone** (Granite 8B + 720-world solver, zero regex overrides): **53.3% Macro Exact Match**.
+* **With Syntactic & Negation Guards**: **53.3% Macro Exact Match**.
+
+This demonstrates that the system does not depend on fragile regex templates to function; Granite 8B itself carries the semantic load, while the guards primarily stabilize name binding on complex phrasing.
 
 ---
 
-## 5. Ablation Study & Empirical Baselines
+## 5. Empirical Results & Ablation Study
 
-Evaluated on the 60 benchmark items under competition parameters (`temperature=1.0`, `top_p=0.95`, reasoning disabled):
+All figures below are directly measured from our evaluation across all 60 benchmark items under competition parameters (`temperature=1.0`, `top_p=0.95`, reasoning disabled) scored via the official `score.py`. The raw answer payloads are preserved in `answers_1x.json`, `answers_3x.json`, `answers_10x.json`, and `answers_1x_noguards.json`, directly feeding `ui/results.json`.
 
-| System Configuration | 1x Budget | 3x Budget | 10x Budget | Macro Exact Match |
-| :--- | :---: | :---: | :---: | :---: |
-| **Granite 4.2 8B Baseline (One-shot, raw prompt)** | 0.0% | 0.0% | 0.0% | **0.0%** |
-| **Model-Free Baseline (Regexes / entity filter alone)** | 8.3% | 8.3% | 8.3% | **8.3%** |
-| Frontier Reference: Claude Sonnet 5 (Direct zero-shot) | 67.5% | 67.5% | 67.5% | **67.5%** |
-| Granite + Naive Few-Shot Prompting (No solver) | 4.2% | 6.1% | 8.5% | **6.3%** |
-| Granite + Symbolic Solver (No Pre-filter) | 51.3% | 58.4% | 63.2% | **57.6%** |
-| ShiftLogic (Initial Pipeline: Entity Filter + Decompiler + Solver) | 72.2% | 76.8% | 81.5% | **76.8%** |
-| ShiftLogic + FSM Repair Loops (Audit + Recovery + Consensus) | 78.4% | 83.6% | 88.2% | 83.4% |
-| **ShiftLogic + Knowledge Graph Grounding & MaxSAT Sieve (Ours Full)** | **79.8%** | **85.2%** | **89.5%** | **84.8%** |
+### Official Performance Across Call Budgets
+
+| System Configuration | Budget Flag | Actual Calls / Item | Macro Exact Match | Unique (20) | Ambiguous (20) | Inconsistent (20) | Cell Accuracy |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Model-Free Baseline (Dead model / constant guess)** | — | 0.00 | **0.0%** | 0.0% | 0.0% | 0.0% | 0.0% |
+| **Granite 4.2 8B Baseline (One-shot, raw prompt)** | — | 1.00 | **0.0%** | 0.0% | 0.0% | 0.0% | — |
+| *Frontier Reference: Claude Sonnet 5 (From Brief)* | — | *Direct* | *67.5%* | *—* | *—* | *—* | *—* |
+| **ShiftLogic 1x (Pure Model, No Syntactic Guards)** | `1x` | 1.00 | **53.3%** | 40.0% (8/20) | 55.0% (11/20) | 65.0% (13/20) | 65.0% |
+| **ShiftLogic 1x (Full Pipeline: Single Pass)** | `1x` | 1.00 | **53.3%** | 45.0% (9/20) | 50.0% (10/20) | 65.0% (13/20) | 70.0% |
+| **ShiftLogic 3x (FSM Adaptive Repair Loops)** | `3x` | 1.87 | **48.3%** | 55.0% (11/20) | 55.0% (11/20) | 35.0% (7/20) | 80.6% |
+| **ShiftLogic 10x (5-Pass Consensus + Targeted Repair)** | `10x` | 5.87 | **56.7%** | 65.0% (13/20) | 65.0% (13/20) | 40.0% (8/20) | 85.0% |
 
 > [!NOTE]
-> In the absence of an LLM, pure deterministic filtering achieves an 8.3% floor (resolving 5 of 20 trivial inconsistent cases). All performance beyond this floor is driven by Granite 4.2 8B's semantic extraction, augmented by the 720-world symbolic constraint solver and adaptive FSM repair.
+> Constant-verdict guessing arms and model-free stubs score **0.0%** on this benchmark suite because an item requires the exact valid schedule or minimal citation set to receive credit. All performance above 0.0% is driven by Granite 4.2 8B coupled with the 720-world discrete permutation solver.
+
+### Deep Dive: The 3x Plateau and the Sycophancy of Contradiction Audits
+
+When moving from 1x to 3x, cell accuracy increases monotonically from **70.0% to 80.6%**, and accuracy on satisfiable puzzles jumps from **45% to 55% on unique** and **50% to 55% on ambiguous items**. However, overall macro exact match exhibits a plateau (53.3% $\to$ 48.3%). Understanding why this happens provides a fundamental insight into 8B model behaviors under `temperature=1.0`:
+
+1. **Constructive Line Recovery (Loop 2) Works Reliably**:
+   Granite 8B suffers from "lost-in-the-middle" attention degradation on long facility notes (frequently omitting lines 16–19 in the initial pass). Loop 2 prompts the model specifically on unextracted candidate lines, recovering missed constraints and collapsing candidate worlds from $>4$ down to the true unique assignment.
+2. **Destructive Relaxation (Loop 1) Triggers Sycophancy on Contradictions**:
+   When 0 worlds occur, Loop 1 asks Granite: *"Did any of these statements represent ambient chatter rather than a binding schedule rule?"*
+   At `temperature=1.0`, weak 8B models exhibit conversational sycophancy. Prompted with an apparent contradiction, the model frequently concedes that a genuine conflicting rule was "just informal banter" or flips its directional polarity. This over-prunes the true Minimal Unsatisfiable Core, artificially restoring satisfiability and converting genuine `inconsistent` puzzles into false `ambiguous` schedules (dropping inconsistent accuracy from 65% to 35%).
+3. **10x Multi-Sample Consensus Mitigates Sycophancy**:
+   In 10x, drawing 5 independent stochastic extraction passes and taking frequency-weighted majority consensus ($\ge 2$ agreeing passes) anchors the constraint graph before repair triggers. Executing targeted repair *on top of* consensus pushes Unique accuracy to **65.0%** (13/20), Ambiguous accuracy to **65.0%** (13/20), and Cell Accuracy to **85.0%**, bringing macro exact match to **56.7%**.
 
 ---
 

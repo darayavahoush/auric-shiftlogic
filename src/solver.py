@@ -219,10 +219,17 @@ def solve(staff: List[str], station_holders: List[str], constraints: List[Constr
 
 def rescue_sub3_conflicts(worlds: List[World], constraints: List[Constraint]) -> Optional[List[Constraint]]:
     """
-    Checks if an apparent contradiction (0 worlds) is caused by an invalid
-    sub-3 conflict (size 1 or size 2 subset that is unsatisfiable).
-    Since all true competition conflict cores have cardinality >= 3, any
-    sub-3 conflict is an LLM extraction artifact.
+    Sub-3 Minimal Conflict Sieve.
+
+    ASSUMPTION: On the visible benchmark set, all genuine minimal unsatisfiable cores
+    have cardinality >= 3 (the candidate brief explicitly notes: 'On this set every such
+    set has at least three statements in it'). Therefore, any size-1 or size-2 contradiction
+    is treated as an LLM extraction artifact.
+
+    CAUTION: If an unseen held-out distribution contains valid 2-statement contradictions,
+    this heuristic would relax a genuine contradiction. We ablate and document this
+    assumption explicitly.
+
     Returns the rescued subset of constraints if satisfiability can be restored.
     """
     n = len(constraints)

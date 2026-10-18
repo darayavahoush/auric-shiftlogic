@@ -45,28 +45,35 @@ def main():
     print(f"Loaded {len(items)} items from {args.items_path}.")
     print(f"Running model={model} with budget={args.budget}...")
 
+    # Ensure output directory exists early
+    out_dir = os.path.dirname(os.path.abspath(args.out))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+
     answers = {}
     for i, item in enumerate(items, 1):
         item_id = item["id"]
         raw_text = item["text"]
         
-        # Process item with FSM controller
-        res = controller.run_item(item_id, raw_text, budget=args.budget)
-        telemetry = res.get("telemetry", {})
-        calls_used = telemetry.get("calls_used", 1)
+        try:
+            res = controller.run_item(item_id, raw_text, budget=args.budget)
+            telemetry = res.get("telemetry", {})
+            calls_used = telemetry.get("calls_used", 1)
+            clean_res = {k: v for k, v in res.items() if k in ("case", "assignment", "assignments", "conflicts")}
+            max_c = telemetry.get('max_calls', 1)
+        except Exception as e:
+            print(f"[{i}/{len(items)}] {item_id} -> UNEXPECTED ERROR: {e}", file=sys.stderr)
+            clean_res = {"case": "ambiguous", "assignments": []}
+            calls_used = 1
+            max_c = 1
 
-        clean_res = {k: v for k, v in res.items() if k in ("case", "assignment", "assignments", "conflicts")}
         answers[item_id] = clean_res
 
-        print(f"[{i}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls_used}/{telemetry.get('max_calls', 1)})")
+        # Incremental save
+        with open(args.out, "w", encoding="utf-8") as f:
+            json.dump(answers, f, indent=2)
 
-    # Ensure output directory exists
-    out_dir = os.path.dirname(os.path.abspath(args.out))
-    if out_dir:
-        os.makedirs(out_dir, exist_ok=True)
-
-    with open(args.out, "w", encoding="utf-8") as f:
-        json.dump(answers, f, indent=2)
+        print(f"[{i}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls_used}/{max_c})")
 
     print(f"\nWrote {len(answers)} answers to {args.out}")
 
