@@ -67,7 +67,8 @@ def _min_conflict_sets(ms: List[int], full: int, max_size: int = 6) -> List[Tupl
 
 
 def repair(staff: List[str], holders: List[str], constraints: List[Constraint],
-           max_edits: int = 2, tie: str = "fewest_worlds", allow_drop_for_overconstrained: bool = True):
+           max_edits: int = 2, tie: str = "fewest_worlds", allow_drop_for_overconstrained: bool = True,
+           flagged_lines: Optional[Any] = None):
     """Returns (constraints_to_solve, info). info['action'] in {'none','edited','gave_up'}."""
     ctx = _Ctx(staff, holders)
     cons = list(constraints)
@@ -84,6 +85,9 @@ def repair(staff: List[str], holders: List[str], constraints: List[Constraint],
         pool = sorted({i for s in sets if len(s) < 3 for i in s}) or list(range(len(cons)))
     else:
         pool = list(range(len(cons)))                          # >4 worlds: any line might be the misread one
+
+    if flagged_lines:
+        pool.sort(key=lambda i: 0 if cons[i].source_line in flagged_lines else 1)
 
     def evaluate(edit_set):
         new_ms, new_cons = [], []
@@ -119,12 +123,13 @@ def repair(staff: List[str], holders: List[str], constraints: List[Constraint],
     if not found:
         info["action"] = "gave_up"
         return cons, info
-    if tie == "fewest_worlds":
-        found.sort(key=lambda t: (t[0], t[1], t[2]))
-    elif tie == "most_worlds":
-        found.sort(key=lambda t: (t[0], t[1], -t[2]))
-    else:
-        found.sort(key=lambda t: (t[0], t[1]))
+    def sort_key(t):
+        k, nd, n, edit_set, new_cons = t
+        touches_flagged = any(cons[i].source_line in flagged_lines for i in edit_set) if flagged_lines else False
+        world_metric = n if tie == "fewest_worlds" else (-n if tie == "most_worlds" else 0)
+        return (0 if touches_flagged else 1, k, nd, world_metric)
+
+    found.sort(key=sort_key)
     k, nd, n, edit_set, new_cons = found[0]
     info.update(action="edited", edits=[(cons[i].kind, cons[i].args, e[0]) for i, e in edit_set.items()],
                 worlds_after=n if n != 99 else 0, n_candidates=len(found))

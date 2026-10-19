@@ -34,12 +34,12 @@ def _vote_key(a: Dict[str, Any]):
     return ("inconsistent", tuple(sorted(a["conflicts"])))
 
 
-def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = True, under_fallback: str = "ambiguous"):
+def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = True, under_fallback: str = "ambiguous", knn_flagged: Optional[Any] = None):
     pi = prefilter_item(item_id, text)
     cons, verdicts = D.decompile_v2(pi, raw)
     info = {"repair": None}
     if use_repair:
-        cons, info["repair"] = repair(pi.header.staff, pi.header.station_holders, cons)
+        cons, info["repair"] = repair(pi.header.staff, pi.header.station_holders, cons, flagged_lines=knn_flagged)
     r = solve(pi.header.staff, pi.header.station_holders, cons)
     a = _finalize(r)
     legal = a is not None
@@ -63,7 +63,28 @@ def run_item(client, model: str, item_id: str, text: str, budget: str = "1x", ec
         except Exception as e:                         # noqa: BLE001
             print(f"[warn] {item_id}: call failed: {e}")
             continue
-        a, legal, _info = answer_from_raw(item_id, text, raw, use_repair)
+        flagged = set()
+        if use_repair:
+            try:
+                from src.knn import Retriever
+                R = D._RETRIEVER.get(knn_backend) or D._RETRIEVER.setdefault(knn_backend, Retriever(knn_backend))
+                lines_text = [t for _, t in pi.candidate_lines]
+                S_ = R._sims(lines_text)
+                for j, p in enumerate(R.pool):
+                    if p["item"] == item_id:
+                        S_[:, j] = -1
+                _, v_dict = D.decompile_v2(pi, raw)
+                for idx_1, l_text in enumerate(lines_text, 1):
+                    top = S_[idx_1 - 1].argsort()[::-1][:3]
+                    votes_kind = sum(1 for j in top if R.pool[j]["kind"])
+                    v_one = v_dict.get(idx_1)
+                    model_says = (v_one is not None and v_one.status == "constraint")
+                    knn_says = (votes_kind >= 2)
+                    if knn_says != model_says:
+                        flagged.add(l_text)
+            except Exception:
+                flagged = set()
+        a, legal, _info = answer_from_raw(item_id, text, raw, use_repair, knn_flagged=flagged)
         answers.append(a); legals.append(legal)
     if not answers:
         return {"case": "inconsistent", "conflicts": []}, calls
