@@ -46,18 +46,19 @@ ALWAYS WRITE ORDERINGS WITH THE EARLIER ONE FIRST in BEFORE(first, second) and N
 - "A is after B" / "A is later than B" / "A follows B" -> BEFORE(B, A) (because B is earlier!)
 - "A is directly after B" / "A takes over from B" -> NEXT(B, A) (because B is immediately before A!)
 - "A is directly before B" -> NEXT(A, B)
+PLAIN "after" IS NEVER NEXT. "goes on after", "comes on once Y has finished", "does not start until Y is done", "follows", "starts after" with NO word like directly / immediately / straight / right / next / back to back mean ANY gap: BEFORE(earlier, later). Use NEXT only when the line says the two blocks touch (directly, immediately, straight over, right after, back to back, nobody in between).
 
 WORD FAMILIES (examples of meaning, not an exhaustive list; new wording means the same thing):
 - earlier: before, earlier than, ahead of, prior to, precedes, goes on before, is done/finished before X starts, falls somewhere earlier -> BEFORE(this one, that one)
 - later: after, later than, follows, comes on after, takes over from, not on until after, starts once Y is done, by the time X starts Y has already been on -> BEFORE(Y, X)
 - immediately next: directly/immediately/right after or before, straight over to, back to back, relieves directly, no block in between -> NEXT(first, second)
-- between: between, in the middle of, wedged between, flanked by, after one of them and before the other, in either order, not necessarily adjacent -> BETWEEN
+- between: between, in the middle of, wedged between, \"X and Y bracket M\" (M is the middle one), the middle one of, neither first nor last of, flanked by, after one of them and before the other, in either order, not necessarily adjacent -> BETWEEN
 - has a block: takes, draws, opens up at, is scheduled, belongs to, is the one at, "the 11:00 block is X's" -> ON
 - not a block: unavailable, rules out, will not find X on, definitely not on, can't do, is not on the block -> NOT_ON
-- has a station: covers, is on, assigned to, has it this week, "intake is covered by X", "the station is down to X", "intake is X's station" -> AT
+- has a station: covers, is on, assigned to, posted to, stationed at, placed on, in charge of, running, manning, has it this week, "intake is covered by X", "the station is down to X", "intake is X's station" -> AT
 - not a station: not on, not assigned to, not put on, rule X out for, covered by someone other than X, not X's station -> NOT_AT
 
-HEDGES AND REPEATS ARE NOT DOUBT. "As far as I know", "I'm fairly sure", "My recollection is that", "Speaking from memory", "Going off the roster", "From what I recall", "If memory serves", "I believe" and the like leave the statement exactly as binding as without them. A line prefixed "It bears repeating:", "Noted twice in the handover:", "Worth restating:" is just the statement itself. Label the statement.
+HEDGES AND REPEATS ARE NOT DOUBT. "As far as I know", "I'm fairly sure", "My recollection is that", "Speaking from memory", "Going off the roster", "From what I recall", "If memory serves", "I believe" and the like leave the statement exactly as binding as without them. A line prefixed "It bears repeating:", "Noted twice in the handover:", "Worth restating:" is just the statement itself. Label the statement. A hedge NEVER turns a roster statement into SKIP:wish or SKIP:open: "Unless I have this wrong, Tobias has been posted to intake" is AT(Tobias, intake). SKIP:open needs the line itself to say the matter is undecided.
 
 SKIP REASONS (these are never constraints, however much they mention names, blocks or stations):
 SKIP:chat   workplace chatter with no bearing on who works which block or station: gates, keys, surveys, car-sharing, training, drills, walkarounds, recycling, catering, paperwork, who signed or attended something

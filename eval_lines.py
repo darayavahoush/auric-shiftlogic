@@ -53,8 +53,8 @@ def noisy_raw(g, e, d, rng):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--items", required=True); ap.add_argument("--gold", required=True); ap.add_argument("--key", required=True)
-    ap.add_argument("--samples", type=int, default=3); ap.add_argument("--workers", type=int, default=6)
-    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=0); ap.add_argument("--logprobs", action="store_true", help="request token logprobs (still ONE call)"); ap.add_argument("--signals-backend", default="auto"); ap.add_argument("--knn-backend", default="auto"); ap.add_argument("--simulate", default=None)
+    ap.add_argument("--samples", type=int, default=3); ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=0); ap.add_argument("--logprobs", action="store_true", help="request token logprobs (still ONE call)"); ap.add_argument("--signals-backend", default="tfidf"); ap.add_argument("--knn-backend", default="tfidf"); ap.add_argument("--simulate", default=None)
     ap.add_argument("--out", default=None); ap.add_argument("--limit", type=int, default=None)
     a = ap.parse_args()
     items = json.load(open(a.items)); gold = json.load(open(a.gold)); key = json.load(open(a.key))

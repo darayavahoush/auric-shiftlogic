@@ -26,7 +26,7 @@ def main():
     parser.add_argument("--out", required=True, help="Path to output answers.json")
     parser.add_argument("--workers", type=int, default=1, help="Concurrent workers (default: 1)")
     parser.add_argument("--knn", type=int, default=3, help="kNN retrieval shots per line (default: 3)")
-    parser.add_argument("--knn-backend", default="auto", choices=["auto", "st", "tfidf"], help="kNN backend (default: auto)")
+    parser.add_argument("--knn-backend", default="tfidf", choices=["auto", "st", "tfidf"], help="kNN backend (default: tfidf)")
     parser.add_argument("--no-repair", action="store_true", help="Disable 0-call constraint repair")
     parser.add_argument("--no-echo", action="store_true", help="Disable echoing candidate lines in prompt")
     parser.add_argument("--legacy", action="store_true", help="Run legacy v1 FSM controller")

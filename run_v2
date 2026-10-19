@@ -11,8 +11,8 @@ from src.pipeline_v2 import run_item
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("items_path"); ap.add_argument("--budget", choices=["1x", "3x", "10x"], default="1x")
-    ap.add_argument("--out", required=True); ap.add_argument("--workers", type=int, default=4)
-    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=0, help="K nearest labelled lines per line (0 = fixed shots)"); ap.add_argument("--knn-backend", default="auto", choices=["auto","st","tfidf"]); ap.add_argument("--no-repair", action="store_true")
+    ap.add_argument("--out", required=True); ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=3, help="K nearest labelled lines per line (0 = fixed shots)"); ap.add_argument("--knn-backend", default="tfidf", choices=["auto","st","tfidf"]); ap.add_argument("--no-repair", action="store_true")
     a = ap.parse_args(); load_dotenv()
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key: sys.exit("OPENROUTER_API_KEY not set")

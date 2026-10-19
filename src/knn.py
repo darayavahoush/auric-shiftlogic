@@ -23,7 +23,7 @@ def mask(text: str, staff=()) -> str:
 
 
 class Retriever:
-    def __init__(self, backend: str = "auto", pool_path: str = POOL_PATH):
+    def __init__(self, backend: str = "tfidf", pool_path: str = POOL_PATH):
         self.pool = json.load(open(pool_path))
         self.texts = [mask(p["text"]) for p in self.pool]
         self.backend = backend

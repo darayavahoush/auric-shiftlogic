@@ -50,7 +50,7 @@ def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = True, 
 
 def run_item(client, model: str, item_id: str, text: str, budget: str = "1x", echo: bool = True,
              use_repair: bool = True, exclude_ids=(), temperature: float = 1.0,
-             knn: int = 0, knn_backend: str = "auto"):
+             knn: int = 0, knn_backend: str = "tfidf"):
     n = BUDGET_CALLS[budget]
     pi = prefilter_item(item_id, text)
     msgs = D.messages_for_item(pi, echo=echo, exclude_ids=tuple(exclude_ids), knn=knn, knn_backend=knn_backend)
