@@ -53,8 +53,8 @@ def noisy_raw(g, e, d, rng):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--items", required=True); ap.add_argument("--gold", required=True); ap.add_argument("--key", required=True)
-    ap.add_argument("--samples", type=int, default=3); ap.add_argument("--workers", type=int, default=1)
-    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=0); ap.add_argument("--logprobs", action="store_true", help="request token logprobs (still ONE call)"); ap.add_argument("--signals-backend", default="tfidf"); ap.add_argument("--knn-backend", default="tfidf"); ap.add_argument("--simulate", default=None)
+    ap.add_argument("--samples", type=int, default=3); ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=3); ap.add_argument("--logprobs", action="store_true", help="request token logprobs (still ONE call)"); ap.add_argument("--signals-backend", default="tfidf"); ap.add_argument("--knn-backend", default="tfidf"); ap.add_argument("--simulate", default=None)
     ap.add_argument("--out", default=None); ap.add_argument("--limit", type=int, default=None)
     a = ap.parse_args()
     items = json.load(open(a.items)); gold = json.load(open(a.gold)); key = json.load(open(a.key))
@@ -65,8 +65,12 @@ def main():
         client = OpenAI(api_key=os.environ["OPENROUTER_API_KEY"], base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"), max_retries=0)
     prompt_text = D.SYSTEM_PROMPT.lower()
     jobs = [(it, s) for it in items for s in range(a.samples)]
+    import threading
+    progress_lock = threading.Lock()
+    done_count = 0
 
     def one(job):
+        nonlocal done_count
         it, s = job; g = gold[it["id"]]; pi = prefilter_item(it["id"], it["text"])
         if a.simulate:
             e, d = map(float, a.simulate.split(",")); raw = noisy_raw(g, e, d, random.Random(hash((it["id"], s)) & 0xffffffff))
@@ -87,7 +91,17 @@ def main():
                     print("call failed", it["id"], ex, file=sys.stderr)
                     raw, conf = "", None
                     break
+            import time
+            time.sleep(0.3)
+            with progress_lock:
+                done_count += 1
+                curr = done_count
+            print(f"[{curr}/{len(jobs)}] {it['id']} (sample {s+1}/{a.samples}) done (raw_len={len(raw)})", flush=True)
             return it, s, g, pi, (raw, conf)
+        with progress_lock:
+            done_count += 1
+            curr = done_count
+        print(f"[{curr}/{len(jobs)}] {it['id']} (sample {s+1}/{a.samples}) done (raw_len={len(raw)})", flush=True)
         return it, s, g, pi, (raw, None)
 
     with ThreadPoolExecutor(a.workers) as ex: results = list(ex.map(one, jobs))

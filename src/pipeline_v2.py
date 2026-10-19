@@ -56,7 +56,10 @@ def run_item(client, model: str, item_id: str, text: str, budget: str = "1x", ec
     msgs = D.messages_for_item(pi, echo=echo, exclude_ids=tuple(exclude_ids), knn=knn, knn_backend=knn_backend)
     answers: List[Dict[str, Any]] = []; legals: List[bool] = []
     calls = 0
-    for _ in range(n):
+    for call_idx in range(n):
+        if call_idx > 0:
+            import time
+            time.sleep(0.6)
         calls += 1                                     # every attempt counts, success or not; never retried
         try:
             raw = D.call_granite_v2(client, model, item_id, msgs, temperature=temperature)

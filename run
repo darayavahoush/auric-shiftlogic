@@ -101,7 +101,8 @@ def main():
             except Exception as e:
                 print(f"[{idx}/{len(items)}] {item_id} -> UNEXPECTED ERROR: {e}", file=sys.stderr)
                 clean_res = {"case": "inconsistent", "conflicts": []}
-                calls = 1
+            import time
+            time.sleep(0.3)
             return item_id, clean_res, calls, idx
 
         if args.workers > 1:
