@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""Drop-in for ./run:  ./run_v2 <items.json> --budget 1x|3x|10x --out answers.json [--no-echo] [--no-repair] [--workers 4]
+Writes only {case, assignment|assignments|conflicts} per id, like ./run."""
+import argparse, json, os, sys
+from concurrent.futures import ThreadPoolExecutor
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from dotenv import load_dotenv
+from openai import OpenAI
+from src.pipeline_v2 import run_item
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("items_path"); ap.add_argument("--budget", choices=["1x", "3x", "10x"], default="1x")
+    ap.add_argument("--out", required=True); ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=0, help="K nearest labelled lines per line (0 = fixed shots)"); ap.add_argument("--knn-backend", default="auto", choices=["auto","st","tfidf"]); ap.add_argument("--no-repair", action="store_true")
+    a = ap.parse_args(); load_dotenv()
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key: sys.exit("OPENROUTER_API_KEY not set")
+    # max_retries=0 is REQUIRED: the SDK default (2) re-sends failed requests, and every re-send reaches the counting proxy.
+    client = OpenAI(api_key=key, base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"), max_retries=0)
+    model = os.environ.get("MODEL", "ibm-granite/granite-4.2-8b")
+    items = json.load(open(a.items_path))
+    def one(it):
+        try:
+            ans, calls = run_item(client, model, it["id"], it["text"], a.budget, echo=not a.no_echo, use_repair=not a.no_repair, exclude_ids=(it["id"],), knn=a.knn, knn_backend=a.knn_backend)   # an item never sees its own labelled copy among the shots
+        except Exception as e:
+            print(f"{it['id']} UNEXPECTED {e}", file=sys.stderr); ans, calls = {"case": "inconsistent", "conflicts": []}, 1
+        print(f"{it['id']} -> {ans['case']} (calls {calls})", flush=True)
+        return it["id"], ans
+    with ThreadPoolExecutor(a.workers) as ex:
+        res = dict(ex.map(one, items))
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+    json.dump({i["id"]: res[i["id"]] for i in items}, open(a.out, "w"), indent=2)
+    print(f"wrote {len(res)} answers to {a.out}")
+
+if __name__ == "__main__":
+    main()

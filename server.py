@@ -30,7 +30,7 @@ model = os.environ.get("MODEL", "ibm-granite/granite-4.2-8b")
 
 client = None
 if api_key:
-    client = OpenAI(api_key=api_key, base_url=base_url)
+    client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0)
 
 app = FastAPI(title="ShiftLogic API", description="Neuro-Symbolic Entity Resolution & Constraint Engine")
 

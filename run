@@ -36,7 +36,7 @@ def main():
         print("ERROR: OPENROUTER_API_KEY environment variable not set in .env", file=sys.stderr)
         sys.exit(1)
 
-    client = OpenAI(api_key=api_key, base_url=base_url)
+    client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0)
     controller = FSMController(client, model)
 
     with open(args.items_path, "r", encoding="utf-8") as f:

@@ -47,7 +47,7 @@ def main():
     if not api_key:
         sys.exit("Error: OPENROUTER_API_KEY is not configured in .env. Please add it to run the harness.")
 
-    client = OpenAI(api_key=api_key, base_url=base_url)
+    client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0)
 
     items = json.load(open(args.items, "r", encoding="utf-8"))
     if args.limit:

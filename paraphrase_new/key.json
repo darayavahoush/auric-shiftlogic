@@ -1,0 +1,1987 @@
+{
+ "P-000": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kiran": {
+     "block": "15:00"
+    },
+    "Lukas": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Ingrid": {
+     "block": "09:00"
+    },
+    "Tomas": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Ayesha": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-001": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "From what I recall, Omar is wedged between Bianca and Samuel.",
+    "Daniel and Priya bracket Omar, in either order.",
+    "From what I recall, Samuel has been given the 11:00 slot."
+   ]
+  ]
+ },
+ "P-002": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Repeating for the record: Lukas is the middle one, time-wise, of Daniel, Lukas and Hugo.",
+    "Unless I have this wrong, Daniel is wedged between Ayesha and Hugo.",
+    "Ayesha will be working 11:00."
+   ],
+   [
+    "Unless I have this wrong, Daniel is wedged between Ayesha and Hugo.",
+    "Ayesha will be working 11:00.",
+    "In the running order, Lukas lands somewhere between Daniel and Hugo."
+   ]
+  ]
+ },
+ "P-003": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Priya": {
+     "block": "15:00"
+    },
+    "Nadia": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Leila": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Priya": {
+     "block": "15:00"
+    },
+    "Nadia": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Leila": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-004": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Nadia": {
+     "block": "13:00"
+    },
+    "Meera": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Omar": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Hugo": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Nadia": {
+     "block": "13:00"
+    },
+    "Meera": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Omar": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Hugo": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-005": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Ingrid": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Tobias": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Bianca": {
+     "block": "13:00"
+    },
+    "Kiran": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-006": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "I believe Ayesha is already done by the time Hugo comes on.",
+    "Omar will cover calibration.",
+    "Calibration is staffed ahead of Rohan's block.",
+    "Hugo is already done by the time Daniel comes on.",
+    "Rohan is wedged between Daniel and Hugo.",
+    "If memory serves, Rohan is the middle one, time-wise, of Ayesha, Rohan and Omar."
+   ],
+   [
+    "I believe Ayesha is already done by the time Hugo comes on.",
+    "Omar will cover calibration.",
+    "Calibration is staffed ahead of Rohan's block.",
+    "Hugo is already done by the time Daniel comes on.",
+    "If memory serves, Omar is the middle one, time-wise, of Ayesha, Omar and Daniel.",
+    "If memory serves, Rohan is the middle one, time-wise, of Ayesha, Rohan and Omar."
+   ],
+   [
+    "Omar will cover calibration.",
+    "Calibration is staffed ahead of Rohan's block.",
+    "Hugo is already done by the time Daniel comes on.",
+    "Rohan is wedged between Daniel and Hugo.",
+    "If memory serves, Omar is the middle one, time-wise, of Ayesha, Omar and Daniel.",
+    "If memory serves, Rohan is the middle one, time-wise, of Ayesha, Rohan and Omar."
+   ]
+  ]
+ },
+ "P-007": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Leila": {
+     "block": "11:00"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "11:00"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "11:00"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Priya": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "11:00"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Priya": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-008": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Priya": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "11:00"
+    },
+    "Nadia": {
+     "block": "09:00"
+    },
+    "Leila": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Priya": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "13:00"
+    },
+    "Nadia": {
+     "block": "09:00"
+    },
+    "Leila": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Priya": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "11:00"
+    },
+    "Nadia": {
+     "block": "07:00"
+    },
+    "Leila": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Priya": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "13:00"
+    },
+    "Nadia": {
+     "block": "07:00"
+    },
+    "Leila": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-009": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Packing is staffed ahead of Priya's block.",
+    "Calibration does not go to Bianca.",
+    "Farah is in an earlier block than Bianca.",
+    "Priya is the middle one, time-wise, of Bianca, Priya and Farah.",
+    "From what I recall, Bianca won't be covering intake."
+   ],
+   [
+    "Calibration does not go to Bianca.",
+    "Farah is in an earlier block than Bianca.",
+    "Priya is the middle one, time-wise, of Bianca, Priya and Farah.",
+    "From what I recall, Bianca won't be covering intake.",
+    "Worth flagging again: Whoever covers packing goes on ahead of Priya."
+   ]
+  ]
+ },
+ "P-010": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Rohan": {
+     "block": "07:00"
+    },
+    "Farah": {
+     "block": "09:00"
+    },
+    "Daniel": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ingrid": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-011": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Nadia will be working 13:00.",
+    "From what I recall, Lukas follows straight on from Nadia.",
+    "To say it once more: I'm reasonably confident Omar is in a later block than Lukas."
+   ],
+   [
+    "Nadia will be working 13:00.",
+    "From what I recall, Lukas follows straight on from Nadia.",
+    "I believe Omar goes on after Lukas."
+   ]
+  ]
+ },
+ "P-012": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Ingrid": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Meera": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "09:00"
+    },
+    "Bianca": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-013": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Meera takes the block right after Daniel.",
+    "Second mention: Packing is staffed ahead of Daniel's block.",
+    "Unless I have this wrong, Tobias has been posted to intake."
+   ],
+   [
+    "Meera takes the block right after Daniel.",
+    "Unless I have this wrong, Tobias has been posted to intake.",
+    "If memory serves, whoever covers packing goes on ahead of Daniel."
+   ]
+  ]
+ },
+ "P-014": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Lukas": {
+     "block": "09:00"
+    },
+    "Tobias": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Nadia": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Omar": {
+     "block": "13:00"
+    },
+    "Priya": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-015": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Leila": {
+     "block": "13:00"
+    },
+    "Samuel": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Kiran": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "13:00"
+    },
+    "Samuel": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Zoe": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Kiran": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "15:00"
+    },
+    "Samuel": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Kiran": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Leila": {
+     "block": "15:00"
+    },
+    "Samuel": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Zoe": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Kiran": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-016": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Rohan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Samuel": {
+     "block": "07:00"
+    },
+    "Kiran": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Ingrid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Farah": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Rohan": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Samuel": {
+     "block": "07:00"
+    },
+    "Kiran": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ingrid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Farah": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-017": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Samuel": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Hugo": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Meera": {
+     "block": "09:00"
+    },
+    "Bianca": {
+     "block": "07:00"
+    },
+    "Omar": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-018": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Farah": {
+     "block": "11:00"
+    },
+    "Nadia": {
+     "block": "07:00"
+    },
+    "Meera": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Samuel": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-019": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Daniel": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Priya": {
+     "block": "07:00"
+    },
+    "Bianca": {
+     "block": "13:00"
+    },
+    "Leila": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Daniel": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "07:00"
+    },
+    "Bianca": {
+     "block": "13:00"
+    },
+    "Leila": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-020": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Lukas is in a later block than Ingrid.",
+    "The intake person finishes before Meera comes on.",
+    "Meera is immediately followed by Ingrid.",
+    "Second mention: Intake does not go to Farah."
+   ],
+   [
+    "Lukas is in a later block than Ingrid.",
+    "The intake person finishes before Meera comes on.",
+    "Meera is immediately followed by Ingrid.",
+    "Farah isn't the intake person."
+   ],
+   [
+    "In the running order, Meera lands somewhere between Farah and Lukas.",
+    "From what I recall, Farah goes on ahead of Meera.",
+    "The intake person finishes before Meera comes on.",
+    "Meera is immediately followed by Ingrid.",
+    "Second mention: Intake does not go to Farah."
+   ],
+   [
+    "In the running order, Meera lands somewhere between Farah and Lukas.",
+    "From what I recall, Farah goes on ahead of Meera.",
+    "The intake person finishes before Meera comes on.",
+    "Meera is immediately followed by Ingrid.",
+    "Farah isn't the intake person."
+   ]
+  ]
+ },
+ "P-021": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Tomas": {
+     "block": "13:00"
+    },
+    "Tobias": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Tomas": {
+     "block": "13:00"
+    },
+    "Tobias": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Tomas": {
+     "block": "13:00"
+    },
+    "Tobias": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ayesha": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Tomas": {
+     "block": "13:00"
+    },
+    "Tobias": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ayesha": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-022": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Nadia": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Priya": {
+     "block": "09:00"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Nadia": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "09:00"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Nadia": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Priya": {
+     "block": "09:00"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lukas": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-023": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Ingrid": {
+     "block": "09:00"
+    },
+    "Bianca": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "13:00"
+    },
+    "Priya": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Ingrid": {
+     "block": "11:00"
+    },
+    "Bianca": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "13:00"
+    },
+    "Priya": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Ingrid": {
+     "block": "13:00"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Farah": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "11:00"
+    },
+    "Priya": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Ingrid": {
+     "block": "13:00"
+    },
+    "Bianca": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Farah": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "11:00"
+    },
+    "Priya": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-024": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Tobias": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Samuel": {
+     "block": "13:00"
+    },
+    "Nadia": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Rohan": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-025": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Samuel": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Bianca": {
+     "block": "15:00"
+    },
+    "Ayesha": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Rohan": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Hugo": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-026": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Bianca": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Tobias": {
+     "block": "07:00"
+    },
+    "Hugo": {
+     "block": "11:00"
+    },
+    "Ingrid": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-027": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lukas": {
+     "block": "11:00"
+    },
+    "Rohan": {
+     "block": "09:00"
+    },
+    "Daniel": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ingrid": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Lukas": {
+     "block": "13:00"
+    },
+    "Rohan": {
+     "block": "09:00"
+    },
+    "Daniel": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ingrid": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-028": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Zoe": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Priya": {
+     "block": "09:00"
+    },
+    "Lukas": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Zoe": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Priya": {
+     "block": "11:00"
+    },
+    "Lukas": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Ayesha": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-029": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Samuel follows straight on from Bianca.",
+    "To say it once more: Omar is the middle one, time-wise, of Bianca, Omar and Farah.",
+    "Farah follows straight on from Samuel."
+   ],
+   [
+    "Samuel follows straight on from Bianca.",
+    "In the running order, Omar lands somewhere between Bianca and Farah.",
+    "Farah follows straight on from Samuel."
+   ]
+  ]
+ },
+ "P-030": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Omar": {
+     "block": "09:00"
+    },
+    "Priya": {
+     "block": "11:00"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ayesha": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-031": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Tomas": {
+     "block": "09:00"
+    },
+    "Tobias": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Zoe": {
+     "block": "11:00"
+    },
+    "Farah": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-032": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Hugo is finished before Rohan begins.",
+    "Hugo and Rohan bracket Bianca, in either order.",
+    "Unless I have this wrong, Bianca is the very next person on after Rohan."
+   ]
+  ]
+ },
+ "P-033": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "I'm reasonably confident Lukas will be working 13:00.",
+    "I believe intake is staffed ahead of Daniel's block.",
+    "Meera comes after Ayesha but before Daniel, or the other way round.",
+    "Ayesha takes the block right after Meera."
+   ],
+   [
+    "I believe Ayesha is the middle one, time-wise, of Hugo, Ayesha and Meera.",
+    "I'm reasonably confident Lukas will be working 13:00.",
+    "I believe intake is staffed ahead of Daniel's block.",
+    "Unless I have this wrong, calibration is staffed ahead of Hugo's block.",
+    "Meera comes after Ayesha but before Daniel, or the other way round."
+   ]
+  ]
+ },
+ "P-034": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Tobias": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Zoe": {
+     "block": "07:00"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "15:00"
+    },
+    "Omar": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-035": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "I believe the 15:00 slot belongs to Nadia.",
+    "I believe Omar is immediately followed by Nadia.",
+    "I'm reasonably confident Omar will be working 09:00."
+   ],
+   [
+    "I believe the 15:00 slot belongs to Nadia.",
+    "I'm reasonably confident Omar will be working 09:00.",
+    "Worth flagging again: Omar hands over to Nadia with nothing in between."
+   ],
+   [
+    "I believe Omar is immediately followed by Nadia.",
+    "To say it once more: Nadia will be working 15:00.",
+    "I'm reasonably confident Omar will be working 09:00."
+   ],
+   [
+    "To say it once more: Nadia will be working 15:00.",
+    "I'm reasonably confident Omar will be working 09:00.",
+    "Worth flagging again: Omar hands over to Nadia with nothing in between."
+   ],
+   [
+    "I believe the 15:00 slot belongs to Nadia.",
+    "I'm reasonably confident Kiran is the middle one, time-wise, of Farah, Kiran and Hugo.",
+    "Hugo and Nadia bracket Kiran, in either order.",
+    "Calibration is staffed ahead of Hugo's block."
+   ],
+   [
+    "To say it once more: Nadia will be working 15:00.",
+    "I'm reasonably confident Kiran is the middle one, time-wise, of Farah, Kiran and Hugo.",
+    "Hugo and Nadia bracket Kiran, in either order.",
+    "Calibration is staffed ahead of Hugo's block."
+   ]
+  ]
+ },
+ "P-036": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Nadia hands over to Kiran with nothing in between.",
+    "Kiran is already done by the time Omar comes on.",
+    "In the running order, Nadia lands somewhere between Kiran and Omar."
+   ],
+   [
+    "Nadia hands over to Kiran with nothing in between.",
+    "Kiran is already done by the time Omar comes on.",
+    "To say it once more: I'm reasonably confident Nadia is wedged between Kiran and Omar."
+   ],
+   [
+    "Nadia hands over to Kiran with nothing in between.",
+    "Kiran is already done by the time Omar comes on.",
+    "Tomas follows straight on from Omar.",
+    "Whoever covers packing goes on ahead of Nadia."
+   ],
+   [
+    "Nadia hands over to Kiran with nothing in between.",
+    "Kiran is already done by the time Omar comes on.",
+    "Second mention: I'm reasonably confident Omar is immediately followed by Tomas.",
+    "Whoever covers packing goes on ahead of Nadia."
+   ],
+   [
+    "Kiran is already done by the time Omar comes on.",
+    "In the running order, Nadia lands somewhere between Kiran and Omar.",
+    "Tomas follows straight on from Omar.",
+    "Whoever covers packing goes on ahead of Nadia."
+   ],
+   [
+    "Kiran is already done by the time Omar comes on.",
+    "In the running order, Nadia lands somewhere between Kiran and Omar.",
+    "Second mention: I'm reasonably confident Omar is immediately followed by Tomas.",
+    "Whoever covers packing goes on ahead of Nadia."
+   ],
+   [
+    "Kiran is already done by the time Omar comes on.",
+    "Tomas follows straight on from Omar.",
+    "Whoever covers packing goes on ahead of Nadia.",
+    "To say it once more: I'm reasonably confident Nadia is wedged between Kiran and Omar."
+   ],
+   [
+    "Kiran is already done by the time Omar comes on.",
+    "Second mention: I'm reasonably confident Omar is immediately followed by Tomas.",
+    "Whoever covers packing goes on ahead of Nadia.",
+    "To say it once more: I'm reasonably confident Nadia is wedged between Kiran and Omar."
+   ]
+  ]
+ },
+ "P-037": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Ingrid": {
+     "block": "15:00"
+    },
+    "Tomas": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "07:00"
+    },
+    "Leila": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Ingrid": {
+     "block": "15:00"
+    },
+    "Tomas": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Priya": {
+     "block": "07:00"
+    },
+    "Leila": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-038": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Daniel goes on after Omar.",
+    "Worth flagging again: If memory serves, Omar starts after whoever is working packing.",
+    "Ingrid follows straight on from Farah.",
+    "Daniel is the very next person on after Ingrid."
+   ],
+   [
+    "Daniel goes on after Omar.",
+    "Unless I have this wrong, Omar is later in the day than the packing person.",
+    "Ingrid follows straight on from Farah.",
+    "Daniel is the very next person on after Ingrid."
+   ]
+  ]
+ },
+ "P-039": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Tomas": {
+     "block": "09:00"
+    },
+    "Kiran": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Rohan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-040": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Meera": {
+     "block": "11:00"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Leila": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ayesha": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Meera": {
+     "block": "11:00"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Leila": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Ayesha": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Meera": {
+     "block": "11:00"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Ayesha": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Meera": {
+     "block": "11:00"
+    },
+    "Kiran": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Tomas": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Ayesha": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-041": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Second mention: Unless I have this wrong, packing is staffed ahead of Tobias's block.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Farah and Leila bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Second mention: Unless I have this wrong, packing is staffed ahead of Tobias's block.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "From what I recall, Kiran comes after Farah but before Tobias, or the other way round.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Second mention: Unless I have this wrong, packing is staffed ahead of Tobias's block.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Worth flagging again: Farah and Lukas bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Second mention: Unless I have this wrong, packing is staffed ahead of Tobias's block.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias.",
+    "Kiran is wedged between Farah and Lukas."
+   ],
+   [
+    "Lukas can't do the 11:00 slot.",
+    "Whoever covers packing goes on ahead of Tobias.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Farah and Leila bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Lukas can't do the 11:00 slot.",
+    "Whoever covers packing goes on ahead of Tobias.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "From what I recall, Kiran comes after Farah but before Tobias, or the other way round.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Lukas can't do the 11:00 slot.",
+    "Whoever covers packing goes on ahead of Tobias.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Worth flagging again: Farah and Lukas bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Lukas can't do the 11:00 slot.",
+    "Whoever covers packing goes on ahead of Tobias.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias.",
+    "Kiran is wedged between Farah and Lukas."
+   ],
+   [
+    "Leila is not on until after Farah.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Farah and Leila bracket Kiran, in either order.",
+    "From what I recall, Kiran comes after Farah but before Tobias, or the other way round.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Leila is not on until after Farah.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Farah and Leila bracket Kiran, in either order.",
+    "Worth flagging again: Farah and Lukas bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias."
+   ],
+   [
+    "Leila is not on until after Farah.",
+    "Lukas can't do the 11:00 slot.",
+    "Unless I have this wrong, Leila is not on until after Lukas.",
+    "Farah and Leila bracket Kiran, in either order.",
+    "In the running order, Lukas lands somewhere between Kiran and Tobias.",
+    "Kiran is wedged between Farah and Lukas."
+   ]
+  ]
+ },
+ "P-042": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Farah": {
+     "block": "07:00"
+    },
+    "Ayesha": {
+     "block": "15:00"
+    },
+    "Samuel": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Zoe": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Leila": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-043": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Rohan": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Tobias": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "15:00"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Rohan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Tobias": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Farah": {
+     "block": "15:00"
+    },
+    "Bianca": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-044": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Kiran": {
+     "block": "11:00"
+    },
+    "Priya": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Kiran": {
+     "block": "11:00"
+    },
+    "Priya": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Kiran": {
+     "block": "13:00"
+    },
+    "Priya": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Farah": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Daniel": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-045": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Leila": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Tobias": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Samuel": {
+     "block": "07:00"
+    },
+    "Daniel": {
+     "block": "15:00"
+    },
+    "Tomas": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-046": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "I'm reasonably confident Lukas comes after Ingrid but before Meera, or the other way round.",
+    "Meera starts after whoever is working calibration.",
+    "Ingrid is not on until after Lukas."
+   ],
+   [
+    "I'm reasonably confident Lukas comes after Ingrid but before Meera, or the other way round.",
+    "The 15:00 slot belongs to Meera.",
+    "Ingrid is not on until after Lukas."
+   ],
+   [
+    "I'm reasonably confident Lukas comes after Ingrid but before Meera, or the other way round.",
+    "Ingrid is not on until after Lukas.",
+    "Worth flagging again: From what I recall, Meera is later in the day than the calibration person."
+   ],
+   [
+    "I'm reasonably confident Priya comes after Ingrid but before Lukas, or the other way round.",
+    "Ingrid is not on until after Lukas.",
+    "Unless I have this wrong, Ingrid hands over to Priya with nothing in between."
+   ]
+  ]
+ },
+ "P-047": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Farah": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lukas": {
+     "block": "15:00"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Farah": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lukas": {
+     "block": "15:00"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Priya": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Farah": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lukas": {
+     "block": "15:00"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Priya": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Farah": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lukas": {
+     "block": "15:00"
+    },
+    "Ayesha": {
+     "block": "11:00"
+    },
+    "Meera": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Priya": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-048": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kiran": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Leila": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Ingrid": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Tobias": {
+     "block": "11:00"
+    },
+    "Priya": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "P-049": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Worth flagging again: I'm reasonably confident Rohan isn't working 15:00.",
+    "Hugo is the very next person on after Ingrid.",
+    "From what I recall, Rohan and Zoe bracket Ingrid, in either order.",
+    "Farah takes the block right after Hugo.",
+    "Ingrid comes after Hugo but before Zoe, or the other way round."
+   ],
+   [
+    "Worth flagging again: I'm reasonably confident Rohan isn't working 15:00.",
+    "Hugo is the very next person on after Ingrid.",
+    "From what I recall, Rohan and Zoe bracket Ingrid, in either order.",
+    "Ingrid comes after Hugo but before Zoe, or the other way round.",
+    "Repeating for the record: Farah follows straight on from Hugo."
+   ],
+   [
+    "Hugo is the very next person on after Ingrid.",
+    "From what I recall, Rohan and Zoe bracket Ingrid, in either order.",
+    "Farah takes the block right after Hugo.",
+    "Ingrid comes after Hugo but before Zoe, or the other way round.",
+    "The 15:00 slot isn't one Rohan has."
+   ],
+   [
+    "Hugo is the very next person on after Ingrid.",
+    "From what I recall, Rohan and Zoe bracket Ingrid, in either order.",
+    "Ingrid comes after Hugo but before Zoe, or the other way round.",
+    "The 15:00 slot isn't one Rohan has.",
+    "Repeating for the record: Farah follows straight on from Hugo."
+   ]
+  ]
+ }
+}

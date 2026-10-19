@@ -1,0 +1,5977 @@
+{
+ "V-000": {
+  "staff": [
+   "Tobias",
+   "Ingrid",
+   "Daniel",
+   "Ayesha",
+   "Lukas"
+  ],
+  "holders": [
+   "Ingrid",
+   "Tobias",
+   "Lukas"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Daniel appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Worth restating, since it came up twice in handover: I'm fairly sure Daniel works earlier in the day than Ayesha.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Ayesha"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "I'm fairly sure Ingrid has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "The recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "It bears repeating: Intake is covered before Lukas comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Lukas"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "There was some disagreement about whether Ayesha had 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "As far as I know, whoever is on intake works earlier in the day than Lukas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Lukas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Ayesha and the 11:00 block came up, but nothing was minuted.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "You can rule Ingrid out for calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "In the spring Lukas held intake for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "I'm fairly sure the 15:00 block is not Ingrid's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Ingrid is not on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "I'm fairly sure Tobias relieves Ingrid directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Tobias",
+     "Ingrid"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "07:00 is when Daniel is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Putting Lukas on the 13:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Ayesha comes later in the day than Lukas.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Ayesha",
+     "Lukas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Daniel is done before Ayesha starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Ayesha"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Noted twice in the handover: My recollection is that Daniel is the one who opens up at 07:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     "07:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Daniel lobbied for 09:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   }
+  ]
+ },
+ "V-001": {
+  "staff": [
+   "Tobias",
+   "Bianca",
+   "Farah",
+   "Kiran",
+   "Zoe"
+  ],
+  "holders": [
+   "Zoe",
+   "Kiran",
+   "Bianca"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "I'm fairly sure if Bianca had taken the 09:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "There was some disagreement about whether Tobias had 15:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Bianca's block falls between Farah's and Zoe's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Farah",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Tobias works earlier in the day than Bianca.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tobias",
+     "Bianca"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Farah sits between Tobias and Zoe on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Farah",
+     "Tobias",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Speaking from memory, Zoe keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Bianca's block falls between Tobias's and Zoe's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Tobias",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "If Kiran had taken the 15:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "The visitor log was moved to the front desk in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Speaking from memory, Tobias put in for the 07:00 block and was turned down.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "I'm fairly sure last month Bianca was on intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "You will not find Kiran on the 07:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Kiran",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "I'm fairly sure Bianca left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Kiran is on the block directly after Farah.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Kiran",
+     "Farah"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Bianca, Farah and Tobias attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "The recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Calibration is Bianca's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Bianca",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Intake is covered before Bianca comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Bianca"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-002": {
+  "staff": [
+   "Kiran",
+   "Meera",
+   "Farah",
+   "Tobias",
+   "Samuel"
+  ],
+  "holders": [
+   "Meera",
+   "Tobias",
+   "Farah"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "As far as I know, Meera has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Meera and Samuel completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "The 09:00 block is Farah's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Farah",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "I'm fairly sure Kiran wanted 13:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Speaking from memory, putting Meera on the 11:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Meera is the point of contact for the fire drill.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "My recollection is that Meera's block falls between Samuel's and Tobias's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Samuel",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Worth restating, since it came up twice in handover: Whoever drew the 09:00 block, it was Farah.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Farah",
+     "09:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Going off the roster, Tobias has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tobias",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Had the rota gone the other way, Samuel would be on 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Going off the roster, there was some disagreement about whether Farah had 15:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "The intake station is covered earlier in the day than Tobias's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Samuel joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Tobias joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Speaking from memory, Samuel left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Back in the old arrangement, Tobias took intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Whoever is on packing works earlier in the day than Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-003": {
+  "staff": [
+   "Ayesha",
+   "Priya",
+   "Meera",
+   "Bianca",
+   "Farah"
+  ],
+  "holders": [
+   "Bianca",
+   "Meera",
+   "Priya"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Putting Ayesha on the 09:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Meera wanted 13:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Packing is covered by Bianca.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Bianca",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Priya takes over from Farah later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Priya",
+     "Farah"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Meera sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Going off the roster, back in the old arrangement, Priya took intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Farah and the 09:00 block came up, but nothing was minuted.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Had the rota gone the other way, Bianca would be on 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Speaking from memory, the intake station is down to Priya.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Whoever has packing is done before Priya starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "My recollection is that whichever way round Bianca and Priya are, Ayesha is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Bianca",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "As far as I know, catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Whichever way round Meera and Priya are, Bianca is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Meera",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Meera has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "It bears repeating: Bianca is on after one of Meera and Priya and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Meera",
+     "Priya"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Priya has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Noted twice in the handover: I'm fairly sure intake is Priya's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Farah has a standing commitment that rules out the 11:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Farah",
+     "11:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Priya is on the block directly after Farah.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Priya",
+     "Farah"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-004": {
+  "staff": [
+   "Nadia",
+   "Rohan",
+   "Tomas",
+   "Omar",
+   "Meera"
+  ],
+  "holders": [
+   "Tomas",
+   "Nadia",
+   "Meera"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "11:00 is when Rohan is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     "11:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Going off the roster, Rohan joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Going off the roster, Rohan is on the block directly after Meera.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Tomas left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "My recollection is that the visitor log was moved to the front desk in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Speaking from memory, putting Omar on the 15:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "I'm fairly sure in the spring Tomas held intake for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "I'm fairly sure Meera would have been a better fit for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "The question of Meera on 13:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "I'm fairly sure whoever is on packing works earlier in the day than Nadia.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Omar filled in the equipment survey.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Meera works at some point between Omar and Tomas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Omar",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Meera sits between Nadia and Omar on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Nadia",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Going off the roster, the calibration station is down to Nadia.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Noted twice in the handover: Going off the roster, Rohan is the one who opens up at 11:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     "11:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "It bears repeating: The 15:00 block is not Meera's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     "15:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Rohan put in for the 07:00 block and was turned down.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Noted twice in the handover: Calibration is Nadia's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "It bears repeating: I'm fairly sure Meera's block falls between Omar's and Tomas's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Omar",
+     "Tomas"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Nadia and Tomas car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 22,
+    "text": "Meera and Omar car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 23,
+    "text": "15:00 is the one block Meera is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-005": {
+  "staff": [
+   "Leila",
+   "Tomas",
+   "Ayesha",
+   "Hugo",
+   "Priya"
+  ],
+  "holders": [
+   "Leila",
+   "Ayesha",
+   "Priya"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Going off the roster, Ayesha would have been a better fit for the 09:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Priya appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "My recollection is that Hugo hands straight over to Tomas.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Hugo",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Leila is on after one of Ayesha and Hugo and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Leila",
+     "Ayesha",
+     "Hugo"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Speaking from memory, Ayesha's block falls somewhere earlier than Leila's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ayesha",
+     "Leila"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Last month Ayesha was on intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Going off the roster, you can rule Ayesha out for intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Had the rota gone the other way, Leila would be on 11:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Speaking from memory, the visitor log was moved to the front desk in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Priya lobbied for 13:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "I'm fairly sure catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Noted twice in the handover: My recollection is that Ayesha is done before Leila starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ayesha",
+     "Leila"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Priya hands straight over to Ayesha.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Ayesha"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Going off the roster, there was some disagreement about whether Hugo had 11:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "The recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "The 13:00 block is Ayesha's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Hugo is on later than whoever has intake.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Hugo",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-006": {
+  "staff": [
+   "Omar",
+   "Tobias",
+   "Rohan",
+   "Priya",
+   "Tomas"
+  ],
+  "holders": [
+   "Tomas",
+   "Omar",
+   "Rohan"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "The question of Omar on 11:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Whoever is on intake works earlier in the day than Tobias.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "My recollection is that if Omar had taken the 15:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Omar appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Put Tomas between Omar and Rohan, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Omar",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "It bears repeating: My recollection is that the intake station is covered earlier in the day than Tobias's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "As far as I know, Priya works at some point between Rohan and Tobias, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Rohan",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "I'm fairly sure nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Put Tomas between Rohan and Tobias, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Rohan",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Tobias would have been a better fit for the 13:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Priya keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "My recollection is that Tomas left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "My recollection is that Priya's block falls between Omar's and Rohan's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Omar",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Omar lobbied for 09:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Rohan takes 15:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "My recollection is that Priya hands straight over to Rohan.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "On the previous cycle calibration was Tobias's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   }
+  ]
+ },
+ "V-007": {
+  "staff": [
+   "Tomas",
+   "Tobias",
+   "Ayesha",
+   "Priya",
+   "Daniel"
+  ],
+  "holders": [
+   "Priya",
+   "Ayesha",
+   "Daniel"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "There is no block between Ayesha and Daniel, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Daniel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "As far as I know, the intake station is covered earlier in the day than Tobias's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Priya keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "On the previous cycle intake was Priya's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Daniel has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Tobias works earlier in the day than Tomas.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tobias",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "As far as I know, nobody could remember whether Daniel was down for the 11:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "The 07:00 block is Ayesha's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Priya has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "There was some disagreement about whether Tobias had 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Tomas would have been a better fit for the 15:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Daniel, Tobias, Tomas and Ayesha attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Daniel is not assigned to intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Ayesha wanted 07:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Speaking from memory, Daniel joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "I'm fairly sure Priya appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-008": {
+  "staff": [
+   "Bianca",
+   "Rohan",
+   "Nadia",
+   "Tobias",
+   "Samuel"
+  ],
+  "holders": [
+   "Samuel",
+   "Nadia",
+   "Bianca"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "I'm fairly sure the recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Nadia relieves Tobias directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Nadia",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "As far as I know, Samuel left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "As far as I know, Bianca asked to move to the 15:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Back in the old arrangement, Samuel took packing.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Bianca sits between Samuel and Tobias on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Samuel",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Rohan, Nadia, Bianca and Samuel attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "On the previous cycle intake was Tobias's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Rohan and the 13:00 block came up, but nothing was minuted.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Whichever way round Rohan and Tobias are, Samuel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Rohan",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Whoever is on calibration works earlier in the day than Bianca.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Bianca"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Speaking from memory, Samuel comes later in the day than Rohan.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Samuel",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "My recollection is that Bianca sits between Nadia and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Nadia",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Going off the roster, Nadia is assigned to packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Tobias keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "I'm fairly sure putting Bianca on the 09:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "It bears repeating: Nadia is on the block directly after Tobias.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Nadia",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   }
+  ]
+ },
+ "V-009": {
+  "staff": [
+   "Priya",
+   "Ayesha",
+   "Zoe",
+   "Bianca",
+   "Meera"
+  ],
+  "holders": [
+   "Meera",
+   "Priya",
+   "Ayesha"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Speaking from memory, there is no block between Priya's and Meera's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Zoe would have been a better fit for the 11:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "You can rule Priya out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Priya has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "By the time Ayesha starts, Bianca has already been on.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Ayesha",
+     "Bianca"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "The 13:00 block is not Zoe's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Zoe",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Last month Priya was on intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "My recollection is that Ayesha, Meera, Zoe and Bianca completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Noted twice in the handover: Priya has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Whoever drew the 09:00 block, it was Ayesha.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Zoe and Ayesha car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "As far as I know, Priya is on the 13:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "As far as I know, the calibration station is covered earlier in the day than Meera's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Whichever way round Ayesha and Meera are, Priya is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Ayesha",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Meera asked to move to the 13:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Back in the old arrangement, Zoe took calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Meera keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Nobody could remember whether Zoe was down for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Bianca, Zoe and Meera completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-010": {
+  "staff": [
+   "Leila",
+   "Tomas",
+   "Daniel",
+   "Zoe",
+   "Meera"
+  ],
+  "holders": [
+   "Meera",
+   "Daniel",
+   "Leila"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Going off the roster, there is no block between Zoe's and Meera's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Zoe",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Speaking from memory, Tomas joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Worth restating, since it came up twice in handover: I'm fairly sure the intake station is covered earlier in the day than Leila's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Leila"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Last month Tomas was on packing.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Intake is covered before Leila comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Leila"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "The question of Meera on 09:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "It bears repeating: Speaking from memory, whichever way round Daniel and Leila are, Meera is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Daniel",
+     "Leila"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Noted twice in the handover: There is no block between Zoe and Meera, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Zoe",
+     "Meera"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Leila's block falls between Meera's and Tomas's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Leila",
+     "Meera",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Meera works at some point between Daniel and Leila, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Daniel",
+     "Leila"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "If Daniel had taken the 11:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Leila would have been a better fit for the 13:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Zoe joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "I'm fairly sure Tomas lobbied for 13:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Daniel is not on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "The person on packing precedes Tomas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Going off the roster, Zoe and Leila car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-011": {
+  "staff": [
+   "Zoe",
+   "Samuel",
+   "Farah",
+   "Tobias",
+   "Priya"
+  ],
+  "holders": [
+   "Samuel",
+   "Farah",
+   "Tobias"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Farah keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Intake is covered before Tobias comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Zoe is the point of contact for the fire drill.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Nobody could remember whether Tobias was down for the 15:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Tobias filled in the equipment survey.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Zoe asked to move to the 15:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "It bears repeating: Samuel is on the block immediately before Priya.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Samuel",
+     "Priya"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Priya takes over from Tobias later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Priya",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "My recollection is that Priya is on after one of Samuel and Tobias and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Samuel",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "This came up more than once, so: Priya comes later in the day than Tobias.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Priya",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Last month Zoe was on calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "As far as I know, Tobias left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Had the rota gone the other way, Zoe would be on 13:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "There is no block between Samuel and Priya, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Samuel",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Samuel asked to move to the 15:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Zoe completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "The person on calibration precedes Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Zoe has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Going off the roster, Samuel works at some point between Farah and Zoe, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Farah",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Put Samuel between Farah and Priya, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Farah",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-012": {
+  "staff": [
+   "Meera",
+   "Leila",
+   "Daniel",
+   "Samuel",
+   "Priya"
+  ],
+  "holders": [
+   "Priya",
+   "Daniel",
+   "Meera"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Samuel is on the block directly after Daniel.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Daniel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Meera keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Leila keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Last month Priya was on calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Daniel asked to move to the 07:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Samuel completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Leila would have been a better fit for the 09:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Priya completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Meera has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "The question of Priya on 07:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Meera has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "I'm fairly sure Leila has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "In the spring Leila held intake for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Leila sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Packing is covered by someone other than Daniel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "I'm fairly sure Meera relieves Samuel directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Whoever is on packing works earlier in the day than Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-013": {
+  "staff": [
+   "Tobias",
+   "Samuel",
+   "Tomas",
+   "Meera",
+   "Omar"
+  ],
+  "holders": [
+   "Samuel",
+   "Tomas",
+   "Meera"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "My recollection is that Tomas wanted 11:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Meera keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Tobias is the point of contact for the fire drill.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Meera put in for the 07:00 block and was turned down.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "There was some disagreement about whether Samuel had 15:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Meera relieves Omar directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Meera has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Tobias, Omar, Tomas and Meera attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Tomas has not been put on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "In the spring Samuel held calibration for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Going off the roster, whoever has calibration is done before Samuel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Tomas sits between Omar and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Omar",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "There is no block between Meera and Samuel, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Tobias has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "The person on intake precedes Samuel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Meera appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Going off the roster, putting Samuel on the 11:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   }
+  ]
+ },
+ "V-014": {
+  "staff": [
+   "Ayesha",
+   "Rohan",
+   "Farah",
+   "Tomas",
+   "Samuel"
+  ],
+  "holders": [
+   "Tomas",
+   "Samuel",
+   "Farah"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Ayesha lobbied for 11:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Last month Tomas was on calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Farah's block falls somewhere earlier than Ayesha's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Farah",
+     "Ayesha"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Rohan is on after one of Ayesha and Samuel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ayesha",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Farah has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Samuel asked to move to the 07:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "This came up more than once, so: Samuel has not been put on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "intake"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Ayesha has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Had the rota gone the other way, Farah would be on 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Tomas takes 07:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Tomas, Rohan, Ayesha and Farah attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Whichever way round Rohan and Tomas are, Farah is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Farah",
+     "Rohan",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Whichever way round Samuel and Tomas are, Rohan is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Samuel",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Tomas and the 15:00 block came up, but nothing was minuted.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Intake is not Samuel's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Rohan completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Tomas, Ayesha and Rohan attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-015": {
+  "staff": [
+   "Tomas",
+   "Rohan",
+   "Nadia",
+   "Priya",
+   "Meera"
+  ],
+  "holders": [
+   "Tomas",
+   "Nadia",
+   "Meera"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "My recollection is that you can rule Nadia out for intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Nobody could remember whether Priya was down for the 11:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "The question of Tomas on 07:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Back in the old arrangement, Rohan took packing.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Whichever way round Nadia and Priya are, Meera is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Nadia",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Tomas would have been a better fit for the 11:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "I'm fairly sure Tomas, Nadia and Rohan attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Noted twice in the handover: Meera has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Whichever way round Meera and Rohan are, Priya is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Meera",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Meera and Priya car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Meera is unavailable at 15:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "This came up more than once, so: Intake is covered by someone other than Nadia.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "intake"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Tomas and Priya car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Tomas wanted 07:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Meera is on calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Priya is the point of contact for the fire drill.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Meera, Tomas, Rohan, Priya and Nadia attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "The intake station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Nadia's block falls somewhere earlier than Meera's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Nadia",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Priya sits between Nadia and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Nadia",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-016": {
+  "staff": [
+   "Priya",
+   "Omar",
+   "Meera",
+   "Nadia",
+   "Tobias"
+  ],
+  "holders": [
+   "Omar",
+   "Meera",
+   "Priya"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Worth restating, since it came up twice in handover: I'm fairly sure Nadia is on after one of Omar and Tobias and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Omar",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "The question of Tobias on 15:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Meera left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Had the rota gone the other way, Priya would be on 15:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Omar left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Meera has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "It bears repeating: Packing is covered by someone other than Omar.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Omar",
+     "packing"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Meera's block falls somewhere earlier than Priya's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Packing is covered before Nadia comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Priya would have been a better fit for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Tobias sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "As far as I know, Omar is on after one of Meera and Nadia and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Omar",
+     "Meera",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Omar has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Omar",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Back in the old arrangement, Tobias took intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Whoever is on calibration works earlier in the day than Nadia.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Omar, Nadia, Meera and Priya attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Tobias is the one who opens up at 13:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tobias",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Whichever way round Omar and Tobias are, Nadia is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Omar",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Omar wanted 09:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Packing is not Priya's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 22,
+    "text": "Meera is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-017": {
+  "staff": [
+   "Ingrid",
+   "Tobias",
+   "Bianca",
+   "Kiran",
+   "Omar"
+  ],
+  "holders": [
+   "Omar",
+   "Ingrid",
+   "Tobias"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Speaking from memory, Omar takes over from Kiran later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Omar",
+     "Kiran"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Omar joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "As far as I know, Tobias lobbied for 15:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Omar, Tobias, Bianca and Kiran completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Kiran, Ingrid, Omar and Tobias completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Speaking from memory, Ingrid is on the 09:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ingrid",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "The 13:00 block is not Tobias's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tobias",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Going off the roster, packing is covered by someone other than Tobias.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tobias",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Tobias wanted 15:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Bianca is on after one of Kiran and Omar and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Kiran",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Whichever way round Bianca and Tobias are, Kiran is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Kiran",
+     "Bianca",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "My recollection is that there was some disagreement about whether Ingrid had 11:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Omar is on the 13:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Omar",
+     "13:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Had the rota gone the other way, Tobias would be on 13:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Ingrid completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "In the spring Tobias held calibration for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   }
+  ]
+ },
+ "V-018": {
+  "staff": [
+   "Bianca",
+   "Meera",
+   "Zoe",
+   "Hugo",
+   "Daniel"
+  ],
+  "holders": [
+   "Hugo",
+   "Meera",
+   "Daniel"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "My recollection is that Bianca works earlier in the day than Zoe.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Bianca",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Speaking from memory, Meera has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Zoe is on after one of Hugo and Meera and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Zoe",
+     "Hugo",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Last month Bianca was on calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Bianca asked to move to the 07:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "My recollection is that catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "My recollection is that deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Daniel sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Bianca is on later than whoever has intake.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Bianca",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Noted twice in the handover: I'm fairly sure intake is Daniel's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "The question of Hugo on 09:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Daniel is on intake.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Daniel and Bianca attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Whichever way round Daniel and Zoe are, Bianca is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Daniel",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "On the previous cycle intake was Hugo's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "The person on calibration precedes Zoe.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Meera hands straight over to Zoe.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Zoe"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Had the rota gone the other way, Bianca would be on 07:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   }
+  ]
+ },
+ "V-019": {
+  "staff": [
+   "Priya",
+   "Ayesha",
+   "Nadia",
+   "Daniel",
+   "Bianca"
+  ],
+  "holders": [
+   "Nadia",
+   "Bianca",
+   "Priya"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Nadia is not on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Bianca is done before Priya starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Bianca",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Priya asked to move to the 11:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Speaking from memory, Priya is on intake.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "My recollection is that putting Bianca on the 11:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Nadia keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Had the rota gone the other way, Bianca would be on 11:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Daniel, Nadia, Priya and Bianca attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Back in the old arrangement, Bianca took packing.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Speaking from memory, nobody could remember whether Daniel was down for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Nadia and Daniel car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "09:00 is when Priya is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "The visitor log was moved to the front desk in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Speaking from memory, Daniel works at some point between Bianca and Priya, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Bianca",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "My recollection is that Daniel sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "As far as I know, Daniel's block falls between Ayesha's and Nadia's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Ayesha",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Going off the roster, whoever is on calibration works earlier in the day than Daniel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-020": {
+  "staff": [
+   "Farah",
+   "Hugo",
+   "Tomas",
+   "Nadia",
+   "Priya"
+  ],
+  "holders": [
+   "Nadia",
+   "Priya",
+   "Tomas"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "In the spring Tomas held calibration for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "I'm fairly sure Priya is unavailable at 09:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Going off the roster, Tomas then Priya, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Tomas",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "It bears repeating: As far as I know, the 07:00 block is not Nadia's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     "07:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "There was some disagreement about whether Farah had 07:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "I'm fairly sure Tomas left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "You can rule Priya out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Farah and Priya attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Farah filled in the equipment survey.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Speaking from memory, Priya is on intake.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Whoever drew the 11:00 block, it was Farah.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Farah",
+     "11:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "My recollection is that Nadia keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "This came up more than once, so: I'm fairly sure Priya has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Going off the roster, had the rota gone the other way, Nadia would be on 07:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Speaking from memory, Farah put in for the 11:00 block and was turned down.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "There was some disagreement about whether Priya had 15:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Speaking from memory, Hugo is on the block immediately before Tomas.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Hugo",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "The 15:00 block is not Nadia's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Nadia is unavailable at 07:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Hugo, Tomas and Nadia completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Farah and Hugo attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-021": {
+  "staff": [
+   "Nadia",
+   "Omar",
+   "Farah",
+   "Kiran",
+   "Tobias"
+  ],
+  "holders": [
+   "Tobias",
+   "Farah",
+   "Kiran"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Tobias, Nadia and Omar attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Tobias takes over from Farah later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Tobias",
+     "Farah"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Last month Farah was on packing.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "I'm fairly sure the intake station is down to Farah.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Farah",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Nadia works earlier in the day than Tobias.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Nadia",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Omar sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "As far as I know, there is no block between Kiran and Omar, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Kiran",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Tobias has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tobias",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Going off the roster, Farah has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "My recollection is that Omar is on after one of Farah and Nadia and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Omar",
+     "Farah",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Omar left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Speaking from memory, the question of Farah on 13:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "As far as I know, there was some disagreement about whether Farah had 13:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "I'm fairly sure Farah lobbied for 11:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "I'm fairly sure putting Kiran on the 09:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "This came up more than once, so: Nadia's block falls somewhere earlier than Tobias's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Nadia",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Speaking from memory, Tobias has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Speaking from memory, Nadia takes over from Kiran later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Nadia",
+     "Kiran"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-022": {
+  "staff": [
+   "Ayesha",
+   "Tomas",
+   "Samuel",
+   "Nadia",
+   "Hugo"
+  ],
+  "holders": [
+   "Tomas",
+   "Ayesha",
+   "Samuel"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "There is no block between Hugo's and Tomas's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Hugo",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "As far as I know, Samuel is on the block directly after Ayesha.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Ayesha"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "My recollection is that Samuel lobbied for 09:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "As far as I know, in the spring Hugo held intake for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "As far as I know, packing is covered by someone other than Tomas.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Noted twice in the handover: Whoever is on packing works earlier in the day than Samuel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Samuel"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Samuel left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Nobody could remember whether Samuel was down for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Nadia hands straight over to Hugo.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Hugo"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Ayesha, Tomas, Samuel, Hugo and Nadia attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Hugo sits between Ayesha and Nadia on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Hugo",
+     "Ayesha",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "I'm fairly sure Samuel is on later than whoever has intake.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Samuel",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Nadia has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Whoever has packing is done before Samuel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Tomas and Nadia completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "The question of Tomas on 11:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Worth restating, since it came up twice in handover: Going off the roster, Hugo works at some point between Ayesha and Nadia, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Hugo",
+     "Ayesha",
+     "Nadia"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Worth restating, since it came up twice in handover: There is no block between Nadia's and Hugo's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Hugo"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "My recollection is that Ayesha would have been a better fit for the 15:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   }
+  ]
+ },
+ "V-023": {
+  "staff": [
+   "Farah",
+   "Nadia",
+   "Leila",
+   "Lukas",
+   "Tobias"
+  ],
+  "holders": [
+   "Tobias",
+   "Nadia",
+   "Lukas"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Putting Tobias on the 13:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Going off the roster, Farah's block falls between Leila's and Tobias's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Farah",
+     "Leila",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "15:00 is the one block Leila is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Leila",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "I'm fairly sure Leila completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Nobody could remember whether Farah was down for the 09:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Going off the roster, Lukas is on the block immediately before Nadia.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Leila works at some point between Nadia and Tobias, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Leila",
+     "Nadia",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Lukas lobbied for 07:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Lukas filled in the equipment survey.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Worth restating, since it came up twice in handover: Tobias comes later in the day than Nadia.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Tobias",
+     "Nadia"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "I'm fairly sure by the time Tobias starts, Nadia has already been on.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Tobias",
+     "Nadia"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Nadia completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Noted twice in the handover: The 15:00 block is not Leila's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Leila",
+     "15:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Lukas would have been a better fit for the 13:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Put Nadia between Farah and Lukas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Farah",
+     "Lukas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "The recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "It bears repeating: Lukas hands straight over to Nadia.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Nadia"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "As far as I know, on the previous cycle packing was Tobias's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "Speaking from memory, Lukas's block falls somewhere earlier than Tobias's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Nadia has not been put on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-024": {
+  "staff": [
+   "Rohan",
+   "Tobias",
+   "Ayesha",
+   "Meera",
+   "Omar"
+  ],
+  "holders": [
+   "Rohan",
+   "Omar",
+   "Tobias"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Rohan relieves Tobias directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Ayesha and the 15:00 block came up, but nothing was minuted.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "There is no block between Ayesha and Omar, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "I'm fairly sure Meera is on later than whoever has intake.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Meera",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Going off the roster, putting Omar on the 13:00 block would have solved the parking problem.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Meera, Ayesha and Rohan attended the supplier training day in the spring.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "I'm fairly sure last month Ayesha was on calibration.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Worth restating, since it came up twice in handover: Rohan is on the block directly after Tobias.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Tobias"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Omar takes over from Meera later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Omar",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "On the previous cycle intake was Ayesha's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Omar is on later than whoever has packing.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Omar",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "By the time Omar starts, Tobias has already been on.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Omar",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Nobody has claimed the jacket left in the break room.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "The 07:00 block is not Omar's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Omar",
+     "07:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "As far as I know, Meera lobbied for 09:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-025": {
+  "staff": [
+   "Nadia",
+   "Rohan",
+   "Omar",
+   "Zoe",
+   "Meera"
+  ],
+  "holders": [
+   "Meera",
+   "Zoe",
+   "Rohan"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "There was some disagreement about whether Zoe had 13:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Intake is Meera's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Speaking from memory, Rohan would have been a better fit for the 11:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Whoever is on packing works earlier in the day than Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Going off the roster, back in the old arrangement, Meera took intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Zoe hands straight over to Omar.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Zoe",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Zoe's block falls between Nadia's and Omar's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Zoe",
+     "Nadia",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Omar wanted 09:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Intake is covered by someone other than Rohan.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Speaking from memory, whoever has calibration is done before Meera starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Meera"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Nadia put in for the 07:00 block and was turned down.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Rohan appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Going off the roster, 11:00 is when Rohan is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     "11:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Speaking from memory, Meera and Nadia car-share when their shifts allow.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Calibration is covered by Zoe.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Zoe",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Nadia is not on the 11:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     "11:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Nadia has the spare key to the supply cupboard.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Worth restating, since it came up twice in handover: I'm fairly sure the person on calibration precedes Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Meera"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Rohan left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ },
+ "V-026": {
+  "staff": [
+   "Lukas",
+   "Leila",
+   "Priya",
+   "Ayesha",
+   "Samuel"
+  ],
+  "holders": [
+   "Ayesha",
+   "Leila",
+   "Lukas"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Intake is covered by someone other than Ayesha.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Nobody could remember whether Priya was down for the 13:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Ayesha keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Priya is the one who opens up at 15:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "I'm fairly sure Samuel left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "My recollection is that Leila sat on the interview panel in February.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "On the previous cycle packing was Priya's.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "Samuel has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Speaking from memory, whoever has packing is done before Priya starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Worth restating, since it came up twice in handover: Speaking from memory, Leila is on calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Leila",
+     "calibration"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Worth restating, since it came up twice in handover: The intake station is covered earlier in the day than Leila's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Leila"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Speaking from memory, whoever has intake is done before Leila starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Leila"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Leila is on the block directly after Lukas.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Leila",
+     "Lukas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "If Ayesha had taken the 11:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Samuel wanted 13:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "There was some disagreement about whether Ayesha had 11:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "This came up more than once, so: As far as I know, whoever is on packing works earlier in the day than Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Going off the roster, Samuel takes 09:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Samuel",
+     "09:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Lukas works at some point between Priya and Samuel, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Priya",
+     "Samuel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "The recycling collection has moved to Wednesdays.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "I'm fairly sure calibration is covered by Leila.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Leila",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   }
+  ]
+ },
+ "V-027": {
+  "staff": [
+   "Tobias",
+   "Priya",
+   "Lukas",
+   "Omar",
+   "Rohan"
+  ],
+  "holders": [
+   "Omar",
+   "Lukas",
+   "Priya"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Speaking from memory, in the spring Tobias held calibration for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Tobias asked to move to the 09:00 block; the request was declined.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Omar's block falls between Priya's and Tobias's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Omar",
+     "Priya",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "The visitor log was moved to the front desk in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Worth restating, since it came up twice in handover: Tobias hands straight over to Omar.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Tobias",
+     "Omar"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "The calibration station is covered earlier in the day than Rohan's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Rohan"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "I'm fairly sure the 15:00 block is Lukas's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Lukas",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Speaking from memory, there is no block between Tobias's and Omar's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Tobias",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Noted twice in the handover: Lukas is the one who opens up at 15:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Lukas",
+     "15:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "My recollection is that there was some disagreement about whether Tobias had 07:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Worth restating, since it came up twice in handover: Tobias is on after one of Lukas and Omar and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tobias",
+     "Lukas",
+     "Omar"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Priya is on the block directly after Omar.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Priya",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Lukas, Priya, Omar and Tobias completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Rohan left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Packing is covered by Priya.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Whichever way round Lukas and Omar are, Tobias is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tobias",
+     "Lukas",
+     "Omar"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "You can rule Priya out for calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Had the rota gone the other way, Lukas would be on 07:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "I'm fairly sure Lukas wanted 09:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   }
+  ]
+ },
+ "V-028": {
+  "staff": [
+   "Tobias",
+   "Ayesha",
+   "Bianca",
+   "Tomas",
+   "Priya"
+  ],
+  "holders": [
+   "Priya",
+   "Ayesha",
+   "Tobias"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "Priya is on later than whoever has intake.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Priya",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Speaking from memory, the packing station is down to Priya.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "There is no block between Ayesha's and Priya's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Tomas lobbied for 11:00 without success.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "As far as I know, the question of Tomas on 15:00 was left open in the handover.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "I'm fairly sure Tomas joined the site walkaround in March.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "My recollection is that Priya appeared on the old emergency contact sheet.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "Priya has been chasing the maintenance ticket for the printer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Bianca is on later than whoever has packing.",
+    "kind": "ORDER_PERSON_STATION",
+    "args": [
+     "Bianca",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Tomas keeps the sign-in sheet in the top drawer.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Bianca filled in the equipment survey.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "I'm fairly sure Bianca sits between Tobias and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Bianca",
+     "Tobias",
+     "Tomas"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Last month Tobias was on intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "Going off the roster, Tomas's block falls between Bianca's and Priya's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Bianca",
+     "Priya"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "Going off the roster, last month Priya was on intake.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "Whoever is on packing works earlier in the day than Tobias.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "Bianca would have been a better fit for the 07:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   }
+  ]
+ },
+ "V-029": {
+  "staff": [
+   "Daniel",
+   "Bianca",
+   "Zoe",
+   "Tobias",
+   "Ingrid"
+  ],
+  "holders": [
+   "Bianca",
+   "Zoe",
+   "Daniel"
+  ],
+  "lines": [
+   {
+    "idx": 1,
+    "text": "The site coordinator noted that the car park resurfacing runs through the end of the month.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 2,
+    "text": "Noted twice in the handover: Intake is covered by someone other than Bianca.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Bianca",
+     "intake"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 3,
+    "text": "Zoe sits between Daniel and Tobias on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Zoe",
+     "Daniel",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 4,
+    "text": "Speaking from memory, there is no block between Zoe and Bianca, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Zoe",
+     "Bianca"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 5,
+    "text": "Going off the roster, had the rota gone the other way, Tobias would be on 09:00.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 6,
+    "text": "Going off the roster, nobody could remember whether Bianca was down for the 15:00 block.",
+    "kind": null,
+    "args": null,
+    "decoy": "OPEN",
+    "phrase": null
+   },
+   {
+    "idx": 7,
+    "text": "Bianca wanted 11:00 and did not get it.",
+    "kind": null,
+    "args": null,
+    "decoy": "UNMET",
+    "phrase": null
+   },
+   {
+    "idx": 8,
+    "text": "If Ingrid had taken the 13:00 block the handover would have been smoother.",
+    "kind": null,
+    "args": null,
+    "decoy": "WISH",
+    "phrase": null
+   },
+   {
+    "idx": 9,
+    "text": "I'm fairly sure Zoe works at some point between Bianca and Ingrid, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Zoe",
+     "Bianca",
+     "Ingrid"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 10,
+    "text": "Speaking from memory, in the spring Daniel held intake for a while.",
+    "kind": null,
+    "args": null,
+    "decoy": "PAST",
+    "phrase": null
+   },
+   {
+    "idx": 11,
+    "text": "Deliveries continue to arrive through the north gate.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 12,
+    "text": "Tobias is not on the 15:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tobias",
+     "15:00"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 13,
+    "text": "Bianca takes over from Daniel later in the day.",
+    "kind": "ORDER_GT",
+    "args": [
+     "Bianca",
+     "Daniel"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 14,
+    "text": "Going off the roster, packing is not Bianca's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Bianca",
+     "packing"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 15,
+    "text": "Daniel is not assigned to intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 16,
+    "text": "I'm fairly sure Bianca is not assigned to intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Bianca",
+     "intake"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 17,
+    "text": "It bears repeating: As far as I know, Tobias has a standing commitment that rules out the 15:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tobias",
+     "15:00"
+    ],
+    "decoy": null,
+    "restated": true,
+    "phrase": null
+   },
+   {
+    "idx": 18,
+    "text": "As far as I know, packing is covered before Tobias comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tobias"
+    ],
+    "decoy": null,
+    "phrase": null
+   },
+   {
+    "idx": 19,
+    "text": "I'm fairly sure Daniel, Zoe, Ingrid and Bianca completed the fire-safety refresher last quarter.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 20,
+    "text": "As far as I know, Daniel left a note about the recycling bins.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 21,
+    "text": "Ingrid is the point of contact for the fire drill.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   },
+   {
+    "idx": 22,
+    "text": "Catering is unchanged from last week.",
+    "kind": null,
+    "args": null,
+    "decoy": "CHAT",
+    "phrase": null
+   }
+  ]
+ }
+}
