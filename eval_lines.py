@@ -72,11 +72,21 @@ def main():
             e, d = map(float, a.simulate.split(",")); raw = noisy_raw(g, e, d, random.Random(hash((it["id"], s)) & 0xffffffff))
         else:
             msgs = D.messages_for_item(pi, echo=not a.no_echo, exclude_ids=(it["id"],), knn=a.knn, knn_backend=a.knn_backend)
-            try:
-                if a.logprobs:
-                    raw, toks = D.call_granite_v2_lp(client, model, it["id"], msgs); conf = D.result_confidence(raw, toks)
-                else: raw = D.call_granite_v2(client, model, it["id"], msgs); conf = None
-            except Exception as ex: print("call failed", it["id"], ex, file=sys.stderr); raw = ""; conf = None
+            raw, conf = "", None
+            for attempt in range(4):
+                try:
+                    if a.logprobs:
+                        raw, toks = D.call_granite_v2_lp(client, model, it["id"], msgs); conf = D.result_confidence(raw, toks)
+                    else: raw = D.call_granite_v2(client, model, it["id"], msgs); conf = None
+                    break
+                except Exception as ex:
+                    if "429" in str(ex) and attempt < 3:
+                        import time
+                        time.sleep(2.0 * (attempt + 1))
+                        continue
+                    print("call failed", it["id"], ex, file=sys.stderr)
+                    raw, conf = "", None
+                    break
             return it, s, g, pi, (raw, conf)
         return it, s, g, pi, (raw, None)
 

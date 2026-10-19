@@ -1,0 +1,6435 @@
+{
+ "B2-000": {
+  "staff": [
+   "Samuel",
+   "Tomas",
+   "Meera",
+   "Rohan",
+   "Ayesha"
+  ],
+  "holders": [
+   "Samuel",
+   "Meera",
+   "Ayesha"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "As far as I know, Tomas lobbied for 11:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     2
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Packing is covered by someone other than Ayesha.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Ayesha is not assigned to calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Speaking from memory, Meera is on the block directly after Samuel.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Put Meera between Tomas and Rohan, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Tomas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Meera has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Going off the roster, Meera has not been put on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "It bears repeating: Whichever way round Tomas and Rohan are, Meera is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Tomas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Calibration is covered by someone other than Meera.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Speaking from memory, you will not find Rohan on the 07:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     0
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "Going off the roster, Rohan is done before Ayesha starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Rohan",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-001": {
+  "staff": [
+   "Daniel",
+   "Ayesha",
+   "Tomas",
+   "Rohan",
+   "Meera"
+  ],
+  "holders": [
+   "Daniel",
+   "Tomas",
+   "Meera"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Tomas is on later than whoever has packing.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Speaking from memory, Daniel is assigned to calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "My recollection is that Daniel wanted 15:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     4
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Tomas is on intake.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Whoever drew the 13:00 block, it was Rohan.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     3
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Daniel is the one who opens up at 09:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     1
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Rohan is on after one of Ayesha and Tomas and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ayesha",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "My recollection is that Tomas is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Noted twice in the handover: As far as I know, the calibration station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-002": {
+  "staff": [
+   "Daniel",
+   "Rohan",
+   "Nadia",
+   "Priya",
+   "Meera"
+  ],
+  "holders": [
+   "Daniel",
+   "Rohan",
+   "Meera"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Nadia then Priya, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Rohan is on the block directly after Meera.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "I'm fairly sure the calibration station is covered earlier in the day than Rohan's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "My recollection is that whoever has packing is done before Daniel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Worth restating, since it came up twice in handover: As far as I know, Meera hands straight over to Rohan.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Speaking from memory, you will not find Daniel on the 15:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     4
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Rohan lobbied for 13:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     3
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Meera has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "The calibration station is covered earlier in the day than Priya's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Whichever way round Meera and Nadia are, Rohan is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Meera",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "My recollection is that Daniel is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   }
+  ]
+ },
+ "B2-003": {
+  "staff": [
+   "Priya",
+   "Ingrid",
+   "Tomas",
+   "Meera",
+   "Nadia"
+  ],
+  "holders": [
+   "Priya",
+   "Meera",
+   "Nadia"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "My recollection is that whoever is on intake works earlier in the day than Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Going off the roster, Nadia's block falls between Meera's and Tomas's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Meera",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "I'm fairly sure Priya is not on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Whoever is on packing works earlier in the day than Ingrid.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Nadia sits between Priya and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Priya",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Ingrid wanted 07:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     0
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "As far as I know, Ingrid comes later in the day than Priya.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "This came up more than once, so: Whichever way round Priya and Tomas are, Nadia is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Priya",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "As far as I know, whichever way round Nadia and Meera are, Ingrid is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "I'm fairly sure 13:00 is the one block Priya is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     3
+    ]
+   }
+  ]
+ },
+ "B2-004": {
+  "staff": [
+   "Ingrid",
+   "Priya",
+   "Nadia",
+   "Rohan",
+   "Samuel"
+  ],
+  "holders": [
+   "Ingrid",
+   "Priya",
+   "Samuel"
+  ],
+  "n_lines": 17,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Whoever is on intake works earlier in the day than Nadia.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "The person on packing precedes Rohan.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Put Ingrid between Rohan and Nadia, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Rohan",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "As far as I know, put Rohan between Samuel and Priya, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Samuel",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Priya takes 15:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     4
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "As far as I know, Ingrid is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "It bears repeating: My recollection is that the person on calibration precedes Ingrid.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-005": {
+  "staff": [
+   "Daniel",
+   "Priya",
+   "Nadia",
+   "Lukas",
+   "Tomas"
+  ],
+  "holders": [
+   "Daniel",
+   "Priya",
+   "Lukas"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "The person on packing precedes Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Whoever drew the 07:00 block, it was Tomas.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     0
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Speaking from memory, Daniel is unavailable at 11:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     2
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Nadia has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     1
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Lukas is not assigned to calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Lukas",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "It bears repeating: The packing station is covered earlier in the day than Priya's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Tomas is on the block immediately before Nadia.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Tomas",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Lukas is on the block directly after Priya.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Lukas",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Lukas takes 15:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Lukas",
+     4
+    ]
+   }
+  ]
+ },
+ "B2-006": {
+  "staff": [
+   "Daniel",
+   "Priya",
+   "Tomas",
+   "Nadia",
+   "Samuel"
+  ],
+  "holders": [
+   "Priya",
+   "Tomas",
+   "Samuel"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "The 15:00 block is not Priya's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     4
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Priya asked to move to the 11:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     2
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Priya has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     1
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Going off the roster, the intake station is down to Tomas.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Whoever drew the 13:00 block, it was Samuel.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Samuel",
+     3
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Whoever is on packing works earlier in the day than Nadia.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Whoever is on packing works earlier in the day than Daniel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Daniel works at some point between Nadia and Tomas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Nadia",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Speaking from memory, the person on packing precedes Tomas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Noted twice in the handover: Daniel is on after one of Nadia and Tomas and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Nadia",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-007": {
+  "staff": [
+   "Nadia",
+   "Samuel",
+   "Tomas",
+   "Ingrid",
+   "Ayesha"
+  ],
+  "holders": [
+   "Nadia",
+   "Samuel",
+   "Ingrid"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Going off the roster, Nadia sits between Ingrid and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "The person on packing precedes Ayesha.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "The calibration station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "As far as I know, Ayesha sits between Nadia and Ingrid on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Nadia",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Speaking from memory, put Nadia between Tomas and Samuel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Tomas",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "My recollection is that Ingrid is on after one of Tomas and Samuel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Tomas",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "You can rule Nadia out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "The intake station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "This came up more than once, so: Going off the roster, whoever has intake is done before Tomas starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-008": {
+  "staff": [
+   "Priya",
+   "Nadia",
+   "Rohan",
+   "Ingrid",
+   "Ayesha"
+  ],
+  "holders": [
+   "Priya",
+   "Rohan",
+   "Ayesha"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "My recollection is that Priya's block falls between Ingrid's and Rohan's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Ingrid",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Speaking from memory, put Rohan between Ingrid and Nadia, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ingrid",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Whichever way round Rohan and Ingrid are, Priya is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Rohan",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Whichever way round Nadia and Ingrid are, Rohan is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Nadia",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Nadia wanted 11:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     2
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Priya has not been put on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Noted twice in the handover: Rohan's block falls between Nadia's and Ingrid's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Nadia",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Whoever is on calibration works earlier in the day than Rohan.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Whoever has intake is done before Ingrid starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Ingrid's block falls somewhere earlier than Rohan's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Rohan"
+    ]
+   }
+  ]
+ },
+ "B2-009": {
+  "staff": [
+   "Daniel",
+   "Meera",
+   "Rohan",
+   "Priya",
+   "Ingrid"
+  ],
+  "holders": [
+   "Meera",
+   "Rohan",
+   "Priya"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "The 09:00 block is Rohan's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     1
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Meera's block falls somewhere earlier than Priya's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "The 13:00 block is not Priya's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     3
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Speaking from memory, Meera works earlier in the day than Daniel.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Daniel lobbied for 15:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     4
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "My recollection is that whoever has intake is done before Meera starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Speaking from memory, Priya is on later than whoever has intake.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "It bears repeating: Going off the roster, you will not find Priya on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     3
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Priya is not on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ]
+   }
+  ]
+ },
+ "B2-010": {
+  "staff": [
+   "Tomas",
+   "Lukas",
+   "Meera",
+   "Ingrid",
+   "Ayesha"
+  ],
+  "holders": [
+   "Lukas",
+   "Meera",
+   "Ingrid"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Calibration is covered by someone other than Ingrid.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "Put Meera between Ayesha and Lukas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Ayesha",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "My recollection is that Meera has not been put on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Calibration is covered by someone other than Meera.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Noted twice in the handover: Ingrid is not assigned to calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Meera is not on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, whichever way round Ayesha and Ingrid are, Lukas is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Ayesha",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Calibration is covered before Ingrid comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Meera wanted 15:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     4
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Ayesha has a standing commitment that rules out the 07:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     0
+    ]
+   }
+  ]
+ },
+ "B2-011": {
+  "staff": [
+   "Tomas",
+   "Meera",
+   "Daniel",
+   "Ayesha",
+   "Nadia"
+  ],
+  "holders": [
+   "Tomas",
+   "Daniel",
+   "Ayesha"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Tomas lobbied for 07:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     0
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Nadia is on the block immediately before Meera.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "As far as I know, 11:00 is when Ayesha is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "My recollection is that Meera sits between Ayesha and Nadia on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Ayesha",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Daniel works at some point between Nadia and Tomas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Nadia",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "There is no block between Meera's and Ayesha's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Daniel's block falls between Meera's and Tomas's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Meera",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Noted twice in the handover: Going off the roster, whoever drew the 11:00 block, it was Ayesha.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Ayesha is assigned to calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ayesha",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "The intake station is down to Daniel.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ]
+   }
+  ]
+ },
+ "B2-012": {
+  "staff": [
+   "Daniel",
+   "Meera",
+   "Ayesha",
+   "Priya",
+   "Nadia"
+  ],
+  "holders": [
+   "Daniel",
+   "Ayesha",
+   "Priya"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Ayesha is not assigned to calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Daniel is the one who opens up at 15:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     4
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Daniel is not assigned to packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Meera wanted 15:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     4
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Nadia hands straight over to Priya.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "My recollection is that Nadia relieves Meera directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Meera sits between Nadia and Ayesha on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Nadia",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Whoever has calibration is done before Nadia starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "This came up more than once, so: I'm fairly sure Nadia is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Nadia"
+    ]
+   }
+  ]
+ },
+ "B2-013": {
+  "staff": [
+   "Nadia",
+   "Tomas",
+   "Ayesha",
+   "Rohan",
+   "Daniel"
+  ],
+  "holders": [
+   "Nadia",
+   "Tomas",
+   "Daniel"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Intake is Tomas's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "Tomas is unavailable at 09:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     1
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Going off the roster, Tomas lobbied for 11:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     2
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "The 11:00 block is Nadia's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     2
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "My recollection is that put Nadia between Ayesha and Daniel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "There is no block between Nadia's and Rohan's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "This came up more than once, so: Nadia then Rohan, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Packing is Daniel's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Daniel is on the 15:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     4
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Rohan sits between Daniel and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Daniel",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-014": {
+  "staff": [
+   "Meera",
+   "Daniel",
+   "Samuel",
+   "Priya",
+   "Ayesha"
+  ],
+  "holders": [
+   "Meera",
+   "Samuel",
+   "Priya"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "Going off the roster, whoever is on calibration works earlier in the day than Ayesha.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Priya works at some point between Samuel and Daniel, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Samuel",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, put Samuel between Priya and Meera, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Priya",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Going off the roster, whichever way round Meera and Priya are, Samuel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Meera",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Daniel sits between Meera and Ayesha on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Speaking from memory, the calibration station is covered earlier in the day than Daniel's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "The intake station is covered earlier in the day than Ayesha's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Whoever has packing is done before Priya starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Noted twice in the handover: Intake is covered before Ayesha comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-015": {
+  "staff": [
+   "Samuel",
+   "Lukas",
+   "Daniel",
+   "Priya",
+   "Meera"
+  ],
+  "holders": [
+   "Samuel",
+   "Lukas",
+   "Meera"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Speaking from memory, Samuel is on after one of Daniel and Meera and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Daniel",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "I'm fairly sure Samuel has not been put on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Samuel has not been put on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "My recollection is that packing is not Lukas's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Lukas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "The person on calibration precedes Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Noted twice in the handover: Calibration is covered by someone other than Samuel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "07:00 is the one block Meera is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     0
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Lukas sits between Daniel and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Daniel",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Packing is not Meera's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Meera asked to move to the 11:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     2
+    ]
+   }
+  ]
+ },
+ "B2-016": {
+  "staff": [
+   "Tomas",
+   "Ayesha",
+   "Daniel",
+   "Lukas",
+   "Nadia"
+  ],
+  "holders": [
+   "Tomas",
+   "Daniel",
+   "Lukas"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Daniel then Nadia, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Daniel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "I'm fairly sure by the time Ayesha starts, Lukas has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Lukas then Daniel, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "You can rule Tomas out for calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Lukas put in for the 13:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     3
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "My recollection is that Tomas works earlier in the day than Ayesha.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tomas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "The person on intake precedes Lukas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "As far as I know, Tomas is on the 13:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Worth restating, since it came up twice in handover: Daniel hands straight over to Nadia.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Daniel",
+     "Nadia"
+    ]
+   }
+  ]
+ },
+ "B2-017": {
+  "staff": [
+   "Priya",
+   "Nadia",
+   "Samuel",
+   "Ingrid",
+   "Meera"
+  ],
+  "holders": [
+   "Nadia",
+   "Ingrid",
+   "Meera"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Speaking from memory, Ingrid has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "My recollection is that Priya's block falls between Nadia's and Meera's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "The calibration station is covered earlier in the day than Nadia's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Going off the roster, Ingrid's block falls between Priya's and Nadia's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Priya",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Priya's block falls between Meera's and Nadia's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Meera",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Nadia is on after one of Samuel and Ingrid and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Nadia put in for the 09:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     1
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Ingrid is unavailable at 09:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     1
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Worth restating, since it came up twice in handover: My recollection is that intake is covered by Ingrid.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Meera is not on the 09:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "As far as I know, Ingrid is on after one of Samuel and Meera and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Samuel",
+     "Meera"
+    ]
+   }
+  ]
+ },
+ "B2-018": {
+  "staff": [
+   "Priya",
+   "Daniel",
+   "Nadia",
+   "Tomas",
+   "Ayesha"
+  ],
+  "holders": [
+   "Priya",
+   "Tomas",
+   "Ayesha"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "As far as I know, whoever has calibration is done before Daniel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "My recollection is that the 13:00 block is Nadia's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     3
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "My recollection is that the 09:00 block is Tomas's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     1
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Tomas wanted 09:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     1
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "The intake station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "I'm fairly sure Nadia is on after one of Daniel and Tomas and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Daniel",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Calibration is covered by someone other than Priya.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "I'm fairly sure Priya hands straight over to Ayesha.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Going off the roster, Daniel's block falls between Ayesha's and Tomas's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Ayesha",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "As far as I know, there is no block between Ayesha's and Daniel's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "It bears repeating: I'm fairly sure put Nadia between Daniel and Tomas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Daniel",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-019": {
+  "staff": [
+   "Daniel",
+   "Samuel",
+   "Nadia",
+   "Priya",
+   "Rohan"
+  ],
+  "holders": [
+   "Daniel",
+   "Nadia",
+   "Rohan"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "My recollection is that packing is not Rohan's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Samuel's block falls between Rohan's and Nadia's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Rohan",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Priya lobbied for 15:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     4
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Going off the roster, calibration is Nadia's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Rohan relieves Priya directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "My recollection is that Nadia sits between Daniel and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Daniel",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Whichever way round Daniel and Priya are, Samuel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Daniel",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "This came up more than once, so: Put Samuel between Rohan and Nadia, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Rohan",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Speaking from memory, the 07:00 block is Daniel's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     0
+    ]
+   }
+  ]
+ },
+ "B2-020": {
+  "staff": [
+   "Nadia",
+   "Daniel",
+   "Priya",
+   "Rohan",
+   "Meera"
+  ],
+  "holders": [
+   "Nadia",
+   "Daniel",
+   "Meera"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "Rohan is on later than whoever has intake.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Whoever drew the 11:00 block, it was Rohan.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Rohan",
+     2
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Calibration is covered by Nadia.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "My recollection is that Meera asked to move to the 07:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     0
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Priya then Meera, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "My recollection is that Daniel's block falls between Nadia's and Priya's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Nadia",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "The 15:00 block is Meera's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Meera",
+     4
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "My recollection is that Daniel is on packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Noted twice in the handover: Whoever drew the 15:00 block, it was Meera.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Meera",
+     4
+    ]
+   }
+  ]
+ },
+ "B2-021": {
+  "staff": [
+   "Lukas",
+   "Daniel",
+   "Ingrid",
+   "Ayesha",
+   "Samuel"
+  ],
+  "holders": [
+   "Daniel",
+   "Ingrid",
+   "Samuel"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "Whichever way round Samuel and Ingrid are, Daniel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Going off the roster, the 09:00 block is Ayesha's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     1
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "As far as I know, the calibration station is down to Daniel.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Daniel comes later in the day than Lukas.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Worth restating, since it came up twice in handover: Put Daniel between Samuel and Ingrid, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Daniel's block falls between Ingrid's and Samuel's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "My recollection is that Ayesha's block falls between Lukas's and Samuel's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Lukas",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Samuel works earlier in the day than Ingrid.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "As far as I know, Daniel lobbied for 11:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     2
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Whoever has packing is done before Ingrid starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-022": {
+  "staff": [
+   "Priya",
+   "Samuel",
+   "Ayesha",
+   "Tomas",
+   "Ingrid"
+  ],
+  "holders": [
+   "Priya",
+   "Ayesha",
+   "Ingrid"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 6,
+    "line": "Tomas is on after one of Ingrid and Priya and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Ingrid",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Calibration is not Priya's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Intake is covered before Samuel comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Intake is covered before Ayesha comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Tomas works at some point between Ayesha and Ingrid, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Ayesha",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "The 13:00 block is Tomas's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Speaking from memory, Ayesha has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     1
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "I'm fairly sure the 07:00 block is Priya's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     0
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "It bears repeating: The person on intake precedes Ayesha.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-023": {
+  "staff": [
+   "Daniel",
+   "Lukas",
+   "Tomas",
+   "Rohan",
+   "Nadia"
+  ],
+  "holders": [
+   "Lukas",
+   "Rohan",
+   "Nadia"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Daniel works at some point between Lukas and Nadia, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Lukas",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Lukas is done before Rohan starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Packing is covered before Tomas comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "My recollection is that you will not find Lukas on the 09:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     1
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Packing is Lukas's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Lukas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "As far as I know, the calibration station is covered earlier in the day than Daniel's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Worth restating, since it came up twice in handover: Lukas works earlier in the day than Rohan.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Rohan works at some point between Daniel and Tomas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Daniel",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Whoever is on packing works earlier in the day than Daniel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "I'm fairly sure Tomas wanted 11:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     2
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "Intake is Rohan's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ]
+   }
+  ]
+ },
+ "B2-024": {
+  "staff": [
+   "Nadia",
+   "Ingrid",
+   "Meera",
+   "Priya",
+   "Rohan"
+  ],
+  "holders": [
+   "Nadia",
+   "Ingrid",
+   "Priya"
+  ],
+  "n_lines": 21,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Ingrid is on after one of Meera and Rohan and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Meera",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Rohan comes later in the day than Ingrid.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Priya is not assigned to packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Priya's block falls somewhere earlier than Nadia's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Meera lobbied for 09:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Speaking from memory, Ingrid is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "As far as I know, calibration is covered by someone other than Priya.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "As far as I know, whichever way round Ingrid and Rohan are, Nadia is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Ingrid",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Whichever way round Meera and Priya are, Rohan is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Meera",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Meera is done before Nadia starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Noted twice in the handover: Rohan sits between Meera and Priya on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Meera",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 21,
+    "line": "My recollection is that you can rule Ingrid out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "packing"
+    ]
+   }
+  ]
+ },
+ "B2-025": {
+  "staff": [
+   "Nadia",
+   "Daniel",
+   "Lukas",
+   "Ayesha",
+   "Ingrid"
+  ],
+  "holders": [
+   "Lukas",
+   "Ayesha",
+   "Ingrid"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Ayesha is assigned to packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ayesha",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Daniel is on after one of Ayesha and Lukas and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Ayesha",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Speaking from memory, put Ayesha between Ingrid and Nadia, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Ingrid",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "As far as I know, by the time Daniel starts, Nadia has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Nadia",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "The intake station is covered earlier in the day than Nadia's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Nadia put in for the 13:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     3
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "My recollection is that the person on intake precedes Daniel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "As far as I know, Ayesha relieves Ingrid directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Ayesha",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "The packing station is covered earlier in the day than Daniel's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Worth restating, since it came up twice in handover: Going off the roster, Ayesha is on the block directly after Ingrid.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Ayesha",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-026": {
+  "staff": [
+   "Samuel",
+   "Ayesha",
+   "Tomas",
+   "Nadia",
+   "Meera"
+  ],
+  "holders": [
+   "Ayesha",
+   "Tomas",
+   "Meera"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Speaking from memory, Ayesha sits between Meera and Nadia on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Meera",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "Ayesha is on packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ayesha",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "It bears repeating: Packing is Ayesha's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ayesha",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Samuel relieves Tomas directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Samuel lobbied for 11:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     2
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Intake is covered by Meera.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "My recollection is that whoever drew the 07:00 block, it was Nadia.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     0
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Meera is on after one of Tomas and Ayesha and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Tomas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Going off the roster, the person on packing precedes Tomas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-027": {
+  "staff": [
+   "Ayesha",
+   "Meera",
+   "Tomas",
+   "Nadia",
+   "Priya"
+  ],
+  "holders": [
+   "Meera",
+   "Tomas",
+   "Nadia"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "My recollection is that whoever has calibration is done before Tomas starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "As far as I know, Priya is the one who opens up at 15:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Priya",
+     4
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Going off the roster, Tomas is assigned to packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tomas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Meera is assigned to calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "It bears repeating: Going off the roster, the calibration station is down to Meera.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Tomas has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     1
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Meera wanted 09:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "By the time Ayesha starts, Meera has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Going off the roster, Nadia works at some point between Priya and Tomas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Priya",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-028": {
+  "staff": [
+   "Daniel",
+   "Priya",
+   "Meera",
+   "Tomas",
+   "Lukas"
+  ],
+  "holders": [
+   "Priya",
+   "Tomas",
+   "Lukas"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Lukas wanted 13:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     3
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "Meera is on after one of Priya and Daniel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Priya",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Going off the roster, put Daniel between Tomas and Lukas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Tomas",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "The packing station is covered earlier in the day than Lukas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Meera has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "As far as I know, you will not find Lukas on the 15:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     4
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "07:00 is the one block Lukas is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     0
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Noted twice in the handover: As far as I know, put Meera between Priya and Daniel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Priya",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Tomas is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-029": {
+  "staff": [
+   "Lukas",
+   "Tomas",
+   "Nadia",
+   "Daniel",
+   "Rohan"
+  ],
+  "holders": [
+   "Lukas",
+   "Tomas",
+   "Daniel"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Nadia is on later than whoever has packing.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "Tomas comes later in the day than Daniel.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "As far as I know, put Tomas between Lukas and Rohan, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Lukas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "My recollection is that Tomas lobbied for 13:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Tomas works earlier in the day than Nadia.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tomas",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "You will not find Tomas on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "It bears repeating: I'm fairly sure Tomas is on after one of Lukas and Rohan and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Lukas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Rohan takes over from Nadia later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Nadia",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Speaking from memory, Tomas is on intake.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   }
+  ]
+ },
+ "B2-030": {
+  "staff": [
+   "Rohan",
+   "Ingrid",
+   "Lukas",
+   "Samuel",
+   "Nadia"
+  ],
+  "holders": [
+   "Ingrid",
+   "Lukas",
+   "Nadia"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Nadia's block falls between Rohan's and Ingrid's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Rohan",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "As far as I know, intake is covered before Ingrid comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Put Rohan between Ingrid and Lukas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ingrid",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Going off the roster, Rohan works at some point between Samuel and Nadia, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Samuel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "My recollection is that Rohan relieves Lukas directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Ingrid lobbied for 07:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     0
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Lukas is on after one of Samuel and Ingrid and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Worth restating, since it came up twice in handover: Rohan sits between Ingrid and Lukas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ingrid",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Whichever way round Lukas and Ingrid are, Nadia is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Lukas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Calibration is Lukas's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Lukas",
+     "calibration"
+    ]
+   }
+  ]
+ },
+ "B2-031": {
+  "staff": [
+   "Priya",
+   "Tomas",
+   "Rohan",
+   "Ayesha",
+   "Meera"
+  ],
+  "holders": [
+   "Priya",
+   "Rohan",
+   "Meera"
+  ],
+  "n_lines": 21,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Whichever way round Rohan and Ayesha are, Priya is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Rohan",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Whichever way round Rohan and Meera are, Priya is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Rohan",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "There is no block between Meera's and Ayesha's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Rohan is on the block directly after Priya.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Rohan",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "This came up more than once, so: Put Priya between Rohan and Ayesha, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Rohan",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Rohan is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Priya comes later in the day than Tomas.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tomas",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Priya put in for the 15:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     4
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Meera has calibration this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Ayesha is not on the 15:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     4
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "Priya sits between Ayesha and Rohan on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Ayesha",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 21,
+    "line": "My recollection is that Tomas has a standing commitment that rules out the 13:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   }
+  ]
+ },
+ "B2-032": {
+  "staff": [
+   "Daniel",
+   "Samuel",
+   "Meera",
+   "Ingrid",
+   "Rohan"
+  ],
+  "holders": [
+   "Daniel",
+   "Ingrid",
+   "Rohan"
+  ],
+  "n_lines": 17,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Going off the roster, Ingrid put in for the 09:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     1
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "I'm fairly sure by the time Ingrid starts, Meera has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "The packing station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "The packing station is down to Daniel.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Meera's block falls between Daniel's and Samuel's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Daniel",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "As far as I know, 11:00 is when Daniel is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     2
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Intake is covered before Ingrid comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "This came up more than once, so: Meera sits between Daniel and Samuel on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Daniel",
+     "Samuel"
+    ]
+   }
+  ]
+ },
+ "B2-033": {
+  "staff": [
+   "Ingrid",
+   "Tomas",
+   "Meera",
+   "Lukas",
+   "Samuel"
+  ],
+  "holders": [
+   "Ingrid",
+   "Meera",
+   "Lukas"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Speaking from memory, Meera sits between Ingrid and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Ingrid",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Samuel lobbied for 13:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     3
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Going off the roster, Ingrid then Samuel, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "I'm fairly sure Lukas is on the block immediately before Ingrid.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Speaking from memory, calibration is covered before Tomas comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Meera relieves Samuel directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Meera has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Going off the roster, Meera works earlier in the day than Tomas.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Speaking from memory, whoever is on packing works earlier in the day than Ingrid.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Worth restating, since it came up twice in handover: As far as I know, Samuel is on the block directly after Ingrid.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-034": {
+  "staff": [
+   "Tomas",
+   "Meera",
+   "Ingrid",
+   "Rohan",
+   "Samuel"
+  ],
+  "holders": [
+   "Meera",
+   "Rohan",
+   "Samuel"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Meera has a standing commitment that rules out the 07:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     0
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Speaking from memory, Tomas is not on the 11:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     2
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Put Tomas between Rohan and Samuel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Rohan",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Ingrid is on the block directly after Samuel.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "I'm fairly sure whoever is on calibration works earlier in the day than Samuel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Meera wanted 09:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Going off the roster, packing is covered by someone other than Samuel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "This came up more than once, so: I'm fairly sure Tomas is on after one of Rohan and Samuel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Rohan",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "As far as I know, the calibration station is covered earlier in the day than Rohan's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Rohan"
+    ]
+   }
+  ]
+ },
+ "B2-035": {
+  "staff": [
+   "Tomas",
+   "Samuel",
+   "Daniel",
+   "Priya",
+   "Rohan"
+  ],
+  "holders": [
+   "Tomas",
+   "Samuel",
+   "Priya"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 5,
+    "line": "Rohan put in for the 15:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     4
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "My recollection is that Rohan then Priya, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Rohan",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "There is no block between Tomas's and Rohan's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Tomas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Speaking from memory, Priya is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Speaking from memory, Daniel hands straight over to Samuel.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Daniel",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Speaking from memory, packing is covered by someone other than Samuel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Daniel is unavailable at 11:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     2
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Whoever has calibration is done before Rohan starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "It bears repeating: My recollection is that Samuel is on the block directly after Daniel.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Tomas is not on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "You can rule Priya out for calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "calibration"
+    ]
+   }
+  ]
+ },
+ "B2-036": {
+  "staff": [
+   "Nadia",
+   "Meera",
+   "Rohan",
+   "Daniel",
+   "Samuel"
+  ],
+  "holders": [
+   "Nadia",
+   "Meera",
+   "Samuel"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Daniel works at some point between Samuel and Meera, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Speaking from memory, Meera has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Speaking from memory, whoever drew the 07:00 block, it was Nadia.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     0
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Going off the roster, Samuel hands straight over to Rohan.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Samuel",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Whichever way round Meera and Rohan are, Daniel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Meera",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Nadia is on packing.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Daniel is unavailable at 09:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     1
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Noted twice in the handover: Going off the roster, Daniel sits between Samuel and Meera on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "As far as I know, calibration is covered by Samuel.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Samuel",
+     "calibration"
+    ]
+   }
+  ]
+ },
+ "B2-037": {
+  "staff": [
+   "Lukas",
+   "Nadia",
+   "Priya",
+   "Meera",
+   "Ingrid"
+  ],
+  "holders": [
+   "Lukas",
+   "Nadia",
+   "Priya"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Going off the roster, Ingrid has a standing commitment that rules out the 11:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     2
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Meera takes 13:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Meera",
+     3
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Packing is covered by someone other than Nadia.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Going off the roster, Priya hands straight over to Lukas.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Meera lobbied for 11:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Meera",
+     2
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "The person on intake precedes Lukas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "This came up more than once, so: I'm fairly sure Priya is on the block immediately before Lukas.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Priya",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "You can rule Priya out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Going off the roster, Lukas takes 09:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Lukas",
+     1
+    ]
+   }
+  ]
+ },
+ "B2-038": {
+  "staff": [
+   "Daniel",
+   "Ayesha",
+   "Ingrid",
+   "Rohan",
+   "Nadia"
+  ],
+  "holders": [
+   "Daniel",
+   "Rohan",
+   "Nadia"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Ingrid relieves Rohan directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Ingrid",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "The packing station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "My recollection is that whoever is on intake works earlier in the day than Daniel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "The packing station is covered earlier in the day than Rohan's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Daniel asked to move to the 07:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     0
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Rohan is not on the 09:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     1
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Speaking from memory, Ayesha is unavailable at 09:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     1
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Speaking from memory, 07:00 is the one block Nadia is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     0
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "The intake station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Worth restating, since it came up twice in handover: 09:00 is the one block Rohan is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     1
+    ]
+   }
+  ]
+ },
+ "B2-039": {
+  "staff": [
+   "Ingrid",
+   "Nadia",
+   "Priya",
+   "Ayesha",
+   "Tomas"
+  ],
+  "holders": [
+   "Nadia",
+   "Ayesha",
+   "Tomas"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "I'm fairly sure Ayesha is not on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "As far as I know, Ayesha is not assigned to intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Tomas is on after one of Ayesha and Nadia and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Ayesha",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Tomas sits between Ayesha and Ingrid on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Ayesha",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Nadia's block falls between Tomas's and Ingrid's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Tomas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Whoever is on intake works earlier in the day than Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Speaking from memory, Tomas sits between Nadia and Priya on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Nadia",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Ayesha takes over from Priya later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "My recollection is that Nadia has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "Noted twice in the handover: Speaking from memory, whichever way round Nadia and Priya are, Tomas is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Nadia",
+     "Priya"
+    ]
+   }
+  ]
+ },
+ "B2-040": {
+  "staff": [
+   "Nadia",
+   "Ayesha",
+   "Samuel",
+   "Daniel",
+   "Meera"
+  ],
+  "holders": [
+   "Ayesha",
+   "Samuel",
+   "Daniel"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Daniel is on after one of Meera and Ayesha and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "You can rule Ayesha out for intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ayesha",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Ayesha put in for the 13:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     3
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "By the time Meera starts, Ayesha has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ayesha",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Going off the roster, whoever has calibration is done before Daniel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Ayesha works at some point between Nadia and Daniel, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Nadia",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Whichever way round Samuel and Nadia are, Daniel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Daniel sits between Nadia and Meera on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Samuel sits between Daniel and Meera on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Daniel",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "There is no block between Ayesha's and Daniel's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Noted twice in the handover: Put Samuel between Daniel and Meera, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Daniel",
+     "Meera"
+    ]
+   }
+  ]
+ },
+ "B2-041": {
+  "staff": [
+   "Nadia",
+   "Meera",
+   "Lukas",
+   "Samuel",
+   "Ingrid"
+  ],
+  "holders": [
+   "Nadia",
+   "Lukas",
+   "Ingrid"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "You can rule Lukas out for calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Lukas",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "07:00 is when Samuel is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Samuel",
+     0
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Samuel lobbied for 15:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     4
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "I'm fairly sure Ingrid's block falls between Nadia's and Meera's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Nadia sits between Samuel and Lukas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Samuel",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Nadia is on after one of Ingrid and Samuel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "I'm fairly sure 13:00 is the one block Ingrid is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     3
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Nadia has not been put on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "This came up more than once, so: Speaking from memory, you will not find Ingrid on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     3
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "As far as I know, intake is covered by someone other than Lukas.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Lukas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Going off the roster, Meera relieves Ingrid directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-042": {
+  "staff": [
+   "Ayesha",
+   "Meera",
+   "Ingrid",
+   "Lukas",
+   "Tomas"
+  ],
+  "holders": [
+   "Meera",
+   "Ingrid",
+   "Tomas"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Ayesha is the one who opens up at 07:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     0
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "As far as I know, Ingrid takes 11:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ingrid",
+     2
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "I'm fairly sure Lukas is on after one of Ingrid and Ayesha and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Ingrid",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Tomas is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "My recollection is that Tomas put in for the 07:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     0
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "13:00 is the one block Tomas is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "The calibration station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "My recollection is that whichever way round Tomas and Meera are, Lukas is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Tomas",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "This came up more than once, so: As far as I know, you will not find Tomas on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     3
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "My recollection is that the calibration station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-043": {
+  "staff": [
+   "Ingrid",
+   "Ayesha",
+   "Meera",
+   "Rohan",
+   "Daniel"
+  ],
+  "holders": [
+   "Ingrid",
+   "Rohan",
+   "Daniel"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "I'm fairly sure the 11:00 block is not Rohan's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     2
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Whoever is on calibration works earlier in the day than Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Ingrid takes over from Meera later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Daniel works earlier in the day than Ingrid.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "My recollection is that packing is Rohan's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Rohan",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Meera sits between Daniel and Ingrid on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Daniel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Put Ingrid between Ayesha and Daniel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Ingrid put in for the 07:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     0
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Ingrid's block falls between Ayesha's and Meera's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "This came up more than once, so: Whichever way round Ayesha and Daniel are, Ingrid is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Daniel"
+    ]
+   }
+  ]
+ },
+ "B2-044": {
+  "staff": [
+   "Priya",
+   "Daniel",
+   "Ayesha",
+   "Rohan",
+   "Ingrid"
+  ],
+  "holders": [
+   "Ayesha",
+   "Rohan",
+   "Ingrid"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Priya works at some point between Ingrid and Ayesha, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Ingrid",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Daniel takes 07:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     0
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Ingrid is on after one of Rohan and Priya and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Rohan",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Speaking from memory, you can rule Ingrid out for intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Intake is not Rohan's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Ayesha works at some point between Priya and Daniel, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Priya",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Ingrid is on after one of Ayesha and Daniel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Ingrid is not on packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Worth restating, since it came up twice in handover: Ingrid works at some point between Ayesha and Daniel, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 20,
+    "line": "Put Ingrid between Daniel and Ayesha, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Daniel",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-045": {
+  "staff": [
+   "Meera",
+   "Samuel",
+   "Ayesha",
+   "Nadia",
+   "Lukas"
+  ],
+  "holders": [
+   "Samuel",
+   "Ayesha",
+   "Lukas"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "I'm fairly sure packing is Samuel's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Samuel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Ayesha works at some point between Samuel and Nadia, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Samuel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Speaking from memory, intake is covered by someone other than Lukas.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Lukas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Meera relieves Ayesha directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Samuel is the one who opens up at 15:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Samuel",
+     4
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Ayesha has a standing commitment that rules out the 11:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Nadia has a standing commitment that rules out the 09:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     1
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Noted twice in the handover: I'm fairly sure Ayesha is unavailable at 11:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   }
+  ]
+ },
+ "B2-046": {
+  "staff": [
+   "Nadia",
+   "Lukas",
+   "Samuel",
+   "Ayesha",
+   "Daniel"
+  ],
+  "holders": [
+   "Nadia",
+   "Lukas",
+   "Ayesha"
+  ],
+  "n_lines": 17,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Whichever way round Daniel and Lukas are, Nadia is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Daniel",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 2,
+    "line": "The person on calibration precedes Nadia.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Speaking from memory, whoever drew the 07:00 block, it was Samuel.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Samuel",
+     0
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Ayesha takes over from Daniel later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Whichever way round Samuel and Nadia are, Daniel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Samuel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Intake is covered before Lukas comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "My recollection is that Samuel lobbied for 09:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     1
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "It bears repeating: My recollection is that by the time Ayesha starts, Daniel has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-047": {
+  "staff": [
+   "Meera",
+   "Lukas",
+   "Nadia",
+   "Tomas",
+   "Priya"
+  ],
+  "holders": [
+   "Meera",
+   "Lukas",
+   "Priya"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 4,
+    "line": "Speaking from memory, the 07:00 block is not Priya's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Priya",
+     0
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Nadia put in for the 09:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     1
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Meera relieves Lukas directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Meera",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Nadia is the one who opens up at 13:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     3
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Speaking from memory, Tomas comes later in the day than Priya.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "My recollection is that Tomas relieves Nadia directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Tomas",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "Intake is covered by someone other than Priya.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Packing is covered by Meera.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "This came up more than once, so: Priya is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Priya",
+     "intake"
+    ]
+   }
+  ]
+ },
+ "B2-048": {
+  "staff": [
+   "Priya",
+   "Samuel",
+   "Ayesha",
+   "Rohan",
+   "Lukas"
+  ],
+  "holders": [
+   "Priya",
+   "Ayesha",
+   "Lukas"
+  ],
+  "n_lines": 21,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Speaking from memory, Rohan sits between Samuel and Ayesha on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Samuel",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "My recollection is that Lukas is not on the 13:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     3
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "As far as I know, Rohan takes over from Priya later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "I'm fairly sure Priya has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Priya",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Calibration is covered before Ayesha comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "This came up more than once, so: My recollection is that Lukas is unavailable at 13:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     3
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "My recollection is that Lukas asked to move to the 13:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     3
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Lukas's block falls between Samuel's and Rohan's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Samuel",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "I'm fairly sure 11:00 is the one block Lukas is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Lukas",
+     2
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "I'm fairly sure packing is covered by Lukas.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Lukas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "My recollection is that Lukas is on after one of Rohan and Samuel and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Lukas",
+     "Rohan",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 21,
+    "line": "The 15:00 block is not Samuel's.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     4
+    ]
+   }
+  ]
+ },
+ "B2-049": {
+  "staff": [
+   "Ayesha",
+   "Tomas",
+   "Ingrid",
+   "Rohan",
+   "Samuel"
+  ],
+  "holders": [
+   "Tomas",
+   "Rohan",
+   "Samuel"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Tomas put in for the 09:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Tomas",
+     1
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Whichever way round Rohan and Samuel are, Ingrid is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Rohan",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "I'm fairly sure intake is not Tomas's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "The 07:00 block is Tomas's.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Tomas",
+     0
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "You can rule Samuel out for packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Samuel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Samuel is on later than whoever has packing.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Going off the roster, packing is not Tomas's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "My recollection is that you can rule Rohan out for intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Put Rohan between Ingrid and Ayesha, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ingrid",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Ayesha works at some point between Samuel and Ingrid, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Worth restating, since it came up twice in handover: Packing is covered before Samuel comes on.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Samuel"
+    ]
+   }
+  ]
+ },
+ "B2-050": {
+  "staff": [
+   "Rohan",
+   "Nadia",
+   "Ingrid",
+   "Meera",
+   "Tomas"
+  ],
+  "holders": [
+   "Rohan",
+   "Ingrid",
+   "Meera"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Tomas works at some point between Rohan and Meera, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Rohan",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Ingrid takes over from Rohan later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Rohan",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "The calibration station is down to Rohan.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Rohan",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Ingrid asked to move to the 13:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     3
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "The person on calibration precedes Tomas.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Meera has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Meera",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Meera is on after one of Ingrid and Tomas and before the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Meera",
+     "Ingrid",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "As far as I know, Rohan is unavailable at 13:00.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Rohan",
+     3
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Nadia works at some point between Tomas and Rohan, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Tomas",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Going off the roster, the intake station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Worth restating, since it came up twice in handover: Tomas's block falls between Rohan's and Meera's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Tomas",
+     "Rohan",
+     "Meera"
+    ]
+   }
+  ]
+ },
+ "B2-051": {
+  "staff": [
+   "Lukas",
+   "Daniel",
+   "Ayesha",
+   "Meera",
+   "Priya"
+  ],
+  "holders": [
+   "Daniel",
+   "Meera",
+   "Priya"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Lukas is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Going off the roster, Daniel works at some point between Meera and Lukas, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Meera",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Daniel lobbied for 07:00 without success.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     0
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Put Priya between Meera and Daniel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Meera",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Speaking from memory, Ayesha sits between Priya and Meera on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Priya",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "As far as I know, intake is covered by someone other than Daniel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Put Daniel between Lukas and Meera, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Lukas",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "I'm fairly sure Priya's block falls between Ayesha's and Daniel's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Speaking from memory, whoever is on intake works earlier in the day than Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "It bears repeating: As far as I know, put Ayesha between Priya and Meera, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Priya",
+     "Meera"
+    ]
+   }
+  ]
+ },
+ "B2-052": {
+  "staff": [
+   "Ingrid",
+   "Priya",
+   "Daniel",
+   "Rohan",
+   "Meera"
+  ],
+  "holders": [
+   "Ingrid",
+   "Daniel",
+   "Rohan"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "As far as I know, calibration is covered by someone other than Daniel.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 4,
+    "line": "Daniel hands straight over to Meera.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Daniel",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Rohan takes over from Daniel later in the day.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Daniel",
+     "Rohan"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Going off the roster, intake is not Ingrid's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "I'm fairly sure Ingrid is not assigned to packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "My recollection is that by the time Daniel starts, Ingrid has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "My recollection is that whoever is on packing works earlier in the day than Priya.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "I'm fairly sure Daniel wanted 13:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     3
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "This came up more than once, so: My recollection is that Ingrid's block falls somewhere earlier than Daniel's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Speaking from memory, whoever has calibration is done before Daniel starts.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   }
+  ]
+ },
+ "B2-053": {
+  "staff": [
+   "Samuel",
+   "Priya",
+   "Nadia",
+   "Tomas",
+   "Ingrid"
+  ],
+  "holders": [
+   "Samuel",
+   "Priya",
+   "Nadia"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 5,
+    "line": "Nadia takes 11:00, as things stand.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Nadia",
+     2
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Ingrid is on the 15:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ingrid",
+     4
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Tomas is on later than whoever has intake.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Nadia is not on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Packing is covered by someone other than Nadia.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Nadia",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "I'm fairly sure Priya sits between Samuel and Ingrid on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Samuel",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "As far as I know, Tomas's block falls somewhere earlier than Priya's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Tomas",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "The intake station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "It bears repeating: The intake station is covered earlier in the day than Tomas's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-054": {
+  "staff": [
+   "Nadia",
+   "Ingrid",
+   "Ayesha",
+   "Tomas",
+   "Samuel"
+  ],
+  "holders": [
+   "Nadia",
+   "Ayesha",
+   "Tomas"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Samuel sits between Nadia and Ingrid on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Nadia",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Nadia sits between Tomas and Ayesha on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Tomas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "As far as I know, put Nadia between Tomas and Samuel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Tomas",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Tomas is on later than whoever has packing.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Whichever way round Tomas and Ingrid are, Samuel is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Tomas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "Whoever is on intake works earlier in the day than Samuel.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "intake",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "Put Ingrid between Ayesha and Tomas, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Tomas"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Ayesha wanted 11:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Noted twice in the handover: Ingrid sits between Ayesha and Tomas on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Tomas"
+    ]
+   }
+  ]
+ },
+ "B2-055": {
+  "staff": [
+   "Ayesha",
+   "Samuel",
+   "Lukas",
+   "Ingrid",
+   "Meera"
+  ],
+  "holders": [
+   "Ayesha",
+   "Ingrid",
+   "Meera"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Ingrid is not on calibration.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "Ayesha is on the block immediately before Ingrid.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ayesha",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "As far as I know, Samuel works at some point between Lukas and Ingrid, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Samuel",
+     "Lukas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Samuel put in for the 07:00 block and was turned down.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Samuel",
+     0
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Packing is covered by someone other than Ingrid.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Ingrid",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "There is no block between Lukas's and Ayesha's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "I'm fairly sure there is no block between Ingrid's and Samuel's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Ingrid",
+     "Samuel"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "Meera is on the block immediately before Lukas.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Meera",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "The person on packing precedes Meera.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "packing",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Worth restating, since it came up twice in handover: My recollection is that Samuel relieves Ingrid directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Samuel",
+     "Ingrid"
+    ]
+   }
+  ]
+ },
+ "B2-056": {
+  "staff": [
+   "Ayesha",
+   "Nadia",
+   "Daniel",
+   "Tomas",
+   "Priya"
+  ],
+  "holders": [
+   "Ayesha",
+   "Nadia",
+   "Tomas"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "I'm fairly sure packing is not Tomas's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Daniel's block falls between Priya's and Nadia's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Priya",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "As far as I know, Priya's block falls between Tomas's and Ayesha's, in one order or the other.",
+    "kind": "BETWEEN",
+    "args": [
+     "Priya",
+     "Tomas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 7,
+    "line": "Put Nadia between Ayesha and Daniel, though not necessarily next to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Nadia",
+     "Ayesha",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "There is no block between Daniel's and Nadia's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Daniel",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "Going off the roster, Daniel works at some point between Tomas and Priya, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Daniel",
+     "Tomas",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "This came up more than once, so: My recollection is that Tomas is not assigned to packing.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Tomas",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "07:00 is when Ayesha is scheduled.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ayesha",
+     0
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "My recollection is that the calibration station is down to Ayesha.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ayesha",
+     "calibration"
+    ]
+   }
+  ]
+ },
+ "B2-057": {
+  "staff": [
+   "Rohan",
+   "Priya",
+   "Ayesha",
+   "Ingrid",
+   "Lukas"
+  ],
+  "holders": [
+   "Rohan",
+   "Ayesha",
+   "Ingrid"
+  ],
+  "n_lines": 20,
+  "gold": [
+   {
+    "line_no": 2,
+    "line": "Lukas's block falls somewhere earlier than Ingrid's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Lukas",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 3,
+    "line": "There is no block between Lukas's and Ayesha's, in that order.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Rohan sits between Ingrid and Priya on the rota.",
+    "kind": "BETWEEN",
+    "args": [
+     "Rohan",
+     "Ingrid",
+     "Priya"
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Lukas comes later in the day than Priya.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Priya",
+     "Lukas"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "My recollection is that Ingrid's block falls somewhere earlier than Ayesha's.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "Going off the roster, Ayesha has a standing commitment that rules out the 11:00 block entirely.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     2
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "As far as I know, Rohan has not been put on intake.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Rohan",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 13,
+    "line": "This came up more than once, so: Speaking from memory, Ingrid is done before Ayesha starts.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Ingrid",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Calibration is Ingrid's station.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ingrid",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "Speaking from memory, 13:00 is the one block Ingrid is definitely not on.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ingrid",
+     3
+    ]
+   }
+  ]
+ },
+ "B2-058": {
+  "staff": [
+   "Ayesha",
+   "Ingrid",
+   "Nadia",
+   "Rohan",
+   "Meera"
+  ],
+  "holders": [
+   "Ayesha",
+   "Ingrid",
+   "Nadia"
+  ],
+  "n_lines": 18,
+  "gold": [
+   {
+    "line_no": 1,
+    "line": "Ingrid works at some point between Ayesha and Meera, not necessarily adjacent to either.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ingrid",
+     "Ayesha",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Ingrid relieves Meera directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Ingrid",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "As far as I know, whichever way round Rohan and Nadia are, Ayesha is between them.",
+    "kind": "BETWEEN",
+    "args": [
+     "Ayesha",
+     "Rohan",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 9,
+    "line": "Ayesha is not on the 09:00 block.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Ayesha",
+     1
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Speaking from memory, Nadia is assigned to calibration.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Nadia",
+     "calibration"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "By the time Ayesha starts, Meera has already been on.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   },
+   {
+    "line_no": 15,
+    "line": "I'm fairly sure Nadia wanted 13:00 and did not get it.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Nadia",
+     3
+    ]
+   },
+   {
+    "line_no": 16,
+    "line": "Ingrid has intake this week.",
+    "kind": "STATION_EQ",
+    "args": [
+     "Ingrid",
+     "intake"
+    ]
+   },
+   {
+    "line_no": 18,
+    "line": "Worth restating, since it came up twice in handover: Ayesha comes later in the day than Meera.",
+    "kind": "ORDER_LT",
+    "args": [
+     "Meera",
+     "Ayesha"
+    ]
+   }
+  ]
+ },
+ "B2-059": {
+  "staff": [
+   "Ingrid",
+   "Daniel",
+   "Meera",
+   "Lukas",
+   "Nadia"
+  ],
+  "holders": [
+   "Daniel",
+   "Lukas",
+   "Nadia"
+  ],
+  "n_lines": 19,
+  "gold": [
+   {
+    "line_no": 3,
+    "line": "Meera is the one who opens up at 09:00.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Meera",
+     1
+    ]
+   },
+   {
+    "line_no": 5,
+    "line": "Speaking from memory, packing is not Daniel's station.",
+    "kind": "STATION_NEQ",
+    "args": [
+     "Daniel",
+     "packing"
+    ]
+   },
+   {
+    "line_no": 6,
+    "line": "Whoever drew the 13:00 block, it was Daniel.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Daniel",
+     3
+    ]
+   },
+   {
+    "line_no": 8,
+    "line": "Ingrid is on the 11:00 block.",
+    "kind": "BLOCK_EQ",
+    "args": [
+     "Ingrid",
+     2
+    ]
+   },
+   {
+    "line_no": 10,
+    "line": "My recollection is that Lukas then Nadia, back to back.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Lukas",
+     "Nadia"
+    ]
+   },
+   {
+    "line_no": 11,
+    "line": "As far as I know, Daniel asked to move to the 11:00 block; the request was declined.",
+    "kind": "BLOCK_NEQ",
+    "args": [
+     "Daniel",
+     2
+    ]
+   },
+   {
+    "line_no": 12,
+    "line": "Nadia is on the block immediately before Meera.",
+    "kind": "IMMEDIATE_BEFORE",
+    "args": [
+     "Nadia",
+     "Meera"
+    ]
+   },
+   {
+    "line_no": 14,
+    "line": "I'm fairly sure Daniel is on later than whoever has calibration.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Daniel"
+    ]
+   },
+   {
+    "line_no": 17,
+    "line": "The calibration station is covered earlier in the day than Ingrid's block.",
+    "kind": "ORDER_STATION_PERSON",
+    "args": [
+     "calibration",
+     "Ingrid"
+    ]
+   },
+   {
+    "line_no": 19,
+    "line": "It bears repeating: I'm fairly sure Nadia relieves Lukas directly, with no block in between.",
+    "kind": "IMMEDIATE_AFTER",
+    "args": [
+     "Nadia",
+     "Lukas"
+    ]
+   }
+  ]
+ }
+}

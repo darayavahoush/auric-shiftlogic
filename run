@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 # Add project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from src.pipeline_v2 import run_item as run_item_v2
 from src.fsm_controller import FSMController
 
 
@@ -23,6 +24,12 @@ def main():
     parser.add_argument("items_path", help="Path to items.json")
     parser.add_argument("--budget", choices=["1x", "3x", "10x"], default="1x", help="Model call budget per item")
     parser.add_argument("--out", required=True, help="Path to output answers.json")
+    parser.add_argument("--workers", type=int, default=1, help="Concurrent workers (default: 1)")
+    parser.add_argument("--knn", type=int, default=3, help="kNN retrieval shots per line (default: 3)")
+    parser.add_argument("--knn-backend", default="auto", choices=["auto", "st", "tfidf"], help="kNN backend (default: auto)")
+    parser.add_argument("--no-repair", action="store_true", help="Disable 0-call constraint repair")
+    parser.add_argument("--no-echo", action="store_true", help="Disable echoing candidate lines in prompt")
+    parser.add_argument("--legacy", action="store_true", help="Run legacy v1 FSM controller")
 
     args = parser.parse_args()
 
@@ -36,14 +43,15 @@ def main():
         print("ERROR: OPENROUTER_API_KEY environment variable not set in .env", file=sys.stderr)
         sys.exit(1)
 
+    # max_retries=0 is strictly required: the SDK default (2) re-sends failed requests, which counts against the budget proxy!
     client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0)
-    controller = FSMController(client, model)
 
     with open(args.items_path, "r", encoding="utf-8") as f:
         items = json.load(f)
 
     print(f"Loaded {len(items)} items from {args.items_path}.")
-    print(f"Running model={model} with budget={args.budget}...")
+    mode_str = "Legacy v1 FSM" if args.legacy else f"v2/v3 Neuro-Symbolic (kNN={args.knn}, repair={not args.no_repair})"
+    print(f"Running pipeline={mode_str} model={model} budget={args.budget} workers={args.workers}...")
 
     # Ensure output directory exists early
     out_dir = os.path.dirname(os.path.abspath(args.out))
@@ -51,31 +59,73 @@ def main():
         os.makedirs(out_dir, exist_ok=True)
 
     answers = {}
-    for i, item in enumerate(items, 1):
-        item_id = item["id"]
-        raw_text = item["text"]
-        
-        try:
-            res = controller.run_item(item_id, raw_text, budget=args.budget)
-            telemetry = res.get("telemetry", {})
-            calls_used = telemetry.get("calls_used", 1)
-            clean_res = {k: v for k, v in res.items() if k in ("case", "assignment", "assignments", "conflicts")}
-            max_c = telemetry.get('max_calls', 1)
-        except Exception as e:
-            print(f"[{i}/{len(items)}] {item_id} -> UNEXPECTED ERROR: {e}", file=sys.stderr)
-            clean_res = {"case": "ambiguous", "assignments": []}
-            calls_used = 1
-            max_c = 1
+    if args.legacy:
+        controller = FSMController(client, model)
+        for i, item in enumerate(items, 1):
+            item_id = item["id"]
+            raw_text = item["text"]
+            try:
+                res = controller.run_item(item_id, raw_text, budget=args.budget)
+                telemetry = res.get("telemetry", {})
+                calls_used = telemetry.get("calls_used", 1)
+                clean_res = {k: v for k, v in res.items() if k in ("case", "assignment", "assignments", "conflicts")}
+                max_c = telemetry.get("max_calls", 1)
+            except Exception as e:
+                print(f"[{i}/{len(items)}] {item_id} -> UNEXPECTED ERROR: {e}", file=sys.stderr)
+                clean_res = {"case": "ambiguous", "assignments": []}
+                calls_used = 1
+                max_c = 1
+            answers[item_id] = clean_res
+            with open(args.out, "w", encoding="utf-8") as f:
+                json.dump(answers, f, indent=2)
+            print(f"[{i}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls_used}/{max_c})")
+    else:
+        def process_one(idx_item):
+            idx, item = idx_item
+            item_id = item["id"]
+            raw_text = item["text"]
+            try:
+                ans, calls = run_item_v2(
+                    client,
+                    model,
+                    item_id,
+                    raw_text,
+                    budget=args.budget,
+                    echo=not args.no_echo,
+                    use_repair=not args.no_repair,
+                    exclude_ids=(item_id,),
+                    knn=args.knn,
+                    knn_backend=args.knn_backend,
+                )
+                clean_res = {k: v for k, v in ans.items() if k in ("case", "assignment", "assignments", "conflicts")}
+            except Exception as e:
+                print(f"[{idx}/{len(items)}] {item_id} -> UNEXPECTED ERROR: {e}", file=sys.stderr)
+                clean_res = {"case": "inconsistent", "conflicts": []}
+                calls = 1
+            return item_id, clean_res, calls, idx
 
-        answers[item_id] = clean_res
+        if args.workers > 1:
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=args.workers) as executor:
+                for item_id, clean_res, calls, idx in executor.map(process_one, enumerate(items, 1)):
+                    answers[item_id] = clean_res
+                    print(f"[{idx}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls})")
+                    with open(args.out, "w", encoding="utf-8") as f:
+                        json.dump({it["id"]: answers.get(it["id"], {}) for it in items if it["id"] in answers}, f, indent=2)
+        else:
+            for idx, item in enumerate(items, 1):
+                item_id, clean_res, calls, _ = process_one((idx, item))
+                answers[item_id] = clean_res
+                print(f"[{idx}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls})")
+                with open(args.out, "w", encoding="utf-8") as f:
+                    json.dump(answers, f, indent=2)
 
-        # Incremental save
-        with open(args.out, "w", encoding="utf-8") as f:
-            json.dump(answers, f, indent=2)
+    # Final write to ensure exact item order
+    ordered_answers = {it["id"]: answers[it["id"]] for it in items if it["id"] in answers}
+    with open(args.out, "w", encoding="utf-8") as f:
+        json.dump(ordered_answers, f, indent=2)
 
-        print(f"[{i}/{len(items)}] {item_id} -> {clean_res.get('case')} (Calls: {calls_used}/{max_c})")
-
-    print(f"\nWrote {len(answers)} answers to {args.out}")
+    print(f"\nWrote {len(ordered_answers)} answers to {args.out}")
 
 
 if __name__ == "__main__":

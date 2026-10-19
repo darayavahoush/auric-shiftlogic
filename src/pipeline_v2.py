@@ -68,16 +68,16 @@ def run_item(client, model: str, item_id: str, text: str, budget: str = "1x", ec
             try:
                 from src.knn import Retriever
                 R = D._RETRIEVER.get(knn_backend) or D._RETRIEVER.setdefault(knn_backend, Retriever(knn_backend))
-                lines_text = [t for _, t in pi.candidate_lines]
-                S_ = R._sims(lines_text)
+                lines_all = pi.all_lines
+                S_ = R._sims(lines_all)
                 for j, p in enumerate(R.pool):
                     if p["item"] == item_id:
                         S_[:, j] = -1
                 _, v_dict = D.decompile_v2(pi, raw)
-                for idx_1, l_text in enumerate(lines_text, 1):
-                    top = S_[idx_1 - 1].argsort()[::-1][:3]
+                for idx, l_text in pi.candidate_lines:
+                    top = S_[idx - 1].argsort()[::-1][:3]
                     votes_kind = sum(1 for j in top if R.pool[j]["kind"])
-                    v_one = v_dict.get(idx_1)
+                    v_one = v_dict.get(idx)
                     model_says = (v_one is not None and v_one.status == "constraint")
                     knn_says = (votes_kind >= 2)
                     if knn_says != model_says:

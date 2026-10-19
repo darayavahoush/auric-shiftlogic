@@ -41,7 +41,11 @@ BEFORE(x, y)             x works earlier in the day than y, any gap. x or y may 
 NEXT(x, y)               y works in the block immediately after x, nobody in between
 BETWEEN(m, a, b)         m works strictly between a and b; it does not matter which of a, b is earlier
 
-ALWAYS WRITE ORDERINGS WITH THE EARLIER ONE FIRST. If the line says A is later / after B, write BEFORE(B, A). If it says A is directly after B, write NEXT(B, A).
+ALWAYS WRITE ORDERINGS WITH THE EARLIER ONE FIRST in BEFORE(first, second) and NEXT(first, second):
+- "A is before B" / "A is earlier than B" / "A precedes B" -> BEFORE(A, B)
+- "A is after B" / "A is later than B" / "A follows B" -> BEFORE(B, A) (because B is earlier!)
+- "A is directly after B" / "A takes over from B" -> NEXT(B, A) (because B is immediately before A!)
+- "A is directly before B" -> NEXT(A, B)
 
 WORD FAMILIES (examples of meaning, not an exhaustive list; new wording means the same thing):
 - earlier: before, earlier than, ahead of, prior to, precedes, goes on before, is done/finished before X starts, falls somewhere earlier -> BEFORE(this one, that one)
@@ -60,7 +64,7 @@ SKIP:chat   workplace chatter with no bearing on who works which block or statio
 SKIP:past   how things used to be: old arrangement, last month, previous cycle, in the spring, held for a while, historically, two cycles ago
 SKIP:wish   what would have been better, a better fit, if X had / had it gone the other way / would have solved
 SKIP:open   unsettled: nobody could remember, disagreement about whether, question left open, came up but nothing minuted, undecided, unconfirmed
-SKIP:unmet  somebody asked, requested, lobbied or put in for a block or station and was refused, turned down, declined, did not get it. That is NOT a statement of who works what today: SKIP:unmet.
+SKIP:unmet  unfulfilled requests or preferences: somebody asked, wanted, requested, lobbied, or put in for a block or station and was refused, turned down, declined, did not get it, or it went to someone else. Such lines are NEVER constraints: ALWAYS label them SKIP:unmet.
 If a line is a statement of today's roster, label it a constraint. If it is none of the above kinds, SKIP:chat."""
 
 
@@ -149,7 +153,23 @@ def _person(tok: str, staff: List[str]) -> Optional[str]:
         if s.lower() == t.lower():
             return s
     hits = [s for s in staff if s.lower().startswith(t.lower())] if len(t) >= 3 else []
-    return hits[0] if len(hits) == 1 else None
+    if len(hits) == 1:
+        return hits[0]
+    if len(t) >= 3:
+        def _dist1(a: str, b: str) -> bool:
+            if abs(len(a) - len(b)) > 1:
+                return False
+            if len(a) == len(b):
+                return sum(c1 != c2 for c1, c2 in zip(a, b)) == 1
+            shorter, longer = (a, b) if len(a) < len(b) else (b, a)
+            for i in range(len(longer)):
+                if longer[:i] + longer[i+1:] == shorter:
+                    return True
+            return False
+        fuzz = [s for s in staff if _dist1(s.lower(), t.lower())]
+        if len(fuzz) == 1:
+            return fuzz[0]
+    return None
 
 
 def _station(tok: str) -> Optional[str]:
