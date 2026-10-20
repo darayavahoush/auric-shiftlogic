@@ -46,6 +46,9 @@ ALWAYS WRITE ORDERINGS WITH THE EARLIER ONE FIRST in BEFORE(first, second) and N
 - "A is after B" / "A is later than B" / "A follows B" -> BEFORE(B, A) (because B is earlier!)
 - "A is directly after B" / "A takes over from B" -> NEXT(B, A) (because B is immediately before A!)
 - "A is directly before B" -> NEXT(A, B)
+DIRECTION CHECK. Before writing BEFORE or NEXT, ask which of the two people works FIRST in the day and put that person first. A sentence may start with the later person, or use a noun for the relationship; its grammatical subject says nothing about who is earlier. When the line describes a hand-over, with one person coming on as another goes off, the one going off is the earlier one. If the line does not say there is no gap, it is BEFORE, not NEXT.
+BETWEEN CHECK. In BETWEEN(m, a, b) the first argument is always the person in the middle. If the line names two people and puts a third one around them, or says the two stand on either side of someone, that someone is m, never one of the two.
+
 PLAIN "after" IS NEVER NEXT. "goes on after", "comes on once Y has finished", "does not start until Y is done", "follows", "starts after" with NO word like directly / immediately / straight / right / next / back to back mean ANY gap: BEFORE(earlier, later). Use NEXT only when the line says the two blocks touch (directly, immediately, straight over, right after, back to back, nobody in between).
 
 WORD FAMILIES (examples of meaning, not an exhaustive list; new wording means the same thing):
@@ -64,8 +67,10 @@ SKIP REASONS (these are never constraints, however much they mention names, bloc
 SKIP:chat   workplace chatter with no bearing on who works which block or station: gates, keys, surveys, car-sharing, training, drills, walkarounds, recycling, catering, paperwork, who signed or attended something
 SKIP:past   how things used to be: old arrangement, last month, previous cycle, in the spring, held for a while, historically, two cycles ago
 SKIP:wish   what would have been better, a better fit, if X had / had it gone the other way / would have solved
+            also opinions about who should or ought to be somewhere: what somebody thinks is best, not what is scheduled
 SKIP:open   unsettled: nobody could remember, disagreement about whether, question left open, came up but nothing minuted, undecided, unconfirmed
 SKIP:unmet  unfulfilled requests or preferences: somebody asked, wanted, requested, lobbied, or put in for a block or station and was refused, turned down, declined, did not get it, or it went to someone else. Such lines are NEVER constraints: ALWAYS label them SKIP:unmet.
+SKIP:unmet also covers any line where somebody tried to get a block or station and ended up without it, however the outcome is worded or only implied. The line reports what they wanted, not what the roster says.
 If a line is a statement of today's roster, label it a constraint. If it is none of the above kinds, SKIP:chat."""
 
 
