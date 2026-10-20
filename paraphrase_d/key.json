@@ -1,0 +1,2566 @@
+{
+ "D-000": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lucinda": {
+     "block": "09:00"
+    },
+    "Eszter": {
+     "block": "13:00"
+    },
+    "Jovana": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "09:00"
+    },
+    "Eszter": {
+     "block": "13:00"
+    },
+    "Jovana": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Gideon": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-001": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Of Eszter and Idris, the later one is Eszter.",
+    "Hanneke falls inside the stretch from Dario to Eszter, whichever comes first.",
+    "Baptiste is placed right in front of Hanneke, nothing between.",
+    "No gap separates Dario's block from Idris's, which comes second.",
+    "Hanneke falls inside the stretch from Baptiste to Idris, whichever comes first."
+   ]
+  ]
+ },
+ "D-002": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "09:00"
+    },
+    "Carys": {
+     "block": "11:00"
+    },
+    "Lucinda": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Jovana": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Gideon": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "13:00"
+    },
+    "Carys": {
+     "block": "11:00"
+    },
+    "Lucinda": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Jovana": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Gideon": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "11:00"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Jovana": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-003": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "11:00"
+    },
+    "Fumiko": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Alessia": {
+     "block": "09:00"
+    },
+    "Eszter": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-004": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Karim": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Fumiko": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Karim": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00"
+    },
+    "Fumiko": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Karim": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00"
+    },
+    "Fumiko": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Karim": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00"
+    },
+    "Fumiko": {
+     "block": "11:00"
+    },
+    "Baptiste": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-005": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "09:00"
+    },
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Hanneke": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Carys": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-006": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Gideon and Idris enclose Alessia.",
+    "Supposedly, Gideon occupies the middle ground between Alessia and Jovana.",
+    "Idris occupies the middle ground between Alessia and Jovana."
+   ],
+   [
+    "Alessia occupies the middle ground between Eszter and Jovana.",
+    "Look between Gideon and Idris and you can spot Eszter.",
+    "Supposedly, Gideon occupies the middle ground between Alessia and Jovana.",
+    "Idris occupies the middle ground between Alessia and Jovana."
+   ]
+  ]
+ },
+ "D-007": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Dario": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Karim": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "09:00"
+    },
+    "Hanneke": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-008": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "15:00"
+    },
+    "Fumiko": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "09:00"
+    },
+    "Dario": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-009": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Jovana": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "11:00"
+    },
+    "Dario": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Alessia": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-010": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Worth repeating: The packing person finishes up ahead of Lucinda's start.",
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "The intake person works ahead of Carys."
+   ],
+   [
+    "Worth repeating: The packing person finishes up ahead of Lucinda's start.",
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "Once more for the record: Apparently, intake is dealt with before Carys's turn comes round."
+   ],
+   [
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "The intake person works ahead of Carys.",
+    "Apparently, packing is dealt with before Lucinda's turn comes round."
+   ],
+   [
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "The intake person works ahead of Carys.",
+    "Responsibility for packing rests with Dario."
+   ],
+   [
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "Apparently, packing is dealt with before Lucinda's turn comes round.",
+    "Once more for the record: Apparently, intake is dealt with before Carys's turn comes round."
+   ],
+   [
+    "My understanding is that Carys draws the 13:00 block.",
+    "Carys and Dario enclose Karim.",
+    "Dario's block is followed at once by Lucinda's.",
+    "Once more for the record: Apparently, intake is dealt with before Carys's turn comes round.",
+    "Responsibility for packing rests with Dario."
+   ]
+  ]
+ },
+ "D-011": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Hanneke": {
+     "block": "09:00"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "15:00"
+    },
+    "Idris": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "11:00"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "15:00"
+    },
+    "Idris": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "11:00"
+    },
+    "Lucinda": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-012": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Baptiste": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Eszter": {
+     "block": "13:00"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Idris": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Baptiste": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "13:00"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Baptiste": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "13:00"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Idris": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-013": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Eszter": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "09:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Eszter": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "07:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Eszter": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "07:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-014": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Hanneke": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-015": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Alessia occupies the middle ground between Hanneke and Lucinda.",
+    "Idris's block comes behind Lucinda's.",
+    "Apparently, Hanneke's block is followed at once by Karim's.",
+    "From the notes I saw, packing is dealt with before Alessia's turn comes round.",
+    "Idris is excluded from the 15:00 block."
+   ],
+   [
+    "Alessia occupies the middle ground between Hanneke and Lucinda.",
+    "Idris's block comes behind Lucinda's.",
+    "Apparently, Hanneke's block is followed at once by Karim's.",
+    "Worth repeating: The packing person works ahead of Alessia.",
+    "Idris is excluded from the 15:00 block."
+   ],
+   [
+    "Alessia occupies the middle ground between Hanneke and Lucinda.",
+    "Idris's block comes behind Lucinda's.",
+    "Apparently, Hanneke's block is followed at once by Karim's.",
+    "The intake person finishes up ahead of Lucinda's start.",
+    "Idris is excluded from the 15:00 block."
+   ]
+  ]
+ },
+ "D-016": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Once more for the record: Carys occupies the middle ground between Eszter and Idris.",
+    "Worth repeating: Hanneke falls inside the stretch from Carys to Eszter, whichever comes first.",
+    "Eszter and Karim enclose Hanneke.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Once more for the record: Carys occupies the middle ground between Eszter and Idris.",
+    "Eszter and Karim enclose Hanneke.",
+    "Worth repeating: From the notes I saw, Eszter and Idris enclose Karim.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Once more for the record: Carys occupies the middle ground between Eszter and Idris.",
+    "Eszter and Karim enclose Hanneke.",
+    "Karim falls inside the stretch from Eszter to Idris, whichever comes first.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Once more for the record: Carys occupies the middle ground between Eszter and Idris.",
+    "Eszter and Karim enclose Hanneke.",
+    "Carys and Eszter enclose Hanneke.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Worth repeating: Hanneke falls inside the stretch from Carys to Eszter, whichever comes first.",
+    "Eszter and Karim enclose Hanneke.",
+    "Eszter and Idris enclose Carys.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Eszter and Karim enclose Hanneke.",
+    "Worth repeating: From the notes I saw, Eszter and Idris enclose Karim.",
+    "Eszter and Idris enclose Carys.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Eszter and Karim enclose Hanneke.",
+    "Karim falls inside the stretch from Eszter to Idris, whichever comes first.",
+    "Eszter and Idris enclose Carys.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ],
+   [
+    "Eszter and Karim enclose Hanneke.",
+    "Eszter and Idris enclose Carys.",
+    "Carys and Eszter enclose Hanneke.",
+    "Carys is placed right in front of Idris, nothing between.",
+    "Sometime after Karim has worked, Hanneke gets a turn."
+   ]
+  ]
+ },
+ "D-017": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Karim": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Gideon": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Gideon": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Karim": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Gideon": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Karim": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-018": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Strike Hanneke from the 13:00 list.",
+    "11:00 is Alessia's slot.",
+    "I gather Lucinda falls inside the stretch from Hanneke to Idris, whichever comes first.",
+    "Carys and Lucinda enclose Hanneke.",
+    "Supposedly, Idris is excluded from the 15:00 block."
+   ]
+  ]
+ },
+ "D-019": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Karim": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Alessia": {
+     "block": "09:00"
+    },
+    "Jovana": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Gideon": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Karim": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Alessia": {
+     "block": "09:00"
+    },
+    "Jovana": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Gideon": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-020": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Dario": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Baptiste": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Alessia": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Karim": {
+     "block": "13:00"
+    },
+    "Hanneke": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-021": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Alessia and Eszter enclose Jovana.",
+    "Packing is dealt with before Jovana's turn comes round.",
+    "Alessia and Dario enclose Jovana.",
+    "Jovana's block comes behind Alessia's."
+   ],
+   [
+    "Dario falls inside the stretch from Alessia to Eszter, whichever comes first.",
+    "Packing is dealt with before Jovana's turn comes round.",
+    "Alessia and Dario enclose Jovana.",
+    "Jovana's block comes behind Alessia's."
+   ]
+  ]
+ },
+ "D-022": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Gideon": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Idris": {
+     "block": "07:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-023": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Carys": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "07:00"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Carys": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "07:00"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Carys": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "09:00"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Carys": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "09:00"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-024": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Lucinda is the person right before Idris.",
+    "The person rostered for 13:00 is Carys.",
+    "Jovana occupies the middle ground between Carys and Fumiko."
+   ],
+   [
+    "The person rostered for 13:00 is Carys.",
+    "To restate: Lucinda's block is followed at once by Idris's.",
+    "Jovana occupies the middle ground between Carys and Fumiko."
+   ],
+   [
+    "Lucinda is the person right before Idris.",
+    "The person rostered for 13:00 is Carys.",
+    "Idris and Jovana enclose Lucinda.",
+    "From the notes I saw, Idris and Jovana enclose Carys."
+   ],
+   [
+    "The person rostered for 13:00 is Carys.",
+    "To restate: Lucinda's block is followed at once by Idris's.",
+    "Idris and Jovana enclose Lucinda.",
+    "From the notes I saw, Idris and Jovana enclose Carys."
+   ]
+  ]
+ },
+ "D-025": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Eszter": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-026": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Dario": {
+     "block": "15:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Idris": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-027": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Of Dario and Idris, the first to work is Dario.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "To restate: My understanding is that Dario's block precedes Idris's.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Right on Idris's heels comes Gideon.",
+    "Supposedly, Idris occupies the middle ground between Gideon and Lucinda.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Responsibility for packing rests with Gideon.",
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Lucinda's block comes behind Idris's.",
+    "Idris begins after the calibration person has begun."
+   ],
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Right on Idris's heels comes Gideon.",
+    "Lucinda's block comes behind Idris's.",
+    "Idris begins after the calibration person has begun."
+   ],
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Lucinda's block comes behind Idris's.",
+    "Idris begins after the calibration person has begun.",
+    "Calibration duty does not fall to Gideon."
+   ],
+   [
+    "Supposedly, look between Gideon and Lucinda and you can spot Alessia.",
+    "Right on Idris's heels comes Gideon.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Supposedly, look between Gideon and Lucinda and you can spot Alessia.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Supposedly, Idris occupies the middle ground between Gideon and Lucinda.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Once more for the record: Alessia occupies the middle ground between Gideon and Lucinda.",
+    "Right on Idris's heels comes Gideon.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Once more for the record: Alessia occupies the middle ground between Gideon and Lucinda.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Supposedly, Idris occupies the middle ground between Gideon and Lucinda.",
+    "Lucinda's block comes behind Idris's."
+   ],
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Supposedly, look between Gideon and Lucinda and you can spot Alessia.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Lucinda's block comes behind Idris's.",
+    "Idris begins after the calibration person has begun."
+   ],
+   [
+    "Dario falls inside the stretch from Idris to Lucinda, whichever comes first.",
+    "Once more for the record: Alessia occupies the middle ground between Gideon and Lucinda.",
+    "Of Lucinda and Alessia, the first to work is Lucinda.",
+    "Lucinda's block comes behind Idris's.",
+    "Idris begins after the calibration person has begun."
+   ]
+  ]
+ },
+ "D-028": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Carys's block is followed at once by Karim's.",
+    "Gideon occupies the middle ground between Eszter and Karim.",
+    "My understanding is that look between Carys and Eszter and you can spot Karim.",
+    "Of Gideon and Carys, the first to work is Gideon."
+   ],
+   [
+    "Carys's block is followed at once by Karim's.",
+    "Gideon occupies the middle ground between Eszter and Karim.",
+    "My understanding is that Eszter's block comes behind Karim's.",
+    "Of Gideon and Carys, the first to work is Gideon."
+   ],
+   [
+    "Gideon occupies the middle ground between Eszter and Karim.",
+    "My understanding is that look between Carys and Eszter and you can spot Karim.",
+    "My understanding is that Eszter's block comes behind Karim's.",
+    "Of Gideon and Carys, the first to work is Gideon."
+   ]
+  ]
+ },
+ "D-029": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Apparently, the person rostered for 11:00 is Eszter.",
+    "From the notes I saw, look between Eszter and Karim and you can spot Idris.",
+    "Hanneke occupies the middle ground between Eszter and Karim."
+   ],
+   [
+    "Apparently, the person rostered for 11:00 is Eszter.",
+    "To restate: My understanding is that Idris falls inside the stretch from Eszter to Karim, whichever comes first.",
+    "Hanneke occupies the middle ground between Eszter and Karim."
+   ]
+  ]
+ },
+ "D-030": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lucinda": {
+     "block": "15:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "07:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "15:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "09:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "15:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "15:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-031": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lucinda": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Jovana": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Jovana": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Lucinda": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Jovana": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-032": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Alessia": {
+     "block": "13:00"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-033": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Jovana": {
+     "block": "09:00"
+    },
+    "Hanneke": {
+     "block": "07:00"
+    },
+    "Alessia": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-034": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Supposedly, Gideon's block precedes Baptiste's.",
+    "My understanding is that look between Hanneke and Idris and you can spot Gideon.",
+    "Baptiste falls inside the stretch from Hanneke to Idris, whichever comes first.",
+    "Hanneke's block is followed at once by Baptiste's."
+   ],
+   [
+    "Supposedly, Gideon's block precedes Baptiste's.",
+    "My understanding is that look between Hanneke and Idris and you can spot Gideon.",
+    "Packing is dealt with before Idris's turn comes round.",
+    "Hanneke's block is followed at once by Baptiste's."
+   ],
+   [
+    "My understanding is that look between Hanneke and Idris and you can spot Gideon.",
+    "Baptiste falls inside the stretch from Hanneke to Idris, whichever comes first.",
+    "Once more for the record: From the notes I saw, Gideon comes ahead of Baptiste on the timetable.",
+    "Hanneke's block is followed at once by Baptiste's."
+   ],
+   [
+    "My understanding is that look between Hanneke and Idris and you can spot Gideon.",
+    "Packing is dealt with before Idris's turn comes round.",
+    "Once more for the record: From the notes I saw, Gideon comes ahead of Baptiste on the timetable.",
+    "Hanneke's block is followed at once by Baptiste's."
+   ]
+  ]
+ },
+ "D-035": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Hanneke": {
+     "block": "07:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "09:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "09:00"
+    },
+    "Baptiste": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "11:00"
+    },
+    "Baptiste": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Hanneke": {
+     "block": "15:00"
+    },
+    "Baptiste": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Karim": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-036": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Jovana": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Gideon": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Fumiko": {
+     "block": "15:00"
+    },
+    "Karim": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-037": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Dario": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-038": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Eszter and Jovana enclose Carys.",
+    "Carys's block comes behind Jovana's.",
+    "Apparently, Eszter draws the 09:00 block."
+   ]
+  ]
+ },
+ "D-039": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Intake is dealt with before Karim's turn comes round.",
+    "Look between Carys and Karim and you can spot Gideon.",
+    "Calibration is dealt with before Carys's turn comes round."
+   ],
+   [
+    "To restate: The intake person works ahead of Karim.",
+    "Look between Carys and Karim and you can spot Gideon.",
+    "Calibration is dealt with before Carys's turn comes round."
+   ]
+  ]
+ },
+ "D-040": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "The person rostered for 11:00 is Jovana.",
+    "Once more for the record: Hanneke occupies the middle ground between Baptiste and Jovana.",
+    "Lucinda is the person right before Baptiste."
+   ],
+   [
+    "The person rostered for 11:00 is Jovana.",
+    "Lucinda is the person right before Baptiste.",
+    "Hanneke falls inside the stretch from Baptiste to Jovana, whichever comes first."
+   ],
+   [
+    "From the notes I saw, Eszter is excluded from the 11:00 block.",
+    "Eszter falls inside the stretch from Hanneke to Lucinda, whichever comes first.",
+    "Once more for the record: Hanneke occupies the middle ground between Baptiste and Jovana.",
+    "Lucinda is the person right before Baptiste."
+   ],
+   [
+    "From the notes I saw, Eszter is excluded from the 11:00 block.",
+    "Eszter falls inside the stretch from Hanneke to Lucinda, whichever comes first.",
+    "Lucinda is the person right before Baptiste.",
+    "Hanneke falls inside the stretch from Baptiste to Jovana, whichever comes first."
+   ]
+  ]
+ },
+ "D-041": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Fumiko": {
+     "block": "13:00"
+    },
+    "Gideon": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Baptiste": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Idris": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-042": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Idris": {
+     "block": "09:00"
+    },
+    "Lucinda": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "13:00"
+    },
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Idris": {
+     "block": "09:00"
+    },
+    "Lucinda": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "15:00"
+    },
+    "Fumiko": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Idris": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "11:00"
+    },
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-043": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Fumiko": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "15:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Fumiko": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "15:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dario": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Fumiko": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "13:00"
+    },
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-044": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Lucinda": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Baptiste": {
+     "block": "11:00"
+    },
+    "Gideon": {
+     "block": "13:00"
+    },
+    "Eszter": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-045": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Baptiste": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "15:00"
+    },
+    "Dario": {
+     "block": "13:00"
+    },
+    "Alessia": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-046": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Eszter": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Jovana": {
+     "block": "07:00"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Baptiste": {
+     "block": "15:00"
+    },
+    "Hanneke": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-047": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Alessia": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lucinda": {
+     "block": "15:00"
+    },
+    "Idris": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Eszter": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-048": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Dario": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Dario": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Dario": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Dario": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Lucinda": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Eszter": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-049": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Jovana": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Fumiko": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Jovana": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Idris": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "09:00"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Fumiko": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Idris": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Eszter": {
+     "block": "09:00"
+    },
+    "Jovana": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fumiko": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Idris": {
+     "block": "13:00"
+    },
+    "Karim": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-050": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "09:00 is Fumiko's slot.",
+    "Once more for the record: Fumiko and Gideon enclose Alessia.",
+    "Look between Fumiko and Jovana and you can spot Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "My understanding is that look between Fumiko and Gideon and you can spot Alessia.",
+    "Look between Fumiko and Jovana and you can spot Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "The intake person works ahead of Alessia.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "My understanding is that the packing person works ahead of Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "The intake person works ahead of Alessia.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "Look between Fumiko and Jovana and you can spot Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "To restate: The intake person finishes up ahead of Alessia's start.",
+    "My understanding is that the packing person works ahead of Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "To restate: The intake person finishes up ahead of Alessia's start.",
+    "Look between Fumiko and Jovana and you can spot Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "Once more for the record: Fumiko and Gideon enclose Alessia.",
+    "My understanding is that the packing person works ahead of Lucinda."
+   ],
+   [
+    "09:00 is Fumiko's slot.",
+    "Gideon falls inside the stretch from Fumiko to Jovana, whichever comes first.",
+    "My understanding is that the packing person works ahead of Lucinda.",
+    "My understanding is that look between Fumiko and Gideon and you can spot Alessia."
+   ]
+  ]
+ },
+ "D-051": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Hanneke falls inside the stretch from Baptiste to Gideon, whichever comes first.",
+    "As far as anyone has told me, Alessia occupies the middle ground between Hanneke and Idris.",
+    "As far as anyone has told me, look between Alessia and Baptiste and you can spot Idris.",
+    "To restate: Alessia occupies the middle ground between Gideon and Hanneke."
+   ],
+   [
+    "Hanneke falls inside the stretch from Baptiste to Gideon, whichever comes first.",
+    "As far as anyone has told me, Alessia occupies the middle ground between Hanneke and Idris.",
+    "As far as anyone has told me, look between Alessia and Baptiste and you can spot Idris.",
+    "Apparently, look between Gideon and Hanneke and you can spot Alessia."
+   ],
+   [
+    "Hanneke falls inside the stretch from Baptiste to Gideon, whichever comes first.",
+    "As far as anyone has told me, look between Alessia and Baptiste and you can spot Idris.",
+    "Once more for the record: Alessia falls inside the stretch from Hanneke to Idris, whichever comes first.",
+    "To restate: Alessia occupies the middle ground between Gideon and Hanneke."
+   ],
+   [
+    "Hanneke falls inside the stretch from Baptiste to Gideon, whichever comes first.",
+    "As far as anyone has told me, look between Alessia and Baptiste and you can spot Idris.",
+    "Once more for the record: Alessia falls inside the stretch from Hanneke to Idris, whichever comes first.",
+    "Apparently, look between Gideon and Hanneke and you can spot Alessia."
+   ]
+  ]
+ },
+ "D-052": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Karim": {
+     "block": "11:00"
+    },
+    "Jovana": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Hanneke": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Baptiste": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-053": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "My understanding is that responsibility for intake does not rest with Carys.",
+    "My understanding is that packing is dealt with before Carys's turn comes round.",
+    "Hanneke is posted on calibration."
+   ],
+   [
+    "My understanding is that responsibility for intake does not rest with Carys.",
+    "As far as anyone has told me, packing duty does not fall to Carys.",
+    "Hanneke is posted on calibration."
+   ],
+   [
+    "My understanding is that responsibility for intake does not rest with Carys.",
+    "To restate: The packing person finishes up ahead of Carys's start.",
+    "Hanneke is posted on calibration."
+   ]
+  ]
+ },
+ "D-054": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Karim": {
+     "block": "15:00"
+    },
+    "Carys": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Baptiste": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Fumiko": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-055": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Calibration is dealt with before Idris's turn comes round.",
+    "Karim's block comes behind Idris's.",
+    "Worth repeating: My understanding is that the packing person works ahead of Idris."
+   ],
+   [
+    "Calibration is dealt with before Idris's turn comes round.",
+    "Karim's block comes behind Idris's.",
+    "As far as anyone has told me, the packing person finishes up ahead of Idris's start."
+   ]
+  ]
+ },
+ "D-056": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Alessia": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Fumiko": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Alessia": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Eszter": {
+     "block": "07:00"
+    },
+    "Fumiko": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "11:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Alessia": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Eszter": {
+     "block": "11:00"
+    },
+    "Fumiko": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "09:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Alessia": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Eszter": {
+     "block": "11:00"
+    },
+    "Fumiko": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Gideon": {
+     "block": "09:00"
+    },
+    "Karim": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-057": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Lucinda is placed right in front of Baptiste, nothing between.",
+    "From the notes I saw, sometime after Gideon has worked, Lucinda gets a turn.",
+    "From the notes I saw, Baptiste is the person right before Gideon."
+   ],
+   [
+    "Lucinda is placed right in front of Baptiste, nothing between.",
+    "The intake person finishes up ahead of Idris's start.",
+    "From the notes I saw, sometime after Gideon has worked, Lucinda gets a turn.",
+    "The intake person works ahead of Gideon."
+   ]
+  ]
+ },
+ "D-058": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Carys": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Baptiste": {
+     "block": "09:00"
+    },
+    "Dario": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Fumiko": {
+     "block": "15:00"
+    },
+    "Alessia": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "D-059": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Dario": {
+     "block": "15:00"
+    },
+    "Idris": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Lucinda": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Karim": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jovana": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ }
+}

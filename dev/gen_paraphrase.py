@@ -18,6 +18,9 @@ from pools import POOLS, PHRASE
 from pool_blind import BLIND, BLIND_HEDGES, BLIND_WRAPPERS, BLIND_DECOY, BLIND_PHRASE, BLIND_NAMES
 POOLS['blind'] = dict(bind=BLIND, decoy=BLIND_DECOY, hedges=BLIND_HEDGES, wrappers=BLIND_WRAPPERS, names=BLIND_NAMES)
 PHRASE.update(BLIND_PHRASE)
+from pool_d import D_BIND, D_HEDGES, D_WRAPPERS, D_DECOY, D_PHRASE, D_NAMES
+POOLS['d'] = dict(bind=D_BIND, decoy=D_DECOY, hedges=D_HEDGES, wrappers=D_WRAPPERS, names=D_NAMES)
+PHRASE.update({k: v for k, v in D_PHRASE.items() if v})
 from templates import NAMES as VIS_NAMES
 
 NEW_NAMES = ["Farah","Kiran","Omar","Zoe","Hugo","Bianca","Tobias","Leila"]
