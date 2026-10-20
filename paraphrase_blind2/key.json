@@ -1,0 +1,2373 @@
+{
+ "C-000": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Kofi": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "07:00"
+    },
+    "Haruto": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Kofi": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Farid": {
+     "block": "07:00"
+    },
+    "Haruto": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-001": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Elena": {
+     "block": "07:00"
+    },
+    "Greta": {
+     "block": "11:00"
+    },
+    "Bruno": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Dmitri": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-002": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Joaquin sits in the gap separating Dmitri and Livia.",
+    "Elena is neither before both nor after both of Dmitri and Joaquin.",
+    "At 09:00 you will find Kofi working.",
+    "Kofi is neither before both nor after both of Elena and Joaquin."
+   ],
+   [
+    "Elena is neither before both nor after both of Dmitri and Joaquin.",
+    "At 09:00 you will find Kofi working.",
+    "Elena and Livia are on either side of Joaquin, in some order.",
+    "Kofi is neither before both nor after both of Elena and Joaquin."
+   ]
+  ]
+ },
+ "C-003": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Nobody sits between Haruto and Imani, with Haruto first.",
+    "Greta reports for duty at 09:00.",
+    "For emphasis: Elena is sandwiched by Dmitri and Greta."
+   ],
+   [
+    "Nobody sits between Haruto and Imani, with Haruto first.",
+    "Greta reports for duty at 09:00.",
+    "Elena is neither before both nor after both of Dmitri and Greta."
+   ],
+   [
+    "Greta reports for duty at 09:00.",
+    "For emphasis: Elena is sandwiched by Dmitri and Greta.",
+    "Unless I have this wrong, count on Dmitri for the 07:00 block."
+   ],
+   [
+    "Greta reports for duty at 09:00.",
+    "For emphasis: Elena is sandwiched by Dmitri and Greta.",
+    "Again, since it matters: Imani is Haruto's immediate successor."
+   ],
+   [
+    "Greta reports for duty at 09:00.",
+    "Unless I have this wrong, count on Dmitri for the 07:00 block.",
+    "Elena is neither before both nor after both of Dmitri and Greta."
+   ],
+   [
+    "Greta reports for duty at 09:00.",
+    "Again, since it matters: Imani is Haruto's immediate successor.",
+    "Elena is neither before both nor after both of Dmitri and Greta."
+   ]
+  ]
+ },
+ "C-004": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Imani": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Greta": {
+     "block": "15:00"
+    },
+    "Elena": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Imani": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "15:00"
+    },
+    "Elena": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-005": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Last I heard, Chidi reports for duty at 15:00.",
+    "The intake holder is on earlier than Imani.",
+    "Haruto looks after calibration.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "One more time: Count on Chidi for the 15:00 block.",
+    "The intake holder is on earlier than Imani.",
+    "Haruto looks after calibration.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "For emphasis: To the best of my knowledge, Chidi and Haruto are on either side of Imani, in some order.",
+    "The intake holder is on earlier than Imani.",
+    "Haruto looks after calibration.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "For emphasis: To the best of my knowledge, Chidi and Haruto are on either side of Imani, in some order.",
+    "The intake holder is on earlier than Imani.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "To the best of my knowledge, packing is in Imani's hands.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "Last I heard, Chidi reports for duty at 15:00.",
+    "The intake holder is on earlier than Imani.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "To the best of my knowledge, packing is in Imani's hands.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "One more time: Count on Chidi for the 15:00 block.",
+    "The intake holder is on earlier than Imani.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "To the best of my knowledge, packing is in Imani's hands.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "The intake holder is on earlier than Imani.",
+    "Haruto looks after calibration.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "Imani is neither before both nor after both of Chidi and Haruto.",
+    "Chidi steps in the moment Elena steps out."
+   ],
+   [
+    "The intake holder is on earlier than Imani.",
+    "Last I heard, Elena is slotted later than the calibration holder.",
+    "Imani is neither before both nor after both of Chidi and Haruto.",
+    "To the best of my knowledge, packing is in Imani's hands.",
+    "Chidi steps in the moment Elena steps out."
+   ]
+  ]
+ },
+ "C-006": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Dmitri": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    },
+    "Farid": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-007": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Bruno": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Bruno": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Bruno": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Bruno": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-008": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Word is that Bruno and Haruto are on either side of Farid, in some order.",
+    "To the best of my knowledge, Bruno and Farid are on either side of Dmitri, in some order.",
+    "Unless I have this wrong, Dmitri is Haruto's immediate predecessor."
+   ],
+   [
+    "Again, since it matters: Word is that Farid is sandwiched by Bruno and Haruto.",
+    "To the best of my knowledge, Bruno and Farid are on either side of Dmitri, in some order.",
+    "Unless I have this wrong, Dmitri is Haruto's immediate predecessor."
+   ],
+   [
+    "To the best of my knowledge, Bruno and Farid are on either side of Dmitri, in some order.",
+    "Unless I have this wrong, Dmitri is Haruto's immediate predecessor.",
+    "If memory serves, at 15:00 you will find Haruto working."
+   ]
+  ]
+ },
+ "C-009": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Farid is Dmitri's immediate predecessor.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block.",
+    "Anika reports for duty at 09:00."
+   ],
+   [
+    "Again, since it matters: I'm reasonably confident Dmitri steps in the moment Farid steps out.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block.",
+    "Anika reports for duty at 09:00."
+   ],
+   [
+    "To the best of my knowledge, Anika gets in and out before Farid shows up.",
+    "Farid is Dmitri's immediate predecessor.",
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "To the best of my knowledge, Anika gets in and out before Farid shows up.",
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "Again, since it matters: I'm reasonably confident Dmitri steps in the moment Farid steps out.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "Farid is Dmitri's immediate predecessor.",
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "The intake holder is on earlier than Farid.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "Farid is Dmitri's immediate predecessor.",
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "Calibration gets handled sooner than Farid's block does.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "Farid is Dmitri's immediate predecessor.",
+    "The intake holder is on earlier than Farid.",
+    "Calibration gets handled sooner than Farid's block does.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "The intake holder is on earlier than Farid.",
+    "Again, since it matters: I'm reasonably confident Dmitri steps in the moment Farid steps out.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "Chidi is neither before both nor after both of Anika and Farid.",
+    "Again, since it matters: I'm reasonably confident Dmitri steps in the moment Farid steps out.",
+    "Calibration gets handled sooner than Farid's block does.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ],
+   [
+    "The intake holder is on earlier than Farid.",
+    "Again, since it matters: I'm reasonably confident Dmitri steps in the moment Farid steps out.",
+    "Calibration gets handled sooner than Farid's block does.",
+    "Unless I have this wrong, Chidi clocks in to cover the 13:00 block."
+   ]
+  ]
+ },
+ "C-010": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "11:00"
+    },
+    "Chidi": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-011": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Do not expect Joaquin at 15:00.",
+    "Last I heard, at 13:00 you will find Greta working.",
+    "One more time: Haruto is neither before both nor after both of Greta and Imani.",
+    "Kofi clocks in to cover the 11:00 block."
+   ],
+   [
+    "Do not expect Joaquin at 15:00.",
+    "Last I heard, at 13:00 you will find Greta working.",
+    "Kofi clocks in to cover the 11:00 block.",
+    "Haruto sits in the gap separating Greta and Imani."
+   ],
+   [
+    "Do not expect Joaquin at 15:00.",
+    "The intake holder is on earlier than Joaquin.",
+    "Last I heard, at 13:00 you will find Greta working.",
+    "Kofi clocks in to cover the 11:00 block.",
+    "Haruto clocks in to cover the 09:00 block."
+   ]
+  ]
+ },
+ "C-012": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Kofi": {
+     "block": "13:00"
+    },
+    "Joaquin": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Imani": {
+     "block": "09:00"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Imani": {
+     "block": "09:00"
+    },
+    "Farid": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Joaquin": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Imani": {
+     "block": "09:00"
+    },
+    "Farid": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-013": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Imani": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "13:00"
+    },
+    "Elena": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Imani": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "11:00"
+    },
+    "Elena": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Imani": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "13:00"
+    },
+    "Elena": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Imani": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "11:00"
+    },
+    "Elena": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-014": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Anika": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "11:00"
+    },
+    "Greta": {
+     "block": "07:00"
+    },
+    "Dmitri": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Haruto": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-015": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Greta": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Haruto": {
+     "block": "13:00"
+    },
+    "Farid": {
+     "block": "11:00"
+    },
+    "Imani": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "07:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Haruto": {
+     "block": "13:00"
+    },
+    "Farid": {
+     "block": "07:00"
+    },
+    "Imani": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Haruto": {
+     "block": "13:00"
+    },
+    "Farid": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "07:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-016": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Unless I have this wrong, Chidi reports for duty at 13:00.",
+    "Again, since it matters: Anika is Chidi's immediate successor.",
+    "Chidi sits in the gap separating Bruno and Dmitri."
+   ],
+   [
+    "Unless I have this wrong, Chidi reports for duty at 13:00.",
+    "Chidi sits in the gap separating Bruno and Dmitri.",
+    "To the best of my knowledge, nobody sits between Chidi and Anika, with Chidi first."
+   ]
+  ]
+ },
+ "C-017": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Farid": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Haruto": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "09:00"
+    },
+    "Anika": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-018": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Greta": {
+     "block": "07:00"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Haruto": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Greta": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Haruto": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Greta": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Haruto": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-019": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Anika": {
+     "block": "11:00"
+    },
+    "Livia": {
+     "block": "13:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Bruno": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Farid": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Anika": {
+     "block": "11:00"
+    },
+    "Livia": {
+     "block": "13:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Bruno": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Farid": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-020": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Chidi": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Haruto": {
+     "block": "11:00"
+    },
+    "Joaquin": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-021": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "13:00"
+    },
+    "Kofi": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Greta": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-022": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kofi": {
+     "block": "09:00"
+    },
+    "Elena": {
+     "block": "13:00"
+    },
+    "Haruto": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Farid": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-023": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Imani": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-024": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Chidi": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Farid": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Livia": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-025": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Dmitri": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "09:00"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Farid": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Dmitri": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "09:00"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-026": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Imani": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Kofi": {
+     "block": "15:00"
+    },
+    "Dmitri": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-027": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "To the best of my knowledge, Farid cannot be slotted into 11:00.",
+    "To the best of my knowledge, Farid sits in the gap separating Greta and Joaquin.",
+    "Farid is sandwiched by Anika and Dmitri."
+   ],
+   [
+    "Farid sits in the gap separating Dmitri and Greta.",
+    "To the best of my knowledge, Farid cannot be slotted into 11:00.",
+    "To the best of my knowledge, Farid sits in the gap separating Greta and Joaquin.",
+    "Anika and Dmitri are on either side of Greta, in some order."
+   ],
+   [
+    "To the best of my knowledge, Farid cannot be slotted into 11:00.",
+    "Again, since it matters: Farid is neither before both nor after both of Dmitri and Greta.",
+    "To the best of my knowledge, Farid sits in the gap separating Greta and Joaquin.",
+    "Anika and Dmitri are on either side of Greta, in some order."
+   ]
+  ]
+ },
+ "C-028": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Farid": {
+     "block": "07:00"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Farid": {
+     "block": "07:00"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Farid": {
+     "block": "07:00"
+    },
+    "Chidi": {
+     "block": "13:00"
+    },
+    "Bruno": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-029": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Farid": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "13:00"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Farid": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "13:00"
+    },
+    "Anika": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Farid": {
+     "block": "11:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Farid": {
+     "block": "11:00"
+    },
+    "Imani": {
+     "block": "07:00"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Livia": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-030": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "The packing holder is on earlier than Joaquin.",
+    "Greta was kept off packing.",
+    "Kofi turns up once Joaquin has gone."
+   ],
+   [
+    "The packing holder is on earlier than Joaquin.",
+    "Greta was kept off packing.",
+    "Kofi does not look after packing."
+   ]
+  ]
+ },
+ "C-031": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Dmitri": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "11:00"
+    },
+    "Greta": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "09:00"
+    },
+    "Chidi": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Dmitri": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "11:00"
+    },
+    "Greta": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "09:00"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-032": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "One more time: The packing holder is on earlier than Farid.",
+    "I'm reasonably confident calibration gets handled sooner than Kofi's block does.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "One more time: The packing holder is on earlier than Farid.",
+    "I'm reasonably confident calibration gets handled sooner than Kofi's block does.",
+    "Last I heard, Livia turns up later than Farid does."
+   ],
+   [
+    "I'm reasonably confident calibration gets handled sooner than Kofi's block does.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "I'm reasonably confident calibration gets handled sooner than Kofi's block does.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Last I heard, Livia turns up later than Farid does."
+   ],
+   [
+    "Again, since it matters: Unless I have this wrong, Kofi sits in the gap separating Anika and Farid.",
+    "One more time: The packing holder is on earlier than Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "Again, since it matters: Unless I have this wrong, Kofi sits in the gap separating Anika and Farid.",
+    "One more time: The packing holder is on earlier than Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "Last I heard, Livia turns up later than Farid does."
+   ],
+   [
+    "Again, since it matters: Unless I have this wrong, Kofi sits in the gap separating Anika and Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "Again, since it matters: Unless I have this wrong, Kofi sits in the gap separating Anika and Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Last I heard, Livia turns up later than Farid does."
+   ],
+   [
+    "One more time: The packing holder is on earlier than Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "To the best of my knowledge, Anika and Farid are on either side of Kofi, in some order.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "One more time: The packing holder is on earlier than Farid.",
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "To the best of my knowledge, Anika and Farid are on either side of Kofi, in some order.",
+    "Last I heard, Livia turns up later than Farid does."
+   ],
+   [
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "To the best of my knowledge, Anika and Farid are on either side of Kofi, in some order.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Again, since it matters: Farid has left the building when Livia arrives."
+   ],
+   [
+    "Last I heard, whoever looks after calibration clocks off before Anika clocks in.",
+    "To the best of my knowledge, Anika and Farid are on either side of Kofi, in some order.",
+    "Whoever looks after packing clocks off before Farid clocks in.",
+    "Last I heard, Livia turns up later than Farid does."
+   ]
+  ]
+ },
+ "C-033": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Again, since it matters: Livia sits in the gap separating Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Unless I have this wrong, Chidi steps in the moment Anika steps out.",
+    "Livia is slotted earlier than Kofi.",
+    "Unless I have this wrong, Chidi is slotted later than the calibration holder."
+   ],
+   [
+    "Again, since it matters: Livia sits in the gap separating Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Unless I have this wrong, Chidi steps in the moment Anika steps out.",
+    "Livia is slotted earlier than Kofi.",
+    "Dmitri gets in and out before Anika shows up."
+   ],
+   [
+    "Again, since it matters: Livia sits in the gap separating Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Livia is slotted earlier than Kofi.",
+    "Unless I have this wrong, Chidi is slotted later than the calibration holder.",
+    "Dmitri gets in and out before Anika shows up."
+   ],
+   [
+    "Livia is neither before both nor after both of Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Unless I have this wrong, Chidi steps in the moment Anika steps out.",
+    "Livia is slotted earlier than Kofi.",
+    "Unless I have this wrong, Chidi is slotted later than the calibration holder."
+   ],
+   [
+    "Livia is neither before both nor after both of Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Unless I have this wrong, Chidi steps in the moment Anika steps out.",
+    "Livia is slotted earlier than Kofi.",
+    "Dmitri gets in and out before Anika shows up."
+   ],
+   [
+    "Livia is neither before both nor after both of Anika and Dmitri.",
+    "Dmitri sits in the gap separating Chidi and Kofi.",
+    "Livia is slotted earlier than Kofi.",
+    "Unless I have this wrong, Chidi is slotted later than the calibration holder.",
+    "Dmitri gets in and out before Anika shows up."
+   ]
+  ]
+ },
+ "C-034": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Chidi": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-035": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Bruno": {
+     "block": "13:00"
+    },
+    "Greta": {
+     "block": "07:00"
+    },
+    "Dmitri": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Elena": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-036": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Livia": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Livia": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-037": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Livia": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "15:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Livia": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Dmitri": {
+     "block": "15:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Livia": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "13:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Livia": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Dmitri": {
+     "block": "13:00"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-038": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "07:00"
+    },
+    "Bruno": {
+     "block": "13:00"
+    },
+    "Kofi": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Haruto": {
+     "block": "13:00"
+    },
+    "Bruno": {
+     "block": "11:00"
+    },
+    "Kofi": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Haruto": {
+     "block": "15:00"
+    },
+    "Bruno": {
+     "block": "11:00"
+    },
+    "Kofi": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-039": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "09:00"
+    },
+    "Livia": {
+     "block": "11:00"
+    },
+    "Farid": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Imani": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-040": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Joaquin": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Livia": {
+     "block": "07:00"
+    },
+    "Greta": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-041": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Elena": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "07:00"
+    },
+    "Imani": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Bruno": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Dmitri": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Elena": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "07:00"
+    },
+    "Imani": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Bruno": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Dmitri": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Elena": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Livia": {
+     "block": "07:00"
+    },
+    "Imani": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Bruno": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Dmitri": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-042": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kofi": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Greta": {
+     "block": "11:00"
+    },
+    "Dmitri": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Elena": {
+     "block": "09:00"
+    },
+    "Joaquin": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-043": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Joaquin": {
+     "block": "13:00"
+    },
+    "Greta": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Kofi": {
+     "block": "09:00"
+    },
+    "Imani": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-044": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "If memory serves, Dmitri and Joaquin are on either side of Chidi, in some order.",
+    "Chidi clocks in to cover the 13:00 block.",
+    "If memory serves, Dmitri is neither before both nor after both of Joaquin and Livia.",
+    "Unless I have this wrong, Joaquin sits in the gap separating Chidi and Elena."
+   ]
+  ]
+ },
+ "C-045": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Bruno": {
+     "block": "09:00"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Haruto": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Chidi": {
+     "block": "07:00"
+    },
+    "Elena": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-046": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "To the best of my knowledge, Bruno takes the floor only once the packing holder is finished.",
+    "I'm reasonably confident Chidi turns up later than Bruno does.",
+    "Calibration gets handled sooner than Bruno's block does."
+   ],
+   [
+    "Kofi turns up later than Chidi does.",
+    "To the best of my knowledge, Bruno takes the floor only once the packing holder is finished.",
+    "If memory serves, Kofi passes the baton straight to Joaquin.",
+    "I'm reasonably confident Chidi turns up later than Bruno does."
+   ],
+   [
+    "Kofi turns up later than Chidi does.",
+    "If memory serves, Kofi passes the baton straight to Joaquin.",
+    "I'm reasonably confident Chidi turns up later than Bruno does.",
+    "Calibration gets handled sooner than Bruno's block does."
+   ],
+   [
+    "To the best of my knowledge, Bruno takes the floor only once the packing holder is finished.",
+    "One more time: I'm reasonably confident Chidi gets in and out before Kofi shows up.",
+    "If memory serves, Kofi passes the baton straight to Joaquin.",
+    "I'm reasonably confident Chidi turns up later than Bruno does."
+   ],
+   [
+    "One more time: I'm reasonably confident Chidi gets in and out before Kofi shows up.",
+    "If memory serves, Kofi passes the baton straight to Joaquin.",
+    "I'm reasonably confident Chidi turns up later than Bruno does.",
+    "Calibration gets handled sooner than Bruno's block does."
+   ]
+  ]
+ },
+ "C-047": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Haruto": {
+     "block": "15:00"
+    },
+    "Kofi": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Haruto": {
+     "block": "15:00"
+    },
+    "Kofi": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Haruto": {
+     "block": "15:00"
+    },
+    "Kofi": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Haruto": {
+     "block": "15:00"
+    },
+    "Kofi": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-048": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Unless I have this wrong, Livia sits in the gap separating Farid and Haruto.",
+    "To the best of my knowledge, at 13:00 you will find Farid working.",
+    "Dmitri picks up exactly where Elena leaves off."
+   ],
+   [
+    "Unless I have this wrong, Livia sits in the gap separating Farid and Haruto.",
+    "Word is that Haruto is neither before both nor after both of Elena and Livia.",
+    "To the best of my knowledge, at 13:00 you will find Farid working.",
+    "Last I heard, Dmitri sits in the gap separating Elena and Haruto."
+   ]
+  ]
+ },
+ "C-049": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Joaquin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Farid": {
+     "block": "15:00"
+    },
+    "Dmitri": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Greta": {
+     "block": "09:00"
+    },
+    "Elena": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Joaquin": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "15:00"
+    },
+    "Dmitri": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Greta": {
+     "block": "09:00"
+    },
+    "Elena": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Joaquin": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Farid": {
+     "block": "15:00"
+    },
+    "Dmitri": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Greta": {
+     "block": "09:00"
+    },
+    "Elena": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-050": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "To the best of my knowledge, Imani clocks in to cover the 13:00 block.",
+    "Whoever looks after calibration clocks off before Greta clocks in.",
+    "One more time: Word is that calibration gets handled sooner than Kofi's block does."
+   ],
+   [
+    "To the best of my knowledge, Imani clocks in to cover the 13:00 block.",
+    "Whoever looks after calibration clocks off before Greta clocks in.",
+    "Whoever looks after calibration clocks off before Kofi clocks in."
+   ]
+  ]
+ },
+ "C-051": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Farid": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Imani": {
+     "block": "13:00"
+    },
+    "Kofi": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Chidi": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Farid": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Imani": {
+     "block": "13:00"
+    },
+    "Kofi": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Chidi": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-052": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Dmitri": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Imani": {
+     "block": "11:00"
+    },
+    "Haruto": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Kofi": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Dmitri": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Imani": {
+     "block": "13:00"
+    },
+    "Haruto": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Anika": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Kofi": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-053": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Bruno is sandwiched by Chidi and Greta.",
+    "Bruno steps in the moment Chidi steps out.",
+    "Chidi is slotted later than Greta."
+   ]
+  ]
+ },
+ "C-054": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "The packing holder is on earlier than Farid.",
+    "Packing is not in Dmitri's hands.",
+    "One more time: Greta does not look after packing."
+   ],
+   [
+    "The packing holder is on earlier than Farid.",
+    "Packing is not in Dmitri's hands.",
+    "Word is that packing is not in Greta's hands."
+   ],
+   [
+    "For emphasis: Packing gets handled sooner than Farid's block does.",
+    "Packing is not in Dmitri's hands.",
+    "One more time: Greta does not look after packing."
+   ],
+   [
+    "For emphasis: Packing gets handled sooner than Farid's block does.",
+    "Packing is not in Dmitri's hands.",
+    "Word is that packing is not in Greta's hands."
+   ]
+  ]
+ },
+ "C-055": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Unless I have this wrong, count on Anika for the 15:00 block.",
+    "Unless I have this wrong, intake is in Anika's hands.",
+    "Livia is slotted later than the intake holder."
+   ],
+   [
+    "For emphasis: Chidi has nothing to do with calibration today.",
+    "Unless I have this wrong, intake is in Anika's hands.",
+    "Packing is in Bruno's hands."
+   ],
+   [
+    "Unless I have this wrong, intake is in Anika's hands.",
+    "I'm reasonably confident Chidi does not look after calibration.",
+    "Packing is in Bruno's hands."
+   ]
+  ]
+ },
+ "C-056": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Anika": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Elena": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Dmitri": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Joaquin": {
+     "block": "11:00"
+    },
+    "Bruno": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "C-057": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "For emphasis: Haruto turns up later than Bruno does.",
+    "Bruno is slotted later than Anika.",
+    "If memory serves, Anika steps in the moment Haruto steps out."
+   ],
+   [
+    "Bruno is slotted later than Anika.",
+    "If memory serves, Anika steps in the moment Haruto steps out.",
+    "Bruno has left the building when Haruto arrives."
+   ],
+   [
+    "For emphasis: Haruto turns up later than Bruno does.",
+    "For emphasis: To the best of my knowledge, Elena has left the building when Bruno arrives.",
+    "Bruno is slotted later than Anika.",
+    "Haruto is sandwiched by Anika and Elena."
+   ],
+   [
+    "For emphasis: Haruto turns up later than Bruno does.",
+    "Bruno is slotted later than Anika.",
+    "To the best of my knowledge, Elena is slotted earlier than Bruno.",
+    "Haruto is sandwiched by Anika and Elena."
+   ],
+   [
+    "For emphasis: To the best of my knowledge, Elena has left the building when Bruno arrives.",
+    "Bruno is slotted later than Anika.",
+    "Bruno has left the building when Haruto arrives.",
+    "Haruto is sandwiched by Anika and Elena."
+   ],
+   [
+    "Bruno is slotted later than Anika.",
+    "Bruno has left the building when Haruto arrives.",
+    "To the best of my knowledge, Elena is slotted earlier than Bruno.",
+    "Haruto is sandwiched by Anika and Elena."
+   ]
+  ]
+ },
+ "C-058": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Anika passes the baton straight to Bruno.",
+    "Unless I have this wrong, Anika sits in the gap separating Dmitri and Joaquin.",
+    "Anika picks up exactly where Greta leaves off.",
+    "At 13:00 you will find Dmitri working."
+   ]
+  ]
+ },
+ "C-059": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Kofi": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Elena": {
+     "block": "11:00"
+    },
+    "Chidi": {
+     "block": "07:00"
+    },
+    "Imani": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Livia": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ }
+}

@@ -15,6 +15,9 @@ import argparse, itertools, json, os, random, sys
 sys.path.insert(0, ROOT)
 from src.solver import Constraint, generate_all_worlds, BLOCK_TO_IDX, BLOCKS, STATIONS
 from pools import POOLS, PHRASE
+from pool_blind import BLIND, BLIND_HEDGES, BLIND_WRAPPERS, BLIND_DECOY, BLIND_PHRASE, BLIND_NAMES
+POOLS['blind'] = dict(bind=BLIND, decoy=BLIND_DECOY, hedges=BLIND_HEDGES, wrappers=BLIND_WRAPPERS, names=BLIND_NAMES)
+PHRASE.update(BLIND_PHRASE)
 from templates import NAMES as VIS_NAMES
 
 NEW_NAMES = ["Farah","Kiran","Omar","Zoe","Hugo","Bianca","Tobias","Leila"]
@@ -138,7 +141,7 @@ def build_header(rng, staff, holders, bay):
 def gen_item(rng, case, pool_name, worlds_cache):
     pool = POOLS[pool_name]
     for attempt in range(400):
-        staff = rng.sample(NAME_POOL, 5)
+        staff = rng.sample(pool.get('names', NAME_POOL), 5)
         holders = rng.sample(staff, 3)
         key_ = (tuple(staff), tuple(holders))
         if key_ not in worlds_cache: worlds_cache[key_] = generate_all_worlds(staff, holders)
@@ -183,7 +186,7 @@ def gen_item(rng, case, pool_name, worlds_cache):
                     inj = (fk, fa); chosen = allc; ok = True; break
             if not ok or not (7 <= len(chosen) <= 12): continue
         # ---- render lines ----
-        names = set(NAME_POOL)
+        names = set(NAME_POOL) | set(pool.get('names', []))
         lines, gold = [], []
         used_tpl = {}
         for kind, args in chosen:
