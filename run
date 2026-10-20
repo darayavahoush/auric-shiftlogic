@@ -44,7 +44,7 @@ def main():
         sys.exit(1)
 
     # max_retries=0 is strictly required: the SDK default (2) re-sends failed requests, which counts against the budget proxy!
-    client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0)
+    client = OpenAI(api_key=api_key, base_url=base_url, max_retries=0, timeout=120.0)
 
     with open(args.items_path, "r", encoding="utf-8") as f:
         items = json.load(f)

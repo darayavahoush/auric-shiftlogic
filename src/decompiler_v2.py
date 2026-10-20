@@ -268,7 +268,7 @@ def verdicts_to_constraints(verdicts: Dict[int, Verdict], lines: List[Tuple[int,
 
 # ----------------------------- model call + drop-in -----------------------------
 def call_granite_v2(client, model: str, item_id: str, messages: List[Dict[str, str]],
-                    temperature: float = 1.0, timeout: float = 90.0) -> str:
+                    temperature: float = 1.0, timeout: float = 180.0) -> str:
     """ONE HTTP request. The client must be built with max_retries=0 so the SDK cannot re-send behind your back."""
     r = client.chat.completions.create(
         model=model, messages=messages, temperature=temperature, top_p=0.95, timeout=timeout,
