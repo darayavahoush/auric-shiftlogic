@@ -17,7 +17,8 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from src.prefilter import prefilter_item
 from src.solver import Constraint, generate_all_worlds, BLOCK_TO_IDX
-import src.decompiler_v2 as D
+import importlib, os
+D = importlib.import_module("src.decompiler_" + os.environ.get("SHIFT_DEC", "v2"))   # SHIFT_DEC=v3 selects the slot-form decompiler
 from src.pipeline_v2 import answer_from_raw
 import score as S
 

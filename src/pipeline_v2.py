@@ -10,7 +10,8 @@ from typing import Any, Dict, List, Optional
 from src.prefilter import prefilter_item
 from src.solver import solve
 from src.repair import repair
-import src.decompiler_v2 as D
+import importlib, os
+D = importlib.import_module("src.decompiler_" + os.environ.get("SHIFT_DEC", "v2"))   # SHIFT_DEC=v3 selects the slot-form decompiler
 
 BUDGET_CALLS = {"1x": 1, "3x": 3, "10x": 10}
 

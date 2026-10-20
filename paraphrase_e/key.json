@@ -1,0 +1,2461 @@
+{
+ "F-000": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Just so it is clear: Ilse does not get going until Fenella has had a turn.",
+    "Once Brigid is up, the calibration person has had their go.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "Just so it is clear: Ilse does not get going until Fenella has had a turn.",
+    "The way I read it, once Brigid is up, the packing person has had their go.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "Just so it is clear: Ilse does not get going until Fenella has had a turn.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span.",
+    "Just so it is clear: Packing gets seen to ahead of Brigid's go."
+   ],
+   [
+    "From what I can tell, Fenella is done and dusted before Ilse gets going.",
+    "Once Brigid is up, the calibration person has had their go.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "From what I can tell, Fenella is done and dusted before Ilse gets going.",
+    "The way I read it, once Brigid is up, the packing person has had their go.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "From what I can tell, Fenella is done and dusted before Ilse gets going.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span.",
+    "Just so it is clear: Packing gets seen to ahead of Brigid's go."
+   ],
+   [
+    "Word from the supervisor is that Henrik skips 07:00.",
+    "Once Brigid is up, the calibration person has had their go.",
+    "Ilse lies further along the schedule than Henrik.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "Word from the supervisor is that Henrik skips 07:00.",
+    "Ilse lies further along the schedule than Henrik.",
+    "The way I read it, once Brigid is up, the packing person has had their go.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "Word from the supervisor is that Henrik skips 07:00.",
+    "Ilse lies further along the schedule than Henrik.",
+    "Fenella slides into the block after Cormac's, no gap.",
+    "Brigid and Ilse have Cormac stuck somewhere inside their span.",
+    "Just so it is clear: Packing gets seen to ahead of Brigid's go."
+   ]
+  ]
+ },
+ "F-001": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Gustavo": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Gustavo": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-002": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Just so it is clear: Henrik is not minding intake today.",
+    "Packing is Lorcan's patch today.",
+    "Whoever ends up with calibration, it is not Henrik."
+   ],
+   [
+    "Packing is Lorcan's patch today.",
+    "Intake is not Henrik's patch today.",
+    "Whoever ends up with calibration, it is not Henrik."
+   ]
+  ]
+ },
+ "F-003": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Katya": {
+     "block": "11:00"
+    },
+    "Lorcan": {
+     "block": "15:00"
+    },
+    "Anselm": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Katya": {
+     "block": "13:00"
+    },
+    "Lorcan": {
+     "block": "15:00"
+    },
+    "Anselm": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-004": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Ilse": {
+     "block": "11:00"
+    },
+    "Henrik": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Delphine": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-005": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Evander": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "15:00"
+    },
+    "Katya": {
+     "block": "11:00"
+    },
+    "Fenella": {
+     "block": "07:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-006": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "11:00"
+    },
+    "Fenella": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Fenella": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Fenella": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Fenella": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-007": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Delphine": {
+     "block": "09:00"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "11:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Delphine": {
+     "block": "09:00"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "13:00"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Delphine": {
+     "block": "11:00"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "07:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "09:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Delphine": {
+     "block": "11:00"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "07:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-008": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Cormac": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "13:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Cormac": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "11:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Cormac": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "11:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-009": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Evander": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Fenella": {
+     "block": "09:00"
+    },
+    "Jorin": {
+     "block": "07:00"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-010": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Calibration is not Jorin's patch today.",
+    "If I read the sheet right, calibration is not Evander's patch today.",
+    "I was told packing is Henrik's patch today."
+   ],
+   [
+    "Evander arrives when the intake person wraps up.",
+    "If I read the sheet right, calibration is not Evander's patch today.",
+    "I was told packing is Henrik's patch today."
+   ]
+  ]
+ },
+ "F-011": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "09:00"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Gustavo": {
+     "block": "11:00"
+    },
+    "Fenella": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-012": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Evander": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Katya": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "11:00"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Evander": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Katya": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "11:00"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Evander": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "07:00",
+     "station": "calibration"
+    },
+    "Katya": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "09:00"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Evander": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Katya": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "09:00"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-013": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Brigid": {
+     "block": "09:00"
+    },
+    "Fenella": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-014": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Delphine": {
+     "block": "11:00"
+    },
+    "Anselm": {
+     "block": "15:00"
+    },
+    "Katya": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Fenella": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-015": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Katya": {
+     "block": "11:00"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Ilse": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-016": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Cormac": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Henrik": {
+     "block": "09:00"
+    },
+    "Anselm": {
+     "block": "11:00"
+    },
+    "Lorcan": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-017": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Delphine": {
+     "block": "13:00"
+    },
+    "Evander": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Gustavo": {
+     "block": "07:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Cormac": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-018": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "11:00"
+    },
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "11:00"
+    },
+    "Ilse": {
+     "block": "09:00"
+    },
+    "Delphine": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Delphine": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "09:00"
+    },
+    "Delphine": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-019": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Evander": {
+     "block": "15:00"
+    },
+    "Katya": {
+     "block": "07:00"
+    },
+    "Anselm": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Gustavo": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-020": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Henrik": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fenella": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "11:00"
+    },
+    "Cormac": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-021": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Just so it is clear: Word from the supervisor is that sort Fenella, Cormac and Ilse by start time and Cormac comes out in the centre.",
+    "Pencil Fenella in on the 11:00 block.",
+    "Ilse slides into the block after Henrik's, no gap."
+   ],
+   [
+    "Cormac takes a turn following whichever of Fenella and Ilse starts first, and ahead of whoever starts last.",
+    "Pencil Fenella in on the 11:00 block.",
+    "Ilse slides into the block after Henrik's, no gap."
+   ],
+   [
+    "Pencil Fenella in on the 11:00 block.",
+    "Ilse slides into the block after Henrik's, no gap.",
+    "The way I read it, sort Cormac, Fenella and Lorcan by start time and Fenella comes out in the centre."
+   ]
+  ]
+ },
+ "F-022": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Brigid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fenella": {
+     "block": "11:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Brigid": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fenella": {
+     "block": "15:00"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Brigid": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Fenella": {
+     "block": "09:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Brigid": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Fenella": {
+     "block": "07:00"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-023": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Henrik": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "13:00"
+    },
+    "Fenella": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "13:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "07:00"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "09:00"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Brigid": {
+     "block": "15:00"
+    },
+    "Fenella": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "07:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-024": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Fenella": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "15:00"
+    },
+    "Gustavo": {
+     "block": "13:00"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-025": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Ilse": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "13:00"
+    },
+    "Cormac": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Katya": {
+     "block": "09:00"
+    },
+    "Fenella": {
+     "block": "15:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Ilse": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "13:00"
+    },
+    "Cormac": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Katya": {
+     "block": "09:00"
+    },
+    "Fenella": {
+     "block": "15:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-026": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Jorin has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "I was told Delphine follows Anselm with no break in between.",
+    "Pencil Jorin in on the 11:00 block."
+   ],
+   [
+    "In case it got missed: Brigid and Ilse have Jorin stuck somewhere inside their span.",
+    "I was told Delphine follows Anselm with no break in between.",
+    "Pencil Jorin in on the 11:00 block."
+   ]
+  ]
+ },
+ "F-027": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Henrik follows Anselm with no break in between.",
+    "Saying it again: Cormac has Brigid on one side and Henrik on the far side, if not right beside them.",
+    "Your 11:00 person is Brigid."
+   ],
+   [
+    "Henrik follows Anselm with no break in between.",
+    "If I read the sheet right, sort Brigid, Cormac and Henrik by start time and Cormac comes out in the centre.",
+    "Your 11:00 person is Brigid."
+   ],
+   [
+    "Saying it again: Cormac has Brigid on one side and Henrik on the far side, if not right beside them.",
+    "If I read the sheet right, Jorin wraps up and Cormac is up straight away.",
+    "Your 11:00 person is Brigid."
+   ],
+   [
+    "Saying it again: Cormac has Brigid on one side and Henrik on the far side, if not right beside them.",
+    "Your 11:00 person is Brigid.",
+    "Anselm and Jorin have Henrik stuck somewhere inside their span."
+   ],
+   [
+    "If I read the sheet right, sort Brigid, Cormac and Henrik by start time and Cormac comes out in the centre.",
+    "If I read the sheet right, Jorin wraps up and Cormac is up straight away.",
+    "Your 11:00 person is Brigid."
+   ],
+   [
+    "If I read the sheet right, sort Brigid, Cormac and Henrik by start time and Cormac comes out in the centre.",
+    "Your 11:00 person is Brigid.",
+    "Anselm and Jorin have Henrik stuck somewhere inside their span."
+   ]
+  ]
+ },
+ "F-028": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Jorin slides into the block after Henrik's, no gap.",
+    "As soon as Evander's block ends, Anselm's begins.",
+    "Pairing Anselm with Henrik, Anselm gets the earlier slot.",
+    "Word from the supervisor is that Jorin has Evander on one side and Henrik on the far side, if not right beside them."
+   ]
+  ]
+ },
+ "F-029": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Pairing Jorin with Brigid, Jorin gets the later slot.",
+    "Brigid does not get going until Lorcan has had a turn.",
+    "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+    "Jorin lies further along the schedule than Cormac."
+   ],
+   [
+    "Brigid does not get going until Lorcan has had a turn.",
+    "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+    "Cormac lies further along the schedule than whoever is minding packing.",
+    "Jorin lies further along the schedule than Cormac."
+   ],
+   [
+    "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+    "Over at calibration, today, it is Brigid.",
+    "Cormac lies further along the schedule than whoever is minding packing.",
+    "Jorin lies further along the schedule than Cormac."
+   ],
+   [
+    "Brigid does not get going until Lorcan has had a turn.",
+    "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+    "From what I can tell, Brigid has Delphine on one side and Lorcan on the far side, if not right beside them.",
+    "Delphine takes a turn following whichever of Brigid and Cormac starts first, and ahead of whoever starts last.",
+    "Jorin lies further along the schedule than Cormac."
+   ],
+   [
+    "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+    "From what I can tell, Brigid has Delphine on one side and Lorcan on the far side, if not right beside them.",
+    "Delphine takes a turn following whichever of Brigid and Cormac starts first, and ahead of whoever starts last.",
+    "Cormac lies further along the schedule than whoever is minding packing.",
+    "Jorin lies further along the schedule than Cormac."
+   ]
+  ]
+ },
+ "F-030": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Brigid": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Gustavo": {
+     "block": "13:00"
+    },
+    "Lorcan": {
+     "block": "07:00"
+    },
+    "Henrik": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-031": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "From what I can tell, Katya has Anselm on one side and Jorin on the far side, if not right beside them.",
+    "Evander follows Anselm with no break in between.",
+    "Jorin takes a turn following whichever of Cormac and Evander starts first, and ahead of whoever starts last.",
+    "Evander is who you will see at 11:00."
+   ],
+   [
+    "From what I can tell, Katya has Anselm on one side and Jorin on the far side, if not right beside them.",
+    "Evander follows Anselm with no break in between.",
+    "Jorin takes a turn following whichever of Cormac and Evander starts first, and ahead of whoever starts last.",
+    "Just so it is clear: If you need someone at 11:00, it is Evander."
+   ],
+   [
+    "From what I can tell, Katya has Anselm on one side and Jorin on the far side, if not right beside them.",
+    "Evander follows Anselm with no break in between.",
+    "The way I read it, Evander has Anselm on one side and Cormac on the far side, if not right beside them.",
+    "Evander is who you will see at 11:00."
+   ],
+   [
+    "From what I can tell, Katya has Anselm on one side and Jorin on the far side, if not right beside them.",
+    "Evander follows Anselm with no break in between.",
+    "The way I read it, Evander has Anselm on one side and Cormac on the far side, if not right beside them.",
+    "Just so it is clear: If you need someone at 11:00, it is Evander."
+   ]
+  ]
+ },
+ "F-032": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Lorcan is not minding intake today.",
+    "The way I read it, your 13:00 person is Brigid.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "The way I read it, Brigid takes a turn following whichever of Delphine and Lorcan starts first, and ahead of whoever starts last."
+   ],
+   [
+    "Lorcan is not minding intake today.",
+    "The way I read it, your 13:00 person is Brigid.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Saying it again: The way I read it, as soon as Cormac's block ends, Delphine's begins.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "The way I read it, Brigid takes a turn following whichever of Delphine and Lorcan starts first, and ahead of whoever starts last."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Saying it again: The way I read it, as soon as Cormac's block ends, Delphine's begins.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Saying it again: The way I read it, as soon as Cormac's block ends, Delphine's begins.",
+    "The way I read it, Brigid takes a turn following whichever of Delphine and Lorcan starts first, and ahead of whoever starts last.",
+    "Cormac has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Saying it again: The way I read it, as soon as Cormac's block ends, Delphine's begins.",
+    "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them.",
+    "Cormac has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "From what I can tell, Delphine slides into the block after Cormac's, no gap.",
+    "The way I read it, Brigid takes a turn following whichever of Delphine and Lorcan starts first, and ahead of whoever starts last."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "Intake gets seen to ahead of Fenella's go.",
+    "From what I can tell, Delphine slides into the block after Cormac's, no gap.",
+    "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "From what I can tell, Delphine slides into the block after Cormac's, no gap.",
+    "The way I read it, Brigid takes a turn following whichever of Delphine and Lorcan starts first, and ahead of whoever starts last.",
+    "Cormac has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ],
+   [
+    "The way I read it, your 13:00 person is Brigid.",
+    "From what I can tell, Delphine slides into the block after Cormac's, no gap.",
+    "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them.",
+    "Cormac has Delphine on one side and Lorcan on the far side, if not right beside them."
+   ]
+  ]
+ },
+ "F-033": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Fenella": {
+     "block": "15:00"
+    },
+    "Jorin": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Fenella": {
+     "block": "15:00"
+    },
+    "Jorin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Lorcan": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-034": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Katya": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Delphine": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "07:00"
+    },
+    "Henrik": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Katya": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Delphine": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "09:00"
+    },
+    "Henrik": {
+     "block": "07:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-035": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Anselm": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Evander": {
+     "block": "09:00"
+    },
+    "Lorcan": {
+     "block": "07:00"
+    },
+    "Brigid": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Ilse": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-036": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Henrik": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "11:00"
+    },
+    "Evander": {
+     "block": "15:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "07:00"
+    },
+    "Evander": {
+     "block": "15:00"
+    },
+    "Delphine": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Evander": {
+     "block": "15:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-037": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Calibration gets seen to ahead of Jorin's go.",
+    "Delphine takes a turn following whichever of Gustavo and Henrik starts first, and ahead of whoever starts last.",
+    "If I read the sheet right, Cormac and Jorin have Henrik stuck somewhere inside their span.",
+    "If I read the sheet right, you won't see Henrik at 09:00.",
+    "I was told Gustavo follows Jorin with no break in between."
+   ],
+   [
+    "Jorin does not get going until Cormac has had a turn.",
+    "Delphine takes a turn following whichever of Gustavo and Henrik starts first, and ahead of whoever starts last.",
+    "If I read the sheet right, Cormac and Jorin have Henrik stuck somewhere inside their span.",
+    "If I read the sheet right, you won't see Henrik at 09:00.",
+    "I was told Gustavo follows Jorin with no break in between."
+   ],
+   [
+    "In case it got missed: Once Jorin is up, the calibration person has had their go.",
+    "Delphine takes a turn following whichever of Gustavo and Henrik starts first, and ahead of whoever starts last.",
+    "If I read the sheet right, Cormac and Jorin have Henrik stuck somewhere inside their span.",
+    "If I read the sheet right, you won't see Henrik at 09:00.",
+    "I was told Gustavo follows Jorin with no break in between."
+   ],
+   [
+    "Delphine takes a turn following whichever of Gustavo and Henrik starts first, and ahead of whoever starts last.",
+    "If I read the sheet right, Cormac and Jorin have Henrik stuck somewhere inside their span.",
+    "If I read the sheet right, you won't see Henrik at 09:00.",
+    "I was told Gustavo follows Jorin with no break in between.",
+    "Saying it again: If I read the sheet right, Cormac is done and dusted before Jorin gets going."
+   ]
+  ]
+ },
+ "F-038": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Jorin": {
+     "block": "13:00"
+    },
+    "Brigid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Katya": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Anselm": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-039": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Word from the supervisor is that Henrik has Evander on one side and Jorin on the far side, if not right beside them.",
+    "From what I can tell, Jorin takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last.",
+    "Evander takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last."
+   ],
+   [
+    "Word from the supervisor is that Henrik has Evander on one side and Jorin on the far side, if not right beside them.",
+    "Evander takes a turn following whichever of Henrik and Ilse starts first, and ahead of whoever starts last.",
+    "I was told Fenella has Evander on one side and Ilse on the far side, if not right beside them.",
+    "From what I can tell, Jorin takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last."
+   ],
+   [
+    "Word from the supervisor is that Henrik has Evander on one side and Jorin on the far side, if not right beside them.",
+    "Word from the supervisor is that whoever is minding calibration leaves before Evander arrives.",
+    "Evander takes a turn following whichever of Henrik and Ilse starts first, and ahead of whoever starts last.",
+    "Pairing Henrik with Ilse, Henrik gets the later slot.",
+    "From what I can tell, Jorin takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last."
+   ],
+   [
+    "Word from the supervisor is that Henrik has Evander on one side and Jorin on the far side, if not right beside them.",
+    "Evander takes a turn following whichever of Henrik and Ilse starts first, and ahead of whoever starts last.",
+    "Pairing Henrik with Ilse, Henrik gets the later slot.",
+    "From what I can tell, Jorin takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last.",
+    "Just so it is clear: Once Evander is up, the calibration person has had their go."
+   ]
+  ]
+ },
+ "F-040": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Delphine": {
+     "block": "13:00"
+    },
+    "Ilse": {
+     "block": "11:00"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Henrik": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Delphine": {
+     "block": "09:00"
+    },
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Evander": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-041": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Evander": {
+     "block": "11:00"
+    },
+    "Henrik": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Anselm": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Fenella": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-042": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Brigid": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Fenella": {
+     "block": "09:00"
+    },
+    "Anselm": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Cormac": {
+     "block": "15:00"
+    },
+    "Delphine": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Brigid": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Fenella": {
+     "block": "07:00"
+    },
+    "Anselm": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Cormac": {
+     "block": "15:00"
+    },
+    "Delphine": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-043": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "15:00"
+    },
+    "Katya": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Evander": {
+     "block": "09:00"
+    },
+    "Cormac": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Gustavo": {
+     "block": "13:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-044": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Delphine": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Lorcan": {
+     "block": "07:00"
+    },
+    "Henrik": {
+     "block": "13:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-045": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Lorcan wraps up and Evander is up straight away.",
+    "Just so it is clear: Fenella and Lorcan have Brigid stuck somewhere inside their span.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away."
+   ],
+   [
+    "Lorcan wraps up and Evander is up straight away.",
+    "Brigid takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away."
+   ],
+   [
+    "Lorcan wraps up and Evander is up straight away.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "From what I can tell, Evander takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away."
+   ],
+   [
+    "Lorcan wraps up and Evander is up straight away.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away.",
+    "Just so it is clear: Fenella and Lorcan have Evander stuck somewhere inside their span."
+   ],
+   [
+    "Just so it is clear: Fenella and Lorcan have Brigid stuck somewhere inside their span.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "From what I can tell, Evander takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away."
+   ],
+   [
+    "Just so it is clear: Fenella and Lorcan have Brigid stuck somewhere inside their span.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away.",
+    "Just so it is clear: Fenella and Lorcan have Evander stuck somewhere inside their span."
+   ],
+   [
+    "Brigid takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "From what I can tell, Evander takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away."
+   ],
+   [
+    "Brigid takes a turn following whichever of Fenella and Lorcan starts first, and ahead of whoever starts last.",
+    "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+    "Pairing Delphine with Brigid, Delphine gets the later slot.",
+    "Pretty sure Brigid wraps up and Fenella is up straight away.",
+    "Just so it is clear: Fenella and Lorcan have Evander stuck somewhere inside their span."
+   ]
+  ]
+ },
+ "F-046": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "07:00"
+    },
+    "Katya": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "09:00"
+    },
+    "Katya": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   },
+   {
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "13:00"
+    },
+    "Katya": {
+     "block": "11:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Evander": {
+     "block": "07:00",
+     "station": "intake"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-047": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "As soon as Delphine's block ends, Katya's begins.",
+    "Sort Katya, Delphine and Lorcan by start time and Delphine comes out in the centre.",
+    "Lorcan does not get going until Delphine has had a turn."
+   ]
+  ]
+ },
+ "F-048": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Katya": {
+     "block": "07:00"
+    },
+    "Cormac": {
+     "block": "15:00"
+    },
+    "Evander": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Brigid": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "13:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-049": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Fenella": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Ilse": {
+     "block": "11:00"
+    }
+   },
+   {
+    "Fenella": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "15:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Ilse": {
+     "block": "11:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-050": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Fenella": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "intake"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Brigid": {
+     "block": "15:00"
+    }
+   },
+   {
+    "Fenella": {
+     "block": "13:00",
+     "station": "calibration"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "09:00"
+    },
+    "Delphine": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Brigid": {
+     "block": "15:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-051": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Do not look for Delphine on calibration.",
+    "Delphine is not minding packing today.",
+    "Do not look for Delphine on intake."
+   ]
+  ]
+ },
+ "F-052": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "If I read the sheet right, Anselm has Delphine on one side and Ilse on the far side, if not right beside them.",
+    "Sort Ilse, Delphine and Jorin by start time and Delphine comes out in the centre.",
+    "Your 09:00 person is Jorin.",
+    "Once Lorcan is up, the intake person has had their go."
+   ],
+   [
+    "If I read the sheet right, Anselm has Delphine on one side and Ilse on the far side, if not right beside them.",
+    "Sort Ilse, Delphine and Jorin by start time and Delphine comes out in the centre.",
+    "Your 09:00 person is Jorin.",
+    "Pretty sure Lorcan slides into the block after Ilse's, no gap."
+   ],
+   [
+    "If I read the sheet right, Anselm has Delphine on one side and Ilse on the far side, if not right beside them.",
+    "Sort Ilse, Delphine and Jorin by start time and Delphine comes out in the centre.",
+    "Your 09:00 person is Jorin.",
+    "Word from the supervisor is that Delphine and Lorcan have Ilse stuck somewhere inside their span."
+   ]
+  ]
+ },
+ "F-053": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "intake"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "packing"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   },
+   {
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "packing"
+    }
+   },
+   {
+    "Anselm": {
+     "block": "13:00"
+    },
+    "Henrik": {
+     "block": "15:00"
+    },
+    "Ilse": {
+     "block": "09:00",
+     "station": "packing"
+    },
+    "Jorin": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Lorcan": {
+     "block": "11:00",
+     "station": "calibration"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-054": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "If you need someone at 13:00, it is Anselm.",
+    "Word from the supervisor is that as soon as Brigid's block ends, Evander's begins.",
+    "Just so it is clear: If I read the sheet right, Cormac takes a turn following whichever of Anselm and Gustavo starts first, and ahead of whoever starts last."
+   ],
+   [
+    "If you need someone at 13:00, it is Anselm.",
+    "Word from the supervisor is that as soon as Brigid's block ends, Evander's begins.",
+    "Anselm and Gustavo have Cormac stuck somewhere inside their span."
+   ],
+   [
+    "If you need someone at 13:00, it is Anselm.",
+    "I was told your 07:00 person is Gustavo.",
+    "Word from the supervisor is that as soon as Brigid's block ends, Evander's begins.",
+    "In case it got missed: The way I read it, sort Evander, Anselm and Gustavo by start time and Anselm comes out in the centre."
+   ],
+   [
+    "If you need someone at 13:00, it is Anselm.",
+    "I was told your 07:00 person is Gustavo.",
+    "Word from the supervisor is that as soon as Brigid's block ends, Evander's begins.",
+    "Word from the supervisor is that Anselm takes a turn following whichever of Evander and Gustavo starts first, and ahead of whoever starts last."
+   ]
+  ]
+ },
+ "F-055": {
+  "case": "ambiguous",
+  "assignments": [
+   {
+    "Lorcan": {
+     "block": "09:00"
+    },
+    "Katya": {
+     "block": "11:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Gustavo": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Henrik": {
+     "block": "13:00"
+    }
+   },
+   {
+    "Lorcan": {
+     "block": "11:00"
+    },
+    "Katya": {
+     "block": "13:00",
+     "station": "packing"
+    },
+    "Cormac": {
+     "block": "15:00",
+     "station": "calibration"
+    },
+    "Gustavo": {
+     "block": "07:00",
+     "station": "intake"
+    },
+    "Henrik": {
+     "block": "09:00"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ },
+ "F-056": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "From what I can tell, calibration gets seen to ahead of Fenella's go.",
+    "Fenella follows Jorin with no break in between.",
+    "Over at calibration, today, it is Lorcan.",
+    "Look somewhere ahead of Lorcan and there is Jorin."
+   ],
+   [
+    "From what I can tell, calibration gets seen to ahead of Fenella's go.",
+    "Over at calibration, today, it is Lorcan.",
+    "Look somewhere ahead of Lorcan and there is Jorin.",
+    "In case it got missed: Fenella slides into the block after Jorin's, no gap."
+   ],
+   [
+    "Sort Henrik, Lorcan and Jorin by start time and Lorcan comes out in the centre.",
+    "From what I can tell, calibration gets seen to ahead of Fenella's go.",
+    "Fenella follows Jorin with no break in between.",
+    "Look somewhere ahead of Lorcan and there is Jorin.",
+    "If I read the sheet right, Henrik takes a turn following whichever of Fenella and Ilse starts first, and ahead of whoever starts last."
+   ],
+   [
+    "Sort Henrik, Lorcan and Jorin by start time and Lorcan comes out in the centre.",
+    "From what I can tell, calibration gets seen to ahead of Fenella's go.",
+    "Look somewhere ahead of Lorcan and there is Jorin.",
+    "If I read the sheet right, Henrik takes a turn following whichever of Fenella and Ilse starts first, and ahead of whoever starts last.",
+    "In case it got missed: Fenella slides into the block after Jorin's, no gap."
+   ]
+  ]
+ },
+ "F-057": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Saying it again: The way I read it, Anselm has Cormac on one side and Jorin on the far side, if not right beside them.",
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Pretty sure Cormac takes a turn following whichever of Ilse and Jorin starts first, and ahead of whoever starts last.",
+    "Brigid has Anselm on one side and Cormac on the far side, if not right beside them."
+   ],
+   [
+    "Saying it again: The way I read it, Anselm has Cormac on one side and Jorin on the far side, if not right beside them.",
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Pretty sure Cormac takes a turn following whichever of Ilse and Jorin starts first, and ahead of whoever starts last.",
+    "Saying it again: Word from the supervisor is that Anselm and Cormac have Brigid stuck somewhere inside their span."
+   ],
+   [
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Pretty sure Cormac takes a turn following whichever of Ilse and Jorin starts first, and ahead of whoever starts last.",
+    "Brigid has Anselm on one side and Cormac on the far side, if not right beside them.",
+    "Anselm takes a turn following whichever of Cormac and Jorin starts first, and ahead of whoever starts last."
+   ],
+   [
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Pretty sure Cormac takes a turn following whichever of Ilse and Jorin starts first, and ahead of whoever starts last.",
+    "Anselm takes a turn following whichever of Cormac and Jorin starts first, and ahead of whoever starts last.",
+    "Saying it again: Word from the supervisor is that Anselm and Cormac have Brigid stuck somewhere inside their span."
+   ],
+   [
+    "Saying it again: The way I read it, Anselm has Cormac on one side and Jorin on the far side, if not right beside them.",
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Brigid has Anselm on one side and Cormac on the far side, if not right beside them.",
+    "Ilse is done and dusted before Cormac gets going.",
+    "Pencil Jorin in on the 15:00 block."
+   ],
+   [
+    "Saying it again: The way I read it, Anselm has Cormac on one side and Jorin on the far side, if not right beside them.",
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Ilse is done and dusted before Cormac gets going.",
+    "Saying it again: Word from the supervisor is that Anselm and Cormac have Brigid stuck somewhere inside their span.",
+    "Pencil Jorin in on the 15:00 block."
+   ],
+   [
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Brigid has Anselm on one side and Cormac on the far side, if not right beside them.",
+    "Ilse is done and dusted before Cormac gets going.",
+    "Anselm takes a turn following whichever of Cormac and Jorin starts first, and ahead of whoever starts last.",
+    "Pencil Jorin in on the 15:00 block."
+   ],
+   [
+    "If I read the sheet right, Anselm has Brigid on one side and Ilse on the far side, if not right beside them.",
+    "Ilse is done and dusted before Cormac gets going.",
+    "Anselm takes a turn following whichever of Cormac and Jorin starts first, and ahead of whoever starts last.",
+    "Saying it again: Word from the supervisor is that Anselm and Cormac have Brigid stuck somewhere inside their span.",
+    "Pencil Jorin in on the 15:00 block."
+   ]
+  ]
+ },
+ "F-058": {
+  "case": "inconsistent",
+  "assignments": [],
+  "conflict_line_sets": [
+   [
+    "Just so it is clear: Sort Delphine, Fenella and Evander by start time and Fenella comes out in the centre.",
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Saying it again: Pencil Delphine in on the 07:00 block.",
+    "Just so it is clear: As soon as Gustavo's block ends, Evander's begins."
+   ],
+   [
+    "Just so it is clear: Sort Delphine, Fenella and Evander by start time and Fenella comes out in the centre.",
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Saying it again: Pencil Delphine in on the 07:00 block.",
+    "Evander slides into the block after Gustavo's, no gap."
+   ],
+   [
+    "Just so it is clear: Sort Delphine, Fenella and Evander by start time and Fenella comes out in the centre.",
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Just so it is clear: As soon as Gustavo's block ends, Evander's begins.",
+    "Your 07:00 person is Delphine."
+   ],
+   [
+    "Just so it is clear: Sort Delphine, Fenella and Evander by start time and Fenella comes out in the centre.",
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Your 07:00 person is Delphine.",
+    "Evander slides into the block after Gustavo's, no gap."
+   ],
+   [
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Saying it again: Pencil Delphine in on the 07:00 block.",
+    "Fenella takes a turn following whichever of Delphine and Evander starts first, and ahead of whoever starts last.",
+    "Just so it is clear: As soon as Gustavo's block ends, Evander's begins."
+   ],
+   [
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Saying it again: Pencil Delphine in on the 07:00 block.",
+    "Fenella takes a turn following whichever of Delphine and Evander starts first, and ahead of whoever starts last.",
+    "Evander slides into the block after Gustavo's, no gap."
+   ],
+   [
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Fenella takes a turn following whichever of Delphine and Evander starts first, and ahead of whoever starts last.",
+    "Just so it is clear: As soon as Gustavo's block ends, Evander's begins.",
+    "Your 07:00 person is Delphine."
+   ],
+   [
+    "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+    "Fenella takes a turn following whichever of Delphine and Evander starts first, and ahead of whoever starts last.",
+    "Your 07:00 person is Delphine.",
+    "Evander slides into the block after Gustavo's, no gap."
+   ]
+  ]
+ },
+ "F-059": {
+  "case": "unique",
+  "assignments": [
+   {
+    "Anselm": {
+     "block": "15:00",
+     "station": "intake"
+    },
+    "Gustavo": {
+     "block": "11:00"
+    },
+    "Henrik": {
+     "block": "09:00",
+     "station": "calibration"
+    },
+    "Cormac": {
+     "block": "07:00"
+    },
+    "Katya": {
+     "block": "13:00",
+     "station": "packing"
+    }
+   }
+  ],
+  "conflict_line_sets": []
+ }
+}

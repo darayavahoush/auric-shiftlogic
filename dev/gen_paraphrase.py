@@ -21,6 +21,9 @@ PHRASE.update(BLIND_PHRASE)
 from pool_d import D_BIND, D_HEDGES, D_WRAPPERS, D_DECOY, D_PHRASE, D_NAMES
 POOLS['d'] = dict(bind=D_BIND, decoy=D_DECOY, hedges=D_HEDGES, wrappers=D_WRAPPERS, names=D_NAMES)
 PHRASE.update({k: v for k, v in D_PHRASE.items() if v})
+from pool_e import E_BIND, E_HEDGES, E_WRAPPERS, E_DECOY, E_PHRASE, E_NAMES, E_NO_HEDGE
+POOLS['e'] = dict(bind=E_BIND, decoy=E_DECOY, hedges=E_HEDGES, wrappers=E_WRAPPERS, names=E_NAMES, no_hedge=E_NO_HEDGE)
+PHRASE.update({k: v for k, v in E_PHRASE.items() if v})
 from templates import NAMES as VIS_NAMES
 
 NEW_NAMES = ["Farah","Kiran","Omar","Zoe","Hugo","Bianca","Tobias","Leila"]
@@ -118,7 +121,7 @@ def render_constraint(rng, pool, kind, args, names, hedge_p=0.35, force_tpl=None
     cands = [t for t in pool["bind"] if t[0] == kind]
     kind_, tpl, order = force_tpl or rng.choice(cands)
     ph = dict(zip(order, args))
-    hedge = rng.choice(pool["hedges"]) if rng.random() < hedge_p else ""
+    hedge = rng.choice(pool["hedges"]) if (rng.random() < hedge_p and tpl not in pool.get("no_hedge", ())) else ""
     wr = rng.choice(pool["wrappers"]) if wrapper else ""
     return render_line(tpl, ph, names, hedge, wr), (kind_, tpl, order)
 
@@ -131,7 +134,7 @@ def render_decoy(rng, pool, dtype, staff, holders, names):
     ph["S"] = rng.choice(STATIONS)
     k = rng.choice([2, 3, 4, 5])
     ph["L"] = names_list(rng.sample(staff, k))
-    hedge = rng.choice(pool["hedges"]) if rng.random() < 0.25 else ""
+    hedge = rng.choice(pool["hedges"]) if (rng.random() < 0.25 and tpl not in pool.get("no_hedge", ())) else ""
     wr = ""
     return render_line(tpl, ph, names, hedge, wr), tpl
 
