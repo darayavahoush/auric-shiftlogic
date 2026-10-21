@@ -50,6 +50,7 @@ Ablation on items.json (60 items, key visible_key.json, 10 samples banked per it
 
 **Scaling Curve Observations:**
 - The visible curve (98.5% $\to$ 99.4% $\to$ 100.0%) reflects a ceiling effect on in-sample phrasing.
+- **Held-Out Curve on Pool D:** On the 60 unseen items of Pool D (`results/ablation_poolD.md`, 10 banked runs), the curve scales monotonically: **91.7% ± 0.4 (1x) $\to$ 92.2% ± 0.6 (3x) $\to$ 93.3% (10x)**, with late voting adding +1.6% at 10x (93.3% vs 91.7% for `no_vote`). Furthermore, `no_repair` scored higher on Pool D (93.0% 1x $\to$ 95.0% 10x), confirming that 0-call repair should be neutralized on held-out text.
 - The prompt patch shows a +1.5% in-sample gain on visible items, but blind tournament testing showed no out-of-sample benefit (neutral on Pool D, -7 net on Pool E).
 - Direct Granite scoring 0.0% confirms the performance comes entirely from the neuro-symbolic decomposition.
 
