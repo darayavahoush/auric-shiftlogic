@@ -15,11 +15,13 @@ sys.path.insert(0, ROOT)
 import score as S
 
 def per_item(key, items, ans):
-    r = S.score(key, ans, items)
-    p = r["per_item"]
+    """Exact (0/1) per item, computed by scoring each item on its own with score.py, so it matches score.py's
+    per_case_rate by construction. (score()['per_item'] holds CELL accuracy, a fraction, for unique items.)"""
     out = {}
-    for k, v in (p.items() if isinstance(p, dict) else enumerate(p)):
-        out[k] = float(v.get("exact") if isinstance(v, dict) else v)
+    for it in items:
+        i = it["id"]
+        a = ans.get(i, {"case": "inconsistent", "conflicts": []})
+        out[i] = float(S.score({i: key[i]}, {i: a}, [it])["macro_exact_match"])
     return out
 
 def sign_test(b, c):
