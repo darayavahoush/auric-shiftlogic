@@ -1,0 +1,1754 @@
+{
+  "F-000": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Just so it is clear: Ilse does not get going until Fenella has had a turn.",
+      "Fenella slides into the block after Cormac's, no gap.",
+      "Brigid and Ilse have Cormac stuck somewhere inside their span.",
+      "Just so it is clear: Packing gets seen to ahead of Brigid's go."
+    ]
+  },
+  "F-001": {
+    "case": "inconsistent",
+    "conflicts": []
+  },
+  "F-002": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Just so it is clear: Henrik is not minding intake today.",
+      "Packing is Lorcan's patch today.",
+      "Whoever ends up with calibration, it is not Henrik."
+    ]
+  },
+  "F-003": {
+    "case": "unique",
+    "assignment": {
+      "Katya": {
+        "block": "09:00"
+      },
+      "Lorcan": {
+        "block": "15:00"
+      },
+      "Anselm": {
+        "block": "13:00",
+        "station": "intake"
+      },
+      "Ilse": {
+        "block": "11:00",
+        "station": "calibration"
+      },
+      "Evander": {
+        "block": "07:00",
+        "station": "packing"
+      }
+    }
+  },
+  "F-004": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Saying it again: Calibration gets seen to ahead of Ilse's go.",
+      "Delphine slides into the block after Ilse's, no gap.",
+      "Word from the supervisor is that ask me and Lorcan is made for 11:00, honestly.",
+      "Sort Ilse, Delphine and Lorcan by start time and Delphine comes out in the centre."
+    ]
+  },
+  "F-005": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Evander": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Gustavo": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Ilse": {
+          "block": "15:00"
+        },
+        "Katya": {
+          "block": "11:00"
+        },
+        "Fenella": {
+          "block": "07:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Evander": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "15:00"
+        },
+        "Katya": {
+          "block": "11:00"
+        },
+        "Fenella": {
+          "block": "07:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Evander": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Gustavo": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "15:00"
+        },
+        "Katya": {
+          "block": "11:00"
+        },
+        "Fenella": {
+          "block": "07:00",
+          "station": "intake"
+        }
+      }
+    ]
+  },
+  "F-006": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Lorcan": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Anselm": {
+          "block": "11:00"
+        },
+        "Fenella": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Fenella": {
+          "block": "11:00"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Fenella": {
+          "block": "09:00"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Delphine": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Fenella": {
+          "block": "07:00"
+        }
+      }
+    ]
+  },
+  "F-007": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Henrik": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "07:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Henrik": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Cormac": {
+          "block": "11:00"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "07:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Henrik": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Cormac": {
+          "block": "13:00"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "07:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Delphine": {
+          "block": "11:00"
+        },
+        "Henrik": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Cormac": {
+          "block": "07:00"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "09:00",
+          "station": "packing"
+        }
+      }
+    ]
+  },
+  "F-008": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Cormac": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Evander": {
+          "block": "09:00"
+        }
+      },
+      {
+        "Cormac": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Evander": {
+          "block": "09:00"
+        }
+      }
+    ]
+  },
+  "F-009": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Lorcan": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Evander": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "15:00"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Evander": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "15:00"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Evander": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "07:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Evander": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "07:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      }
+    ]
+  },
+  "F-010": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Word from the supervisor is that having Evander on calibration would be great.",
+      "Calibration is not Jorin's patch today.",
+      "I was told packing is Henrik's patch today."
+    ]
+  },
+  "F-011": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Evander": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Gustavo": {
+          "block": "09:00"
+        },
+        "Fenella": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Cormac": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Evander": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Gustavo": {
+          "block": "09:00"
+        },
+        "Fenella": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Cormac": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      }
+    ]
+  },
+  "F-012": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Evander": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Cormac": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Katya": {
+          "block": "15:00"
+        },
+        "Fenella": {
+          "block": "11:00"
+        },
+        "Gustavo": {
+          "block": "13:00",
+          "station": "intake"
+        }
+      },
+      {
+        "Evander": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Cormac": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Katya": {
+          "block": "15:00"
+        },
+        "Fenella": {
+          "block": "09:00"
+        },
+        "Gustavo": {
+          "block": "13:00",
+          "station": "intake"
+        }
+      }
+    ]
+  },
+  "F-013": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Brigid": {
+          "block": "09:00"
+        },
+        "Fenella": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Evander": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "09:00"
+        },
+        "Fenella": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Evander": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "15:00"
+        }
+      }
+    ]
+  },
+  "F-014": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Delphine": {
+          "block": "11:00"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Katya": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Delphine": {
+          "block": "11:00"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Katya": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-015": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Katya": {
+          "block": "11:00"
+        },
+        "Evander": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Katya": {
+          "block": "11:00"
+        },
+        "Evander": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "15:00",
+          "station": "packing"
+        }
+      }
+    ]
+  },
+  "F-016": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Pretty sure Delphine is minding packing today.",
+      "If you need someone at 13:00, it is Cormac.",
+      "If you need someone at 15:00, it is Lorcan.",
+      "Anselm was after calibration, but somebody else landed it."
+    ]
+  },
+  "F-017": {
+    "case": "unique",
+    "assignment": {
+      "Delphine": {
+        "block": "13:00"
+      },
+      "Evander": {
+        "block": "15:00",
+        "station": "calibration"
+      },
+      "Gustavo": {
+        "block": "07:00"
+      },
+      "Ilse": {
+        "block": "09:00",
+        "station": "intake"
+      },
+      "Cormac": {
+        "block": "11:00",
+        "station": "packing"
+      }
+    }
+  },
+  "F-018": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Lorcan": {
+          "block": "09:00"
+        },
+        "Ilse": {
+          "block": "11:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "09:00"
+        },
+        "Ilse": {
+          "block": "11:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Brigid": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "11:00"
+        },
+        "Ilse": {
+          "block": "07:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Brigid": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Lorcan": {
+          "block": "11:00"
+        },
+        "Ilse": {
+          "block": "07:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Brigid": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-019": {
+    "case": "unique",
+    "assignment": {
+      "Evander": {
+        "block": "15:00"
+      },
+      "Katya": {
+        "block": "07:00"
+      },
+      "Anselm": {
+        "block": "13:00",
+        "station": "intake"
+      },
+      "Brigid": {
+        "block": "11:00",
+        "station": "calibration"
+      },
+      "Gustavo": {
+        "block": "09:00",
+        "station": "packing"
+      }
+    }
+  },
+  "F-020": {
+    "case": "unique",
+    "assignment": {
+      "Henrik": {
+        "block": "09:00",
+        "station": "packing"
+      },
+      "Lorcan": {
+        "block": "07:00",
+        "station": "intake"
+      },
+      "Fenella": {
+        "block": "15:00"
+      },
+      "Evander": {
+        "block": "11:00"
+      },
+      "Cormac": {
+        "block": "13:00",
+        "station": "calibration"
+      }
+    }
+  },
+  "F-021": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Just so it is clear: Word from the supervisor is that sort Fenella, Cormac and Ilse by start time and Cormac comes out in the centre.",
+      "Pencil Fenella in on the 11:00 block.",
+      "Ilse slides into the block after Henrik's, no gap."
+    ]
+  },
+  "F-022": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Fenella": {
+          "block": "11:00"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Fenella": {
+          "block": "15:00"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "13:00"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Fenella": {
+          "block": "09:00"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Fenella": {
+          "block": "07:00"
+        },
+        "Lorcan": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "15:00"
+        }
+      }
+    ]
+  },
+  "F-023": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Henrik": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Brigid": {
+          "block": "13:00"
+        },
+        "Fenella": {
+          "block": "15:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00"
+        }
+      },
+      {
+        "Henrik": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Brigid": {
+          "block": "15:00"
+        },
+        "Fenella": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00"
+        }
+      },
+      {
+        "Henrik": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Brigid": {
+          "block": "15:00"
+        },
+        "Fenella": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "09:00"
+        }
+      },
+      {
+        "Henrik": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Brigid": {
+          "block": "15:00"
+        },
+        "Fenella": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00"
+        }
+      }
+    ]
+  },
+  "F-024": {
+    "case": "unique",
+    "assignment": {
+      "Fenella": {
+        "block": "09:00",
+        "station": "calibration"
+      },
+      "Anselm": {
+        "block": "15:00"
+      },
+      "Gustavo": {
+        "block": "13:00"
+      },
+      "Evander": {
+        "block": "07:00",
+        "station": "intake"
+      },
+      "Ilse": {
+        "block": "11:00",
+        "station": "packing"
+      }
+    }
+  },
+  "F-025": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Ilse was after calibration, but somebody else landed it.",
+      "Just so it is clear: From what I can tell, Cormac has Brigid on one side and Ilse on the far side, if not right beside them.",
+      "Fenella follows Brigid with no break in between.",
+      "Whoever is minding intake leaves before Fenella arrives."
+    ]
+  },
+  "F-026": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Ilse": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Ilse": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Anselm": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "09:00"
+        },
+        "Jorin": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      }
+    ]
+  },
+  "F-027": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Henrik follows Anselm with no break in between.",
+      "Saying it again: Cormac has Brigid on one side and Henrik on the far side, if not right beside them.",
+      "Your 11:00 person is Brigid."
+    ]
+  },
+  "F-028": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Jorin slides into the block after Henrik's, no gap.",
+      "As soon as Evander's block ends, Anselm's begins.",
+      "Pairing Anselm with Henrik, Anselm gets the earlier slot.",
+      "Word from the supervisor is that Jorin has Evander on one side and Henrik on the far side, if not right beside them."
+    ]
+  },
+  "F-029": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Pairing Jorin with Brigid, Jorin gets the later slot.",
+      "Brigid does not get going until Lorcan has had a turn.",
+      "Sort Cormac, Jorin and Lorcan by start time and Jorin comes out in the centre.",
+      "Jorin lies further along the schedule than Cormac."
+    ]
+  },
+  "F-030": {
+    "case": "unique",
+    "assignment": {
+      "Brigid": {
+        "block": "15:00",
+        "station": "packing"
+      },
+      "Gustavo": {
+        "block": "13:00"
+      },
+      "Lorcan": {
+        "block": "07:00"
+      },
+      "Henrik": {
+        "block": "11:00",
+        "station": "intake"
+      },
+      "Evander": {
+        "block": "09:00",
+        "station": "calibration"
+      }
+    }
+  },
+  "F-031": {
+    "case": "inconsistent",
+    "conflicts": [
+      "From what I can tell, Katya has Anselm on one side and Jorin on the far side, if not right beside them.",
+      "Evander follows Anselm with no break in between.",
+      "The way I read it, Evander has Anselm on one side and Cormac on the far side, if not right beside them.",
+      "Evander is who you will see at 11:00."
+    ]
+  },
+  "F-032": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Lorcan is not minding intake today.",
+      "The way I read it, your 13:00 person is Brigid.",
+      "Intake gets seen to ahead of Fenella's go.",
+      "Saying it again: Brigid has Delphine on one side and Lorcan on the far side, if not right beside them."
+    ]
+  },
+  "F-033": {
+    "case": "inconsistent",
+    "conflicts": [
+      "I was told Jorin is done and dusted before Anselm gets going.",
+      "Ask me and Ilse is made for 15:00, honestly.",
+      "The way I read it, as soon as Lorcan's block ends, Ilse's begins.",
+      "If I read the sheet right, Fenella and Lorcan have Anselm stuck somewhere inside their span.",
+      "Anselm has Fenella on one side and Jorin on the far side, if not right beside them."
+    ]
+  },
+  "F-034": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Katya": {
+          "block": "15:00",
+          "station": "intake"
+        },
+        "Delphine": {
+          "block": "13:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "07:00"
+        },
+        "Henrik": {
+          "block": "09:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Katya": {
+          "block": "15:00",
+          "station": "intake"
+        },
+        "Delphine": {
+          "block": "13:00"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "09:00"
+        },
+        "Henrik": {
+          "block": "07:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-035": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Anselm": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Evander": {
+          "block": "09:00"
+        },
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Brigid": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      },
+      {
+        "Anselm": {
+          "block": "15:00",
+          "station": "intake"
+        },
+        "Evander": {
+          "block": "09:00"
+        },
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Brigid": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-036": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Henrik arrives after the intake person has had their go.",
+      "Delphine was after calibration, but somebody else landed it.",
+      "Pencil Lorcan in on the 13:00 block."
+    ]
+  },
+  "F-037": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Calibration gets seen to ahead of Jorin's go.",
+      "Gustavo's request for 15:00 did not come through.",
+      "If I read the sheet right, Cormac and Jorin have Henrik stuck somewhere inside their span.",
+      "If I read the sheet right, you won't see Henrik at 09:00.",
+      "I was told Gustavo follows Jorin with no break in between."
+    ]
+  },
+  "F-038": {
+    "case": "unique",
+    "assignment": {
+      "Jorin": {
+        "block": "13:00"
+      },
+      "Brigid": {
+        "block": "07:00",
+        "station": "calibration"
+      },
+      "Katya": {
+        "block": "09:00",
+        "station": "intake"
+      },
+      "Anselm": {
+        "block": "15:00",
+        "station": "packing"
+      },
+      "Cormac": {
+        "block": "11:00"
+      }
+    }
+  },
+  "F-039": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Evander takes a turn following whichever of Henrik and Ilse starts first, and ahead of whoever starts last.",
+      "I was told Fenella has Evander on one side and Ilse on the far side, if not right beside them.",
+      "Evander takes a turn following whichever of Fenella and Henrik starts first, and ahead of whoever starts last."
+    ]
+  },
+  "F-040": {
+    "case": "inconsistent",
+    "conflicts": [
+      "The way I read it, Henrik lies further along the schedule than whoever is minding intake.",
+      "Pretty sure Henrik was after packing, but somebody else landed it.",
+      "If I read the sheet right, whoever is minding calibration leaves before Henrik arrives."
+    ]
+  },
+  "F-041": {
+    "case": "inconsistent",
+    "conflicts": [
+      "I was told Ilse follows Evander with no break in between.",
+      "The way I read it, Evander slides into the block after Henrik's, no gap.",
+      "In case it got missed: Henrik lies further along the schedule than whoever is minding intake.",
+      "Ask me and Anselm is made for 13:00, honestly."
+    ]
+  },
+  "F-042": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Brigid": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "09:00"
+        },
+        "Anselm": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Fenella": {
+          "block": "07:00"
+        },
+        "Anselm": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Delphine": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-043": {
+    "case": "inconsistent",
+    "conflicts": [
+      "You won't see Katya at 13:00.",
+      "Sort Evander, Katya and Gustavo by start time and Katya comes out in the centre.",
+      "Gustavo deserves a crack at 11:00.",
+      "Katya does not get going until Cormac has had a turn."
+    ]
+  },
+  "F-044": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Delphine": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Gustavo": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Henrik": {
+          "block": "13:00"
+        }
+      },
+      {
+        "Delphine": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Gustavo": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Lorcan": {
+          "block": "07:00"
+        },
+        "Henrik": {
+          "block": "13:00"
+        }
+      }
+    ]
+  },
+  "F-045": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Lorcan wraps up and Evander is up straight away.",
+      "Just so it is clear: Fenella and Lorcan have Brigid stuck somewhere inside their span.",
+      "Sort Evander, Delphine and Fenella by start time and Delphine comes out in the centre.",
+      "Pairing Delphine with Brigid, Delphine gets the later slot.",
+      "Pretty sure Brigid wraps up and Fenella is up straight away."
+    ]
+  },
+  "F-046": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Jorin was after packing, but somebody else landed it.",
+      "Over at intake, today, it is Evander.",
+      "Katya follows Jorin with no break in between."
+    ]
+  },
+  "F-047": {
+    "case": "inconsistent",
+    "conflicts": [
+      "I was told Delphine takes a turn following whichever of Evander and Katya starts first, and ahead of whoever starts last.",
+      "As soon as Delphine's block ends, Katya's begins.",
+      "I was told way back, Evander was always on 15:00."
+    ]
+  },
+  "F-048": {
+    "case": "unique",
+    "assignment": {
+      "Katya": {
+        "block": "07:00"
+      },
+      "Cormac": {
+        "block": "15:00"
+      },
+      "Evander": {
+        "block": "09:00",
+        "station": "packing"
+      },
+      "Brigid": {
+        "block": "11:00",
+        "station": "intake"
+      },
+      "Jorin": {
+        "block": "13:00",
+        "station": "calibration"
+      }
+    }
+  },
+  "F-049": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Brigid was after packing, but somebody else landed it.",
+      "Packing is not Lorcan's patch today.",
+      "Packing is not Fenella's patch today."
+    ]
+  },
+  "F-050": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Fenella": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Cormac": {
+          "block": "09:00"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Brigid": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Fenella": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Cormac": {
+          "block": "09:00"
+        },
+        "Delphine": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Brigid": {
+          "block": "15:00"
+        }
+      }
+    ]
+  },
+  "F-051": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Do not look for Delphine on calibration.",
+      "Delphine is not minding packing today.",
+      "Do not look for Delphine on intake."
+    ]
+  },
+  "F-052": {
+    "case": "inconsistent",
+    "conflicts": [
+      "If I read the sheet right, Anselm has Delphine on one side and Ilse on the far side, if not right beside them.",
+      "Sort Ilse, Delphine and Jorin by start time and Delphine comes out in the centre.",
+      "Your 09:00 person is Jorin.",
+      "Pretty sure Lorcan slides into the block after Ilse's, no gap."
+    ]
+  },
+  "F-053": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Henrik": {
+          "block": "15:00"
+        },
+        "Ilse": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Henrik": {
+          "block": "15:00"
+        },
+        "Ilse": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Jorin": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Anselm": {
+          "block": "13:00"
+        },
+        "Henrik": {
+          "block": "15:00"
+        },
+        "Ilse": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Lorcan": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
+  "F-054": {
+    "case": "inconsistent",
+    "conflicts": [
+      "In case it got missed: Packing gets seen to ahead of Evander's go.",
+      "Brigid deserves a crack at 07:00.",
+      "Word from the supervisor is that as soon as Brigid's block ends, Evander's begins."
+    ]
+  },
+  "F-055": {
+    "case": "inconsistent",
+    "conflicts": [
+      "From what I can tell, ask me and Gustavo is made for 13:00, honestly.",
+      "Do not bank on Henrik for 15:00.",
+      "Saying it again: Sort Cormac, Lorcan and Gustavo by start time and Lorcan comes out in the centre.",
+      "Whoever is minding packing leaves before Cormac arrives."
+    ]
+  },
+  "F-056": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Fenella follows Jorin with no break in between.",
+      "Ilse did 11:00 for most of last year.",
+      "If I read the sheet right, Henrik takes a turn following whichever of Fenella and Ilse starts first, and ahead of whoever starts last."
+    ]
+  },
+  "F-057": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Brigid": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Anselm": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "intake"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Anselm": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Anselm": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Brigid": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Jorin": {
+          "block": "13:00"
+        },
+        "Cormac": {
+          "block": "15:00"
+        },
+        "Anselm": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Ilse": {
+          "block": "07:00",
+          "station": "packing"
+        }
+      }
+    ]
+  },
+  "F-058": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Just so it is clear: Sort Delphine, Fenella and Evander by start time and Fenella comes out in the centre.",
+      "Fenella and Gustavo have Evander stuck somewhere inside their span.",
+      "Saying it again: Pencil Delphine in on the 07:00 block.",
+      "Just so it is clear: As soon as Gustavo's block ends, Evander's begins."
+    ]
+  },
+  "F-059": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Henrik is minding calibration today.",
+      "The way I read it, Katya was after packing, but somebody else landed it.",
+      "Pencil Anselm in for intake."
+    ]
+  }
+}
