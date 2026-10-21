@@ -1,4 +1,12 @@
 {
+  "B2-000": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Meera has not been put on packing.",
+      "Going off the roster, Meera has not been put on intake.",
+      "Calibration is covered by someone other than Meera."
+    ]
+  },
   "B2-001": {
     "case": "ambiguous",
     "assignments": [
@@ -76,16 +84,61 @@
         "station": "packing"
       },
       "Nadia": {
-        "block": "15:00"
+        "block": "13:00"
       },
       "Priya": {
-        "block": "13:00"
+        "block": "15:00"
       },
       "Meera": {
         "block": "07:00",
         "station": "calibration"
       }
     }
+  },
+  "B2-003": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Priya": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "11:00"
+        },
+        "Tomas": {
+          "block": "15:00"
+        },
+        "Meera": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Priya": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "13:00"
+        },
+        "Tomas": {
+          "block": "07:00"
+        },
+        "Meera": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Nadia": {
+          "block": "09:00",
+          "station": "intake"
+        }
+      }
+    ]
   },
   "B2-004": {
     "case": "inconsistent",
@@ -96,97 +149,57 @@
       "As far as I know, Ingrid is on later than whoever has calibration."
     ]
   },
-  "B2-003": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "09:00"
-        },
-        "Tomas": {
-          "block": "11:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "09:00"
-        },
-        "Tomas": {
-          "block": "11:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Ingrid": {
-          "block": "09:00"
-        },
-        "Tomas": {
-          "block": "11:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Ingrid": {
-          "block": "09:00"
-        },
-        "Tomas": {
-          "block": "11:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "15:00",
-          "station": "intake"
-        }
-      }
-    ]
-  },
   "B2-005": {
     "case": "inconsistent",
     "conflicts": [
       "Whoever drew the 07:00 block, it was Tomas.",
       "Nadia has a standing commitment that rules out the 09:00 block entirely.",
       "Going off the roster, Tomas is on the block immediately before Nadia."
+    ]
+  },
+  "B2-006": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Daniel": {
+          "block": "11:00"
+        },
+        "Priya": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "15:00"
+        },
+        "Samuel": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Daniel": {
+          "block": "11:00"
+        },
+        "Priya": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "15:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "09:00"
+        },
+        "Samuel": {
+          "block": "13:00",
+          "station": "calibration"
+        }
+      }
     ]
   },
   "B2-007": {
@@ -213,134 +226,37 @@
     }
   },
   "B2-008": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Priya": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "07:00"
-        },
-        "Rohan": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Priya": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "07:00"
-        },
-        "Rohan": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Priya": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "09:00"
-        },
-        "Rohan": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        },
-        "Ayesha": {
-          "block": "07:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Priya": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "09:00"
-        },
-        "Rohan": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        },
-        "Ayesha": {
-          "block": "07:00",
-          "station": "calibration"
-        }
-      }
+    "case": "inconsistent",
+    "conflicts": [
+      "My recollection is that Priya's block falls between Ingrid's and Rohan's, in one order or the other.",
+      "Going off the roster, Priya has not been put on calibration.",
+      "Whoever is on calibration works earlier in the day than Rohan.",
+      "Whoever has intake is done before Ingrid starts.",
+      "Ingrid's block falls somewhere earlier than Rohan's."
     ]
   },
   "B2-009": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Daniel": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Rohan": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00",
-          "station": "packing"
-        },
-        "Ingrid": {
-          "block": "07:00"
-        }
+    "case": "unique",
+    "assignment": {
+      "Daniel": {
+        "block": "13:00"
       },
-      {
-        "Daniel": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Rohan": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00",
-          "station": "calibration"
-        },
-        "Ingrid": {
-          "block": "07:00"
-        }
+      "Meera": {
+        "block": "11:00",
+        "station": "packing"
+      },
+      "Rohan": {
+        "block": "09:00",
+        "station": "intake"
+      },
+      "Priya": {
+        "block": "15:00",
+        "station": "calibration"
+      },
+      "Ingrid": {
+        "block": "07:00"
       }
-    ]
+    }
   },
   "B2-010": {
     "case": "inconsistent",
@@ -381,6 +297,29 @@
       "Nadia hands straight over to Priya.",
       "Whoever has calibration is done before Nadia starts."
     ]
+  },
+  "B2-013": {
+    "case": "unique",
+    "assignment": {
+      "Nadia": {
+        "block": "11:00",
+        "station": "calibration"
+      },
+      "Tomas": {
+        "block": "07:00",
+        "station": "intake"
+      },
+      "Ayesha": {
+        "block": "09:00"
+      },
+      "Rohan": {
+        "block": "13:00"
+      },
+      "Daniel": {
+        "block": "15:00",
+        "station": "packing"
+      }
+    }
   },
   "B2-014": {
     "case": "ambiguous",
@@ -560,99 +499,28 @@
       "As far as I know, Tomas is on the 13:00 block."
     ]
   },
-  "B2-006": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Daniel": {
-          "block": "07:00"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Samuel": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Daniel": {
-          "block": "07:00"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Samuel": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Daniel": {
-          "block": "07:00"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Samuel": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Daniel": {
-          "block": "07:00"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Samuel": {
-          "block": "15:00",
-          "station": "intake"
-        }
-      }
-    ]
-  },
   "B2-017": {
-    "case": "inconsistent",
-    "conflicts": [
-      "My recollection is that Priya's block falls between Nadia's and Meera's, in one order or the other.",
-      "Going off the roster, Ingrid's block falls between Priya's and Nadia's, in one order or the other.",
-      "The calibration station is covered earlier in the day than Nadia's block.",
-      "Deliveries continue to arrive through the north gate."
-    ]
+    "case": "unique",
+    "assignment": {
+      "Priya": {
+        "block": "09:00"
+      },
+      "Nadia": {
+        "block": "13:00",
+        "station": "packing"
+      },
+      "Samuel": {
+        "block": "15:00"
+      },
+      "Ingrid": {
+        "block": "11:00",
+        "station": "intake"
+      },
+      "Meera": {
+        "block": "07:00",
+        "station": "calibration"
+      }
+    }
   },
   "B2-018": {
     "case": "inconsistent",
@@ -685,91 +553,6 @@
       }
     }
   },
-  "B2-000": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Ayesha": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Ayesha": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Ayesha": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Ayesha": {
-          "block": "15:00",
-          "station": "intake"
-        }
-      }
-    ]
-  },
   "B2-020": {
     "case": "inconsistent",
     "conflicts": [
@@ -777,51 +560,6 @@
       "Calibration is covered by Nadia.",
       "The 15:00 block is Meera's.",
       "My recollection is that Daniel is on packing."
-    ]
-  },
-  "B2-022": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "13:00"
-        },
-        "Ingrid": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Priya": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Tomas": {
-          "block": "13:00"
-        },
-        "Ingrid": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      }
     ]
   },
   "B2-021": {
@@ -869,12 +607,58 @@
       }
     ]
   },
+  "B2-022": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Priya": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Samuel": {
+          "block": "09:00"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "calibration"
+        },
+        "Tomas": {
+          "block": "13:00"
+        },
+        "Ingrid": {
+          "block": "15:00",
+          "station": "packing"
+        }
+      },
+      {
+        "Priya": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Samuel": {
+          "block": "09:00"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "13:00"
+        },
+        "Ingrid": {
+          "block": "15:00",
+          "station": "calibration"
+        }
+      }
+    ]
+  },
   "B2-023": {
     "case": "inconsistent",
     "conflicts": [
-      "Packing is Lukas's station.",
+      "Daniel works at some point between Lukas and Nadia, not necessarily adjacent to either.",
+      "As far as I know, the calibration station is covered earlier in the day than Daniel's block.",
       "Whoever is on packing works earlier in the day than Daniel.",
-      "I'm fairly sure Daniel and Lukas car-share when their shifts allow."
+      "Intake is Rohan's station."
     ]
   },
   "B2-024": {
@@ -882,8 +666,9 @@
     "conflicts": [
       "Ingrid is on after one of Meera and Rohan and before the other.",
       "Rohan comes later in the day than Ingrid.",
+      "Priya's block falls somewhere earlier than Nadia's.",
       "As far as I know, whichever way round Ingrid and Rohan are, Nadia is between them.",
-      "Meera is done before Nadia starts."
+      "Whichever way round Meera and Priya are, Rohan is between them."
     ]
   },
   "B2-025": {
@@ -909,175 +694,51 @@
       }
     }
   },
-  "B2-027": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00"
-        }
+  "B2-026": {
+    "case": "unique",
+    "assignment": {
+      "Samuel": {
+        "block": "13:00"
       },
-      {
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00"
-        }
+      "Ayesha": {
+        "block": "09:00",
+        "station": "packing"
       },
-      {
-        "Ayesha": {
-          "block": "11:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00"
-        }
+      "Tomas": {
+        "block": "15:00",
+        "station": "calibration"
       },
-      {
-        "Ayesha": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "15:00"
-        }
+      "Nadia": {
+        "block": "07:00"
+      },
+      "Meera": {
+        "block": "11:00",
+        "station": "intake"
       }
-    ]
+    }
   },
-  "B2-029": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Lukas": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Rohan": {
-          "block": "15:00"
-        }
+  "B2-027": {
+    "case": "unique",
+    "assignment": {
+      "Ayesha": {
+        "block": "09:00"
       },
-      {
-        "Lukas": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Rohan": {
-          "block": "15:00"
-        }
+      "Meera": {
+        "block": "07:00",
+        "station": "calibration"
       },
-      {
-        "Lukas": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Rohan": {
-          "block": "15:00"
-        }
+      "Tomas": {
+        "block": "11:00",
+        "station": "packing"
       },
-      {
-        "Lukas": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Rohan": {
-          "block": "15:00"
-        }
+      "Nadia": {
+        "block": "13:00",
+        "station": "intake"
+      },
+      "Priya": {
+        "block": "15:00"
       }
-    ]
+    }
   },
   "B2-028": {
     "case": "unique",
@@ -1102,6 +763,91 @@
       }
     }
   },
+  "B2-029": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Lukas": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Rohan": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Lukas": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Rohan": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Lukas": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Rohan": {
+          "block": "15:00"
+        }
+      },
+      {
+        "Lukas": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Rohan": {
+          "block": "15:00"
+        }
+      }
+    ]
+  },
   "B2-030": {
     "case": "unique",
     "assignment": {
@@ -1124,6 +870,51 @@
         "station": "intake"
       }
     }
+  },
+  "B2-031": {
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Priya": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Tomas": {
+          "block": "07:00"
+        },
+        "Rohan": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Ayesha": {
+          "block": "11:00"
+        },
+        "Meera": {
+          "block": "09:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Priya": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Tomas": {
+          "block": "11:00"
+        },
+        "Rohan": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Ayesha": {
+          "block": "09:00"
+        },
+        "Meera": {
+          "block": "07:00",
+          "station": "calibration"
+        }
+      }
+    ]
   },
   "B2-032": {
     "case": "unique",
@@ -1148,97 +939,12 @@
       }
     }
   },
-  "B2-031": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Priya": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Rohan": {
-          "block": "13:00",
-          "station": "calibration"
-        },
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Priya": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Rohan": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Priya": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Rohan": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "intake"
-        }
-      },
-      {
-        "Priya": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Rohan": {
-          "block": "13:00",
-          "station": "calibration"
-        },
-        "Ayesha": {
-          "block": "09:00"
-        },
-        "Meera": {
-          "block": "07:00",
-          "station": "intake"
-        }
-      }
-    ]
-  },
   "B2-033": {
     "case": "ambiguous",
     "assignments": [
       {
         "Ingrid": {
-          "block": "07:00",
+          "block": "09:00",
           "station": "intake"
         },
         "Tomas": {
@@ -1249,7 +955,7 @@
           "station": "calibration"
         },
         "Lukas": {
-          "block": "09:00",
+          "block": "07:00",
           "station": "packing"
         },
         "Samuel": {
@@ -1258,7 +964,7 @@
       },
       {
         "Ingrid": {
-          "block": "07:00",
+          "block": "09:00",
           "station": "calibration"
         },
         "Tomas": {
@@ -1269,53 +975,23 @@
           "station": "intake"
         },
         "Lukas": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Samuel": {
-          "block": "11:00"
-        }
-      },
-      {
-        "Ingrid": {
           "block": "07:00",
           "station": "packing"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Lukas": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Samuel": {
-          "block": "11:00"
-        }
-      },
-      {
-        "Ingrid": {
-          "block": "07:00",
-          "station": "packing"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "calibration"
-        },
-        "Lukas": {
-          "block": "09:00",
-          "station": "intake"
         },
         "Samuel": {
           "block": "11:00"
         }
       }
+    ]
+  },
+  "B2-034": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Meera has a standing commitment that rules out the 07:00 block entirely.",
+      "Put Tomas between Rohan and Samuel, though not necessarily next to either.",
+      "Ingrid is on the block directly after Samuel.",
+      "I'm fairly sure whoever is on calibration works earlier in the day than Samuel.",
+      "As far as I know, the calibration station is covered earlier in the day than Rohan's block."
     ]
   },
   "B2-035": {
@@ -1403,16 +1079,6 @@
       }
     ]
   },
-  "B2-034": {
-    "case": "inconsistent",
-    "conflicts": [
-      "Meera has a standing commitment that rules out the 07:00 block entirely.",
-      "Put Tomas between Rohan and Samuel, though not necessarily next to either.",
-      "Ingrid is on the block directly after Samuel.",
-      "I'm fairly sure whoever is on calibration works earlier in the day than Samuel.",
-      "As far as I know, the calibration station is covered earlier in the day than Rohan's block."
-    ]
-  },
   "B2-036": {
     "case": "ambiguous",
     "assignments": [
@@ -1426,13 +1092,13 @@
           "station": "intake"
         },
         "Rohan": {
-          "block": "13:00"
+          "block": "15:00"
         },
         "Daniel": {
           "block": "11:00"
         },
         "Samuel": {
-          "block": "15:00",
+          "block": "13:00",
           "station": "calibration"
         }
       },
@@ -1446,13 +1112,13 @@
           "station": "intake"
         },
         "Rohan": {
-          "block": "09:00"
+          "block": "11:00"
         },
         "Daniel": {
           "block": "13:00"
         },
         "Samuel": {
-          "block": "11:00",
+          "block": "09:00",
           "station": "calibration"
         }
       }
@@ -1466,12 +1132,12 @@
         "station": "packing"
       },
       "Nadia": {
-        "block": "07:00",
-        "station": "intake"
-      },
-      "Priya": {
         "block": "11:00",
         "station": "calibration"
+      },
+      "Priya": {
+        "block": "07:00",
+        "station": "intake"
       },
       "Meera": {
         "block": "13:00"
@@ -1527,12 +1193,48 @@
     ]
   },
   "B2-039": {
-    "case": "inconsistent",
-    "conflicts": [
-      "As far as I know, Ayesha is not assigned to intake.",
-      "Speaking from memory, Tomas sits between Nadia and Priya on the rota.",
-      "Whoever is on intake works earlier in the day than Priya.",
-      "Ayesha takes over from Priya later in the day."
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Ingrid": {
+          "block": "07:00"
+        },
+        "Nadia": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Priya": {
+          "block": "13:00"
+        },
+        "Ayesha": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Ingrid": {
+          "block": "07:00"
+        },
+        "Nadia": {
+          "block": "09:00",
+          "station": "calibration"
+        },
+        "Priya": {
+          "block": "13:00"
+        },
+        "Ayesha": {
+          "block": "15:00",
+          "station": "packing"
+        },
+        "Tomas": {
+          "block": "11:00",
+          "station": "intake"
+        }
+      }
     ]
   },
   "B2-040": {
@@ -1628,103 +1330,9 @@
   "B2-042": {
     "case": "inconsistent",
     "conflicts": [
-      "Ayesha is the one who opens up at 07:00.",
       "As far as I know, Ingrid takes 11:00, as things stand.",
       "I'm fairly sure Lukas is on after one of Ingrid and Ayesha and before the other.",
-      "The calibration station is covered earlier in the day than Ingrid's block."
-    ]
-  },
-  "B2-013": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Nadia": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Ayesha": {
-          "block": "11:00"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Nadia": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Ayesha": {
-          "block": "11:00"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Nadia": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Ayesha": {
-          "block": "11:00"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Nadia": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Ayesha": {
-          "block": "11:00"
-        },
-        "Rohan": {
-          "block": "13:00"
-        },
-        "Daniel": {
-          "block": "15:00",
-          "station": "intake"
-        }
-      }
-    ]
-  },
-  "B2-044": {
-    "case": "inconsistent",
-    "conflicts": [
-      "Priya works at some point between Ingrid and Ayesha, not necessarily adjacent to either.",
-      "Ayesha works at some point between Priya and Daniel, not necessarily adjacent to either.",
-      "Ingrid is on after one of Ayesha and Daniel and before the other."
+      "My recollection is that whichever way round Tomas and Meera are, Lukas is between them."
     ]
   },
   "B2-043": {
@@ -1782,6 +1390,26 @@
           "block": "11:00"
         },
         "Rohan": {
+          "block": "07:00",
+          "station": "packing"
+        },
+        "Daniel": {
+          "block": "09:00",
+          "station": "calibration"
+        }
+      },
+      {
+        "Ingrid": {
+          "block": "13:00",
+          "station": "intake"
+        },
+        "Ayesha": {
+          "block": "15:00"
+        },
+        "Meera": {
+          "block": "11:00"
+        },
+        "Rohan": {
           "block": "09:00",
           "station": "packing"
         },
@@ -1792,90 +1420,36 @@
       }
     ]
   },
-  "B2-045": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Meera": {
-          "block": "07:00"
-        },
-        "Samuel": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Lukas": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Meera": {
-          "block": "07:00"
-        },
-        "Samuel": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Lukas": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Meera": {
-          "block": "07:00"
-        },
-        "Samuel": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Lukas": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Meera": {
-          "block": "07:00"
-        },
-        "Samuel": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Ayesha": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Lukas": {
-          "block": "15:00",
-          "station": "intake"
-        }
-      }
+  "B2-044": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Priya works at some point between Ingrid and Ayesha, not necessarily adjacent to either.",
+      "Ayesha works at some point between Priya and Daniel, not necessarily adjacent to either.",
+      "Ingrid is on after one of Ayesha and Daniel and before the other."
     ]
+  },
+  "B2-045": {
+    "case": "unique",
+    "assignment": {
+      "Meera": {
+        "block": "11:00"
+      },
+      "Samuel": {
+        "block": "15:00",
+        "station": "packing"
+      },
+      "Ayesha": {
+        "block": "09:00",
+        "station": "intake"
+      },
+      "Nadia": {
+        "block": "07:00"
+      },
+      "Lukas": {
+        "block": "13:00",
+        "station": "calibration"
+      }
+    }
   },
   "B2-046": {
     "case": "unique",
@@ -1901,72 +1475,35 @@
     }
   },
   "B2-047": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Meera": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Lukas": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Priya": {
-          "block": "11:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Meera": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Lukas": {
-          "block": "07:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Tomas": {
-          "block": "15:00"
-        },
-        "Priya": {
-          "block": "11:00",
-          "station": "calibration"
-        }
-      }
-    ]
-  },
-  "B2-048": {
     "case": "unique",
     "assignment": {
+      "Meera": {
+        "block": "09:00",
+        "station": "packing"
+      },
+      "Lukas": {
+        "block": "07:00",
+        "station": "intake"
+      },
+      "Nadia": {
+        "block": "13:00"
+      },
+      "Tomas": {
+        "block": "15:00"
+      },
       "Priya": {
         "block": "11:00",
         "station": "calibration"
-      },
-      "Samuel": {
-        "block": "07:00"
-      },
-      "Ayesha": {
-        "block": "15:00",
-        "station": "intake"
-      },
-      "Rohan": {
-        "block": "13:00"
-      },
-      "Lukas": {
-        "block": "09:00",
-        "station": "packing"
       }
     }
+  },
+  "B2-048": {
+    "case": "inconsistent",
+    "conflicts": [
+      "I'm fairly sure Priya has intake this week.",
+      "Calibration is covered before Ayesha comes on.",
+      "I'm fairly sure packing is covered by Lukas."
+    ]
   },
   "B2-049": {
     "case": "inconsistent",
@@ -1975,6 +1512,29 @@
       "Put Rohan between Ingrid and Ayesha, though not necessarily next to either.",
       "Ayesha works at some point between Samuel and Ingrid, not necessarily adjacent to either."
     ]
+  },
+  "B2-050": {
+    "case": "unique",
+    "assignment": {
+      "Rohan": {
+        "block": "07:00",
+        "station": "calibration"
+      },
+      "Nadia": {
+        "block": "09:00"
+      },
+      "Ingrid": {
+        "block": "15:00",
+        "station": "packing"
+      },
+      "Meera": {
+        "block": "13:00",
+        "station": "intake"
+      },
+      "Tomas": {
+        "block": "11:00"
+      }
+    }
   },
   "B2-051": {
     "case": "ambiguous",
@@ -2033,7 +1593,7 @@
           "block": "13:00"
         },
         "Daniel": {
-          "block": "11:00",
+          "block": "09:00",
           "station": "packing"
         },
         "Rohan": {
@@ -2041,7 +1601,7 @@
           "station": "intake"
         },
         "Meera": {
-          "block": "09:00"
+          "block": "11:00"
         }
       },
       {
@@ -2053,7 +1613,7 @@
           "block": "15:00"
         },
         "Daniel": {
-          "block": "11:00",
+          "block": "09:00",
           "station": "intake"
         },
         "Rohan": {
@@ -2061,7 +1621,7 @@
           "station": "packing"
         },
         "Meera": {
-          "block": "09:00"
+          "block": "11:00"
         }
       },
       {
@@ -2073,7 +1633,7 @@
           "block": "15:00"
         },
         "Daniel": {
-          "block": "11:00",
+          "block": "09:00",
           "station": "packing"
         },
         "Rohan": {
@@ -2081,176 +1641,33 @@
           "station": "intake"
         },
         "Meera": {
-          "block": "09:00"
-        }
-      }
-    ]
-  },
-  "B2-050": {
-    "case": "inconsistent",
-    "conflicts": [
-      "Tomas works at some point between Rohan and Meera, not necessarily adjacent to either.",
-      "Ingrid takes over from Rohan later in the day.",
-      "Meera is on after one of Ingrid and Tomas and before the other."
-    ]
-  },
-  "B2-026": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Samuel": {
-          "block": "07:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "15:00",
-          "station": "calibration"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "15:00",
-          "station": "packing"
-        }
-      },
-      {
-        "Samuel": {
-          "block": "07:00"
-        },
-        "Ayesha": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "11:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "13:00"
-        },
-        "Meera": {
-          "block": "15:00",
-          "station": "intake"
+          "block": "11:00"
         }
       }
     ]
   },
   "B2-053": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "13:00"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        }
+    "case": "unique",
+    "assignment": {
+      "Samuel": {
+        "block": "07:00",
+        "station": "intake"
       },
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "packing"
-        },
-        "Priya": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "13:00"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        }
+      "Priya": {
+        "block": "13:00",
+        "station": "packing"
       },
-      {
-        "Samuel": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Priya": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Tomas": {
-          "block": "09:00"
-        },
-        "Ingrid": {
-          "block": "15:00"
-        }
+      "Nadia": {
+        "block": "11:00",
+        "station": "calibration"
+      },
+      "Tomas": {
+        "block": "09:00"
+      },
+      "Ingrid": {
+        "block": "15:00"
       }
-    ]
-  },
-  "B2-056": {
-    "case": "inconsistent",
-    "conflicts": [
-      "Put Nadia between Ayesha and Daniel, though not necessarily next to either.",
-      "There is no block between Daniel's and Nadia's, in that order.",
-      "07:00 is when Ayesha is scheduled."
-    ]
+    }
   },
   "B2-054": {
     "case": "unique",
@@ -2275,97 +1692,57 @@
       }
     }
   },
-  "B2-058": {
+  "B2-055": {
     "case": "ambiguous",
     "assignments": [
       {
         "Ayesha": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "09:00",
+          "block": "07:00",
           "station": "packing"
         },
-        "Nadia": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Rohan": {
-          "block": "15:00"
-        },
-        "Meera": {
-          "block": "07:00"
-        }
-      },
-      {
-        "Ayesha": {
-          "block": "13:00",
-          "station": "packing"
-        },
-        "Ingrid": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Nadia": {
-          "block": "11:00",
-          "station": "calibration"
-        },
-        "Rohan": {
-          "block": "15:00"
-        },
-        "Meera": {
-          "block": "07:00"
-        }
-      },
-      {
-        "Ayesha": {
-          "block": "13:00",
-          "station": "intake"
-        },
-        "Ingrid": {
-          "block": "09:00",
-          "station": "packing"
-        },
-        "Nadia": {
-          "block": "15:00",
-          "station": "calibration"
-        },
-        "Rohan": {
+        "Samuel": {
           "block": "11:00"
         },
-        "Meera": {
-          "block": "07:00"
-        }
-      },
-      {
-        "Ayesha": {
-          "block": "13:00",
-          "station": "packing"
+        "Lukas": {
+          "block": "15:00"
         },
         "Ingrid": {
           "block": "09:00",
           "station": "intake"
         },
-        "Nadia": {
-          "block": "15:00",
+        "Meera": {
+          "block": "13:00",
           "station": "calibration"
+        }
+      },
+      {
+        "Ayesha": {
+          "block": "07:00",
+          "station": "packing"
         },
-        "Rohan": {
+        "Samuel": {
           "block": "11:00"
         },
+        "Lukas": {
+          "block": "15:00"
+        },
+        "Ingrid": {
+          "block": "09:00",
+          "station": "calibration"
+        },
         "Meera": {
-          "block": "07:00"
+          "block": "13:00",
+          "station": "intake"
         }
       }
     ]
   },
-  "B2-059": {
+  "B2-056": {
     "case": "inconsistent",
     "conflicts": [
-      "Lukas has the spare key to the supply cupboard.",
-      "Whoever drew the 13:00 block, it was Daniel.",
-      "Nadia is on the block immediately before Meera."
+      "Put Nadia between Ayesha and Daniel, though not necessarily next to either.",
+      "There is no block between Daniel's and Nadia's, in that order.",
+      "07:00 is when Ayesha is scheduled."
     ]
   },
   "B2-057": {
@@ -2376,89 +1753,97 @@
       "My recollection is that Ingrid's block falls somewhere earlier than Ayesha's."
     ]
   },
-  "B2-055": {
+  "B2-058": {
     "case": "ambiguous",
     "assignments": [
       {
         "Ayesha": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Lukas": {
-          "block": "11:00"
+          "block": "13:00",
+          "station": "packing"
         },
         "Ingrid": {
-          "block": "13:00",
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Nadia": {
+          "block": "11:00",
           "station": "calibration"
         },
+        "Rohan": {
+          "block": "15:00"
+        },
         "Meera": {
-          "block": "15:00",
-          "station": "packing"
+          "block": "07:00"
         }
       },
       {
         "Ayesha": {
-          "block": "07:00",
-          "station": "intake"
-        },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Lukas": {
-          "block": "11:00"
-        },
-        "Ingrid": {
           "block": "13:00",
           "station": "packing"
         },
-        "Meera": {
+        "Ingrid": {
+          "block": "09:00",
+          "station": "intake"
+        },
+        "Nadia": {
           "block": "15:00",
           "station": "calibration"
+        },
+        "Rohan": {
+          "block": "11:00"
+        },
+        "Meera": {
+          "block": "07:00"
         }
       },
       {
         "Ayesha": {
+          "block": "13:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "11:00",
+          "station": "intake"
+        },
+        "Nadia": {
           "block": "07:00",
           "station": "calibration"
         },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Lukas": {
-          "block": "11:00"
-        },
-        "Ingrid": {
-          "block": "13:00",
-          "station": "intake"
+        "Rohan": {
+          "block": "15:00"
         },
         "Meera": {
-          "block": "15:00",
-          "station": "packing"
+          "block": "09:00"
         }
       },
       {
         "Ayesha": {
-          "block": "07:00",
-          "station": "calibration"
-        },
-        "Samuel": {
-          "block": "09:00"
-        },
-        "Lukas": {
-          "block": "11:00"
-        },
-        "Ingrid": {
           "block": "13:00",
           "station": "packing"
         },
-        "Meera": {
-          "block": "15:00",
+        "Ingrid": {
+          "block": "11:00",
           "station": "intake"
+        },
+        "Nadia": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Rohan": {
+          "block": "07:00"
+        },
+        "Meera": {
+          "block": "09:00"
         }
       }
+    ]
+  },
+  "B2-059": {
+    "case": "inconsistent",
+    "conflicts": [
+      "Meera is the one who opens up at 09:00.",
+      "Whoever drew the 13:00 block, it was Daniel.",
+      "My recollection is that Lukas then Nadia, back to back."
     ]
   }
 }
