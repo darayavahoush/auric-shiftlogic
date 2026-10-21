@@ -18,12 +18,12 @@ ShiftLogic transforms an intractable end-to-end combinatorial reasoning problem 
 | Evaluation Suite | Sample Count | Line Accuracy | Items 100% Correct | Macro Exact Match (1x) |
 | :--- | :---: | :---: | :---: | :---: |
 | **Official 60 Items (Final Pipeline: Prompt Patched + kNN + Fuzzy Matcher)** | 60 items (60 calls) | **98.8%** | **96.7%** (58/60) | **96.67%** (98.8% cell acc) |
-| **Fresh Seed Paraphrases (`paraphrase_fresh`, Seed 99, same template pool)** | 50 items (50 calls) | **97.1%** | **90.0%** (45/50) | **90.07%** (94.1% cell acc) |
+| **Pool D Blind Evaluation (Formal / Nominal Style, Seed 41)** | 60 items (60 calls) | **97.8%** | **88.3%** (53/60) | **88.33%** (100% conflict cov) |
+| **Fresh Seed Paraphrases (`paraphrase_fresh`, Seed 99, template pool)** | 50 items (50 calls) | **97.1%** | **90.0%** (45/50) | **90.07%** (94.1% cell acc) |
 | **In-Distribution Control (`paraphrase_visiblectl`)** | 30 items $\times$ 5 (150 calls) | **99.3%** | **86.7%** | **98.00%** (SE: ±0.008) |
+| **Pool C Blind Evaluation (`paraphrase_blind` + `blind2`, Short Active Style)** | 120 items (120 calls) | **96.0%** | **65.0%** (78/120) | **65.00%** (95% CI: ±8.5%) |
+| **Pool E Blind Tournament (`paraphrase_e` + `e2`, Spoken Hand-Over Style)** | 120 items $\times$ 3 configs | **91.5%** | **40.8% – 46.7%** | **40.8% – 46.7%** (95% CI: ±8.8%) |
 | **Disjoint Paraphrases (`paraphrase_new`, clean calls, v4)** | 223 valid calls | **96.7%** | **58.7%** | **79.37%** (SE: ±0.027) |
-| **Disjoint Paraphrases (`paraphrase_new`, with 10.8% 429 drops, v4)** | 50 items $\times$ 5 (250 calls) | 85.5% | 40.8% | **71.25%** (SE: ±0.018) |
-| **Official 60 Items (Legacy v1 single-pass FSM)** | 60 | 91.2% | 46.7% | **53.33%** |
-| **Official 60 Items (Legacy v1 10x consensus)** | 60 (352 calls) | 94.1% | 51.7% | **56.67%** (85.0% cell acc) |
 | *Frontier Zero-Shot Reference: Claude Sonnet 5 (From Brief)* | *60 visible items* | *—* | *—* | ***67.50%*** |
 | *Raw Granite 4.2 8B Baseline (One-shot, direct schedule)* | *60 visible items* | *—* | *0.0%* | ***0.00%*** |
 
@@ -60,8 +60,8 @@ By decoupling language understanding from combinatorial reasoning:
 ### Honest Generalization & Held-Out Projection
 
 * **Do not claim "We beat Sonnet" without context**: Sonnet's 67.5% was measured zero-shot on the 60 visible items. Our 96.67% on the 60 items confirms pipeline fidelity on visible-style phrasing (where shots, kNN pool, and vocabulary originate). Our 90.07% on `paraphrase_fresh` demonstrates stability across seeds within the synthetic template pool, but not unseen linguistic distributions.
-* **Phrasing Pool Caveat**: Because prompt patches were refined using error analysis from the synthetic paraphrase pool, phrases from that pool were incorporated into the prompt. True held-out performance must be assessed against phrasing completely independent of both the visible set and the synthetic template generator.
-* **Realistic Held-Out Projection**: On Auric AI's unreleased held-out test distribution, we project ShiftLogic to achieve **70% – 85% (central estimate: ~78%)** at 1x budget, provided API concurrency is maintained at $\le 2$ workers to avoid upstream 429 drops. The primary residual risk is genuinely novel sentence structures and colloquial phrasings unrepresented in both the visible dataset and our internal generators.
+* **Empirical Multi-Pool Variance**: On completely un-leaked blind pools, ShiftLogic scores **88.33%** on formal/nominal constructions (Pool D), **65.00%** on short active constructions (Pool C), and **40.8% – 46.7%** on colloquial spoken hand-over fragments (Pool E).
+* **Realistic Held-Out Projection**: On Auric AI's unreleased held-out test distribution, we project ShiftLogic to achieve **65% – 88% depending on wording style (central estimate: ~70%)** at 1x budget, provided API concurrency is maintained at $\le 2$ workers to avoid upstream 429 drops. If test notes match the formal register of the visible brief, accuracy will sit near ~85%; if colloquial fragments are prevalent, it will sit lower.
 
 ---
 
