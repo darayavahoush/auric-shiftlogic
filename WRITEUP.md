@@ -40,13 +40,13 @@ Ablation on items.json (60 items, key visible_key.json, 10 banked samples/item)
 | **Pre-Patch Prompt (`base_prompt`)** | 97.0% ± 0.3 ($n=5$) | 96.7% ($n=1$) | — | Modest in-sample gain; no out-of-sample benefit shown |
 | **Without Fuzzy Matcher (`no_fuzzy`)** | 97.8% ± 0.6 ($n=10$) | 98.9% ± 0.6 ($n=3$) | 98.3% ($n=1$) | Clean in-sample names; guards OCR/spelling slips |
 | **Without Majority Voting (`no_vote`)** | 97.8% ± 0.6 ($n=10$) | 98.3% ± 1.0 ($n=3$) | 96.7% ($n=1$) | 10x drops from 98.3% to 96.7% without voting |
-| **With 0-Call Repair (`with_repair`)** | 98.8% ± 0.4 ($n=10$) | 100.0% ± 0.0 ($n=3$) | 100.0% ($n=1$) | In-sample gain; harms held-out formal text ($p=0.031$) |
+| **With 0-Call Repair (`with_repair`)** | 98.8% ± 0.4 ($n=10$) | 100.0% ± 0.0 ($n=3$) | 100.0% ($n=1$) | In-sample 100% ceiling; actively harms held-out formal text ($p=0.031$) |
 | **Harness-Less Direct Granite (`direct`)** | **0.0% ± 0.0** ($n=5$) | **0.0%** ($n=1$) | — | Baseline reproduction; total permutation collapse |
 
 *Frontier Claude Sonnet 5 scored 67.5% in the brief baseline under direct zero-shot prompting.*
 
 **Scaling Curves Across Registers:**
-- **Formal Held-Out (Pool D):** Scales monotonically: **93.8% ± 0.7 (1x) $\to$ 94.4% ± 1.5 (3x) $\to$ 95.0% (10x)**. Adding repair harms accuracy (93.8% $\to$ 92.8% at 1x; removing repair fixes 6 item-runs and breaks 0, $p=0.031$).
+- **Formal Held-Out (Pool D):** Scales monotonically: **93.8% ± 0.7 (1x) $\to$ 94.4% ± 1.5 (3x) $\to$ 95.0% (10x)**. While heuristic repair reaches 100% in-sample on visible items, it actively harms held-out formal accuracy (93.8% $\to$ 92.8% at 1x; removing repair fixes 6 item-runs and breaks 0, $p=0.031$), confirming that flipping constraints without textual evidence manufactures false consistency.
 - **Colloquial Held-Out (Pool E2):** Scales from **61.8% ± 1.4 (1x) $\to$ 68.3% ± 1.0 (3x) $\to$ 71.7% (10x)** (+9.9 points). Enabling repair yields 62.3% at 1x, which is not statistically significant ($p=0.375$).
 - **Voting Significance Caveat:** While multi-sample scaling provides clear gains, the paired 10x comparison between `full` (71.7%) and `no_vote` (70.0%) on Pool E2 is not statistically separable on $n=1$ ($p=0.34$, voting fixes 7 and breaks 3).
 - **Direct Granite Baseline (0.0%):** Confirms all performance stems from neuro-symbolic decomposition.
@@ -72,6 +72,8 @@ Ablation on items.json (60 items, key visible_key.json, 10 banked samples/item)
 | **Pool E1 (Dev half)** | Spoken hand-over fragments | 60 | 90.2% | **50.60%** (1x) |
 | **Pool E2 (Blind test)**| Spoken hand-over fragments | 60 | 92.4% | **61.8%** (1x) / **71.7%** (10x) |
 
+*Note: Section 3 ablation reports the mean across 10 banked runs (97.8% ± 0.6); Section 5 visible score reflects the single-run live execution (96.67%).*
+
 **Author Variation Reality:** Formal prose reaches **93.8% – 95.0%**, short active statements reach **65.0%**, and spoken hand-overs score **50.6% – 61.8% at 1x**, scaling to **71.7% at 10x**. Compounding 1% per-line error over ~20 lines causes a ~15–20% item drop. Central held-out projection: **~70% (range: 65% – 95%)**.
 
 ---
@@ -80,7 +82,7 @@ Ablation on items.json (60 items, key visible_key.json, 10 banked samples/item)
 
 Per brief constraints (*"self-hosted, air-gapped, and we do not fine-tune"*), production enhancements are architectural:
 
-1. **Grammar-Constrained Decoding (CFG Logits Masking):** Enforce an AST grammar at inference time via Outlines/vLLM logits processors, mathematically eliminating syntax slips (0.0% unparsed).
+1. **Grammar-Constrained Decoding (CFG Logits Masking):** Enforce an AST grammar at inference time via Outlines/vLLM logits processors, guaranteeing well-formed AST outputs and eliminating unparseable formats.
 2. **Dense Multi-Register Retrieval Bank:** Scale kNN retrieval from 60 visible items to 2,000+ validated sentences covering colloquial, passive, and spoken registers.
 3. **Calibrated Operator Logprob Verification:** Inspect token logprobs on relational operators (`BEFORE` vs `AFTER`); items with high operator entropy receive targeted verification calls.
 4. **SAT-Guided Conflict Re-Querying:** When inconsistent ($|\Omega|=0$), re-query Granite specifically on the 3–4 lines in the Minimal Unsatisfiable Core rather than re-sampling blind.
