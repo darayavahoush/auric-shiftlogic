@@ -247,8 +247,10 @@ def parse_verdicts(raw: str, staff: List[str], lines: List[Tuple[int, str]]) -> 
         if not m:
             continue
         idx = int(m.group(1))
-        if idx in want and idx not in got:
-            got[idx] = parse_one(idx, m.group(2), staff, want[idx])
+        if idx in want:
+            v = parse_one(idx, m.group(2), staff, want[idx])
+            if v.status in ("constraint", "skip") or idx not in got:
+                got[idx] = v
     for i in want:
         got.setdefault(i, Verdict(i, "missing"))
     return got
@@ -268,7 +270,7 @@ def verdicts_to_constraints(verdicts: Dict[int, Verdict], lines: List[Tuple[int,
 
 # ----------------------------- model call + drop-in -----------------------------
 def call_granite_v2(client, model: str, item_id: str, messages: List[Dict[str, str]],
-                    temperature: float = 1.0, timeout: float = 180.0) -> str:
+                    temperature: float = 1.0, timeout: float = 300.0) -> str:
     """ONE HTTP request. The client must be built with max_retries=0 so the SDK cannot re-send behind your back."""
     r = client.chat.completions.create(
         model=model, messages=messages, temperature=temperature, top_p=0.95, timeout=timeout,
@@ -301,7 +303,7 @@ def messages_for_item(item: ParsedItem, echo: bool = True, exclude_ids: Tuple[st
                           neighbours=nb, n_fixed_shots=3)
 
 
-def call_granite_v2_lp(client, model: str, item_id: str, messages, temperature: float = 1.0, timeout: float = 90.0):
+def call_granite_v2_lp(client, model: str, item_id: str, messages, temperature: float = 1.0, timeout: float = 300.0):
     """Same ONE request, but asks for token logprobs (if the endpoint supports them).
     Returns (text, [(token, logprob), ...] or None)."""
     r = client.chat.completions.create(

@@ -698,14 +698,14 @@
     "case": "unique",
     "assignment": {
       "Samuel": {
-        "block": "13:00"
+        "block": "15:00"
       },
       "Ayesha": {
         "block": "09:00",
         "station": "packing"
       },
       "Tomas": {
-        "block": "15:00",
+        "block": "13:00",
         "station": "calibration"
       },
       "Nadia": {
@@ -1693,49 +1693,27 @@
     }
   },
   "B2-055": {
-    "case": "ambiguous",
-    "assignments": [
-      {
-        "Ayesha": {
-          "block": "07:00",
-          "station": "packing"
-        },
-        "Samuel": {
-          "block": "11:00"
-        },
-        "Lukas": {
-          "block": "15:00"
-        },
-        "Ingrid": {
-          "block": "09:00",
-          "station": "intake"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "calibration"
-        }
+    "case": "unique",
+    "assignment": {
+      "Ayesha": {
+        "block": "07:00",
+        "station": "packing"
       },
-      {
-        "Ayesha": {
-          "block": "07:00",
-          "station": "packing"
-        },
-        "Samuel": {
-          "block": "11:00"
-        },
-        "Lukas": {
-          "block": "15:00"
-        },
-        "Ingrid": {
-          "block": "09:00",
-          "station": "calibration"
-        },
-        "Meera": {
-          "block": "13:00",
-          "station": "intake"
-        }
+      "Samuel": {
+        "block": "11:00"
+      },
+      "Lukas": {
+        "block": "15:00"
+      },
+      "Ingrid": {
+        "block": "09:00",
+        "station": "intake"
+      },
+      "Meera": {
+        "block": "13:00",
+        "station": "calibration"
       }
-    ]
+    }
   },
   "B2-056": {
     "case": "inconsistent",

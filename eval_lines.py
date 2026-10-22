@@ -63,7 +63,7 @@ def main():
     client = None; model = os.environ.get("MODEL", "ibm-granite/granite-4.2-8b")
     if not a.simulate:
         from dotenv import load_dotenv; from openai import OpenAI; load_dotenv()
-        client = OpenAI(api_key=os.environ["OPENROUTER_API_KEY"], base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"), max_retries=0, timeout=120.0)
+        client = OpenAI(api_key=os.environ["OPENROUTER_API_KEY"], base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"), max_retries=0, timeout=300.0)
     prompt_text = D.SYSTEM_PROMPT.lower()
     jobs = [(it, s) for it in items for s in range(a.samples)]
     import threading

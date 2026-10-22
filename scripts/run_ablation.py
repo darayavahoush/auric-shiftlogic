@@ -136,7 +136,7 @@ def cmd_collect(a):
     from dotenv import load_dotenv; from openai import OpenAI
     load_dotenv()
     client = OpenAI(api_key=os.environ["OPENROUTER_API_KEY"], base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
-                    max_retries=0, timeout=120.0)
+                    max_retries=0, timeout=300.0)
     model = os.environ.get("MODEL", "ibm-granite/granite-4.2-8b")
     items = json.load(open(a.items)); lock = threading.Lock()
     for cfg in a.configs.split(","):
@@ -153,7 +153,7 @@ def cmd_collect(a):
             it, s = job
             time.sleep(a.sleep)
             try:
-                r = client.chat.completions.create(model=model, messages=msgs[it["id"]], temperature=1.0, top_p=0.95, timeout=120.0,
+                r = client.chat.completions.create(model=model, messages=msgs[it["id"]], temperature=1.0, top_p=0.95, timeout=300.0,
                         extra_headers={"X-Item-Id": a.header_prefix + it["id"]}, extra_body={"reasoning": {"enabled": False}})
                 raw = r.choices[0].message.content or ""
             except Exception as e:
