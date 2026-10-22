@@ -35,7 +35,7 @@ def _vote_key(a: Dict[str, Any]):
     return ("inconsistent", tuple(sorted(a["conflicts"])))
 
 
-def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = True, under_fallback: str = "ambiguous", knn_flagged: Optional[Any] = None):
+def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = False, under_fallback: str = "ambiguous", knn_flagged: Optional[Any] = None):
     pi = prefilter_item(item_id, text)
     cons, verdicts = D.decompile_v2(pi, raw)
     info = {"repair": None}
@@ -50,7 +50,7 @@ def answer_from_raw(item_id: str, text: str, raw: str, use_repair: bool = True, 
 
 
 def run_item(client, model: str, item_id: str, text: str, budget: str = "1x", echo: bool = True,
-             use_repair: bool = True, exclude_ids=(), temperature: float = 1.0,
+             use_repair: bool = False, exclude_ids=(), temperature: float = 1.0,
              knn: int = 0, knn_backend: str = "tfidf"):
     n = BUDGET_CALLS[budget]
     pi = prefilter_item(item_id, text)

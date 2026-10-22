@@ -12,7 +12,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("items_path"); ap.add_argument("--budget", choices=["1x", "3x", "10x"], default="1x")
     ap.add_argument("--out", required=True); ap.add_argument("--workers", type=int, default=1)
-    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=3, help="K nearest labelled lines per line (0 = fixed shots)"); ap.add_argument("--knn-backend", default="tfidf", choices=["auto","st","tfidf"]); ap.add_argument("--no-repair", action="store_true")
+    ap.add_argument("--no-echo", action="store_true"); ap.add_argument("--knn", type=int, default=3, help="K nearest labelled lines per line (0 = fixed shots)"); ap.add_argument("--knn-backend", default="tfidf", choices=["auto","st","tfidf"]); ap.add_argument("--repair", action="store_true", default=False, help="Enable 0-call constraint repair (default: False)"); ap.add_argument("--no-repair", action="store_true")
     a = ap.parse_args(); load_dotenv()
     key = os.environ.get("OPENROUTER_API_KEY")
     if not key: sys.exit("OPENROUTER_API_KEY not set")
@@ -22,7 +22,7 @@ def main():
     items = json.load(open(a.items_path))
     def one(it):
         try:
-            ans, calls = run_item(client, model, it["id"], it["text"], a.budget, echo=not a.no_echo, use_repair=not a.no_repair, exclude_ids=(it["id"],), knn=a.knn, knn_backend=a.knn_backend)   # an item never sees its own labelled copy among the shots
+            ans, calls = run_item(client, model, it["id"], it["text"], a.budget, echo=not a.no_echo, use_repair=a.repair, exclude_ids=(it["id"],), knn=a.knn, knn_backend=a.knn_backend)   # an item never sees its own labelled copy among the shots
         except Exception as e:
             print(f"{it['id']} UNEXPECTED {e}", file=sys.stderr); ans, calls = {"case": "inconsistent", "conflicts": []}, 1
         print(f"{it['id']} -> {ans['case']} (calls {calls})", flush=True)

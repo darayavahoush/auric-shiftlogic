@@ -38,10 +38,10 @@ PROMPT_CFGS = {
     "direct":      dict(kind="direct", desc="NO solver, NO extraction: Granite answers the item directly (the harness-less baseline)"),
 }
 POST_CFGS = {  # all from the 'full' bank
-    "full":      dict(repair=True, fuzzy=True, vote=True),
-    "no_repair": dict(repair=False, fuzzy=True, vote=True),
-    "no_fuzzy":  dict(repair=True, fuzzy=False, vote=True),
-    "no_vote":   dict(repair=True, fuzzy=True, vote=False),
+    "full":        dict(repair=False, fuzzy=True, vote=True),
+    "with_repair": dict(repair=True, fuzzy=True, vote=True),
+    "no_fuzzy":    dict(repair=False, fuzzy=False, vote=True),
+    "no_vote":     dict(repair=False, fuzzy=True, vote=False),
 }
 BUDGET_N = {"1x": 1, "3x": 3, "10x": 10}
 FAILED = "__CALL_FAILED__"
@@ -227,7 +227,7 @@ def cmd_report(a):
     rows = []
     variants = [(p, "full", PROMPT_CFGS[p]["desc"]) for p in PROMPT_CFGS if os.path.exists(bank_path(a.tag, p))]
     if os.path.exists(bank_path(a.tag, "full")):
-        variants += [("full", n, f"post-processing: {n}") for n in ("no_repair", "no_fuzzy", "no_vote")]
+        variants += [("full", n, f"post-processing: {n}") for n in ("with_repair", "no_fuzzy", "no_vote")]
     hdr = "| component removed / variant | " + " | ".join(f"{b} macro (runs)" for b in BUDGET_N) + " |\n|---|" + "---|" * len(BUDGET_N)
     lines = [f"Ablation on `{a.items}` ({len(items)} items, key `{a.key}`), samples/item banked: {a.samples}.",
              "Each cell: mean macro exact match +/- standard error across independent runs (n = number of runs; a variant collected with fewer samples has fewer/no 3x, 10x runs). "

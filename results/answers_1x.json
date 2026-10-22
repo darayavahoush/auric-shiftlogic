@@ -672,27 +672,89 @@
     ]
   },
   "B2-025": {
-    "case": "unique",
-    "assignment": {
-      "Nadia": {
-        "block": "11:00"
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Nadia": {
+          "block": "11:00"
+        },
+        "Daniel": {
+          "block": "13:00"
+        },
+        "Lukas": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "07:00",
+          "station": "intake"
+        }
       },
-      "Daniel": {
-        "block": "13:00"
+      {
+        "Nadia": {
+          "block": "11:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "07:00",
+          "station": "intake"
+        }
       },
-      "Lukas": {
-        "block": "15:00",
-        "station": "calibration"
+      {
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "09:00",
+          "station": "calibration"
+        }
       },
-      "Ayesha": {
-        "block": "09:00",
-        "station": "packing"
-      },
-      "Ingrid": {
-        "block": "07:00",
-        "station": "intake"
+      {
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "09:00",
+          "station": "intake"
+        }
       }
-    }
+    ]
   },
   "B2-026": {
     "case": "unique",
@@ -1436,11 +1498,11 @@
       },
       "Samuel": {
         "block": "15:00",
-        "station": "packing"
+        "station": "intake"
       },
       "Ayesha": {
         "block": "09:00",
-        "station": "intake"
+        "station": "packing"
       },
       "Nadia": {
         "block": "07:00"
@@ -1693,27 +1755,12 @@
     }
   },
   "B2-055": {
-    "case": "unique",
-    "assignment": {
-      "Ayesha": {
-        "block": "07:00",
-        "station": "packing"
-      },
-      "Samuel": {
-        "block": "11:00"
-      },
-      "Lukas": {
-        "block": "15:00"
-      },
-      "Ingrid": {
-        "block": "09:00",
-        "station": "intake"
-      },
-      "Meera": {
-        "block": "13:00",
-        "station": "calibration"
-      }
-    }
+    "case": "inconsistent",
+    "conflicts": [
+      "Ayesha is on the block immediately before Ingrid.",
+      "As far as I know, Samuel works at some point between Lukas and Ingrid, not necessarily adjacent to either.",
+      "There is no block between Lukas's and Ayesha's, in that order."
+    ]
   },
   "B2-056": {
     "case": "inconsistent",

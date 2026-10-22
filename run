@@ -27,7 +27,8 @@ def main():
     parser.add_argument("--workers", type=int, default=1, help="Concurrent workers (default: 1)")
     parser.add_argument("--knn", type=int, default=3, help="kNN retrieval shots per line (default: 3)")
     parser.add_argument("--knn-backend", default="tfidf", choices=["auto", "st", "tfidf"], help="kNN backend (default: tfidf)")
-    parser.add_argument("--no-repair", action="store_true", help="Disable 0-call constraint repair")
+    parser.add_argument("--repair", action="store_true", default=False, help="Enable experimental 0-call constraint repair (default: False)")
+    parser.add_argument("--no-repair", action="store_true", help="Deprecated: repair is disabled by default")
     parser.add_argument("--no-echo", action="store_true", help="Disable echoing candidate lines in prompt")
     parser.add_argument("--legacy", action="store_true", help="Run legacy v1 FSM controller")
 
@@ -50,7 +51,7 @@ def main():
         items = json.load(f)
 
     print(f"Loaded {len(items)} items from {args.items_path}.")
-    mode_str = "Legacy v1 FSM" if args.legacy else f"v2/v3 Neuro-Symbolic (kNN={args.knn}, repair={not args.no_repair})"
+    mode_str = "Legacy v1 FSM" if args.legacy else f"v2/v3 Neuro-Symbolic (kNN={args.knn}, repair={args.repair})"
     print(f"Running pipeline={mode_str} model={model} budget={args.budget} workers={args.workers}...")
 
     # Ensure output directory exists early
@@ -92,7 +93,7 @@ def main():
                     raw_text,
                     budget=args.budget,
                     echo=not args.no_echo,
-                    use_repair=not args.no_repair,
+                    use_repair=args.repair,
                     exclude_ids=(item_id,),
                     knn=args.knn,
                     knn_backend=args.knn_backend,

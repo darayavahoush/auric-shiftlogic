@@ -672,27 +672,89 @@
     ]
   },
   "B2-025": {
-    "case": "unique",
-    "assignment": {
-      "Nadia": {
-        "block": "11:00"
+    "case": "ambiguous",
+    "assignments": [
+      {
+        "Nadia": {
+          "block": "11:00"
+        },
+        "Daniel": {
+          "block": "13:00"
+        },
+        "Lukas": {
+          "block": "15:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "07:00",
+          "station": "intake"
+        }
       },
-      "Daniel": {
-        "block": "13:00"
+      {
+        "Nadia": {
+          "block": "11:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "13:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "09:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "07:00",
+          "station": "intake"
+        }
       },
-      "Lukas": {
-        "block": "15:00",
-        "station": "calibration"
+      {
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "07:00",
+          "station": "intake"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "09:00",
+          "station": "calibration"
+        }
       },
-      "Ayesha": {
-        "block": "09:00",
-        "station": "packing"
-      },
-      "Ingrid": {
-        "block": "07:00",
-        "station": "intake"
+      {
+        "Nadia": {
+          "block": "13:00"
+        },
+        "Daniel": {
+          "block": "15:00"
+        },
+        "Lukas": {
+          "block": "07:00",
+          "station": "calibration"
+        },
+        "Ayesha": {
+          "block": "11:00",
+          "station": "packing"
+        },
+        "Ingrid": {
+          "block": "09:00",
+          "station": "intake"
+        }
       }
-    }
+    ]
   },
   "B2-026": {
     "case": "unique",
