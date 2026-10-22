@@ -3,7 +3,7 @@ Each cell: mean macro exact match +/- standard error across independent runs (n 
 
 | component removed / variant | 1x macro (runs) | 3x macro (runs) | 10x macro (runs) |
 |---|---|---|---|
-| **full** — patched prompt + glossary + 3 shots + kNN(3) neighbours | 62.3% ± 1.2 (n=10) | 68.3% ± 1.7 (n=3) | 71.7% (n=1) |
-| **no_repair** — post-processing: no_repair | 61.8% ± 1.4 (n=10) | 68.3% ± 1.0 (n=3) | 71.7% (n=1) |
-| **no_fuzzy** — post-processing: no_fuzzy | 62.3% ± 1.2 (n=10) | 68.3% ± 1.7 (n=3) | 71.7% (n=1) |
-| **no_vote** — post-processing: no_vote | 62.3% ± 1.2 (n=10) | 67.2% ± 1.1 (n=3) | 70.0% (n=1) |
+| **full** — patched prompt + glossary + 3 shots + kNN(3) neighbours | 61.8% ± 1.4 (n=10) | 68.3% ± 1.0 (n=3) | 71.7% (n=1) |
+| **with_repair** — post-processing: with_repair | 62.3% ± 1.2 (n=10) | 68.3% ± 1.7 (n=3) | 71.7% (n=1) |
+| **no_fuzzy** — post-processing: no_fuzzy | 61.8% ± 1.4 (n=10) | 68.3% ± 1.0 (n=3) | 71.7% (n=1) |
+| **no_vote** — post-processing: no_vote | 61.8% ± 1.4 (n=10) | 68.3% ± 1.0 (n=3) | 70.0% (n=1) |
